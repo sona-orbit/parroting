@@ -1,0 +1,88 @@
+<!doctype html><html lang="zh-Hans"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="color-scheme" content="light dark"><title>学舌鸟｜运作方式与模型架构</title><meta name="description" content="一句话从说出口到粘贴要经过哪些步骤，学舌鸟用了哪些模型，以及你的个性化如何一层层叠上去。"><meta property="og:type" content="website"><meta property="og:title" content="学舌鸟｜语气模型如何判断"><meta property="og:description" content="一句话从说出口到粘贴要经过哪些步骤，学舌鸟用了哪些模型，以及你的个性化如何一层层叠上去。"><meta property="og:image" content="../assets/poster.jpg"><link rel="icon" href="../assets/favicon.png"><link rel="stylesheet" href="../assets/style.css?v=10"><link rel="alternate" hreflang="zh-Hant" href="../architecture"><link rel="alternate" hreflang="zh-Hans" href="../zh-Hans/architecture"><script>window.PARROTING_PAGE='architecture';window.PARROTING_LOCALE='zh-Hans';window.PARROTING_VERSION='0.4.0';window.PARROTING_SIZE='33 MB';window.PARROTING_DOWNLOAD='https://github.com/sona-orbit/parroting-releases/releases/latest/download/Parroting-macos-arm64.zip';</script><script defer src="../assets/site.js?v=10"></script><style>
+:root{--vio:#5b4fb5;--vio-soft:#eeedfb;--vio-ink:#3a3189;--cor:#b8532d;--cor-soft:#fbeee7;--cor-ink:#7a3317;--sto:#6f716a;--sto-soft:#efefea;--sto-ink:#3f413c}
+@media(prefers-color-scheme:dark){:root{--vio:#a49cf0;--vio-soft:#29264a;--vio-ink:#d6d2fb;--cor:#ef9a74;--cor-soft:#3f251a;--cor-ink:#f8d2c1;--sto:#b4b2a9;--sto-soft:#262a26;--sto-ink:#dcdad3}}
+.ar-legend{display:flex;flex-wrap:wrap;justify-content:center;gap:8px 20px;font-size:.84rem;color:var(--muted);margin:-14px 0 26px}
+.ar-legend span{display:inline-flex;align-items:center;gap:7px}
+.sw{width:13px;height:13px;border-radius:4px;border:1px solid;display:inline-block}
+.sw.m{background:var(--vio-soft);border-color:var(--vio)}.sw.r{background:var(--sto-soft);border-color:var(--sto)}.sw.x{background:var(--cor-soft);border-color:var(--cor);border-style:dashed}.sw.y{background:var(--mint);border-color:var(--green)}
+.ar-flow{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:14px}
+.ar-step{position:relative;border:1px solid;border-radius:18px;padding:20px 16px 16px;display:grid;gap:8px;align-content:start;min-width:0}
+.ar-step .n{font-size:.72rem;font-weight:800;letter-spacing:.12em;opacity:.75}
+.ar-step h3{margin:0;font-size:1.05rem}
+.ar-step p{margin:0;font-size:.88rem;line-height:1.6}
+.ar-step .where{margin-top:4px;padding-top:9px;border-top:1px solid currentColor;font-size:.76rem;font-weight:750;opacity:.75}
+.ar-step.m{background:var(--vio-soft);border-color:var(--vio);color:var(--vio-ink)}
+.ar-step.r{background:var(--sto-soft);border-color:var(--sto);color:var(--sto-ink)}
+.ar-step.x{background:var(--cor-soft);border-color:var(--cor);color:var(--cor-ink);border-style:dashed}
+.ar-step:not(:last-child):after{content:"→";position:absolute;right:-7px;top:50%;transform:translate(50%,-50%);color:var(--muted)}
+.ar-ctx{display:flex;justify-content:flex-end;margin-top:12px}
+.ar-ctx div{width:calc(20% - 11px);min-width:190px;border:1px dashed var(--line);background:var(--surface);border-radius:14px;padding:12px 14px;font-size:.82rem;color:var(--muted)}
+.ar-ctx b{color:var(--ink)}
+.ar-stacks{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:24px;max-width:980px;margin:auto}
+.ar-stack{background:var(--surface);border:1px solid var(--line);border-radius:24px;padding:22px;display:grid;gap:10px;min-width:0}
+.ar-stack h3{margin:0 0 4px;font-size:1.2rem}
+.ar-layer{border:1px solid;border-radius:14px;padding:14px 16px;min-width:0}
+.ar-layer b{display:block;font-size:1rem}
+.ar-layer p{margin:4px 0 0;font-size:.86rem;line-height:1.6}
+.ar-layer.y{background:var(--mint);border-color:var(--green);color:var(--ink)}
+.ar-layer.m{background:var(--vio-soft);border-color:var(--vio);color:var(--vio-ink)}
+.ar-layer.b{background:var(--sto-soft);border-color:var(--sto);color:var(--sto-ink)}
+.ar-layer.opt{border-style:dashed}
+.ar-join{text-align:center;font-size:.78rem;color:var(--muted);line-height:1.2}
+.ar-join:before{content:"▲ ";color:var(--green)}
+.ar-two{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px;max-width:980px;margin:auto}
+.ar-two .card h3{margin-top:0}
+@media(max-width:860px){.ar-flow,.ar-stacks,.ar-two{grid-template-columns:1fr}.ar-step:not(:last-child):after{content:"↓";right:auto;left:50%;top:auto;bottom:-7px;transform:translate(-50%,50%)}.ar-ctx div{width:100%}}
+</style></head><body class="inner">
+<header class="site-header"><div class="wrap nav"><a class="brand" href="./"><img src="../assets/icon.png" alt="">学舌鸟</a><nav class="nav-links" aria-label="Main"><a href="./">首页</a><a href="model">语气模型</a><a href="architecture" aria-current="page">运作方式</a><a href="guide">教程</a></nav><div class="nav-actions"><label><span class="sr-only">语言</span><select class="lang" id="language" aria-label="语言"><option value="zh-Hant">繁體中文</option><option value="zh-Hans" selected>简体中文</option></select></label><a class="button small" href="https://github.com/sona-orbit/parroting-releases/releases/latest/download/Parroting-macos-arm64.zip">免费下载</a></div></div></header>
+<main>
+<section class="page-head"><div class="wrap"><p class="eyebrow">运作方式 · 模型架构</p><h1>一句话，从说出口到粘贴。</h1><p class="lead">学舌鸟里真正的模型只有两个：把声音转成文字的<strong>语音识别底模</strong>，和判断要不要提醒你的<strong>学舌鸟语气模型</strong>，两个都在你的 Mac 上运行。其余步骤有的是本机规则，有的是你自己选用的 AI 服务。</p><div class="provider-list"><span>两个模型都在本机</span><span>声音不离开 Mac</span><span>AI 服务可以不开</span></div></div></section>
+<section><div class="wrap"><div class="section-heading"><p class="eyebrow">流程</p><h2>说一句话，经过这五步。</h2><p>每一步都标明它是模型、规则还是外部服务，以及在哪里运行。</p></div>
+<div class="ar-legend"><span><i class="sw m"></i>本机模型</span><span><i class="sw r"></i>本机规则</span><span><i class="sw x"></i>你选用的 AI 服务</span></div>
+<div class="ar-flow">
+<div class="ar-step m"><span class="n">STEP 1</span><h3>语音识别</h3><p>按住快捷键说话，语音识别底模把声音转成文字。底模是你在首次设置时自己选的。</p><p class="where">Mac 本机 · 声音不上传</p></div>
+<div class="ar-step r"><span class="n">STEP 2</span><h3>中文整理</h3><p>套用你的词典，修正常被识别错的人名和用语；把字形统一成你设定的简体或繁体，并修正几个常见的同音词。</p><p class="where">Mac 本机</p></div>
+<div class="ar-step x"><span class="n">STEP 3</span><h3>AI 整理口语</h3><p>去掉口头禅和说错重来的部分。使用你自己的 AI 服务，例如 Gemini；没有设置时，改用本机规则。</p><p class="where">只发送文字</p></div>
+<div class="ar-step r"><span class="n">STEP 4</span><h3>粘贴</h3><p>文字粘贴到光标所在的位置。每一句的文本记录存进你自己 iCloud 里的学舌鸟文件夹。</p><p class="where">Mac 本机＋你的 iCloud</p></div>
+<div class="ar-step m"><span class="n">STEP 5</span><h3>语气提醒</h3><p>学舌鸟语气模型读取这句话和当前场景，你的个性化层再微调判断，决定要不要提醒你。</p><p class="where">Mac 本机 · 无需联网</p></div>
+</div>
+<div class="ar-ctx"><div><b>当前场景</b> → STEP 5<br>在哪个应用、回邮件还是聊天、收件人、前几条对话</div></div>
+<div class="note-box" style="max-width:980px;margin:26px auto 0"><strong>改写也用你的 AI 服务。</strong>粘贴后出现的「✦ 改写」不在每一句的必经流程里，你点了才会发送。</div>
+</div></section>
+<section class="section-soft"><div class="wrap"><div class="section-heading"><p class="eyebrow">模型架构</p><h2>每个模型都是一层一层叠上去的。</h2><p>从下往上看：下面是学舌鸟提供给所有人的模型，上面是你自己积累的部分，只属于你，不会上传。</p></div>
+<div class="ar-legend"><span><i class="sw y"></i>你自己的</span><span><i class="sw m"></i>学舌鸟提供</span><span><i class="sw r"></i>基础</span></div>
+<div class="ar-stacks">
+<div class="ar-stack"><h3>语气提醒</h3>
+<div class="ar-layer y"><b>你的个性化层</b><p>你在提醒卡片上点「判断不对」并确认后积累，满 20 条就能在 Mac 上训练。只调整语气和提醒的判断。</p></div>
+<div class="ar-join">叠在上面，微调最终的判断</div>
+<div class="ar-layer m"><b>学舌鸟语气模型</b><p>我们训练的中文小模型，约 11 MB，内置在应用里。一句话读出七件事：场景、对象、目的、场合、语气、会不会伤人、是否太随便。</p></div>
+</div>
+<div class="ar-stack"><h3>语音识别</h3>
+<div class="ar-layer y"><b>你的词典</b><p>识别完成后再修正人名、专有名词。和用哪个底模无关，换了底模照样有效。</p></div>
+<div class="ar-join">识别结果再经过词典</div>
+<div class="ar-layer y opt"><b>自己导入的模型（可选）</b><p>如果你有自己的语音识别模型（.gguf），可以在「设置 → 模型」导入，随时切回原来的底模。</p></div>
+<div class="ar-join">替换底模，不是叠加</div>
+<div class="ar-layer b"><b>语音识别底模</b><p>首次设置时，从列表中选一个下载，例如 SenseVoice、Whisper、Qwen3-ASR。之后可以在「设置 → 模型」换成别的。</p></div>
+</div>
+</div></div></section>
+<section id="import"><div class="wrap"><div class="section-heading"><p class="eyebrow">进阶 · 自己的语音模型</p><h2>你可以放入自己的语音识别模型。</h2><p>如果你会训练模型，可以用自己的声音微调一个语音识别模型，再导入学舌鸟使用。这是进阶功能，日常使用不需要。</p></div>
+<div class="ar-two">
+<div class="card"><h3>如何导入</h3><ol class="steps" style="max-width:none"><li><h3>打开模型设置</h3><p>进入「设置 → 模型」，在「已下载的模型」标题右侧点「导入模型…」。</p></li><li><h3>选择 .gguf 文件</h3><p>学舌鸟会检查格式、把文件复制进来，再用 Mac 自带的语音朗读一句进行试识别。</p></li><li><h3>自动切换</h3><p>能识别出文字才会启用并切换过去。不满意时点「切回标准版」，或直接删除。</p></li></ol></div>
+<div class="card"><h3>注意事项</h3><ul class="feature-list" style="margin-top:6px"><li><b>格式</b>：只接受 .gguf，而且必须是学舌鸟支持的模型类型，例如 SenseVoice、Whisper、Qwen3-ASR。其他类型会被拒绝。</li><li><b>许可</b>：基于别人的底模微调出来的模型，仍要遵守原来的许可协议，例如注明出处、保留模型名称。</li><li><b>功能</b>：有些模型不支持实时流式识别或翻译，导入后会标注出来。</li><li><b>速度</b>：模型越大通常越准，但也越慢、越占内存。</li><li><b>来源</b>：只导入你信任的文件。试识别在独立的进程中进行，损坏的文件不会拖垮学舌鸟。</li><li><b>效果</b>：准确度取决于你的模型。你原来在用的底模会保留，随时可以换回来。</li></ul></div>
+</div>
+<div class="section-heading" style="margin-top:56px"><p class="eyebrow">从学舌鸟获取数据</p><h2>用你自己的录音训练。</h2><p>学舌鸟可以把你的录音和文字导出，作为训练数据。</p></div>
+<ol class="steps"><li><h3>导出数据</h3><p>进入「设置 → 个人化 → 我的资料」点「导出」，会得到一个 zip，里面有录音（wav）、每一句的识别结果与文本记录，以及词典。这台 Mac 只保留最近 300 段录音，想积累更多，记得定期导出。</p></li><li><h3>整理正确答案</h3><p>训练需要知道“这段录音正确的文字是什么”。识别结果不一定正确，AI 整理过的文字也会删掉口头禅，请挑出你核对或修正过的句子作为答案。答案请用你想要的字形，例如全部用简体。</p></li><li><h3>微调模型</h3><p>用底模官方提供的训练工具，以少量参数微调（例如 LoRA）。留一部分句子不参与训练，用来比较训练前后的错字率，也用别人的声音测一下，确认效果没有变差。通常需要一台有 GPU 的电脑。</p></li><li><h3>转成 .gguf 再导入</h3><p>把微调好的模型转换成 .gguf 格式，用上面的「导入模型…」放进学舌鸟。</p></li></ol>
+<div class="note-box" style="max-width:840px;margin:26px auto 0"><strong>这需要一定的技术能力。</strong>学舌鸟只负责导出数据和使用你的模型，不在应用里训练语音模型。</div>
+</div></section>
+<section><div class="wrap"><div class="section-heading"><p class="eyebrow">越用越懂你</p><h2>模型更新了，你的那一层不会丢。</h2></div>
+<div class="ar-two">
+<div class="card"><h3>学舌鸟语气模型更新时</h3><p>我们推出新版语气模型时，学舌鸟会用你保存下来的反馈，自动在新版上重新训练你的个性化层，通过验证才会启用。你不用从头积累，也随时可以还原到上一版。</p></div>
+<div class="card"><h3>更换语音识别底模时</h3><p>语音识别是整个替换，不是叠加：换一个底模，或导入你自己的模型，就直接使用新的识别。词典在识别之后才起作用，所以不管用哪个底模，你的词典都有效。</p></div>
+</div></div></section>
+<section class="section-soft"><div class="wrap"><div class="section-heading"><p class="eyebrow">数据存在哪里</p><h2>你的数据，只在你自己的地方。</h2></div>
+<div class="ar-two">
+<div class="card"><h3>你自己的 iCloud</h3><p>词典、我的资料、改写格式，以及每一句的文本记录，存放在你 iCloud 里的学舌鸟专属文件夹。只有你看得到，Mac 和 iPhone 共用同一份。</p></div>
+<div class="card"><h3>只在这台 Mac</h3><p>录音、个性化素材、你的个性化层，以及语音识别模型文件。不上传，也不放进 iCloud。</p></div>
+</div></div></section>
+<section class="final-cta"><div class="wrap"><h2>让它越用越懂你。</h2><p>免费下载 Mac 版，从每一次使用开始积累你的判断。</p><a class="button" href="https://github.com/sona-orbit/parroting-releases/releases/latest/download/Parroting-macos-arm64.zip">下载 Mac 版 ↓</a><p class="micro" style="margin-top:15px">免费 · Apple 芯片 · macOS 10.15 及以上 · v<span data-version></span> · 约 <span data-size></span></p></div></section>
+</main><footer class="footer"><div class="wrap"><span>© 学舌鸟 Parroting</span><span><a href="./">首页</a> · <a href="model">语气模型</a> · <a href="architecture">运作方式</a> · <a href="guide">教程</a></span><span class="credit">语音识别模型：SenseVoice Small（FunAudioLLM／阿里巴巴），依 <a href="https://github.com/modelscope/FunASR/blob/main/MODEL_LICENSE">FunASR Model License</a> 授权</span></div></footer></body></html>
