@@ -2,7 +2,7 @@
   // 英文頁暫時隱藏（語氣模型還沒有英文版）：不列在選單，也不自動導過去
   const supported = ['zh-Hant', 'zh-Hans'];
   const current = window.PARROTING_LOCALE;
-  const page = { model: 'model', guide: 'guide', architecture: 'architecture' }[window.PARROTING_PAGE] || '';
+  const page = { model: 'model', guide: 'guide', architecture: 'architecture', 'gemini-key': 'gemini-key' }[window.PARROTING_PAGE] || '';
   const selector = document.getElementById('language');
   let saved;
   try { saved = localStorage.getItem('parroting-language'); } catch (_) {}

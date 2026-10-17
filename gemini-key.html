@@ -1,0 +1,109 @@
+<!doctype html><html lang="zh-Hant"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="color-scheme" content="light dark"><title>學舌鳥｜申請免費的 Gemini API key</title><meta name="description" content="三分鐘申請免費的 Gemini API key，貼進學舌鳥，就能用 AI 整理口語和改寫。"><meta property="og:type" content="website"><meta property="og:title" content="學舌鳥｜申請免費的 Gemini API key"><meta property="og:description" content="三分鐘申請免費的 Gemini API key，貼進學舌鳥，就能用 AI 整理口語和改寫。"><meta property="og:image" content="assets/poster.jpg"><link rel="icon" href="assets/favicon.png"><link rel="stylesheet" href="assets/style.css?v=10"><link rel="alternate" hreflang="zh-Hant" href="gemini-key"><link rel="alternate" hreflang="zh-Hans" href="zh-Hans/gemini-key"><script>window.PARROTING_PAGE='gemini-key';window.PARROTING_LOCALE='zh-Hant';window.PARROTING_VERSION='0.4.2';window.PARROTING_SIZE='33 MB';window.PARROTING_DOWNLOAD='https://github.com/sona-orbit/parroting-releases/releases/latest/download/Parroting-macos-arm64.zip';</script><script defer src="assets/site.js?v=10"></script><style>
+:root{--vio:#5b4fb5;--vio-soft:#eeedfb;--vio-ink:#3a3189;--cor:#b8532d;--cor-soft:#fbeee7;--cor-ink:#7a3317;--sto:#6f716a;--sto-soft:#efefea;--sto-ink:#3f413c;--win:#fbfbf8;--win-side:#f1f3ee;--win-line:#e2e6df;--hl:#f2a33a}
+@media(prefers-color-scheme:dark){:root{--vio:#a49cf0;--vio-soft:#29264a;--vio-ink:#d6d2fb;--cor:#ef9a74;--cor-soft:#3f251a;--cor-ink:#f8d2c1;--sto:#b4b2a9;--sto-soft:#262a26;--sto-ink:#dcdad3;--win:#1d2420;--win-side:#171d1a;--win-line:#2f3a33;--hl:#f2b25a}}
+.ar-legend{display:flex;flex-wrap:wrap;justify-content:center;gap:8px 20px;font-size:.84rem;color:var(--muted);margin:-14px 0 26px}
+.ar-legend span{display:inline-flex;align-items:center;gap:7px}
+.sw{width:13px;height:13px;border-radius:4px;border:1px solid;display:inline-block}
+.sw.m{background:var(--vio-soft);border-color:var(--vio)}.sw.r{background:var(--sto-soft);border-color:var(--sto)}.sw.x{background:var(--cor-soft);border-color:var(--cor);border-style:dashed}.sw.y{background:var(--mint);border-color:var(--green)}
+.ar-flow{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:14px}
+.ar-step{position:relative;border:1px solid;border-radius:18px;padding:20px 16px 16px;display:grid;gap:8px;align-content:start;min-width:0}
+.ar-step .n{font-size:.72rem;font-weight:800;letter-spacing:.12em;opacity:.75}
+.ar-step h3{margin:0;font-size:1.05rem}
+.ar-step p{margin:0;font-size:.88rem;line-height:1.6}
+.ar-step .where{margin-top:4px;padding-top:9px;border-top:1px solid currentColor;font-size:.76rem;font-weight:750;opacity:.75}
+.ar-step.m{background:var(--vio-soft);border-color:var(--vio);color:var(--vio-ink)}
+.ar-step.r{background:var(--sto-soft);border-color:var(--sto);color:var(--sto-ink)}
+.ar-step.x{background:var(--cor-soft);border-color:var(--cor);color:var(--cor-ink);border-style:dashed}
+.ar-step:not(:last-child):after{content:"→";position:absolute;right:-7px;top:50%;transform:translate(50%,-50%);color:var(--muted)}
+.ar-ctx{display:flex;justify-content:flex-end;margin-top:12px}
+.ar-ctx div{width:calc(20% - 11px);min-width:190px;border:1px dashed var(--line);background:var(--surface);border-radius:14px;padding:12px 14px;font-size:.82rem;color:var(--muted)}
+.ar-ctx b{color:var(--ink)}
+.ar-stacks{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:24px;max-width:980px;margin:auto}
+.ar-stack{background:var(--surface);border:1px solid var(--line);border-radius:24px;padding:22px;display:grid;gap:10px;align-content:start;min-width:0}
+.ar-stack h3{margin:0 0 4px;font-size:1.2rem}
+.ar-layer{border:1px solid;border-radius:14px;padding:14px 16px;min-width:0}
+.ar-layer b{display:block;font-size:1rem}
+.ar-layer p{margin:4px 0 0;font-size:.86rem;line-height:1.6}
+.ar-layer.y{background:var(--mint);border-color:var(--green);color:var(--ink)}
+.ar-layer.m{background:var(--vio-soft);border-color:var(--vio);color:var(--vio-ink)}
+.ar-layer.b{background:var(--sto-soft);border-color:var(--sto);color:var(--sto-ink)}
+.ar-layer.opt{border-style:dashed}
+.ar-join{text-align:center;font-size:.78rem;color:var(--muted);line-height:1.2}
+.ar-join:before{content:"▲ ";color:var(--green)}
+.ar-two{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px;max-width:980px;margin:auto}
+/* walkthrough: text column + app mockup */
+.walk{display:grid;gap:56px;max-width:1040px;margin:auto}
+.wstep{display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);gap:36px;align-items:center}
+.wstep .wtext{display:grid;gap:10px;min-width:0}
+.wnum{display:inline-grid;place-items:center;width:34px;height:34px;border-radius:50%;background:var(--green);color:var(--surface);font-weight:800}
+.wstep h3{margin:0;font-size:1.2rem}
+.wstep p{margin:0;color:var(--muted)}
+.wstep .tip{font-size:.85rem;background:var(--soft);border-radius:12px;padding:10px 14px;color:var(--muted)}
+.wstep .tip b{color:var(--ink)}
+.win{background:var(--win);border:1px solid var(--win-line);border-radius:14px;box-shadow:var(--shadow);overflow:hidden;font-size:.8rem;min-width:0}
+.win-bar{display:flex;align-items:center;gap:6px;padding:9px 12px;border-bottom:1px solid var(--win-line);color:var(--muted);font-size:.75rem}
+.win-bar i{width:10px;height:10px;border-radius:50%;background:var(--win-line);display:inline-block}
+.win-bar span{margin-left:auto;margin-right:auto}
+.win-body{display:grid;grid-template-columns:128px 1fr;min-height:250px}
+.win-side{background:var(--win-side);border-right:1px solid var(--win-line);padding:10px 8px;display:grid;gap:3px;align-content:start}
+.win-side div{padding:5px 9px;border-radius:7px;color:var(--muted)}
+.win-side div.on{background:var(--mint);color:var(--ink);font-weight:700}
+.win-side .foot{margin-top:18px;font-size:.7rem;border-top:1px solid var(--win-line);padding-top:8px}
+.win-main{padding:14px 16px;display:grid;gap:10px;align-content:start;min-width:0}
+.win-main h4{margin:0;font-size:1rem}
+.win-main small{color:var(--muted)}
+.grp{border:1px solid var(--win-line);border-radius:10px;background:var(--surface);padding:10px 12px;display:grid;gap:8px}
+.grp-t{font-weight:700;font-size:.78rem;color:var(--muted)}
+.row{display:flex;align-items:center;gap:10px;min-width:0}
+.row .grow,.mcard .grow{flex:1;min-width:0}
+.row .grow b,.mcard .grow b{display:block}
+.row .grow small,.mcard .grow small{display:block;line-height:1.4}
+.btn{border:1px solid var(--win-line);background:var(--win-side);border-radius:7px;padding:4px 9px;font-weight:650;white-space:nowrap;font-size:.74rem}
+.btn.pri{background:var(--green);border-color:var(--green);color:var(--surface)}
+.hl{outline:2px solid var(--hl);outline-offset:2px;position:relative}
+.callout{position:relative}
+.callout:after{content:attr(data-n);position:absolute;top:-10px;right:-10px;width:20px;height:20px;border-radius:50%;background:var(--hl);color:#1d1406;font-size:.7rem;font-weight:800;display:grid;place-items:center}
+.badge{font-size:.66rem;font-weight:800;border-radius:5px;padding:1px 6px;background:var(--amber);color:var(--ink);white-space:nowrap}
+.badge.g{background:var(--mint)}
+.toast{border:1px solid var(--green);background:var(--mint);border-radius:10px;padding:9px 12px;font-size:.78rem}
+.dlg{padding:14px 16px;display:grid;gap:10px}
+.dlg-h{display:flex;justify-content:space-between;align-items:center;font-weight:800}
+.search{border:1px solid var(--win-line);border-radius:8px;padding:5px 10px;color:var(--muted);background:var(--surface)}
+.mcard{border:1px solid var(--win-line);border-radius:10px;padding:9px 11px;background:var(--surface);display:flex;gap:10px;align-items:center;min-width:0}
+.mcard.on{border-color:var(--green)}
+.tree{font-family:ui-monospace,Menlo,monospace;font-size:.8rem;background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:16px 18px;line-height:1.8;overflow-x:auto;white-space:pre;color:var(--ink)}
+.tree em{font-style:normal;color:var(--muted)}
+.tree b{color:var(--green)}
+.pipe{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:12px;max-width:1040px;margin:auto}
+.pipe div{position:relative;background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:14px;display:grid;gap:6px;align-content:start;min-width:0}
+.pipe div b{font-size:.95rem}
+.pipe div small{color:var(--muted);line-height:1.5}
+.pipe div em{font-style:normal;font-size:.72rem;font-weight:800;color:var(--green)}
+.pipe div:not(:last-child):after{content:"→";position:absolute;right:-6px;top:50%;transform:translate(50%,-50%);color:var(--muted)}
+.pipe .app{background:var(--mint);border-color:var(--green)}
+@media(max-width:860px){.ar-flow,.ar-stacks,.ar-two,.wstep,.pipe{grid-template-columns:1fr}.ar-step:not(:last-child):after,.pipe div:not(:last-child):after{content:"↓";right:auto;left:50%;top:auto;bottom:-7px;transform:translate(-50%,50%)}.ar-ctx div{width:100%}.win-body{grid-template-columns:1fr}.win-side{display:none}}
+</style><link rel="canonical" href="https://sona-orbit.github.io/parroting/gemini-key"></head><body class="inner">
+<header class="site-header"><div class="wrap nav"><a class="brand" href="./"><img src="assets/icon.png" alt="">學舌鳥</a><nav class="nav-links" aria-label="Main"><a href="./">首頁</a><a href="model">語氣模型</a><a href="architecture">運作方式</a><a href="guide">教學</a></nav><div class="nav-actions"><label><span class="sr-only">語言</span><select class="lang" id="language" aria-label="語言"><option value="zh-Hant" selected>繁體中文</option></select></label><a class="button small" href="https://github.com/sona-orbit/parroting-releases/releases/latest/download/Parroting-macos-arm64.zip">免費下載</a></div></div></header>
+<main>
+<section class="page-head"><div class="wrap"><p class="eyebrow">教學 · 約 3 分鐘</p><h1>申請免費的 Gemini API key</h1><p class="lead">學舌鳥的「AI 整理口語」和「改寫」要用 AI 服務。Google 的 Gemini 有長期的免費額度，台灣可以直接申請，一般聽寫和改寫通常夠用。照下面四步做，三分鐘就能開始用。</p><div class="provider-list"><span>免費</span><span>不用綁信用卡</span><span>只要 Google 帳號</span></div></div></section>
+<section><div class="wrap">
+<div class="walk">
+<div class="wstep"><div class="wtext"><span class="wnum">1</span><h3>打開申請頁並登入</h3><p>用瀏覽器打開 <a class="inline-link" href="https://aistudio.google.com/api-keys" target="_blank" rel="noopener">aistudio.google.com/api-keys</a>，用你的 Google 帳號登入。第一次使用會先問你同意服務條款，勾選後繼續。</p><p class="tip">直接開這個網址最快；從 AI Studio 首頁找入口容易迷路。<b>新帳號會自動建好一個專案和第一把 key</b>，可以直接跳到第 2 步複製。</p></div><div class="win"><div class="win-bar"><i></i><i></i><i></i><span>aistudio.google.com/api-keys</span></div><div class="dlg"><div class="row"><b class="grow">Google AI Studio</b><span class="btn">登入 Google 帳號</span></div><div class="grp"><div class="grp-t">第一次使用會先跳出服務條款</div><div class="row"><div class="grow"><small>勾選同意，按繼續</small></div><span class="btn pri hl callout" data-n="1">同意並繼續</span></div></div><small style="color:var(--muted)">新帳號會自動建立一個專案和第一把 key</small></div></div></div>
+<div class="wstep"><div class="wtext"><span class="wnum">2</span><h3>建立並複製 key</h3><p>在「API Keys」頁按右上角的「Create API key」，名稱和專案都維持預設，再按建立。畫面上會出現一串以 <b>AIza</b> 開頭的文字，按旁邊的複製圖示。</p><p class="tip">key 就像密碼，<b>不要貼到網路上或傳給別人</b>。不小心外流的話，回到這頁刪掉，再建一把新的就好。</p></div><div class="win"><div class="win-bar"><i></i><i></i><i></i><span>aistudio.google.com/api-keys</span></div><div class="dlg"><div class="row"><b class="grow">API Keys</b><span class="btn pri hl callout" data-n="2">Create API key</span></div><div class="mcard"><div class="grow"><b>Gemini API Key</b><small style="color:var(--muted)">AIza••••••••••••••••••••</small></div><span class="btn hl callout" data-n="3">⧉ 複製</span></div><small style="color:var(--muted)">名稱和專案維持預設就好</small></div></div></div>
+<div class="wstep"><div class="wtext"><span class="wnum">3</span><h3>貼進學舌鳥</h3><p>打開學舌鳥，左邊選「AI 改寫」。在「AI 服務」裡，供應商選「Gemini」，把剛才複製的 key 貼進「API 金鑰」。模型維持「自動」就好。</p><p class="tip">key 會存在這台 Mac 的鑰匙圈裡。忘了也沒關係，回到 AI Studio 同一頁隨時可以再複製。</p></div><div class="win"><div class="win-bar"><i></i><i></i><i></i><span>學舌鳥</span></div><div class="win-body"><div class="win-side"><div>首頁</div><div>說話</div><div class="on">AI 改寫</div><div>語氣與情境</div><div>詞典與紀錄</div><div>個人化訓練</div><div>進階</div></div><div class="win-main"><h4>AI 改寫</h4><small>說完先貼上，想改再交給 AI</small><div class="grp"><div class="grp-t">AI 服務</div><div class="row"><div class="grow"><b>供應商</b></div><span class="btn hl callout" data-n="4">Gemini ⌄</span></div><div class="row"><div class="grow"><b>API 金鑰</b><small>怎麼申請？</small></div><span class="btn hl callout" data-n="5" style="min-width:150px;text-align:left">AIza••••••••</span></div><div class="row"><div class="grow"><b>模型</b></div><span class="btn">自動 ⌄</span></div></div></div></div></div></div>
+<div class="wstep"><div class="wtext"><span class="wnum">4</span><h3>打開 AI 功能</h3><p>回到「首頁」，「準備狀態」的 AI 改寫會變成「已設定」。接著打開「AI 整理口語」，想要改寫面板一直在畫面上，就再打開「改寫面板常駐」。</p><p class="tip">還沒填 key 時，這些開關是灰色的；點一下會提示你，按「去設定」就會帶你到第 3 步的位置。</p></div><div class="win"><div class="win-bar"><i></i><i></i><i></i><span>學舌鳥</span></div><div class="win-body"><div class="win-side"><div class="on">首頁</div><div>說話</div><div>AI 改寫</div><div>語氣與情境</div><div>詞典與紀錄</div><div>個人化訓練</div><div>進階</div></div><div class="win-main"><h4>首頁</h4><div class="grp"><div class="grp-t">準備狀態</div><div class="row"><div class="grow"><b>AI 改寫</b><small>gemini-flash-lite</small></div><span class="badge g">● 已設定</span></div></div><div class="grp"><div class="grp-t">常用開關</div><div class="row"><div class="grow"><b>AI 整理口語</b></div><span class="btn pri hl callout" data-n="6">開</span></div><div class="row"><div class="grow"><b>改寫面板常駐</b></div><span class="btn">關</span></div></div></div></div></div></div>
+</div></div></section>
+<section class="section-soft"><div class="wrap"><div class="section-heading"><p class="eyebrow">你需要知道的</p><h2>免費版的額度與資料。</h2></div>
+<div class="ar-two">
+<div class="card"><h3>免費額度</h3><p>免費版每分鐘、每天都有次數上限，一般聽寫和改寫通常夠用。用得很多、遇到「額度已用完」時，等一下或隔天就會恢復；想放寬上限，可以在 AI Studio 左側的「Billing」綁定信用卡改成付費方案。Google 會替新綁卡的帳號設每月花費上限，不會突然出現大筆帳單。</p></div>
+<div class="card"><h3>你的資料</h3><p>依 Google 的說明，<b>免費版送出的內容可能被用來改善 Google 的產品</b>；付費版不會。學舌鳥只會送出文字，聲音一律不上傳。如果你常講工作機密或個人資料，可以考慮改用付費方案，或在送出前留意內容。</p></div>
+</div></div></section>
+<section><div class="wrap"><div class="section-heading"><p class="eyebrow">常見問題</p><h2>卡住的時候。</h2></div>
+<div class="faq">
+<details><summary>「Create API key」按鈕是灰的，按不下去</summary><p>如果你的 Google 帳號以前用過 Google Cloud，AI Studio 不會自動建立專案。到左側的「Dashboard」→「Projects」按「Import projects」，選一個專案匯入後，再回 API Keys 頁建立。公司或學校帳號也可能沒有權限，換成個人 Google 帳號最簡單。</p></details>
+<details><summary>貼上 key 之後，首頁還是顯示沒設定</summary><p>確認供應商選的是「Gemini」，key 前後沒有多複製到空白，而且是完整一串以 AIza 開頭的文字。</p></details>
+<details><summary>用一用突然沒有 AI 整理了</summary><p>多半是免費額度暫時用完。這時學舌鳥會自動改用本機規則，聽寫照常可以用；過一陣子或隔天額度恢復就會回來。</p></details>
+<details><summary>可以用其他 AI 服務嗎？</summary><p>可以。「AI 改寫」頁的供應商還有 OpenAI、Anthropic、OpenRouter、Groq 等，各自到對方網站申請 key 貼上就好；這些通常要付費。</p></details>
+</div></div></section>
+<section class="final-cta"><div class="wrap"><h2>還沒有學舌鳥？</h2><p>免費下載 Mac 版，填好 key 就能用 AI 整理口語。</p><a class="button" href="https://github.com/sona-orbit/parroting-releases/releases/latest/download/Parroting-macos-arm64.zip">下載 Mac 版 ↓</a><p class="micro" style="margin-top:15px">免費 · Apple 晶片 · macOS 10.15 以上 · v<span data-version></span> · 約 <span data-size></span></p></div></section>
+</main><footer class="footer"><div class="wrap"><span>© 學舌鳥 Parroting</span><span><a href="./">首頁</a> · <a href="model">語氣模型</a> · <a href="architecture">運作方式</a> · <a href="guide">教學</a></span><span class="credit">語音辨識模型：SenseVoice Small（FunAudioLLM／阿里巴巴），依 <a href="https://github.com/modelscope/FunASR/blob/main/MODEL_LICENSE">FunASR Model License</a> 授權</span></div></footer></body></html>
