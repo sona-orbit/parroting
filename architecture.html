@@ -82,7 +82,7 @@
 .pipe div:not(:last-child):after{content:"→";position:absolute;right:-6px;top:50%;transform:translate(50%,-50%);color:var(--muted)}
 .pipe .app{background:var(--mint);border-color:var(--green)}
 @media(max-width:860px){.ar-flow,.ar-stacks,.ar-two,.wstep,.pipe{grid-template-columns:1fr}.ar-step:not(:last-child):after,.pipe div:not(:last-child):after{content:"↓";right:auto;left:50%;top:auto;bottom:-7px;transform:translate(-50%,50%)}.ar-ctx div{width:100%}.win-body{grid-template-columns:1fr}.win-side{display:none}}
-</style></head><body class="inner">
+</style><link rel="canonical" href="https://sona-orbit.github.io/parroting/architecture"></head><body class="inner">
 <header class="site-header"><div class="wrap nav"><a class="brand" href="./"><img src="assets/icon.png" alt="">學舌鳥</a><nav class="nav-links" aria-label="Main"><a href="./">首頁</a><a href="model">語氣模型</a><a href="architecture" aria-current="page">運作方式</a><a href="guide">教學</a></nav><div class="nav-actions"><label><span class="sr-only">語言</span><select class="lang" id="language" aria-label="語言"><option value="zh-Hant" selected>繁體中文</option><option value="zh-Hans">简体中文</option></select></label><a class="button small" href="https://github.com/sona-orbit/parroting-releases/releases/latest/download/Parroting-macos-arm64.zip">免費下載</a></div></div></header>
 <main>
 <section class="page-head"><div class="wrap"><p class="eyebrow">運作方式 · 模型架構</p><h1>一句話，從說出口到貼上。</h1><p class="lead">學舌鳥裡真正的模型只有兩個：把聲音變成文字的<strong>語音辨識底模</strong>，和判斷要不要提醒你的<strong>學舌鳥語氣模型</strong>，兩個都在你的 Mac 上執行。底模可以自己換，也可以放進你自己訓練的模型。</p><div class="provider-list"><span>兩個模型都在本機</span><span>聲音不離開 Mac</span><span>底模可以換</span><span>可以匯入自己的模型</span></div></div></section>
