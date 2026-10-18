@@ -1,35 +1,47 @@
 <!doctype html><html lang="zh-Hant"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="color-scheme" content="light dark"><title>學舌鳥｜運作方式與模型架構</title><meta name="description" content="一句話從說出口到貼上經過哪些步驟，學舌鳥用了哪些模型，以及你的個人化怎麼一層層疊上去。"><meta property="og:type" content="website"><meta property="og:title" content="學舌鳥｜運作方式與模型架構"><meta property="og:description" content="一句話從說出口到貼上經過哪些步驟，學舌鳥用了哪些模型，以及你的個人化怎麼一層層疊上去。"><meta property="og:image" content="assets/poster.jpg"><link rel="icon" href="assets/favicon.png"><link rel="stylesheet" href="assets/style.css?v=10"><link rel="alternate" hreflang="zh-Hant" href="architecture"><link rel="alternate" hreflang="zh-Hans" href="zh-Hans/architecture"><script>window.PARROTING_PAGE='architecture';window.PARROTING_LOCALE='zh-Hant';window.PARROTING_VERSION='0.4.6';window.PARROTING_SIZE='35 MB';window.PARROTING_DOWNLOAD='https://github.com/sona-orbit/parroting-releases/releases/latest/download/Parroting-macos-arm64.dmg';</script><script defer src="assets/site.js?v=11"></script><style>
 :root{--vio:#5b4fb5;--vio-soft:#eeedfb;--vio-ink:#3a3189;--cor:#b8532d;--cor-soft:#fbeee7;--cor-ink:#7a3317;--sto:#6f716a;--sto-soft:#efefea;--sto-ink:#3f413c;--win:#fbfbf8;--win-side:#f1f3ee;--win-line:#e2e6df;--hl:#f2a33a}
 @media(prefers-color-scheme:dark){:root{--vio:#a49cf0;--vio-soft:#29264a;--vio-ink:#d6d2fb;--cor:#ef9a74;--cor-soft:#3f251a;--cor-ink:#f8d2c1;--sto:#b4b2a9;--sto-soft:#262a26;--sto-ink:#dcdad3;--win:#1d2420;--win-side:#171d1a;--win-line:#2f3a33;--hl:#f2b25a}}
-.ar-legend{display:flex;flex-wrap:wrap;justify-content:center;gap:8px 20px;font-size:.84rem;color:var(--muted);margin:-14px 0 26px}
-.ar-legend span{display:inline-flex;align-items:center;gap:7px}
-.sw{width:13px;height:13px;border-radius:4px;border:1px solid;display:inline-block}
+.ar-legend{display:flex;flex-wrap:wrap;justify-content:center;gap:9px;margin:-10px 0 28px}
+.ar-legend span{display:inline-flex;align-items:center;gap:9px;padding:6px 12px;border:1px solid var(--line);border-radius:999px;background:var(--surface);font-size:.8rem;font-weight:700;color:var(--ink)}
+.sw{width:15px;height:15px;border-radius:5px;border:2px solid;display:inline-block;flex:none}
 .sw.m{background:var(--vio-soft);border-color:var(--vio)}.sw.r{background:var(--sto-soft);border-color:var(--sto)}.sw.x{background:var(--cor-soft);border-color:var(--cor);border-style:dashed}.sw.y{background:var(--mint);border-color:var(--green)}
-.ar-flow{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:14px}
-.ar-step{position:relative;border:1px solid;border-radius:18px;padding:20px 16px 16px;display:grid;gap:8px;align-content:start;min-width:0}
-.ar-step .n{font-size:.72rem;font-weight:800;letter-spacing:.12em;opacity:.75}
-.ar-step h3{margin:0;font-size:1.05rem}
-.ar-step p{margin:0;font-size:.88rem;line-height:1.6}
-.ar-step .where{margin-top:4px;padding-top:9px;border-top:1px solid currentColor;font-size:.76rem;font-weight:750;opacity:.75}
-.ar-step.m{background:var(--vio-soft);border-color:var(--vio);color:var(--vio-ink)}
-.ar-step.r{background:var(--sto-soft);border-color:var(--sto);color:var(--sto-ink)}
-.ar-step.x{background:var(--cor-soft);border-color:var(--cor);color:var(--cor-ink);border-style:dashed}
-.ar-step:not(:last-child):after{content:"→";position:absolute;right:-7px;top:50%;transform:translate(50%,-50%);color:var(--muted)}
-.ar-ctx{display:flex;justify-content:flex-end;margin-top:12px}
-.ar-ctx div{width:calc(20% - 11px);min-width:190px;border:1px dashed var(--line);background:var(--surface);border-radius:14px;padding:12px 14px;font-size:.82rem;color:var(--muted)}
-.ar-ctx b{color:var(--ink)}
+.ar-symbols{position:absolute;width:0;height:0;overflow:hidden}
+.ar-icon{width:36px;height:36px;flex:none;fill:none;stroke:currentColor;stroke-width:1.75;stroke-linecap:round;stroke-linejoin:round}
+.ar-flow{display:grid;grid-template-columns:minmax(0,2fr) minmax(0,1fr) minmax(0,2fr);gap:22px;margin:0 0 132px}
+.ar-device{position:relative;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:22px;padding:29px 10px 10px;border:1.5px dashed var(--green);border-radius:25px;background:color-mix(in srgb,var(--mint) 28%,var(--surface));min-width:0}
+.ar-device-label{position:absolute;top:-12px;left:18px;padding:1px 11px;border-radius:999px;background:var(--green);color:var(--bg);font-size:.72rem;font-weight:800;letter-spacing:.05em}
+.ar-service{position:relative;display:flex;padding:29px 0 10px;min-width:0}
+.ar-service .ar-step{flex:1}
+.ar-step{position:relative;display:flex;flex-direction:column;gap:11px;min-width:0;border:1px solid;border-radius:18px;padding:17px 15px 14px;background:var(--surface);box-shadow:0 12px 30px rgba(22,54,35,.065)}
+.ar-step .n{display:flex;align-items:center;justify-content:space-between;gap:4px;font-size:.71rem;font-weight:850;letter-spacing:.1em}
+.ar-step .tag{padding:2px 7px;border-radius:999px;border:1px dashed currentColor;font-size:.68rem;letter-spacing:0;white-space:nowrap}
+.ar-step .ar-icon{margin:3px 0 2px}
+.ar-step h3{margin:0;font-size:1.04rem;line-height:1.35}
+.ar-step p{margin:0;font-size:.85rem;line-height:1.6}
+.ar-step .where{margin-top:auto;padding-top:11px;border-top:1px solid color-mix(in srgb,currentColor 25%,transparent);font-size:.73rem;font-weight:750;line-height:1.45}
+.ar-step.m{border-color:var(--vio);color:var(--vio-ink);background:var(--vio-soft)}
+.ar-step.r{border-color:var(--sto);color:var(--sto-ink);background:var(--sto-soft)}
+.ar-step.x{border-color:var(--cor);color:var(--cor-ink);background:var(--cor-soft);border-style:dashed}
+.ar-device .ar-step:first-of-type:after,.ar-service:after,.ar-device:first-child:after{content:"";position:absolute;top:49%;right:-19px;width:15px;height:10px;border-top:2px solid var(--green);background:linear-gradient(135deg,transparent 48%,var(--green) 50%,var(--green) 61%,transparent 63%) right top/7px 7px no-repeat;z-index:2}
+.ar-device:first-child:after{right:-19px}.ar-service:after{right:-19px}
+.ar-ctx{position:absolute;top:calc(100% + 28px);right:10px;width:calc(50% - 21px);display:flex;gap:10px;align-items:flex-start;border:1px solid var(--green);background:var(--surface);border-radius:16px;padding:13px;color:var(--muted);font-size:.78rem;line-height:1.5;box-shadow:0 10px 25px rgba(22,54,35,.06)}
+.ar-ctx:before{content:"";position:absolute;bottom:100%;left:50%;height:28px;border-left:2px solid var(--green)}
+.ar-ctx:after{content:"";position:absolute;bottom:calc(100% + 22px);left:calc(50% - 4px);width:7px;height:7px;border-top:2px solid var(--green);border-left:2px solid var(--green);transform:rotate(45deg)}
+.ar-ctx .ar-icon{width:27px;height:27px;color:var(--green)}.ar-ctx b{color:var(--ink)}
 .ar-stacks{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:24px;max-width:980px;margin:auto}
-.ar-stack{background:var(--surface);border:1px solid var(--line);border-radius:24px;padding:22px;display:grid;gap:10px;align-content:start;min-width:0}
-.ar-stack h3{margin:0 0 4px;font-size:1.2rem}
-.ar-layer{border:1px solid;border-radius:14px;padding:14px 16px;min-width:0}
-.ar-layer b{display:block;font-size:1rem}
-.ar-layer p{margin:4px 0 0;font-size:.86rem;line-height:1.6}
-.ar-layer.y{background:var(--mint);border-color:var(--green);color:var(--ink)}
+.ar-stack{background:var(--surface);border:1px solid var(--line);border-radius:25px;padding:23px;display:flex;flex-direction:column;min-width:0;box-shadow:0 14px 36px rgba(22,54,35,.05)}
+.ar-stack h3{margin:0;font-size:1.2rem}.ar-direction{display:flex;align-items:center;gap:8px;color:var(--muted);font-size:.75rem;font-weight:750;margin:0 0 23px}.ar-direction:before{content:"↑";display:grid;place-items:center;width:23px;height:23px;border-radius:50%;background:var(--mint);color:var(--green);font-size:1rem}
+.ar-layer-set{margin-top:auto;display:flex;flex-direction:column;align-items:stretch;padding:0 7px 8px}
+.ar-layer{position:relative;display:flex;gap:14px;align-items:flex-start;min-width:0;min-height:125px;border:1px solid;border-radius:15px;padding:17px 17px 20px;box-shadow:0 7px 0 color-mix(in srgb,currentColor 22%,var(--surface)),0 10px 18px rgba(22,54,35,.07)}
+.ar-layer .ar-icon{width:31px;height:31px;margin-top:1px}.ar-layer b{display:block;font-size:1rem;line-height:1.35}.ar-layer p{margin:5px 0 0;font-size:.84rem;line-height:1.55}.ar-layer a{font-weight:750;text-underline-offset:3px}
+.ar-layer.y{background:var(--mint);border-color:var(--green);color:var(--ink)}.ar-layer.y .ar-icon{color:var(--green)}
 .ar-layer.m{background:var(--vio-soft);border-color:var(--vio);color:var(--vio-ink)}
 .ar-layer.b{background:var(--sto-soft);border-color:var(--sto);color:var(--sto-ink)}
-.ar-layer.opt{border-style:dashed}
-.ar-join{text-align:center;font-size:.78rem;color:var(--muted);line-height:1.2}
-.ar-join:before{content:"▲ ";color:var(--green)}
+.ar-layer.opt{border-style:dashed;box-shadow:none;min-height:0}
+.ar-join{align-self:center;position:relative;z-index:1;margin:14px 0;padding:4px 12px;border:1px solid var(--line);border-radius:999px;background:var(--surface);font-size:.73rem;font-weight:700;color:var(--muted);line-height:1.3;text-align:center}
+.ar-join:before{content:"↑";color:var(--green);font-size:.95rem;margin-right:5px}
+.ar-choice{display:grid;grid-template-columns:minmax(0,1fr) auto minmax(0,1fr);gap:10px;align-items:stretch}.ar-choice .ar-layer{min-height:165px}.ar-choice .ar-layer.opt{border-style:dashed}.ar-swap{align-self:center;display:grid;place-items:center;width:28px;height:28px;border:1px solid var(--line);border-radius:50%;color:var(--green);background:var(--surface);font-size:1.15rem;line-height:1}
+.ar-choice-note{text-align:center;color:var(--muted);font-size:.76rem;font-weight:700;margin:13px 0 2px}
 .ar-two{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px;max-width:980px;margin:auto}
 /* walkthrough: text column + app mockup */
 .walk{display:grid;gap:56px;max-width:1040px;margin:auto}
@@ -81,36 +93,126 @@
 .pipe div em{font-style:normal;font-size:.72rem;font-weight:800;color:var(--green)}
 .pipe div:not(:last-child):after{content:"→";position:absolute;right:-6px;top:50%;transform:translate(50%,-50%);color:var(--muted)}
 .pipe .app{background:var(--mint);border-color:var(--green)}
-@media(max-width:860px){.ar-flow,.ar-stacks,.ar-two,.wstep,.pipe{grid-template-columns:1fr}.ar-step:not(:last-child):after,.pipe div:not(:last-child):after{content:"↓";right:auto;left:50%;top:auto;bottom:-7px;transform:translate(-50%,50%)}.ar-ctx div{width:100%}.win-body{grid-template-columns:1fr}.win-side{display:none}}
+@media(max-width:860px){.ar-flow,.ar-stacks,.ar-two,.wstep,.pipe{grid-template-columns:1fr}.ar-flow{gap:27px;margin-bottom:0}.ar-device{grid-template-columns:1fr;gap:27px;padding:24px 10px 10px}.ar-service{padding:0}.ar-step{min-height:0}.ar-device .ar-step:first-of-type:after,.ar-service:after,.ar-device:first-child:after{top:auto;right:auto;left:50%;bottom:-23px;width:10px;height:20px;border-top:0;border-left:2px solid var(--green);background:linear-gradient(45deg,transparent 47%,var(--green) 49%,var(--green) 59%,transparent 61%) left bottom/8px 8px no-repeat}.ar-device:first-child:after,.ar-service:after{bottom:-24px}.ar-ctx{position:relative;top:auto;right:auto;width:100%;margin-top:17px}.ar-ctx:before{height:17px}.ar-ctx:after{bottom:calc(100% + 11px)}.pipe div:not(:last-child):after{content:"↓";right:auto;left:50%;top:auto;bottom:-7px;transform:translate(-50%,50%)}.win-body{grid-template-columns:1fr}.win-side{display:none}}
+@media(max-width:520px){.ar-legend{justify-content:flex-start}.ar-stack{padding:17px}.ar-layer-set{padding:0 3px 8px}.ar-choice{grid-template-columns:1fr;gap:11px}.ar-choice .ar-layer{min-height:0}.ar-swap{transform:rotate(90deg);justify-self:center}.ar-layer{min-height:0}}
+
+.ar-art{display:block;flex:none;background:#f4f3ee;object-fit:cover}
+.ar-step .ar-art{width:100%;height:auto;aspect-ratio:5/4;border-radius:13px;margin:2px 0 3px;box-shadow:inset 0 0 0 1px rgba(0,0,0,.04)}
+.ar-layer .ar-art{width:84px;height:84px;border-radius:16px}
+.ar-ctx .ar-art{width:64px;height:64px;border-radius:12px}
+.ar-ctx{width:min(100%,380px);align-items:center}
+.ar-layer-set{flex:1;margin-top:0}
+.ar-stack:last-child .ar-layer{flex:1;align-items:center}
+.ar-layer{align-items:center}
+.ar-choice .ar-layer{flex-direction:column;align-items:flex-start}
+.ar-choice .ar-art{width:72px;height:72px}
+@media(max-width:1100px){.ar-choice{grid-template-columns:1fr}.ar-swap{transform:rotate(90deg);justify-self:center}.ar-choice .ar-layer{flex-direction:row;align-items:center;min-height:0}}
+@media(max-width:860px){.ar-step .ar-art{aspect-ratio:16/9}.ar-ctx{position:relative;top:auto;right:auto;width:100%;margin-top:28px}}
+@media(max-width:520px){.ar-layer .ar-art{width:64px;height:64px}}
+.ar-device .ar-step:first-of-type:after,.ar-service:after,.ar-device:first-child:after{content:"→";width:26px;height:26px;right:-24px;top:50%;transform:translateY(-50%);border:0;border-radius:50%;background:var(--green);color:var(--surface);display:grid;place-items:center;font-size:.9rem;font-weight:800;z-index:2;box-shadow:0 4px 10px rgba(22,54,35,.18)}
+@media(max-width:860px){.ar-device .ar-step:first-of-type:after,.ar-service:after,.ar-device:first-child:after{content:"↓";right:auto;left:50%;top:auto;bottom:-25px;transform:translateX(-50%)}}
+
+.jy{max-width:1120px;margin:auto}
+.jy-zones{display:flex;flex-wrap:wrap;justify-content:center;gap:10px 14px;margin:-8px 0 30px}
+.jy-zone{display:inline-flex;align-items:center;gap:8px;padding:6px 14px 6px 8px;border-radius:999px;font-size:.82rem;font-weight:750}
+.jy-zone i{width:18px;height:18px;border-radius:6px;display:inline-block}
+.jy-zone.mac{background:var(--mint);color:var(--ink)}.jy-zone.mac i{background:var(--green)}
+.jy-zone.ai{background:var(--cor-soft);color:var(--cor-ink)}.jy-zone.ai i{border:2px dashed var(--cor)}
+.jy-zone.base{background:var(--sto-soft);color:var(--sto-ink)}.jy-zone.base i{background:var(--sto)}
+.jy-zone.tone{background:var(--vio-soft);color:var(--vio-ink)}.jy-zone.tone i{background:var(--vio)}
+.jy-zone.rule{background:var(--surface);color:var(--muted);border:1px solid var(--line)}.jy-zone.rule i{border:2px solid var(--line)}
+.jy-kind{margin-top:14px;display:inline-flex;align-items:center;gap:6px;padding:4px 10px 4px 6px;border-radius:999px;font-size:.72rem;font-weight:800;line-height:1.2;white-space:nowrap}
+.jy-kind svg{width:16px;height:16px;flex:none}
+.jy-kind.base{background:var(--sto);color:#fff}
+.jy-kind.tone{background:var(--vio);color:#fff}
+.jy-kind.ai{background:var(--cor);color:#fff}
+.jy-kind.rule{background:transparent;color:var(--muted);border:1px dashed color-mix(in srgb,var(--muted) 55%,transparent);padding:3px 10px}
+.jy-step.base .jy-art{box-shadow:0 10px 26px rgba(22,54,35,.14),0 0 0 4px var(--surface),0 0 0 7px var(--sto)}
+.jy-step.tone .jy-art{box-shadow:0 10px 26px rgba(22,54,35,.14),0 0 0 4px var(--surface),0 0 0 7px var(--vio)}
+.jy-step.ai .jy-art{box-shadow:0 10px 26px rgba(120,60,30,.18),0 0 0 4px var(--cor-soft),0 0 0 7px var(--cor)}
+.jy-n{margin-top:10px}
+.jy-board{position:relative;display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:0;padding:0 6px}
+.jy-board:before{content:"";position:absolute;inset:34px 0 0 0;border-radius:30px;background:linear-gradient(180deg,color-mix(in srgb,var(--mint) 70%,var(--surface)),color-mix(in srgb,var(--mint) 25%,var(--surface)));border:1px solid color-mix(in srgb,var(--green) 22%,transparent)}
+.jy-mac{position:absolute;top:46px;left:24px;z-index:2;display:inline-flex;align-items:center;gap:6px;font-size:.74rem;font-weight:800;color:var(--green);letter-spacing:.04em}
+.jy-mac svg{width:16px;height:16px}
+.jy-step{position:relative;z-index:1;display:flex;flex-direction:column;align-items:center;text-align:center;padding:72px 14px 22px;min-width:0}
+.jy-step.ai{margin:0 6px;padding-top:24px;padding-bottom:22px;border-radius:26px;background:var(--cor-soft);border:2px dashed var(--cor);box-shadow:0 18px 40px rgba(120,60,30,.12);transform:translateY(-6px)}
+.jy-tag{position:absolute;top:-12px;left:50%;transform:translateX(-50%);white-space:nowrap;padding:3px 11px;border-radius:999px;background:var(--cor);color:#fff;font-size:.7rem;font-weight:800}
+.jy-art{position:relative;width:128px;height:128px;border-radius:50%;background:#f4f3ee;box-shadow:0 10px 26px rgba(22,54,35,.14),inset 0 0 0 4px var(--surface);overflow:hidden;flex:none}
+.jy-art img{width:100%;height:100%;object-fit:cover;display:block}
+.jy-step:not(:last-child) .jy-art:after{content:none}
+.jy-link{position:absolute;top:calc(72px + 64px - 15px);right:-15px;z-index:3;width:30px;height:30px;border-radius:50%;background:var(--green);color:#fff;display:grid;place-items:center;font-weight:800;font-size:.95rem;box-shadow:0 4px 12px rgba(22,54,35,.25)}
+.jy-step.ai .jy-link{top:calc(24px + 64px - 15px);right:-21px}
+.jy-n{margin-top:16px;font-size:.7rem;font-weight:850;letter-spacing:.14em;color:var(--green)}
+.jy-step.ai .jy-n{color:var(--cor)}
+.jy-step h3{margin:4px 0 6px;font-size:1.08rem}
+.jy-step p{margin:0;font-size:.84rem;line-height:1.6;color:var(--muted);min-height:4.8em}
+.jy-say .rm{display:block;margin-top:5px;font-size:.72rem;color:var(--cor-ink);opacity:.85}
+.jy-say{margin-top:14px;width:100%;position:relative;padding:10px 12px;border-radius:14px 14px 14px 4px;background:var(--surface);border:1px solid var(--line);font-size:.86rem;line-height:1.5;color:var(--ink);text-align:left;box-shadow:0 4px 12px rgba(22,54,35,.06)}
+.jy-say small{display:block;font-size:.66rem;font-weight:800;letter-spacing:.06em;color:var(--muted);margin-bottom:3px}
+.jy-say .raw{color:var(--muted)}
+.jy-say del{color:var(--cor);text-decoration-thickness:1.5px}
+.jy-say ins{text-decoration:none;background:color-mix(in srgb,var(--green) 18%,transparent);border-radius:4px;padding:0 2px}
+.jy-say .wave{display:block;height:18px;margin-bottom:4px;background:repeating-linear-gradient(90deg,var(--green) 0 2px,transparent 2px 5px);-webkit-mask:linear-gradient(180deg,transparent 30%,#000 30% 70%,transparent 70%),radial-gradient(circle,#000,transparent);opacity:.55;border-radius:4px}
+.jy-say.msg{border-radius:14px 14px 4px 14px;background:var(--green);color:#fff;border-color:var(--green)}
+.jy-say.msg small{color:color-mix(in srgb,#fff 75%,transparent)}
+.jy-say.ok{border-color:var(--vio);background:var(--vio-soft);color:var(--vio-ink)}
+.jy-say.ok small{color:var(--vio)}
+.jy-where{margin-top:auto;padding-top:14px}
+.jy-where span{display:inline-block;padding:4px 10px;border-radius:999px;background:var(--surface);border:1px solid color-mix(in srgb,var(--green) 30%,transparent);font-size:.72rem;font-weight:750;color:var(--green)}
+.jy-step.ai .jy-where span{border-color:color-mix(in srgb,var(--cor) 45%,transparent);color:var(--cor-ink)}
+.jy-bypass{grid-column:2/5;grid-row:2;position:relative;z-index:1;margin:2px 40px 0;height:34px;border:2px dashed color-mix(in srgb,var(--green) 55%,transparent);border-top:0;border-radius:0 0 22px 22px;display:flex;justify-content:center}
+.jy-bypass span{position:absolute;bottom:-12px;padding:2px 12px;border-radius:999px;background:var(--surface);border:1px solid var(--line);font-size:.74rem;font-weight:700;color:var(--muted);white-space:nowrap}
+.jy-ctx{grid-column:3/6;grid-row:3;justify-self:end;position:relative;z-index:1;display:flex;align-items:center;gap:12px;margin:22px 8px 22px 0;padding:10px 16px 10px 10px;max-width:330px;border-radius:18px;background:var(--surface);border:1px solid var(--vio);box-shadow:0 10px 24px rgba(60,50,140,.1);font-size:.8rem;line-height:1.5;color:var(--muted)}
+.jy-ctx img{width:58px;height:58px;border-radius:14px;background:#f4f3ee;flex:none}
+.jy-ctx b{display:block;color:var(--vio-ink);font-size:.86rem}
+.jy-ctx:before{content:"";position:absolute;right:calc(10% + 24px);bottom:100%;height:56px;border-left:2px solid var(--vio)}
+.jy-ctx:after{content:"";position:absolute;right:calc(10% + 20px);bottom:calc(100% + 50px);width:8px;height:8px;border-top:2px solid var(--vio);border-left:2px solid var(--vio);transform:rotate(45deg)}
+.jy-note{text-align:center;color:var(--muted);font-size:.78rem;margin-top:14px}
+@media(max-width:980px){
+ .jy-step p{min-height:0}
+ .jy-board{grid-template-columns:1fr;padding:0}
+ .jy-board:before{inset:0}
+ .jy-mac{position:relative;top:auto;left:auto;justify-content:center;margin:18px 0 0;display:flex}
+ .jy-step{display:grid;grid-template-columns:96px minmax(0,1fr);column-gap:16px;text-align:left;align-items:start;padding:18px 18px 18px}
+ .jy-step.ai{margin:10px 8px;transform:none;padding:22px 16px 16px}
+ .jy-art{width:96px;height:96px;grid-row:1/6}
+ .jy-n{margin-top:6px}
+ .jy-kind{margin-top:0;justify-self:start}
+ .jy-say,.jy-where{grid-column:2}
+ .jy-where{padding-top:10px}
+ .jy-link{top:auto;bottom:-15px;right:auto;left:63px;transform:rotate(90deg)}
+ .jy-step.ai .jy-link{top:auto;right:auto;left:57px;bottom:-21px}
+ .jy-tag{left:auto;right:16px;transform:none}
+ .jy-bypass{display:none}
+ .jy-ctx{grid-column:1;grid-row:auto;justify-self:stretch;max-width:none;margin:22px 8px 14px}
+ .jy-ctx:before,.jy-ctx:after{right:auto;left:64px}
+ .jy-ctx:after{left:60px}
+}
+@media(max-width:420px){.jy-step{grid-template-columns:72px minmax(0,1fr);column-gap:12px;padding:16px 12px}.jy-art{width:72px;height:72px}.jy-link{left:51px}.jy-step.ai .jy-link{left:45px}}
+
+.ar-used{display:inline-flex;align-items:center;gap:5px;margin:0 0 6px;padding:3px 9px 3px 6px;border-radius:999px;font-size:.7rem;font-weight:800;color:#fff;white-space:nowrap}
+.ar-used svg{width:14px;height:14px}
+.ar-used.base{background:var(--sto)}.ar-used.tone{background:var(--vio)}.ar-used.mine{background:var(--green)}
+.ar-choice{grid-template-columns:1fr !important}.ar-swap{transform:rotate(90deg);justify-self:center}.ar-choice .ar-layer{flex-direction:row !important;align-items:center !important;min-height:0 !important}
 </style><link rel="canonical" href="https://sona-orbit.github.io/parroting/architecture"></head><body class="inner">
 <header class="site-header"><div class="wrap nav"><a class="brand" href="./"><img src="assets/icon.png" alt="">學舌鳥</a><nav class="nav-links" aria-label="Main"><a href="./">首頁</a><a href="model">語氣模型</a><a href="architecture" aria-current="page">運作方式</a><a href="guide">教學</a></nav><div class="nav-actions"><label><span class="sr-only">語言</span><select class="lang" id="language" aria-label="語言"><option value="zh-Hant" selected>繁體中文</option><option value="zh-Hans">简体中文</option></select></label><a class="button small" href="https://github.com/sona-orbit/parroting-releases/releases/latest/download/Parroting-macos-arm64.dmg">免費下載</a></div></div></header>
 <main>
 <section class="page-head"><div class="wrap"><p class="eyebrow">運作方式 · 模型架構</p><h1>一句話，從說出口到貼上。</h1><p class="lead">學舌鳥裡真正的模型只有兩個：把聲音變成文字的<strong>語音辨識底模</strong>，和判斷要不要提醒你的<strong>學舌鳥語氣模型</strong>，兩個都在你的 Mac 上執行。底模可以自己換，也可以放進你自己訓練的模型。</p><div class="provider-list"><span>兩個模型都在本機</span><span>聲音不離開 Mac</span><span>底模可以換</span><span>可以匯入自己的模型</span></div></div></section>
-<section><div class="wrap"><div class="section-heading"><p class="eyebrow">流程</p><h2>說一句話，經過這五步。</h2><p>每一步都標出它是模型、規則，還是外部服務，以及在哪裡執行。</p></div>
-<div class="ar-legend"><span><i class="sw m"></i>本機模型</span><span><i class="sw r"></i>本機規則</span><span><i class="sw x"></i>你選用的 AI 服務</span></div>
-<div class="ar-flow">
-<div class="ar-step m"><span class="n">STEP 1</span><h3>語音辨識</h3><p>按住熱鍵說話，語音辨識底模把聲音變成文字。</p><p class="where">Mac 本機 · 聲音不上傳</p></div>
-<div class="ar-step r"><span class="n">STEP 2</span><h3>中文整理</h3><p>套用你的詞典，修正常聽錯的人名和用語；轉成繁體字形，修正常見的近音詞。</p><p class="where">Mac 本機</p></div>
-<div class="ar-step x"><span class="n">STEP 3</span><h3>AI 整理口語</h3><p>拿掉贅詞和改口，用你自己的 AI 服務；沒有設定時改用本機規則。</p><p class="where">只送出文字</p></div>
-<div class="ar-step r"><span class="n">STEP 4</span><h3>貼上</h3><p>文字貼到游標位置，文字紀錄存進你自己 iCloud 裡的學舌鳥資料夾。</p><p class="where">Mac 本機＋你的 iCloud</p></div>
-<div class="ar-step m"><span class="n">STEP 5</span><h3>語氣提醒</h3><p>學舌鳥語氣模型讀這句話和當下情境，你的個人化層再微調判斷。</p><p class="where">Mac 本機 · 不需網路</p></div>
-</div>
-<div class="ar-ctx"><div><b>當下情境</b> → STEP 5<br>在哪個 App、回信還是聊天、收件人、前幾則對話</div></div>
-</div></section>
+<section><div class="wrap"><div class="section-heading"><p class="eyebrow">流程</p><h2>跟著一句話，走一遍。</h2><p>從你開口到貼上，只有一步可能離開你的 Mac：你自己選用的 AI 整理。其他都在本機完成。</p></div><div class="jy"><div class="jy-zones"><span class="jy-zone mac"><i></i>在你的 Mac 上完成</span><span class="jy-zone base"><i></i>模型：語音辨識底模</span><span class="jy-zone tone"><i></i>模型：學舌鳥語氣模型</span><span class="jy-zone ai"><i></i>你選用的 AI 服務（選用）</span><span class="jy-zone rule"><i></i>規則，不是模型</span></div><div class="jy-board"><span class="jy-mac"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><rect x="2.5" y="3" width="11" height="7.5" rx="1.5"/><path d="M1 13h14"/></svg>你的 Mac</span><div class="jy-step base"><div class="jy-art"><img src="assets/arch/s1.webp" alt="" width="400" height="400" loading="lazy" decoding="async"></div><span class="jy-kind base"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="4" width="8" height="8" rx="2"/><path d="M6.5 1.5v2.5M9.5 1.5v2.5M6.5 12v2.5M9.5 12v2.5M1.5 6.5H4M1.5 9.5H4M12 6.5h2.5M12 9.5h2.5"/></svg>模型 · 語音辨識底模</span><span class="jy-n">STEP 1</span><h3>語音辨識</h3><p>按住熱鍵說話，你選的語音辨識底模把聲音變成文字。</p><div class="jy-say"><small>辨識出來</small><span class="wave"></span><span class="raw">呃 我們三點開會 不對 四點</span></div><div class="jy-where"><span>Mac 本機 · 聲音不上傳</span></div><span class="jy-link" aria-hidden="true">→</span></div><div class="jy-step rule"><div class="jy-art"><img src="assets/arch/s2.webp" alt="" width="400" height="400" loading="lazy" decoding="async"></div><span class="jy-kind rule">規則 · 不用模型</span><span class="jy-n">STEP 2</span><h3>中文整理</h3><p>套用你的詞典修正人名和用語，轉成繁體字形，補上標點、修正常見的近音詞。</p><div class="jy-say"><small>整理後</small>呃，我們三點開會，不對，四點。</div><div class="jy-where"><span>Mac 本機</span></div><span class="jy-link" aria-hidden="true">→</span></div><div class="jy-step ai"><span class="jy-tag">選用</span><div class="jy-art"><img src="assets/arch/s3.webp" alt="" width="400" height="400" loading="lazy" decoding="async"></div><span class="jy-kind ai"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4.5 12.5h7a3 3 0 0 0 .3-6 4 4 0 0 0-7.6 1A2.5 2.5 0 0 0 4.5 12.5Z"/></svg>雲端 AI · 你選的服務</span><span class="jy-n">STEP 3</span><h3>AI 整理口語</h3><p>拿掉贅詞和改口。沒有設定 AI 時，改用本機規則。</p><div class="jy-say"><small>AI 整理後</small>我們 4 點開會。<span class="rm">拿掉了「呃」和改口的「三點開會，不對」</span></div><div class="jy-where"><span>只送出文字</span></div><span class="jy-link" aria-hidden="true">→</span></div><div class="jy-step rule"><div class="jy-art"><img src="assets/arch/s4.webp" alt="" width="400" height="400" loading="lazy" decoding="async"></div><span class="jy-kind rule">規則 · 不用模型</span><span class="jy-n">STEP 4</span><h3>貼上</h3><p>貼到游標所在的位置；文字紀錄存進你自己 iCloud 裡的學舌鳥資料夾。</p><div class="jy-say msg"><small>貼進對話</small>我們 4 點開會。</div><div class="jy-where"><span>Mac 本機＋你的 iCloud</span></div><span class="jy-link" aria-hidden="true">→</span></div><div class="jy-step tone"><div class="jy-art"><img src="assets/arch/s5.webp" alt="" width="400" height="400" loading="lazy" decoding="async"></div><span class="jy-kind tone"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="4" width="8" height="8" rx="2"/><path d="M6.5 1.5v2.5M9.5 1.5v2.5M6.5 12v2.5M9.5 12v2.5M1.5 6.5H4M1.5 9.5H4M12 6.5h2.5M12 9.5h2.5"/></svg>模型 · 學舌鳥語氣模型</span><span class="jy-n">STEP 5</span><h3>語氣提醒</h3><p>學舌鳥語氣模型讀這句話和當下情境，你的個人化層再微調判斷。</p><div class="jy-say ok"><small>語氣判斷</small>這句沒問題，不打擾你。</div><div class="jy-where"><span>Mac 本機 · 不需網路</span></div></div><div class="jy-bypass" aria-hidden="true"><span>沒有 AI key：直接用本機規則</span></div><div class="jy-ctx"><img src="assets/arch/ctx.webp" alt="" width="400" height="400" loading="lazy" decoding="async"><div><b>當下情境 → STEP 5</b>在哪個 App、回信還是聊天、收件人、前幾則對話</div></div></div><p class="jy-note">對話內容僅為示意。</p></div></div></section>
 <section class="section-soft"><div class="wrap"><div class="section-heading"><p class="eyebrow">模型架構</p><h2>每個模型都是一層一層疊上去的。</h2><p>下面是學舌鳥提供給所有人的部分，上面是你自己累積的部分，只屬於你，不會上傳。</p></div>
 <div class="ar-legend"><span><i class="sw y"></i>你自己的</span><span><i class="sw m"></i>學舌鳥提供</span><span><i class="sw r"></i>你選的底模</span></div>
 <div class="ar-stacks">
-<div class="ar-stack"><h3>語氣提醒</h3>
-<div class="ar-layer y"><b>你的個人化層</b><p>在提醒卡按「判斷不對」並確認，滿 20 筆就能在「個人化訓練」頁訓練。只調整語氣和提醒的判斷。</p></div>
-<div class="ar-join">疊在上面，微調最後的判斷</div>
-<div class="ar-layer m"><b>學舌鳥語氣模型</b><p>約 11 MB 的中文小模型，內建在 App 裡。一句話讀出七件事：場景、對象、目的、場合、語氣、會不會刺傷人、太隨便。</p></div>
-</div>
-<div class="ar-stack"><h3>語音辨識</h3>
-<div class="ar-layer y"><b>你的詞典</b><p>辨識完再修正人名、專有名詞。跟用哪個底模無關，換了也照樣有效。</p></div>
+<div class="ar-stack"><h3>語音辨識</h3><div class="ar-direction">底模 → 你的詞典</div><div class="ar-layer-set">
+<div class="ar-layer y"><img class="ar-art" src="assets/arch/l-dict.webp" alt="" width="400" height="400" loading="lazy" decoding="async"><div><span class="ar-used mine">用在 STEP 2</span><b>你的詞典</b><p>辨識完再修正人名、專有名詞。跟用哪個底模無關，換了也照樣有效。</p></div></div>
 <div class="ar-join">辨識結果再經過詞典</div>
-<div class="ar-layer y opt"><b>自己匯入的模型（選用）</b><p>用你自己的聲音訓練過的模型。匯入後取代底模，隨時可以切回。</p></div>
-<div class="ar-join">取代底模，不是疊加</div>
-<div class="ar-layer b"><b>語音辨識底模</b><p>第一次設定時從清單選一個下載，例如 SenseVoice、Qwen3-ASR、Breeze-ASR-25。之後可以隨時換。<a href="speech-models">看各模型比較</a></p></div>
+<div class="ar-choice"><div class="ar-layer b"><img class="ar-art" src="assets/arch/l-base.webp" alt="" width="400" height="400" loading="lazy" decoding="async"><div><span class="ar-used base"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="4" width="8" height="8" rx="2"/><path d="M6.5 1.5v2.5M9.5 1.5v2.5M6.5 12v2.5M9.5 12v2.5M1.5 6.5H4M1.5 9.5H4M12 6.5h2.5M12 9.5h2.5"/></svg>模型 · 用在 STEP 1</span><b>語音辨識底模</b><p>第一次設定時從清單選一個下載，例如 SenseVoice、Qwen3-ASR、Breeze-ASR-25。之後可以隨時換。<a href="speech-models">看各模型比較</a></p></div></div><span class="ar-swap" aria-hidden="true">↔</span><div class="ar-layer y opt"><img class="ar-art" src="assets/arch/l-import.webp" alt="" width="400" height="400" loading="lazy" decoding="async"><div><span class="ar-used base"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="4" width="8" height="8" rx="2"/><path d="M6.5 1.5v2.5M9.5 1.5v2.5M6.5 12v2.5M9.5 12v2.5M1.5 6.5H4M1.5 9.5H4M12 6.5h2.5M12 9.5h2.5"/></svg>模型 · 換掉 STEP 1 的底模</span><b>自己匯入的模型（選用）</b><p>用你自己的聲音訓練過的模型。匯入後取代底模，隨時可以切回。</p></div></div></div>
+<p class="ar-choice-note">取代底模，不是疊加</p></div>
+</div>
+<div class="ar-stack"><h3>語氣提醒</h3><div class="ar-direction">底層 → 你的個人化</div><div class="ar-layer-set">
+<div class="ar-layer y"><img class="ar-art" src="assets/arch/l-pers.webp" alt="" width="400" height="400" loading="lazy" decoding="async"><div><span class="ar-used mine">用在 STEP 5</span><b>你的個人化層</b><p>在提醒卡按「判斷不對」並確認，滿 20 筆就能在「個人化訓練」頁訓練。只調整語氣和提醒的判斷。</p></div></div>
+<div class="ar-join">疊在上面，微調最後的判斷</div>
+<div class="ar-layer m"><img class="ar-art" src="assets/arch/l-tone.webp" alt="" width="400" height="400" loading="lazy" decoding="async"><div><span class="ar-used tone"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="4" width="8" height="8" rx="2"/><path d="M6.5 1.5v2.5M9.5 1.5v2.5M6.5 12v2.5M9.5 12v2.5M1.5 6.5H4M1.5 9.5H4M12 6.5h2.5M12 9.5h2.5"/></svg>模型 · 用在 STEP 5</span><b>學舌鳥語氣模型</b><p>約 11 MB 的中文小模型，內建在 App 裡。一句話讀出七件事：場景、對象、目的、場合、語氣、會不會刺傷人、太隨便。</p></div></div></div>
 </div>
 </div></div></section>
 <section id="switch"><div class="wrap"><div class="section-heading"><p class="eyebrow">換底模、匯入模型</p><h2>在「管理模型」裡換。</h2><p>下面是實際的操作畫面，橘色圈起來的就是要按的地方。</p></div>
