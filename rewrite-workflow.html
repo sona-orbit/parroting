@@ -1,0 +1,114 @@
+<!doctype html><html lang="zh-Hant"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="color-scheme" content="light dark"><title>學舌鳥｜常駐改寫：說完，就是你要的樣子</title><meta name="description" content="選好改寫格式與處理方式；逐句停頓貼上，整篇按完成才貼上。關閉面板後自動取代仍持續。"><meta property="og:type" content="website"><meta property="og:title" content="學舌鳥｜常駐改寫：說完，就是你要的樣子"><meta property="og:description" content="選好改寫格式與處理方式；逐句停頓貼上，整篇按完成才貼上。關閉面板後自動取代仍持續。"><meta property="og:image" content="assets/poster.zh-Hant.jpg"><link rel="icon" href="assets/favicon.png"><link rel="stylesheet" href="assets/style.css?v=10"><link rel="alternate" hreflang="zh-Hant" href="rewrite-workflow"><link rel="alternate" hreflang="zh-Hans" href="zh-Hans/rewrite-workflow"><script>window.PARROTING_PAGE='rewrite-workflow';window.PARROTING_LOCALE='zh-Hant';window.PARROTING_VERSION='0.4.10';window.PARROTING_SIZE='35 MB';window.PARROTING_DOWNLOAD='https://github.com/sona-orbit/parroting-releases/releases/latest/download/Parroting-macos-arm64.dmg';</script><script defer src="assets/site.js?v=12"></script><style>
+:root{--win:#fbfbf8;--win-side:#f1f3ee;--win-line:#e2e6df;--hl:#f2a33a}
+@media(prefers-color-scheme:dark){:root{--win:#1d2420;--win-side:#171d1a;--win-line:#2f3a33;--hl:#f2b25a}}
+.rw-eg{display:grid;gap:8px;margin-top:18px}
+.rw-eg>div{border-radius:12px;padding:10px 13px;font-size:.88rem;line-height:1.55;min-width:0;overflow-wrap:anywhere}
+.rw-eg small{display:block;font-size:.7rem;font-weight:800;letter-spacing:.08em;color:var(--muted);margin-bottom:2px}
+.rw-eg .say{background:var(--soft);color:var(--muted)}
+.rw-eg .out{background:var(--mint);border:1px solid var(--green);color:var(--ink)}
+.rw-eg .arrow{background:none;padding:0;text-align:center;color:var(--muted);line-height:1}
+.rw-eg .out p{margin:0}
+.walk{display:grid;gap:56px;max-width:1040px;margin:auto}
+.wstep{display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);gap:36px;align-items:center}
+.wstep .wtext{display:grid;gap:10px;min-width:0}
+.wnum{display:inline-grid;place-items:center;width:34px;height:34px;border-radius:50%;background:var(--green);color:var(--surface);font-weight:800}
+.wstep h3{margin:0;font-size:1.2rem}
+.wstep p{margin:0;color:var(--muted)}
+.wstep .tip{font-size:.85rem;background:var(--soft);border-radius:12px;padding:10px 14px;color:var(--muted)}
+.wstep .tip b{color:var(--ink)}
+.win{background:var(--win);border:1px solid var(--win-line);border-radius:14px;box-shadow:var(--shadow);overflow:hidden;font-size:.8rem;min-width:0}
+.win-bar{display:flex;align-items:center;gap:6px;padding:9px 12px;border-bottom:1px solid var(--win-line);color:var(--muted);font-size:.75rem}
+.win-bar i{width:10px;height:10px;border-radius:50%;background:var(--win-line);display:inline-block}
+.win-bar span{margin-left:auto;margin-right:auto}
+.win-body{display:grid;grid-template-columns:128px 1fr;min-height:250px}
+.win-side{background:var(--win-side);border-right:1px solid var(--win-line);padding:10px 8px;display:grid;gap:3px;align-content:start}
+.win-side div{padding:5px 9px;border-radius:7px;color:var(--muted)}
+.win-side div.on{background:var(--mint);color:var(--ink);font-weight:700}
+.win-main{padding:14px 16px;display:grid;gap:10px;align-content:start;min-width:0}
+.win-main h4{margin:0;font-size:1rem}
+.win-main small{color:var(--muted)}
+.grp{border:1px solid var(--win-line);border-radius:10px;background:var(--surface);padding:10px 12px;display:grid;gap:8px}
+.grp-t{font-weight:700;font-size:.78rem;color:var(--muted)}
+.row{display:flex;align-items:center;gap:10px;min-width:0}
+.row .grow{flex:1;min-width:0}
+.row .grow b{display:block}
+.row .grow small{display:block;line-height:1.4}
+.btn{border:1px solid var(--win-line);background:var(--win-side);border-radius:7px;padding:4px 9px;font-weight:650;white-space:nowrap;font-size:.74rem}
+.btn.pri{background:var(--green);border-color:var(--green);color:var(--surface)}
+.hl{outline:2px solid var(--hl);outline-offset:2px;position:relative}
+.callout{position:relative}
+.callout:after{content:attr(data-n);position:absolute;top:-10px;right:-10px;width:20px;height:20px;border-radius:50%;background:var(--hl);color:#1d1406;font-size:.7rem;font-weight:800;display:grid;place-items:center;z-index:2}
+.badge{font-size:.66rem;font-weight:800;border-radius:5px;padding:1px 6px;background:var(--amber);color:var(--ink);white-space:nowrap}
+.badge.g{background:var(--mint)}
+.dlg{padding:14px 16px;display:grid;gap:10px}
+.dlg-h{display:flex;justify-content:space-between;align-items:center;font-weight:800}
+.rw-mocks{display:grid;gap:16px;min-width:0}
+.rw-tags{display:flex;flex-wrap:wrap;gap:5px}
+.rw-tags span{font-size:.68rem;font-weight:700;padding:2px 8px;border-radius:999px;background:var(--mint);color:var(--ink);white-space:nowrap}
+.rw-panel{background:var(--win);border:1px solid var(--win-line);border-radius:14px;box-shadow:var(--shadow);padding:14px;display:grid;gap:11px;font-size:.8rem;min-width:0;max-width:100%}
+.rw-panel-h{display:flex;justify-content:space-between;align-items:center;font-size:.9rem;font-weight:800}
+.rw-panel-h span{color:var(--muted);font-weight:600}
+.rw-orig{background:var(--soft);border-radius:10px;padding:8px 12px;color:var(--muted);line-height:1.55;overflow-wrap:anywhere}
+.rw-orig div{display:flex;justify-content:space-between;gap:10px;font-size:.72rem;margin-bottom:2px}
+.rw-chips{display:flex;flex-wrap:wrap;gap:6px}
+.rw-chip{display:inline-flex;align-items:center;gap:6px;font-size:.78rem;font-weight:700;padding:4px 11px 4px 5px;border-radius:999px;border:1px solid var(--win-line);background:var(--surface);color:var(--ink)}
+.rw-chip b{display:inline-grid;place-items:center;width:18px;height:18px;border-radius:50%;background:var(--soft);color:var(--muted);font-size:.68rem}
+.rw-chip.on{background:var(--green);border-color:var(--green);color:var(--surface)}
+.rw-chip.on b{background:rgba(255,255,255,.25);color:inherit}
+.rw-slider{display:grid;grid-template-columns:5.5em minmax(0,1fr);align-items:center;gap:10px}
+.rw-slider small{color:var(--muted)}
+.rw-slider i{position:relative;height:5px;border-radius:3px;background:linear-gradient(90deg,var(--green) var(--v),var(--win-line) var(--v));display:block}
+.rw-slider i:after{content:"";position:absolute;left:var(--v);top:50%;width:14px;height:14px;border-radius:50%;background:var(--surface);border:1px solid var(--muted);transform:translate(-50%,-50%)}
+.rw-res-t{font-size:.72rem;color:var(--muted);margin-bottom:-6px}
+.rw-res{background:var(--mint);border:1px solid var(--green);border-radius:10px;padding:9px 12px;line-height:1.6;color:var(--ink);overflow-wrap:anywhere}
+.rw-res p{margin:0}
+.rw-note{font-size:.74rem;color:var(--muted)}
+.rw-foot{display:flex;flex-wrap:wrap;align-items:center;gap:8px;border-top:1px solid var(--win-line);padding-top:10px}
+.rw-foot .rw-auto{display:inline-flex;align-items:center;gap:7px;font-weight:700;margin-right:auto}
+.rw-foot .btn{background:var(--surface)}
+.rw-foot .btn.pri{background:var(--green);color:var(--surface)}
+.rw-tg{position:relative;width:30px;height:18px;border-radius:999px;background:var(--win-line);display:inline-block;flex:none}
+.rw-tg i{position:absolute;top:2px;left:2px;width:14px;height:14px;border-radius:50%;background:var(--surface);transition:none}
+.rw-tg.on{background:var(--green)}
+.rw-tg.on i{left:14px}
+.rw-ov{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.rw-cap{background:#1d2a22;color:#e9f5ec;border-radius:12px;padding:8px 14px;font-size:.8rem;font-weight:700;display:inline-flex;align-items:center;gap:8px}
+.rw-cap:before{content:"";width:8px;height:8px;border-radius:50%;background:#8fd8a5}
+.rw-cap.btnlike{background:#1d2a22;color:#e9f5ec}
+.rw-cap.btnlike:before{display:none}
+.rw-pill{display:inline-flex;align-items:center;gap:9px;padding:9px 13px;border-radius:999px;background:#1d2a22;color:#e9f5ec;font-weight:700;font-size:.8rem}
+.rw-pill .rw-mode-tag{padding:4px 9px;border-radius:999px;background:#245f42;color:#e9f5ec}
+.rw-disabled{opacity:.45;filter:grayscale(1)}
+.rw-textline{background:var(--surface);border:1px solid var(--win-line);border-radius:10px;padding:8px 12px;color:var(--ink);min-width:0;overflow-wrap:anywhere}
+.rw-good{display:grid;gap:14px;max-width:840px;margin:auto;padding:0;list-style:none}
+.rw-good li{background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:16px 20px;min-width:0}
+.rw-good b{display:block;margin-bottom:2px}
+.rw-good span{color:var(--muted)}
+.rw-form{display:grid;gap:10px}
+.rw-form label{display:grid;gap:4px;font-weight:700;font-size:.78rem}
+.rw-field{border:1px solid var(--win-line);border-radius:8px;padding:6px 10px;background:var(--surface);font-weight:500;color:var(--muted);line-height:1.55;overflow-wrap:anywhere}
+.rw-field.fill{color:var(--ink)}
+.rw-fmt{display:flex;align-items:center;gap:8px;border:1px solid var(--win-line);border-radius:10px;padding:7px 11px;background:var(--surface);min-width:0}
+.rw-fmt span{flex:1;min-width:0;font-weight:700}
+@media(max-width:860px){.wstep{grid-template-columns:1fr}.win-body{grid-template-columns:1fr}.win-side{display:none}}
+@media(max-width:480px){.rw-slider{grid-template-columns:4.6em minmax(0,1fr)}.wstep h3{font-size:1.1rem}.rw-panel{padding:11px}}
+</style><link rel="canonical" href="https://sona-orbit.github.io/parroting/rewrite-workflow"></head><body class="inner">
+<header class="site-header"><div class="wrap nav"><a class="brand" href="./"><img src="assets/icon.png" alt="">學舌鳥</a><nav class="nav-links" aria-label="Main"><a href="./">首頁</a><a href="model">語氣模型</a><a href="architecture">運作方式</a><a href="guide">教學</a></nav><div class="nav-actions"><label><span class="sr-only">語言</span><select class="lang" id="language" aria-label="語言"><option value="zh-Hant" selected>繁體中文</option><option value="zh-Hans">简体中文</option></select></label><a class="button small" href="https://github.com/sona-orbit/parroting-releases/releases/latest/download/Parroting-macos-arm64.dmg">免費下載</a></div></div></header>
+<main>
+<section class="page-head"><div class="wrap"><p class="eyebrow">教學 · 約 3 分鐘</p><h1>常駐改寫：說完，就是你要的樣子</h1><p class="lead">選一次格式，每句都照它處理。開啟自動取代後，即使關閉面板也會繼續；逐句停頓就貼，整篇講完按「完成」才貼。</p><div class="provider-list"><span>需要 AI 服務</span><span>選一次，一直套用</span><span>格式可以自己寫</span></div></div></section>
+<section><div class="wrap"><div class="section-heading"><p class="eyebrow">它能做什麼</p><h2>三種常見的用法。</h2></div>
+<div class="card-grid"><div class="card"><h3>一律先翻譯再貼上</h3><p>跟外國客戶聊天時，用中文說，貼出去的是英文。方向會自動判斷：中日韓文翻成英文，英文翻成中文。</p><div class="rw-eg"><div class="say"><small>你說的</small>下週二下午可以開會嗎？我先把議程寄給你。</div><div class="arrow">↓</div><div class="out"><small>貼上的</small>Is next Tuesday afternoon OK for a meeting? I’ll send you the agenda first.</div></div></div><div class="card"><h3>邊想邊說，自動整理</h3><p>用「條理分明」。想到哪說到哪也沒關係，重點放前面，重複和放棄的說法會拿掉，你提到的事實都留著。</p><div class="rw-eg"><div class="say"><small>你說的</small>呃，我想一下，週五要交報告，不對，是週四。然後我想先做圖表，嗯，圖表之前要先把資料整理好，資料大概還要一天。</div><div class="arrow">↓</div><div class="out"><small>貼上的</small><p>報告週四要交。</p><p>・先整理資料（大約還要一天）<br>・再做圖表</p></div></div></div><div class="card"><h3>用你自己的格式</h3><p>自己寫一個格式，例如週報、客戶回信的口氣，再告訴 AI 要怎麼寫。之後說完就是你要的樣子。</p><div class="rw-eg"><div class="say"><small>你說的</small>這週把登入頁改好了，還有兩個小錯誤沒修，下週想開始做搜尋。</div><div class="arrow">↓</div><div class="out"><small>貼上的</small><p>本週完成：登入頁改好了</p><p>下週計畫：開始做搜尋</p><p>需要協助：兩個小錯誤還沒修</p></div></div></div></div></div></section>
+<section class="section-soft"><div class="wrap"><div class="section-heading"><p class="eyebrow">怎麼用</p><h2>五個步驟。</h2></div>
+<div class="walk">
+<div class="wstep"><div class="wtext"><span class="wnum">1</span><h3>打開改寫面板</h3><p>說完一段話後，按浮窗旁的「✦ 改寫」。或者到「設定 → 首頁」打開「改寫面板常駐」，面板就會出現。</p><p class="tip">「✦ 改寫」貼上後約 4 秒內都會在。還沒說過話就按它，會打開一個空的面板，等你說下一句。</p></div><div class="rw-mocks"><div class="win"><div class="win-bar"><i></i><i></i><i></i><span>學舌鳥</span></div><div class="win-body"><div class="win-side"><div class="on">首頁</div><div>說話</div><div>AI 改寫</div><div>語氣與情境</div><div>詞典與紀錄</div><div>個人化訓練</div><div>進階</div></div><div class="win-main"><h4>首頁</h4><div class="rw-tags"><span>● 麥克風</span><span>● 輔助使用（貼字）</span><span>● 語音模型</span><span>● AI</span></div><div class="grp"><div class="grp-t">AI 與改寫面板</div><div class="row"><div class="grow"><b>AI 整理口語</b></div><span class="btn pri">開</span></div><div class="row"><div class="grow"><b>改寫面板常駐</b></div><span class="btn pri hl callout" data-n="1">開</span></div></div><div class="grp"><div class="grp-t">其他常用開關</div><div class="row"><div class="grow"><b>貼上後自動換行</b></div><span class="btn">關</span></div></div></div></div></div><div class="rw-ov"><span class="rw-textline">明天下午三點可以，資料我會先寄給你。</span><span class="rw-cap btnlike hl callout" data-n="1">✦ 改寫</span></div></div></div>
+<div class="wstep"><div class="wtext"><span class="wnum">2</span><h3>選一個格式</h3><p>按一個格式（或它的數字鍵）讓它亮起，之後每一句都照它處理。再按一次亮起的格式就切到「只顯示」：面板只顯示原話，不改寫；「自動取代」、「取代」、「再改一次」都會變灰。</p><p class="tip">內建格式依序是 <b>1 語氣修正、2 條理分明、3 翻譯、4 會議記錄、5 信件格式</b>。</p></div><div class="rw-mocks"><div class="rw-panel"><div class="rw-panel-h"><span>✦ 改寫</span><span>×</span></div><div class="rw-orig"><div><span>原本的話</span><span>收起</span></div>呃，我想一下，週五要交報告，不對，是週四。然後我想先做圖表，嗯，圖表之前要先把資料整理好，資料大概還要一天。</div><div class="rw-chips"><span class="rw-chip on hl callout" data-n="2"><b>1</b>語氣修正</span><span class="rw-chip"><b>2</b>條理分明</span><span class="rw-chip"><b>3</b>翻譯</span><span class="rw-chip"><b>4</b>會議記錄</span><span class="rw-chip"><b>5</b>信件格式</span></div></div><div class="rw-panel"><div class="rw-panel-h"><span>✦ 改寫</span><span>×</span></div><div class="rw-orig"><div><span>原本的話</span><span>收起</span></div>呃，我想一下，週五要交報告，不對，是週四。然後我想先做圖表，嗯，圖表之前要先把資料整理好，資料大概還要一天。</div><div class="rw-chips"><span class="rw-chip"><b>1</b>語氣修正</span><span class="rw-chip"><b>2</b>條理分明</span><span class="rw-chip"><b>3</b>翻譯</span><span class="rw-chip"><b>4</b>會議記錄</span><span class="rw-chip"><b>5</b>信件格式</span></div><div class="rw-orig">只顯示，不改寫。</div><div class="rw-foot"><span class="rw-auto rw-disabled"><span class="rw-tg"><i></i></span>自動取代</span><span class="btn">取消 Esc</span><span class="btn rw-disabled">再改一次 ⌘R</span><span class="rw-disabled"><span class="btn pri">取代 ↩</span></span></div></div></div></div>
+<div class="wstep"><div class="wtext"><span class="wnum">3</span><h3>調整語氣（可以略過）</h3><p>「語氣修正」是預設格式，使用「情緒溫度」和「正式度」兩條拉桿。不調也可以。</p></div><div class="rw-panel"><div class="rw-panel-h"><span>✦ 改寫</span><span>×</span></div><div class="rw-slider hl callout" data-n="3"><small>情緒溫度</small><i style="--v:50%"></i></div><div class="rw-slider"><small>正式度</small><i style="--v:75%"></i></div></div></div>
+<div class="wstep"><div class="wtext"><span class="wnum">4</span><h3>打開「自動取代」</h3><p>逐句（語氣修正、條理分明、翻譯）每次停頓就改寫並貼上；整篇（會議記錄、信件格式、自訂格式預設）說話時只累積字幕，講完按「完成」才一次貼上整篇。只貼改寫結果。</p><p class="tip">每個格式都能在「AI 改寫 → 改寫格式 → 處理方式」切換逐句／整篇。</p></div><div class="rw-mocks"><div class="rw-panel"><div class="rw-panel-h"><span>✦ 改寫</span><span>×</span></div><div class="rw-orig"><div><span>原本的話</span><span>收起</span></div>呃，我想一下，週五要交報告，不對，是週四。然後我想先做圖表，嗯，圖表之前要先把資料整理好，資料大概還要一天。</div><div class="rw-chips"><span class="rw-chip"><b>1</b>語氣修正</span><span class="rw-chip on"><b>2</b>條理分明</span><span class="rw-chip"><b>3</b>翻譯</span><span class="rw-chip"><b>4</b>會議記錄</span><span class="rw-chip"><b>5</b>信件格式</span></div><div class="rw-slider"><small>情緒溫度</small><i style="--v:50%"></i></div><div class="rw-slider"><small>正式度</small><i style="--v:75%"></i></div><div class="rw-res-t">改寫後（可以直接改字）</div><div class="rw-res"><p>報告週四要交。</p><p>・先整理資料（大約還要一天）<br>・再做圖表</p></div><div class="rw-note">已取代。面板會留著，下一段貼上時換成新的內容</div><div class="rw-foot"><span class="rw-auto hl callout" data-n="4"><span class="rw-tg on"><i></i></span>自動取代</span><span class="btn">取消 Esc</span><span class="btn">再改一次 ⌘R</span><span class=""><span class="btn pri">取代 ↩</span></span></div></div><div class="rw-ov"><span class="rw-cap">翻譯中…</span><span class="rw-cap">改寫中…</span></div><div class="rw-pill"><span>持續</span><span class="rw-mode-tag">✦ 條理分明</span></div></div></div>
+<div class="wstep"><div class="wtext"><span class="wnum">5</span><h3>不開「自動取代」的話</h3><p>會先貼上你說的原話。你在面板裡看結果，按「取代」（Enter）換掉剛貼的文字，或按「再改一次」（⌘R）換一個版本。</p><p class="tip">不滿意取代的結果，按 ⌘Z 就能還原。</p></div><div class="rw-panel"><div class="rw-panel-h"><span>✦ 改寫</span><span>×</span></div><div class="rw-orig"><div><span>原本的話</span><span>收起</span></div>呃，我想一下，週五要交報告，不對，是週四。然後我想先做圖表，嗯，圖表之前要先把資料整理好，資料大概還要一天。</div><div class="rw-chips"><span class="rw-chip on"><b>1</b>語氣修正</span><span class="rw-chip"><b>2</b>條理分明</span><span class="rw-chip"><b>3</b>翻譯</span><span class="rw-chip"><b>4</b>會議記錄</span><span class="rw-chip"><b>5</b>信件格式</span></div><div class="rw-slider"><small>情緒溫度</small><i style="--v:50%"></i></div><div class="rw-slider"><small>正式度</small><i style="--v:75%"></i></div><div class="rw-res-t">改寫後（可以直接改字）</div><div class="rw-res"><p>報告週四要交。</p><p>・先整理資料（大約還要一天）<br>・再做圖表</p></div><div class="rw-note">已取代。面板會留著，下一段貼上時換成新的內容</div><div class="rw-foot"><span class="rw-auto"><span class="rw-tg"><i></i></span>自動取代</span><span class="btn">取消 Esc</span><span class="btn">再改一次 ⌘R</span><span class=""><span class="btn pri hl callout" data-n="5">取代 ↩</span></span></div></div></div>
+</div></div></section>
+<section><div class="wrap"><div class="section-heading"><p class="eyebrow">好用的細節</p><h2>你需要知道的。</h2></div>
+<ul class="rw-good"><li><b>關閉面板，格式仍會作用</b><span>按 × 或 Esc 會關掉「改寫面板常駐」；但只要「自動取代」還開著，選中的格式仍繼續作用。錄音浮窗「持續」旁的綠色「✦ 條理分明」標籤可點開面板換格式或關掉自動取代。選擇會跨重新啟動保留。</span></li><li><b>會議記錄不補寫細節</b><span>只列主題和你說過的重點；決議、待辦、時間、人物、負責人與期限，都只在你說過時才加入。任何格式都不加你沒說的細節。</span></li><li><b>按「取代」之後，面板還在</b><span>它會接著處理你的下一句，不用再打開。</span></li><li><b>需要 AI 服務</b><span>還沒有 key 的話，看<a class="inline-link" href="gemini-key">申請免費的 Gemini API key</a>。沒有 AI 服務時不會有改寫面板，語氣提示照樣顯示在浮窗上。AI 服務中途失效時，面板會關閉，開關也會跟著關掉。</span></li><li><b>每個 App 記得自己的格式</b><span>每個 App 會記住你上次用的格式，下次在那個 App 說話，會自動選好。</span></li></ul></div></section>
+<section class="section-soft"><div class="wrap"><div class="section-heading"><p class="eyebrow">你的格式</p><h2>做一個自己的格式。</h2></div>
+<div class="walk"><div class="wstep"><div class="wtext"><h3>做一個自己的格式</h3><p>到「AI 改寫 → 改寫格式」按「新增格式」，填上名稱和寫法，在「處理方式」選逐句或整篇（預設整篇）。任何格式都不會加你沒說的細節。</p><p class="tip">內建格式也可以改，隨時按「還原預設」就會回到原樣。</p></div><div class="rw-mocks"><div class="win"><div class="win-bar"><i></i><i></i><i></i><span>學舌鳥</span></div><div class="win-body"><div class="win-side"><div>首頁</div><div>說話</div><div class="on">AI 改寫</div><div>語氣與情境</div><div>詞典與紀錄</div><div>個人化訓練</div><div>進階</div></div><div class="win-main"><h4>AI 改寫</h4><div class="grp"><div class="grp-t">改寫格式</div><div class="rw-fmt"><span>語氣修正</span><b class="badge g">內建</b></div><div class="rw-fmt"><span>條理分明</span><b class="badge g">內建</b></div><div class="rw-fmt"><span>翻譯</span><b class="badge g">內建</b></div><div class="rw-fmt"><span>會議記錄</span><b class="badge g">內建</b></div><div class="rw-fmt"><span>信件格式</span><b class="badge g">內建</b></div><div class="row"><span class="btn pri hl callout" data-n="1">＋ 新增格式</span></div></div></div></div></div><div class="win"><div class="dlg"><div class="dlg-h"><span>新增格式</span><span>×</span></div><div class="rw-form"><label>名稱<span class="rw-field fill hl callout" data-n="2">週報</span></label><label>要 AI 怎麼寫<span class="rw-field fill hl callout" data-n="3">整理成週報，分成「本週完成」「下週計畫」「需要協助」三段，每段用條列。</span></label><label>處理方式（開「自動取代」時）<span class="rw-field">逐句　／　<b>整篇</b></span></label></div><div class="rw-foot"><span class="rw-auto"></span><span class="btn">取消</span><span class="btn pri">儲存</span></div></div></div></div></div></div></div></section>
+<section class="final-cta"><div class="wrap"><h2>還沒有學舌鳥？</h2><p>免費下載 Mac 版，說完就能改寫。</p><a class="button" href="https://github.com/sona-orbit/parroting-releases/releases/latest/download/Parroting-macos-arm64.dmg">下載 Mac 版 ↓</a><p class="micro" style="margin-top:15px">免費 · Apple 晶片 · macOS 10.15 以上 · v<span data-version></span> · 約 <span data-size></span></p></div></section>
+</main><footer class="footer"><div class="wrap"><span>© 學舌鳥 Parroting</span><span><a href="./">首頁</a> · <a href="model">語氣模型</a> · <a href="architecture">運作方式</a> · <a href="guide">教學</a></span><span class="credit"><a href="speech-models">語音辨識模型與授權</a></span></div></footer></body></html>
