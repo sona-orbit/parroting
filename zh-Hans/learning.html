@@ -130,7 +130,7 @@
 <div class="step-body">
 <h4>4. 训练</h4>
 <p>在有 NVIDIA 显卡的电脑上，用 LoRA 微调 SenseVoice Small（从原版开始，只训练约 2% 的参数）。</p>
-<ul><li>参考：约 1,000 条、2 小时的录音，用 CPU 训练 4 轮约 3.5 小时；有 GPU 会快很多。</li><li>留一部分录音不拿来训练，当作考卷，训练前后都考一次，确认真的有变好。</li><li>答案文本请用简体：实测用繁体答案训练会越练越差。学舌鸟输出时会自动转成繁体。</li></ul>
+<ul><li>训练工具包已开源：<a class="inline-link" href="https://github.com/sona-orbit/parroting-asr-training">parroting-asr-training</a>（MIT 许可，说明为英文）。在 RTX 4090 上约 8–9 分钟，8 GB 显卡也能跑。它读取的是学舌鸟新版的「导出训练资料…」（即将推出），目前的整包「导出」还不能直接用。</li><li>参考：约 1,000 条、2 小时的录音，用 CPU 训练 4 轮约 3.5 小时；有 GPU 会快很多。</li><li>留一部分录音不拿来训练，当作考卷，训练前后都考一次，确认真的有变好。</li><li>答案文本请用简体：实测用繁体答案训练会越练越差。学舌鸟输出时会自动转成繁体。</li></ul>
 </div>
 </div><div class="step-card">
 <span class="step-num">5</span>

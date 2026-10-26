@@ -130,7 +130,7 @@
 <div class="step-body">
 <h4>4. Train</h4>
 <p>On a PC with an NVIDIA GPU, fine-tune SenseVoice Small with LoRA (starting from the original checkpoint, training only ~2% of parameters).</p>
-<ul><li>Reference: ~1,000 clips / 2 h of audio takes ~3.5 h for 4 epochs on CPU; a GPU will be significantly faster.</li><li>Hold out a slice of audio as an evaluation set and test before and after training to verify real improvement.</li><li>Use Simplified Chinese for training text: in testing, training with Traditional Chinese transcripts degraded performance. Parroting converts output to Traditional Chinese automatically when set to Traditional Chinese.</li></ul>
+<ul><li>The training kit is open source: <a class="inline-link" href="https://github.com/sona-orbit/parroting-asr-training">parroting-asr-training</a> (MIT). About 8–9 minutes on an RTX 4090; 8 GB GPUs work too. It reads the "Export training data…" format from the next Parroting version (coming soon); the current full "Export" zip does not work with it yet.</li><li>Reference: ~1,000 clips / 2 h of audio takes ~3.5 h for 4 epochs on CPU; a GPU will be significantly faster.</li><li>Hold out a slice of audio as an evaluation set and test before and after training to verify real improvement.</li><li>Use Simplified Chinese for training text: in testing, training with Traditional Chinese transcripts degraded performance. Parroting converts output to Traditional Chinese automatically when set to Traditional Chinese.</li></ul>
 </div>
 </div><div class="step-card">
 <span class="step-num">5</span>
