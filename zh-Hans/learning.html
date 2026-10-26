@@ -1,160 +1,83 @@
-<!doctype html><html lang="zh-Hans"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="color-scheme" content="light dark"><title>学舌鸟｜越用越懂你</title><meta name="description" content="学舌鸟从三个地方学你：词典记下专有名词、语气个人化调整提醒分寸、专属语音模型用你自己的录音打造只属于你的耳朵。"><meta property="og:type" content="website"><meta property="og:title" content="学舌鸟｜越用越懂你"><meta property="og:description" content="学舌鸟从三个地方学你：词典记下专有名词、语气个人化调整提醒分寸、专属语音模型用你自己的录音打造只属于你的耳朵。"><meta property="og:image" content="../assets/poster.zh-Hans.jpg"><link rel="icon" href="../assets/favicon.png"><link rel="stylesheet" href="../assets/style.css?v=12"><link rel="alternate" hreflang="zh-Hant" href="../learning"><link rel="alternate" hreflang="zh-Hans" href="../zh-Hans/learning"><script>window.PARROTING_PAGE='learning';window.PARROTING_LOCALE='zh-Hans';window.PARROTING_VERSION='0.4.12';window.PARROTING_SIZE='50 MB';window.PARROTING_DOWNLOAD='https://github.com/sona-orbit/parroting-releases/releases/latest/download/Parroting-macos-arm64.dmg';</script><script defer src="../assets/site.js?v=12"></script><style>
-.learn-pills{display:flex;flex-wrap:wrap;gap:8px;margin-top:20px;justify-content:center}
-.learn-pills span{border:1px solid var(--line);background:var(--surface);border-radius:999px;padding:6px 14px;font-size:.84rem;color:var(--muted);font-weight:600}
-.layer-cards{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px;max-width:1040px;margin:24px auto 0}
-.layer-card{background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:22px 20px;display:grid;gap:14px;align-content:start;box-shadow:var(--shadow)}
-.layer-badge{display:inline-flex;align-items:center;padding:3px 9px;border-radius:6px;background:var(--mint);color:var(--ink);font-size:.74rem;font-weight:800;width:fit-content}
-.layer-card h3{margin:0;font-size:1.25rem;letter-spacing:-.01em}
-.layer-card p.layer-desc{margin:0;font-size:.88rem;color:var(--muted);line-height:1.55}
-.layer-rows{display:grid;gap:10px;border-top:1px solid var(--line);padding-top:12px}
-.layer-row{display:grid;gap:2px}
-.layer-row small{color:var(--muted);font-size:.72rem;font-weight:750;letter-spacing:.04em}
-.layer-row span{font-size:.88rem;line-height:1.5;color:var(--ink)}
-.layer-row b{font-size:.88rem;color:var(--green);font-weight:750}
-
-.learn-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;max-width:1040px;margin:20px auto 0}
-.learn-box{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:18px;display:grid;gap:6px;align-content:start}
-.learn-box h4{margin:0;font-size:1.02rem}
-.learn-box p{margin:0;color:var(--muted);font-size:.88rem;line-height:1.6}
-
-.res-wrap{max-width:760px;margin:24px auto 0}
-.res-tablewrap{width:100%;border:1px solid var(--line);border-radius:14px;background:var(--surface);overflow-x:auto}
-.res-table{width:100%;border-collapse:collapse;font-size:.88rem}
-.res-table th,.res-table td{padding:10px 14px;text-align:left;border-bottom:1px solid var(--line);vertical-align:top}
-.res-table thead th{font-size:.76rem;color:var(--muted);font-weight:750;white-space:nowrap;background:var(--soft)}
-.res-table thead th small{display:block;font-weight:500;color:var(--muted);margin-top:2px}
-.res-table td.name{font-weight:700;white-space:nowrap}
-.res-table td.num{font-variant-numeric:tabular-nums;white-space:nowrap}
-.res-table tbody tr:last-child td{border-bottom:0}
-.res-notes{margin:14px 0 0;padding-left:20px;color:var(--muted);font-size:.88rem;line-height:1.65;display:grid;gap:6px}
-
-.step-list{display:grid;gap:14px;max-width:820px;margin:24px auto 0}
-.step-card{display:grid;grid-template-columns:34px 1fr;gap:16px;background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:18px;align-items:start}
-.step-num{width:34px;height:34px;border-radius:50%;background:var(--green);color:var(--surface);display:inline-grid;place-items:center;font-weight:800;font-size:.88rem;flex-shrink:0}
-.step-body h4{margin:0 0 6px;font-size:1.05rem}
-.step-body p{margin:0;color:var(--muted);font-size:.88rem;line-height:1.65}
-.step-body ul{margin:8px 0 0;padding-left:18px;color:var(--muted);font-size:.86rem;line-height:1.6}
-.step-body code{font-size:.82rem;background:var(--soft);padding:2px 6px;border-radius:5px;color:var(--ink);word-break:break-word;overflow-wrap:anywhere}
-.layer-card,.learn-box,.step-card,.note-box{min-width:0;overflow-wrap:break-word}
-
-.note-box{max-width:820px;margin:32px auto 0;background:var(--soft);border-radius:14px;padding:18px 22px;display:grid;gap:10px;font-size:.88rem;color:var(--muted);line-height:1.65}
-.note-box p{margin:0}
-.note-box b{color:var(--ink)}
-
+<!doctype html><html lang="zh-Hans"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="color-scheme" content="light dark"><title>学舌鸟｜越用越懂你</title><meta name="description" content="学舌鸟从三件事学你：常听错的词、你的分寸、你的声音。词典与语气在 Mac 上自动学，专属语音模型用你自己的录音训练。"><meta property="og:type" content="website"><meta property="og:title" content="学舌鸟｜越用越懂你"><meta property="og:description" content="学舌鸟从三件事学你：常听错的词、你的分寸、你的声音。词典与语气在 Mac 上自动学，专属语音模型用你自己的录音训练。"><meta property="og:image" content="../assets/poster.zh-Hans.jpg"><link rel="icon" href="../assets/favicon.png"><link rel="stylesheet" href="../assets/style.css?v=12"><link rel="alternate" hreflang="zh-Hant" href="../learning"><link rel="alternate" hreflang="zh-Hans" href="../zh-Hans/learning"><link rel="alternate" hreflang="en" href="../en/learning"><script>window.PARROTING_PAGE='learning';window.PARROTING_LOCALE='zh-Hans';window.PARROTING_VERSION='0.4.12';window.PARROTING_SIZE='50 MB';window.PARROTING_DOWNLOAD='https://github.com/sona-orbit/parroting-releases/releases/latest/download/Parroting-macos-arm64.dmg';</script><script defer src="../assets/site.js?v=12"></script><style>
+.lr-cards{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;max-width:980px;margin:34px auto 0}
+.lr-card{display:grid;gap:8px;align-content:start;background:var(--surface);border:1px solid var(--line);border-radius:20px;padding:22px;text-decoration:none;color:var(--ink);box-shadow:var(--shadow);transition:transform .2s}
+.lr-card:hover{transform:translateY(-2px)}
+.lr-card .ic{font-size:1.6rem;line-height:1}
+.lr-card h3{margin:4px 0 0;font-size:1.2rem}
+.lr-card p{margin:0;color:var(--muted);font-size:.92rem;line-height:1.55}
+.lr-card .when{justify-self:start;margin-top:6px;font-size:.76rem;font-weight:800;color:var(--green);background:var(--mint);border-radius:999px;padding:4px 10px}
+.lr-card.adv .when{color:var(--muted);background:var(--soft)}
+.lr-split{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:48px;align-items:center;max-width:980px;margin:0 auto}
+.lr-split.rev .lr-mock{order:-1}
+.lr-text h2{margin:6px 0 12px}
+.lr-text>p{margin:0;color:var(--muted);font-size:1.02rem;line-height:1.7}
+.lr-mock{background:var(--surface);border:1px solid var(--line);border-radius:22px;padding:24px;box-shadow:var(--shadow);display:grid;gap:12px}
+.lr-mock small{color:var(--muted);font-size:.76rem;font-weight:700}
+.lr-fix{display:flex;align-items:center;gap:10px;flex-wrap:wrap;font-size:1.05rem;font-weight:700}
+.lr-fix s{color:#c0392b;text-decoration-thickness:2px}
+.lr-fix span{color:var(--green)}
+.lr-btn{justify-self:start;border-radius:999px;background:var(--green);color:#fff;font-weight:750;font-size:.84rem;padding:7px 14px}
+.lr-btn.ghost{background:var(--soft);color:var(--ink);border:1px solid var(--line)}
+.lr-hint{background:#fff2d5;border:2px solid #e9b04c;border-radius:16px;padding:14px 16px;color:#17241e}
+.lr-hint strong{color:#916612;font-size:.84rem}
+.lr-hint p{margin:4px 0 10px;font-weight:650}
+.lr-hint .row{display:flex;gap:8px;flex-wrap:wrap}
+.lr-hint .row span{font-size:.78rem;font-weight:700;padding:4px 10px;border-radius:999px;background:#ffffffb0;border:1px solid #e9b04c80}
+.lr-hint .row span.on{background:#17241e;color:#fff;border-color:#17241e}
+.lr-arrow{color:var(--muted);font-size:.86rem;font-weight:700}
+details.lr-more{margin-top:20px;border-top:1px solid var(--line);padding-top:14px}
+details.lr-more summary{cursor:pointer;color:var(--green);font-weight:750;list-style:none}
+details.lr-more summary::-webkit-details-marker{display:none}
+details.lr-more summary::after{content:" ＋"}
+details.lr-more[open] summary::after{content:" －"}
+details.lr-more ul{margin:12px 0 0;padding-left:20px;color:var(--muted);line-height:1.7;display:grid;gap:6px}
+.lr-bars{display:grid;gap:12px;max-width:640px;margin:28px auto 0}
+.lr-bar{display:grid;grid-template-columns:8.5em minmax(0,1fr) 4.2em;gap:12px;align-items:center;font-size:.92rem}
+.lr-bar b{font-weight:700}
+.lr-bar i{display:block;height:14px;border-radius:999px;background:var(--line)}
+.lr-bar.on i{background:var(--green)}
+.lr-bar em{font-style:normal;font-variant-numeric:tabular-nums;font-weight:800;text-align:right}
+.lr-take{max-width:640px;margin:16px auto 0;text-align:center;color:var(--muted);line-height:1.65}
+.lr-flow{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;max-width:980px;margin:34px auto 0;padding:0;list-style:none;counter-reset:s}
+.lr-flow li{counter-increment:s;background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:16px;display:grid;gap:4px;align-content:start}
+.lr-flow li::before{content:counter(s);width:28px;height:28px;border-radius:50%;background:var(--green);color:#fff;font-weight:800;font-size:.84rem;display:grid;place-items:center;margin-bottom:6px}
+.lr-flow b{font-size:.98rem}
+.lr-flow span{color:var(--muted);font-size:.84rem;line-height:1.55}
+.lr-flow a{color:var(--green);font-weight:700}
+.lr-deep{max-width:820px;margin:26px auto 0}
+.lr-deep details.lr-more ul{font-size:.92rem}
+.lr-deep code{font-size:.82rem;background:var(--soft);padding:2px 6px;border-radius:5px;overflow-wrap:anywhere}
 @media(max-width:860px){
-  .layer-cards{grid-template-columns:1fr}
-  .learn-grid{grid-template-columns:1fr}
+  .lr-cards{grid-template-columns:1fr}
+  .lr-split{grid-template-columns:1fr;gap:24px}
+  .lr-split.rev .lr-mock{order:0}
+  .lr-flow{grid-template-columns:repeat(2,minmax(0,1fr))}
 }
 @media(max-width:480px){
-  .res-table{font-size:.82rem}
-  .res-table th,.res-table td{padding:8px 8px}
-  .step-card{grid-template-columns:28px 1fr;gap:12px;padding:14px}
-  .step-num{width:28px;height:28px;font-size:.8rem}
-  .note-box{padding:14px 16px}
+  .lr-flow{grid-template-columns:1fr;gap:10px}
+  .lr-flow li{grid-template-columns:28px minmax(0,1fr);column-gap:12px;padding:12px 14px}
+  .lr-flow li::before{grid-row:span 2;margin:0}
+  .lr-bar{grid-template-columns:7.4em minmax(0,1fr) 3.8em;gap:8px;font-size:.86rem}
 }
 </style><link rel="canonical" href="https://sona-orbit.github.io/parroting/zh-Hans/learning"><meta property="og:site_name" content="学舌鸟 Parroting"></head><body class="inner">
 <header class="site-header"><div class="wrap nav"><a class="brand" href="./"><img src="../assets/icon.png" alt="">学舌鸟</a><nav class="nav-links" aria-label="Main"><a href="./">首页</a><a href="model">语气模型</a><a href="architecture">运作方式</a><a href="guide">教程</a></nav><div class="nav-actions"><label><span class="sr-only">语言</span><select class="lang" id="language" aria-label="语言"><option value="zh-Hant">繁體中文</option><option value="zh-Hans" selected>简体中文</option></select></label><a class="button small" href="https://github.com/sona-orbit/parroting-releases/releases/latest/download/Parroting-macos-arm64.dmg">免费下载</a></div></div></header>
 <main>
-<section class="page-head"><div class="wrap"><p class="eyebrow">个人化</p><h1>越用越懂你</h1><p class="lead">学舌鸟从三个地方学你：你说话时常被听错的词、你觉得什么话算刺人、你的声音和口音。前两个在 App 里自动完成；第三个是进阶玩法，用你自己的录音训练一个只属于你的语音模型。</p><div class="learn-pills"><span>三层学习机制</span><span>词典与语气在 Mac 本地完成</span><span>声音与隐私都在你手上</span></div></div></section>
+<section class="page-head"><div class="wrap"><p class="eyebrow">个人化</p><h1>越用越懂你</h1><p class="lead">学舌鸟从三件事学你：常听错的词、你的分寸、你的声音。</p>
+<div class="lr-cards"><a class="lr-card " href="#dict"><span class="ic">📖</span><h3>词典</h3><p>听错的字改一次，下次就打对。</p><span class="when">下一句就生效</span></a><a class="lr-card " href="#tone"><span class="ic">💬</span><h3>语气个人化</h3><p>提醒越来越贴近你的分寸。</p><span class="when">20 条就能训练</span></a><a class="lr-card adv" href="#voice"><span class="ic">🎙️</span><h3>专属语音模型</h3><p>用你的录音，训练听得懂你的耳朵。</p><span class="when">进阶 · 需要 NVIDIA 显卡</span></a></div></div></section>
 
-<section><div class="wrap"><div class="section-heading"><p class="eyebrow">三个层次</p><h2>从下一句生效，到专属语音模型。</h2></div>
-<div class="layer-cards">
-<div class="layer-card">
-<span class="layer-badge">第一层 · 自动</span>
-<h3>词典</h3>
-<p class="layer-desc">常被听错的专有名词、人名与英文术语。</p>
-<div class="layer-rows"><div class="layer-row"><small>学习内容</small><span>常被听错的专有名词、人名、英文术语</span></div><div class="layer-row"><small>你要做什么</small><span>修正听错的字，再点「加入词典」</span></div><div class="layer-row"><small>在哪里学</small><span>这台 Mac</span></div><div class="layer-row"><small>多久见效</small><b>下一句就生效</b></div></div>
-</div><div class="layer-card">
-<span class="layer-badge">第二层 · 自动</span>
-<h3>语气个人化</h3>
-<p class="layer-desc">你的分寸：哪些话对你来说只是直接、哪些真的刺人。</p>
-<div class="layer-rows"><div class="layer-row"><small>学习内容</small><span>你的分寸：哪些话对你来说只是直接、哪些真的刺人</span></div><div class="layer-row"><small>你要做什么</small><span>在提醒卡上点「判断不对」，再到确认列表确认</span></div><div class="layer-row"><small>在哪里学</small><span>这台 Mac，数据不上传</span></div><div class="layer-row"><small>多久见效</small><b>累积 20 条就能训练，几秒完成</b></div></div>
-</div><div class="layer-card">
-<span class="layer-badge">第三层 · 进阶</span>
-<h3>专属语音模型（进阶）</h3>
-<p class="layer-desc">你的口音、咬字与常讲的题材。</p>
-<div class="layer-rows"><div class="layer-row"><small>学习内容</small><span>你的口音、咬字、常讲的题材</span></div><div class="layer-row"><small>你要做什么</small><span>导出自己的录音，用有 GPU 的电脑训练，再导入学舌鸟</span></div><div class="layer-row"><small>在哪里学</small><span>你自己的电脑</span></div><div class="layer-row"><small>多久见效</small><b>看数据量，半天到一天</b></div></div>
-</div>
-</div></div></section>
+<section id="dict" class="section-soft"><div class="wrap"><div class="lr-split">
+<div class="lr-text"><p class="eyebrow">第一层</p><h2>听错一次，下次就打对</h2><p>修正听错的字后，学舌鸟会建议加入词典；你确认了才加。</p><details class="lr-more"><summary>看细节</summary><ul><li>也可以自己到 设置 → 词典与纪录 →「新增」，写下正确写法和常见错法。</li><li>适合人名、产品名、英文术语。</li><li>修不了要看上下文的同音字（例如「在／再」），这类交给专属语音模型。</li></ul></details></div>
+<div class="lr-mock"><small>个人化训练 · 待确认</small><div class="lr-fix"><s>Jmini</s>→<span>Gemini</span></div><span class="lr-btn">加入词典</span></div></div></div></section>
 
-<section class="section-soft"><div class="wrap"><div class="section-heading"><p class="eyebrow">第一层</p><h2>一、词典：听错一次，下次就打对</h2><p>最直接的学习方式。不需要重新训练模型，只要把专有名词和修正记下来。</p></div>
-<div class="learn-grid">
-<div class="learn-box"><h4>修正自动进列表</h4><p>你修正听错的字之后，学舌鸟会把「原本 → 改成」列进「个人化训练」的确认列表；你点「加入词典」确认才加入，避免把「只是想换个说法」误当成听错。</p></div><div class="learn-box"><h4>自己添加</h4><p>也可以自己到 设置 → 词典与纪录 →「添加」，写下正确写法和常见错误写法。</p></div><div class="learn-box"><h4>适合的情况</h4><p>人名、产品名、英文术语（例如 Gemini 常被听成 Jmini）。</p></div><div class="learn-box"><h4>解决不了的情况</h4><p>同音字要看上下文的情况（例如「在／再」），这类交给专属语音模型。</p></div>
-</div></div></section>
+<section id="tone"><div class="wrap"><div class="lr-split rev">
+<div class="lr-text"><p class="eyebrow">第二层</p><h2>提醒越来越贴近你的分寸</h2><p>觉得提醒不对，就点「判断不对」。累积 20 条，学舌鸟在你的 Mac 上帮你训练一层只属于你的判断。</p><details class="lr-more"><summary>看细节</summary><ul><li>在侧边栏「个人化训练」页确认你的反馈，数据不上传。</li><li>每 5 条留 1 条不拿来训练，专门用来检查；也会用内置检查句确认没有变差，没通过就不能采用。</li><li>采用后保留版本记录，随时能还原上一版或回到原本的模型。</li><li>中文、英文都可以。</li></ul></details></div>
+<div class="lr-mock"><div class="lr-hint"><strong>✦ 语气提醒</strong><p>语气有点冲，送出前再看一下</p><div class="row"><span class="on">判断不对</span><span>这个 App 不提醒</span></div></div><div class="lr-arrow">↓ 确认后，在这台 Mac 上训练</div></div></div></div></section>
 
-<section><div class="wrap"><div class="section-heading"><p class="eyebrow">第二层</p><h2>二、语气个人化：提醒越来越贴近你的分寸</h2><p>每个人对直接或刺人的界线不同。学舌鸟让您在日常使用中教它属于你的判断。</p></div>
-<div class="learn-grid">
-<div class="learn-box"><h4>在原本模型之上微调</h4><p>内置语气模型是起点。在提醒卡上点「判断不对」，再到侧边栏「个人化训练」页确认后，累积 20 条确认记录就能开始训练。学舌鸟在这台 Mac 本地进行训练，在原本的模型之上增加一层只属于你的调整，数据不上传。</p></div><div class="learn-box"><h4>双重验证把关</h4><p>每 5 条留 1 条不拿来训练，专门用来检查；同时用内置检查句确认整体没有变差。没通过验证就不能采用。</p></div><div class="learn-box"><h4>版本记录与还原</h4><p>采用后留有版本记录，随时可以还原到上一版或回到原本的模型。</p></div><div class="learn-box"><h4>支持双语</h4><p>中文、英文都可以进行语气个人化。</p></div>
-</div></div></section>
-
-<section class="section-soft"><div class="wrap"><div class="section-heading"><p class="eyebrow">第三层 · 进阶</p><h2>三、专属语音模型（进阶）：用你的录音，训练你的耳朵</h2><p>学舌鸟的语音识别在你的 Mac 上执行。内置模型对大多数人够用，但每个人的口音、语速、常讲的词都不一样。如果你有一台有 NVIDIA 显卡的电脑，可以用自己的录音训练一个专属版本，再导入学舌鸟使用。</p></div>
-
-<div class="res-wrap">
-<h3>我们实际做过的结果</h3>
-<p style="color:var(--muted);font-size:.9rem;line-height:1.6;margin:0 0 14px">开发者用自己的录音试过两次（SenseVoice Small，只训练约 2% 的参数）：</p>
-<div class="res-tablewrap">
-<table class="res-table">
-<thead><tr><th>阶段</th><th>录音量</th><th>错字率（训练时没看过的新录音）</th></tr></thead>
-<tbody><tr><td class="name">原本的模型</td><td class="num">—</td><td class="num">约 5.0%</td></tr><tr><td class="name">第一次训练</td><td class="num">30 分钟</td><td class="num">约 3.6%</td></tr><tr><td class="name">第二次训练</td><td class="num">约 2 小时</td><td class="num">约 3.4%</td></tr></tbody>
-</table>
-</div>
-<ul class="res-notes"><li>错字少了约三成，最明显的是常讲的专有名词和口音词。</li><li>录音多了 4 倍，进步却很小。原因是两次的「正确答案」都是用其他模型推估的，本身就有错；要再进步，需要真正正确的文本，例如照稿朗读的句子，或你确认过的修正。</li><li>代价：模型更贴近你，听一般人讲普通话会稍微差一点（测试集错字率约多 1 个百分点）。</li></ul>
-</div>
-
-<div style="max-width:820px;margin:40px auto 0">
-<h3 style="margin:0 0 4px;font-size:1.3rem">步骤</h3>
-<div class="step-list">
-<div class="step-card">
-<span class="step-num">1</span>
-<div class="step-body">
-<h4>1. 留住录音</h4>
-<p>学舌鸟默认只保留最近 300 条录音。想累积训练数据，到 设置 → 高级 → 更多设置 → 历史 →「录音保留多久」调长。</p>
-
-</div>
-</div><div class="step-card">
-<span class="step-num">2</span>
-<div class="step-body">
-<h4>2. 准备正确文本</h4>
-<p>最可靠的是照稿朗读，或你在学舌鸟里确认过的修正。只用识别结果当答案也能练，但效果有上限（见上表）。</p>
-
-</div>
-</div><div class="step-card">
-<span class="step-num">3</span>
-<div class="step-body">
-<h4>3. 导出</h4>
-<p>到 设置 → 词典与纪录 → 我的资料 →「导出」，会得到包含历史与录音、iCloud 里的文本纪录、词典、我的资料、个人化素材的 zip。</p>
-
-</div>
-</div><div class="step-card">
-<span class="step-num">4</span>
-<div class="step-body">
-<h4>4. 训练</h4>
-<p>在有 NVIDIA 显卡的电脑上，用 LoRA 微调 SenseVoice Small（从原版开始，只训练约 2% 的参数）。</p>
-<ul><li>训练工具包已开源：<a class="inline-link" href="https://github.com/sona-orbit/parroting-asr-training">parroting-asr-training</a>（MIT 许可，说明为英文）。在 RTX 4090 上约 8–9 分钟，8 GB 显卡也能跑。它读取的是学舌鸟新版的「导出训练资料…」（即将推出），目前的整包「导出」还不能直接用。</li><li>参考：约 1,000 条、2 小时的录音，用 CPU 训练 4 轮约 3.5 小时；有 GPU 会快很多。</li><li>留一部分录音不拿来训练，当作考卷，训练前后都考一次，确认真的有变好。</li><li>答案文本请用简体：实测用繁体答案训练会越练越差。学舌鸟输出时会自动转成繁体。</li></ul>
-</div>
-</div><div class="step-card">
-<span class="step-num">5</span>
-<div class="step-body">
-<h4>5. 转成学舌鸟能用的格式</h4>
-<p>用 transcribe.cpp 的 <code>convert-sensevoice.py</code> 转成 GGUF，再用 <code>transcribe-quantize --quant Q8_0</code> 压成约 250 MB。</p>
-
-</div>
-</div><div class="step-card">
-<span class="step-num">6</span>
-<div class="step-body">
-<h4>6. 导入</h4>
-<p>到 设置 → 说话 → 管理模型 →「导入模型…」，选刚才的 .gguf。学舌鸟会先试识别一句，认得出字才启用；不满意随时点「切回标准版」。</p>
-
-</div>
-</div>
-</div>
-
-<div class="note-box">
-<h4 style="margin:0;font-size:1.05rem;color:var(--ink)">注意</h4>
-<p><b>许可</b>：SenseVoice Small 采用 FunASR 模型许可，用它训练出来的模型也要遵守原许可。</p><p><b>隐私</b>：导出的数据包含你的声音和说过的话，分享给别人之前请想清楚。</p><p><b>在 Mac 上训练</b>：目前还没验证，建议用有 NVIDIA 显卡的电脑。</p>
-</div>
-</div>
-
+<section id="voice" class="section-soft"><div class="wrap"><div class="section-heading"><p class="eyebrow">第三层 · 进阶</p><h2>用你的录音，训练你的耳朵</h2><p>有 NVIDIA 显卡的电脑，可以用自己的录音训练一个专属语音模型，再导入学舌鸟。开发者实测两次：</p></div>
+<div class="lr-bars"><div class="lr-bar"><b>原本的模型</b><i style="width:100%"></i><em>约 5.0%</em></div><div class="lr-bar on"><b>30 分钟录音</b><i style="width:72%"></i><em>约 3.6%</em></div><div class="lr-bar on"><b>约 2 小时录音</b><i style="width:68%"></i><em>约 3.4%</em></div></div>
+<p class="lr-take">错字少约三成，最明显的是常讲的专有名词和口音词。代价是听一般人说话会稍差一点（约多 1 个百分点）。</p>
+<ol class="lr-flow"><li><b>留住录音</b><span>设置 → 高级 → 更多设置 → 历史 →「录音保留多久」调长</span></li><li><b>导出</b><span>设置 → 词典与纪录 → 我的资料 →「导出」</span></li><li><b>训练</b><span>用开源的 <a href="https://github.com/sona-orbit/parroting-asr-training">parroting-asr-training</a>，RTX 4090 约 8–9 分钟</span></li><li><b>导入</b><span>设置 → 说话 → 管理模型 →「导入模型…」</span></li></ol>
+<div class="lr-deep"><details class="lr-more"><summary>给动手训练的人：完整步骤与注意事项</summary><ul><li>正确文本最重要：照稿朗读，或你在学舌鸟里确认过的修正，最可靠。只用识别结果当答案也能练，但效果有上限（第二次录音多了 4 倍，进步却很小）。</li><li>训练工具包读取的是学舌鸟新版的「导出训练资料…」（即将推出），目前的整包「导出」还不能直接用。8 GB 显卡也能跑，说明为英文，MIT 许可。</li><li>用 LoRA 微调 SenseVoice Small，只训练约 2% 的参数。约 1,000 条、2 小时的录音，用 CPU 训练 4 轮约 3.5 小时；有 GPU 快很多。</li><li>留一部分录音不拿来训练，当作考卷，训练前后都考一次。</li><li>答案文本请用简体：实测用繁体答案训练会越练越差。</li><li>转换：用 transcribe.cpp 的 <code>convert-sensevoice.py</code> 转成 GGUF，再用 <code>transcribe-quantize --quant Q8_0</code> 压成约 250 MB。</li><li>导入时学舌鸟会先试识别一句，认得出字才启用；不满意随时点「切回标准版」。</li><li>许可：SenseVoice Small 采用 FunASR 模型许可，训练出来的模型也要遵守。</li><li>隐私：导出的数据包含你的声音和说过的话，分享前请想清楚。</li><li>在 Mac 上训练目前还没验证，建议用有 NVIDIA 显卡的电脑。</li></ul></details></div>
 </div></section>
 
 <section class="final-cta"><div class="wrap"><h2>还没有学舌鸟？</h2><p>免费下载 Mac 版，从今天开始让它越用越懂你。</p><a class="button" href="https://github.com/sona-orbit/parroting-releases/releases/latest/download/Parroting-macos-arm64.dmg">下载 Mac 版 ↓</a><p class="micro" style="margin-top:15px">免费 · Apple 芯片 · macOS 11 及以上 · v<span data-version>0.4.12</span> · 约 <span data-size>50 MB</span></p></div></section>
