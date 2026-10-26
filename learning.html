@@ -1,0 +1,161 @@
+<!doctype html><html lang="zh-Hant"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="color-scheme" content="light dark"><title>學舌鳥｜越用越懂你</title><meta name="description" content="學舌鳥從三個地方學你：詞典記下專有名詞、語氣個人化調整提醒分寸、專屬語音模型用你自己的錄音打造只屬於你的耳朵。"><meta property="og:type" content="website"><meta property="og:title" content="學舌鳥｜越用越懂你"><meta property="og:description" content="學舌鳥從三個地方學你：詞典記下專有名詞、語氣個人化調整提醒分寸、專屬語音模型用你自己的錄音打造只屬於你的耳朵。"><meta property="og:image" content="assets/poster.zh-Hant.jpg"><link rel="icon" href="assets/favicon.png"><link rel="stylesheet" href="assets/style.css?v=12"><link rel="alternate" hreflang="zh-Hant" href="learning"><link rel="alternate" hreflang="zh-Hans" href="zh-Hans/learning"><script>window.PARROTING_PAGE='learning';window.PARROTING_LOCALE='zh-Hant';window.PARROTING_VERSION='0.4.12';window.PARROTING_SIZE='50 MB';window.PARROTING_DOWNLOAD='https://github.com/sona-orbit/parroting-releases/releases/latest/download/Parroting-macos-arm64.dmg';</script><script defer src="assets/site.js?v=12"></script><style>
+.learn-pills{display:flex;flex-wrap:wrap;gap:8px;margin-top:20px;justify-content:center}
+.learn-pills span{border:1px solid var(--line);background:var(--surface);border-radius:999px;padding:6px 14px;font-size:.84rem;color:var(--muted);font-weight:600}
+.layer-cards{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px;max-width:1040px;margin:24px auto 0}
+.layer-card{background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:22px 20px;display:grid;gap:14px;align-content:start;box-shadow:var(--shadow)}
+.layer-badge{display:inline-flex;align-items:center;padding:3px 9px;border-radius:6px;background:var(--mint);color:var(--ink);font-size:.74rem;font-weight:800;width:fit-content}
+.layer-card h3{margin:0;font-size:1.25rem;letter-spacing:-.01em}
+.layer-card p.layer-desc{margin:0;font-size:.88rem;color:var(--muted);line-height:1.55}
+.layer-rows{display:grid;gap:10px;border-top:1px solid var(--line);padding-top:12px}
+.layer-row{display:grid;gap:2px}
+.layer-row small{color:var(--muted);font-size:.72rem;font-weight:750;letter-spacing:.04em}
+.layer-row span{font-size:.88rem;line-height:1.5;color:var(--ink)}
+.layer-row b{font-size:.88rem;color:var(--green);font-weight:750}
+
+.learn-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;max-width:1040px;margin:20px auto 0}
+.learn-box{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:18px;display:grid;gap:6px;align-content:start}
+.learn-box h4{margin:0;font-size:1.02rem}
+.learn-box p{margin:0;color:var(--muted);font-size:.88rem;line-height:1.6}
+
+.res-wrap{max-width:760px;margin:24px auto 0}
+.res-tablewrap{width:100%;border:1px solid var(--line);border-radius:14px;background:var(--surface);overflow-x:auto}
+.res-table{width:100%;border-collapse:collapse;font-size:.88rem}
+.res-table th,.res-table td{padding:10px 14px;text-align:left;border-bottom:1px solid var(--line);vertical-align:top}
+.res-table thead th{font-size:.76rem;color:var(--muted);font-weight:750;white-space:nowrap;background:var(--soft)}
+.res-table thead th small{display:block;font-weight:500;color:var(--muted);margin-top:2px}
+.res-table td.name{font-weight:700;white-space:nowrap}
+.res-table td.num{font-variant-numeric:tabular-nums;white-space:nowrap}
+.res-table tbody tr:last-child td{border-bottom:0}
+.res-notes{margin:14px 0 0;padding-left:20px;color:var(--muted);font-size:.88rem;line-height:1.65;display:grid;gap:6px}
+
+.step-list{display:grid;gap:14px;max-width:820px;margin:24px auto 0}
+.step-card{display:grid;grid-template-columns:34px 1fr;gap:16px;background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:18px;align-items:start}
+.step-num{width:34px;height:34px;border-radius:50%;background:var(--green);color:var(--surface);display:inline-grid;place-items:center;font-weight:800;font-size:.88rem;flex-shrink:0}
+.step-body h4{margin:0 0 6px;font-size:1.05rem}
+.step-body p{margin:0;color:var(--muted);font-size:.88rem;line-height:1.65}
+.step-body ul{margin:8px 0 0;padding-left:18px;color:var(--muted);font-size:.86rem;line-height:1.6}
+.step-body code{font-size:.82rem;background:var(--soft);padding:2px 6px;border-radius:5px;color:var(--ink);word-break:break-word;overflow-wrap:anywhere}
+.layer-card,.learn-box,.step-card,.note-box{min-width:0;overflow-wrap:break-word}
+
+.note-box{max-width:820px;margin:32px auto 0;background:var(--soft);border-radius:14px;padding:18px 22px;display:grid;gap:10px;font-size:.88rem;color:var(--muted);line-height:1.65}
+.note-box p{margin:0}
+.note-box b{color:var(--ink)}
+
+@media(max-width:860px){
+  .layer-cards{grid-template-columns:1fr}
+  .learn-grid{grid-template-columns:1fr}
+}
+@media(max-width:480px){
+  .res-table{font-size:.82rem}
+  .res-table th,.res-table td{padding:8px 8px}
+  .step-card{grid-template-columns:28px 1fr;gap:12px;padding:14px}
+  .step-num{width:28px;height:28px;font-size:.8rem}
+  .note-box{padding:14px 16px}
+}
+</style><link rel="canonical" href="https://sona-orbit.github.io/parroting/learning"><meta property="og:site_name" content="學舌鳥 Parroting"></head><body class="inner">
+<header class="site-header"><div class="wrap nav"><a class="brand" href="./"><img src="assets/icon.png" alt="">學舌鳥</a><nav class="nav-links" aria-label="Main"><a href="./">首頁</a><a href="model">語氣模型</a><a href="architecture">運作方式</a><a href="guide">教學</a></nav><div class="nav-actions"><label><span class="sr-only">語言</span><select class="lang" id="language" aria-label="語言"><option value="zh-Hant" selected>繁體中文</option><option value="zh-Hans">简体中文</option></select></label><a class="button small" href="https://github.com/sona-orbit/parroting-releases/releases/latest/download/Parroting-macos-arm64.dmg">免費下載</a></div></div></header>
+<main>
+<section class="page-head"><div class="wrap"><p class="eyebrow">個人化</p><h1>越用越懂你</h1><p class="lead">學舌鳥從三個地方學你：你說話時常被聽錯的詞、你覺得什麼話算刺人、你的聲音和口音。前兩個在 App 裡自動完成；第三個是進階玩法，用你自己的錄音訓練一個只屬於你的語音模型。</p><div class="learn-pills"><span>三層學習機制</span><span>詞典與語氣在 Mac 本機完成</span><span>聲音與隱私都在你手上</span></div></div></section>
+
+<section><div class="wrap"><div class="section-heading"><p class="eyebrow">三個層次</p><h2>從下一句生效，到專屬語音模型。</h2></div>
+<div class="layer-cards">
+<div class="layer-card">
+<span class="layer-badge">第一層 · 自動</span>
+<h3>詞典</h3>
+<p class="layer-desc">常被聽錯的專有名詞、人名與英文術語。</p>
+<div class="layer-rows"><div class="layer-row"><small>學什麼</small><span>常被聽錯的專有名詞、人名、英文術語</span></div><div class="layer-row"><small>你要做什麼</small><span>修正聽錯的字，再按「加入詞典」</span></div><div class="layer-row"><small>在哪裡學</small><span>這台 Mac</span></div><div class="layer-row"><small>多久見效</small><b>下一句就生效</b></div></div>
+</div><div class="layer-card">
+<span class="layer-badge">第二層 · 自動</span>
+<h3>語氣個人化</h3>
+<p class="layer-desc">你的分寸：哪些話對你來說只是直接、哪些真的刺人。</p>
+<div class="layer-rows"><div class="layer-row"><small>學什麼</small><span>你的分寸：哪些話對你來說只是直接、哪些真的刺人</span></div><div class="layer-row"><small>你要做什麼</small><span>在提醒卡上按「判斷不對」，再到確認清單確認</span></div><div class="layer-row"><small>在哪裡學</small><span>這台 Mac，資料不上傳</span></div><div class="layer-row"><small>多久見效</small><b>累積 20 筆就能訓練，幾秒完成</b></div></div>
+</div><div class="layer-card">
+<span class="layer-badge">第三層 · 進階</span>
+<h3>專屬語音模型（進階）</h3>
+<p class="layer-desc">你的口音、咬字、常講的題材。</p>
+<div class="layer-rows"><div class="layer-row"><small>學什麼</small><span>你的口音、咬字、常講的題材</span></div><div class="layer-row"><small>你要做什麼</small><span>匯出自己的錄音，用有 GPU 的電腦訓練，再匯入學舌鳥</span></div><div class="layer-row"><small>在哪裡學</small><span>你自己的電腦</span></div><div class="layer-row"><small>多久見效</small><b>看資料量，半天到一天</b></div></div>
+</div>
+</div></div></section>
+
+<section class="section-soft"><div class="wrap"><div class="section-heading"><p class="eyebrow">第一層</p><h2>一、詞典：聽錯一次，下次就打對</h2><p>最直接的學習方式。不需要重練模型，只要把專有名詞和修正記下來。</p></div>
+<div class="learn-grid">
+<div class="learn-box"><h4>修正自動進清單</h4><p>你修正聽錯的字之後，學舌鳥會把「原本 → 改成」列進「個人化訓練」的確認清單；你按「加入詞典」確認才加入，避免把「只是想換個說法」誤當成聽錯。</p></div><div class="learn-box"><h4>自己新增</h4><p>也可以自己到 設定 → 詞典與紀錄 →「新增」，寫下正確寫法和常見錯法。</p></div><div class="learn-box"><h4>適合的情況</h4><p>人名、產品名、英文術語（例如 Gemini 常被聽成 Jmini）。</p></div><div class="learn-box"><h4>修不了的情況</h4><p>同音字要看上下文的情況（例如「在／再」），這類交給專屬語音模型。</p></div>
+</div></div></section>
+
+<section><div class="wrap"><div class="section-heading"><p class="eyebrow">第二層</p><h2>二、語氣個人化：提醒越來越貼近你的分寸</h2><p>每個人對直率或刺人的界線不同。學舌鳥讓你在日常使用中教它屬於你的判斷。</p></div>
+<div class="learn-grid">
+<div class="learn-box"><h4>在原本模型之上微調</h4><p>內建語氣模型是起點。在提醒卡上按「判斷不對」，再到側邊欄「個人化訓練」頁確認後，累積 20 筆確認紀錄就能開始訓練。學舌鳥在這台 Mac 本機進行訓練，在原本的模型之上加上一層只屬於你的調整，資料不上傳。</p></div><div class="learn-box"><h4>雙重驗證把關</h4><p>每 5 筆留 1 筆不拿來訓練，專門用來檢查；同時用內建檢查句確認整體沒有變差。沒通過驗證就不能採用。</p></div><div class="learn-box"><h4>版本紀錄與還原</h4><p>採用後留有版本紀錄，隨時可以還原上一版或回到原本的模型。</p></div><div class="learn-box"><h4>支援雙語</h4><p>中文、英文都可以進行語氣個人化。</p></div>
+</div></div></section>
+
+<section class="section-soft"><div class="wrap"><div class="section-heading"><p class="eyebrow">第三層 · 進階</p><h2>三、專屬語音模型（進階）：用你的錄音，訓練你的耳朵</h2><p>學舌鳥的語音辨識在你的 Mac 上執行。內建模型對大多數人夠用，但每個人的口音、語速、常講的詞都不一樣。如果你有一台有 NVIDIA 顯卡的電腦，可以用自己的錄音訓練一個專屬版本，再匯入學舌鳥使用。</p></div>
+
+<div class="res-wrap">
+<h3>我們實際做過的結果</h3>
+<p style="color:var(--muted);font-size:.9rem;line-height:1.6;margin:0 0 14px">開發者用自己的錄音試過兩次（SenseVoice Small，只訓練約 2% 的參數）：</p>
+<div class="res-tablewrap">
+<table class="res-table">
+<thead><tr><th>階段</th><th>錄音量</th><th>錯字率（訓練時沒看過的新錄音）</th></tr></thead>
+<tbody><tr><td class="name">原本的模型</td><td class="num">—</td><td class="num">約 5.0%</td></tr><tr><td class="name">第一次訓練</td><td class="num">30 分鐘</td><td class="num">約 3.6%</td></tr><tr><td class="name">第二次訓練</td><td class="num">約 2 小時</td><td class="num">約 3.4%</td></tr></tbody>
+</table>
+</div>
+<ul class="res-notes"><li>錯字少了約三成，最明顯的是常講的專有名詞和口音詞。</li><li>錄音多了 4 倍，進步卻很小。原因是兩次的「正確答案」都是用其他模型推估的，本身就有錯；要再進步，需要真正正確的文字，例如照稿朗讀的句子，或你確認過的修正。</li><li>代價：模型更貼近你，聽一般人講普通話會稍微差一點（測試集錯字率約多 1 個百分點）。</li></ul>
+</div>
+
+<div style="max-width:820px;margin:40px auto 0">
+<h3 style="margin:0 0 4px;font-size:1.3rem">步驟</h3>
+<div class="step-list">
+<div class="step-card">
+<span class="step-num">1</span>
+<div class="step-body">
+<h4>1. 留住錄音</h4>
+<p>學舌鳥預設只保留最近 300 段錄音。想累積訓練資料，到 設定 → 進階 → 更多設定 → 歷史 →「錄音保留多久」調長。</p>
+
+</div>
+</div><div class="step-card">
+<span class="step-num">2</span>
+<div class="step-body">
+<h4>2. 準備正確文字</h4>
+<p>最可靠的是照稿朗讀，或你在學舌鳥裡確認過的修正。只用辨識結果當答案也能練，但效果有上限（見上表）。</p>
+
+</div>
+</div><div class="step-card">
+<span class="step-num">3</span>
+<div class="step-body">
+<h4>3. 匯出</h4>
+<p>到 設定 → 詞典與紀錄 → 我的資料 →「匯出」，會得到包含歷史與錄音、iCloud 裡的文字紀錄、詞典、我的資料、個人化素材的 zip。</p>
+
+</div>
+</div><div class="step-card">
+<span class="step-num">4</span>
+<div class="step-body">
+<h4>4. 訓練</h4>
+<p>在有 NVIDIA 顯卡的電腦上，用 LoRA 微調 SenseVoice Small（從原版開始，只訓練約 2% 的參數）。</p>
+<ul><li>參考：約 1,000 段、2 小時的錄音，用 CPU 訓練 4 輪約 3.5 小時；有 GPU 會快很多。</li><li>留一部分錄音不拿來訓練，當成考卷，訓練前後都考一次，確認真的有變好。</li><li>答案文字請用簡體：實測用繁體答案訓練會越練越差。學舌鳥輸出時會自動轉成繁體。</li></ul>
+</div>
+</div><div class="step-card">
+<span class="step-num">5</span>
+<div class="step-body">
+<h4>5. 轉成學舌鳥能用的格式</h4>
+<p>用 transcribe.cpp 的 <code>convert-sensevoice.py</code> 轉成 GGUF，再用 <code>transcribe-quantize --quant Q8_0</code> 壓成約 250 MB。</p>
+
+</div>
+</div><div class="step-card">
+<span class="step-num">6</span>
+<div class="step-body">
+<h4>6. 匯入</h4>
+<p>到 設定 → 說話 → 管理模型 →「匯入模型…」，選剛才的 .gguf。學舌鳥會先試辨識一句，認得出字才啟用；不滿意隨時按「切回標準版」。</p>
+
+</div>
+</div>
+</div>
+
+<div class="note-box">
+<h4 style="margin:0;font-size:1.05rem;color:var(--ink)">注意</h4>
+<p><b>授權</b>：SenseVoice Small 採 FunASR 模型授權，用它訓練出來的模型也要遵守原授權。</p><p><b>隱私</b>：匯出的資料包含你的聲音和說過的話，分享給別人之前請想清楚。</p><p><b>在 Mac 上訓練</b>：目前還沒驗證，建議用有 NVIDIA 顯卡的電腦。</p>
+</div>
+</div>
+
+</div></section>
+
+<section class="final-cta"><div class="wrap"><h2>還沒有學舌鳥？</h2><p>免費下載 Mac 版，從今天開始讓它越用越懂你。</p><a class="button" href="https://github.com/sona-orbit/parroting-releases/releases/latest/download/Parroting-macos-arm64.dmg">下載 Mac 版 ↓</a><p class="micro" style="margin-top:15px">免費 · Apple 晶片 · macOS 11 以上 · v<span data-version>0.4.12</span> · 約 <span data-size>50 MB</span></p></div></section>
+</main><footer class="footer"><div class="wrap"><span>© 學舌鳥 Parroting</span><span><a href="./">首頁</a> · <a href="model">語氣模型</a> · <a href="architecture">運作方式</a> · <a href="guide">教學</a></span><span class="credit"><a href="speech-models">語音辨識模型與授權</a></span></div></footer></body></html>

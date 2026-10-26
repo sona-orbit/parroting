@@ -219,3 +219,11 @@ p,li,figcaption,summary{text-wrap:pretty}
   .readout > * { min-width: 0; }
   .tone-meter { flex-wrap: wrap; }
 }
+
+/* learning page links made the English guide grid wider than the phone */
+@media (max-width: 680px) {
+  .wrap.guide { grid-template-columns: minmax(0, 1fr); }
+  .guide-body, .guide-item, .guide-item > * { min-width: 0; }
+  .guide-item dd { overflow-wrap: anywhere; }
+}
+@media (max-width: 680px) { .inline-link { white-space: normal; } }

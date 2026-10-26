@@ -1,0 +1,161 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="color-scheme" content="light dark"><title>Parroting | Learns from you</title><meta name="description" content="Three layers of personalization in Parroting: custom dictionary, tone personalization, and custom speech models trained on your own voice."><meta property="og:type" content="website"><meta property="og:title" content="Parroting | Learns from you"><meta property="og:description" content="Three layers of personalization in Parroting: custom dictionary, tone personalization, and custom speech models trained on your own voice."><meta property="og:image" content="../assets/poster.zh-Hant.jpg"><link rel="icon" href="../assets/favicon.png"><link rel="stylesheet" href="../assets/style.css?v=12"><link rel="alternate" hreflang="zh-Hant" href="../learning"><link rel="alternate" hreflang="zh-Hans" href="../zh-Hans/learning"><script>window.PARROTING_PAGE='learning';window.PARROTING_LOCALE='en';window.PARROTING_VERSION='0.4.12';window.PARROTING_SIZE='50 MB';window.PARROTING_DOWNLOAD='https://github.com/sona-orbit/parroting-releases/releases/latest/download/Parroting-macos-arm64.dmg';</script><script defer src="../assets/site.js?v=12"></script><style>
+.learn-pills{display:flex;flex-wrap:wrap;gap:8px;margin-top:20px;justify-content:center}
+.learn-pills span{border:1px solid var(--line);background:var(--surface);border-radius:999px;padding:6px 14px;font-size:.84rem;color:var(--muted);font-weight:600}
+.layer-cards{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px;max-width:1040px;margin:24px auto 0}
+.layer-card{background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:22px 20px;display:grid;gap:14px;align-content:start;box-shadow:var(--shadow)}
+.layer-badge{display:inline-flex;align-items:center;padding:3px 9px;border-radius:6px;background:var(--mint);color:var(--ink);font-size:.74rem;font-weight:800;width:fit-content}
+.layer-card h3{margin:0;font-size:1.25rem;letter-spacing:-.01em}
+.layer-card p.layer-desc{margin:0;font-size:.88rem;color:var(--muted);line-height:1.55}
+.layer-rows{display:grid;gap:10px;border-top:1px solid var(--line);padding-top:12px}
+.layer-row{display:grid;gap:2px}
+.layer-row small{color:var(--muted);font-size:.72rem;font-weight:750;letter-spacing:.04em}
+.layer-row span{font-size:.88rem;line-height:1.5;color:var(--ink)}
+.layer-row b{font-size:.88rem;color:var(--green);font-weight:750}
+
+.learn-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;max-width:1040px;margin:20px auto 0}
+.learn-box{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:18px;display:grid;gap:6px;align-content:start}
+.learn-box h4{margin:0;font-size:1.02rem}
+.learn-box p{margin:0;color:var(--muted);font-size:.88rem;line-height:1.6}
+
+.res-wrap{max-width:760px;margin:24px auto 0}
+.res-tablewrap{width:100%;border:1px solid var(--line);border-radius:14px;background:var(--surface);overflow-x:auto}
+.res-table{width:100%;border-collapse:collapse;font-size:.88rem}
+.res-table th,.res-table td{padding:10px 14px;text-align:left;border-bottom:1px solid var(--line);vertical-align:top}
+.res-table thead th{font-size:.76rem;color:var(--muted);font-weight:750;white-space:nowrap;background:var(--soft)}
+.res-table thead th small{display:block;font-weight:500;color:var(--muted);margin-top:2px}
+.res-table td.name{font-weight:700;white-space:nowrap}
+.res-table td.num{font-variant-numeric:tabular-nums;white-space:nowrap}
+.res-table tbody tr:last-child td{border-bottom:0}
+.res-notes{margin:14px 0 0;padding-left:20px;color:var(--muted);font-size:.88rem;line-height:1.65;display:grid;gap:6px}
+
+.step-list{display:grid;gap:14px;max-width:820px;margin:24px auto 0}
+.step-card{display:grid;grid-template-columns:34px 1fr;gap:16px;background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:18px;align-items:start}
+.step-num{width:34px;height:34px;border-radius:50%;background:var(--green);color:var(--surface);display:inline-grid;place-items:center;font-weight:800;font-size:.88rem;flex-shrink:0}
+.step-body h4{margin:0 0 6px;font-size:1.05rem}
+.step-body p{margin:0;color:var(--muted);font-size:.88rem;line-height:1.65}
+.step-body ul{margin:8px 0 0;padding-left:18px;color:var(--muted);font-size:.86rem;line-height:1.6}
+.step-body code{font-size:.82rem;background:var(--soft);padding:2px 6px;border-radius:5px;color:var(--ink);word-break:break-word;overflow-wrap:anywhere}
+.layer-card,.learn-box,.step-card,.note-box{min-width:0;overflow-wrap:break-word}
+
+.note-box{max-width:820px;margin:32px auto 0;background:var(--soft);border-radius:14px;padding:18px 22px;display:grid;gap:10px;font-size:.88rem;color:var(--muted);line-height:1.65}
+.note-box p{margin:0}
+.note-box b{color:var(--ink)}
+
+@media(max-width:860px){
+  .layer-cards{grid-template-columns:1fr}
+  .learn-grid{grid-template-columns:1fr}
+}
+@media(max-width:480px){
+  .res-table{font-size:.82rem}
+  .res-table th,.res-table td{padding:8px 8px}
+  .step-card{grid-template-columns:28px 1fr;gap:12px;padding:14px}
+  .step-num{width:28px;height:28px;font-size:.8rem}
+  .note-box{padding:14px 16px}
+}
+</style><link rel="canonical" href="https://sona-orbit.github.io/parroting/en/learning"><meta property="og:site_name" content="Parroting"></head><body class="inner">
+<header class="site-header"><div class="wrap nav"><a class="brand" href="./"><img src="../assets/icon.png" alt="">Parroting</a><nav class="nav-links" aria-label="Main"><a href="./">Mac</a><a href="model">Tone model</a><a href="guide">Guide</a></nav><div class="nav-actions"><label><span class="sr-only">Language</span><select class="lang" id="language" aria-label="Language"><option value="zh-Hant">繁體中文</option><option value="zh-Hans">简体中文</option></select></label><a class="button small" href="https://github.com/sona-orbit/parroting-releases/releases/latest/download/Parroting-macos-arm64.dmg">Download</a></div></div></header>
+<main>
+<section class="page-head"><div class="wrap"><p class="eyebrow">Personalization</p><h1>Learns from you as you speak</h1><p class="lead">Parroting learns from you in three places: terms it frequently mishears, what feels harsh or overly blunt to you, and your voice and accent. The first two happen automatically inside the app; the third is an advanced path, training a personal speech model from your own recordings.</p><div class="learn-pills"><span>Three learning layers</span><span>Dictionary & tone run locally on your Mac</span><span>Your voice and data stay yours</span></div></div></section>
+
+<section><div class="wrap"><div class="section-heading"><p class="eyebrow">Three layers</p><h2>From immediate corrections to a custom speech model.</h2></div>
+<div class="layer-cards">
+<div class="layer-card">
+<span class="layer-badge">Layer 1 · Automatic</span>
+<h3>Dictionary</h3>
+<p class="layer-desc">Frequently misheard proper nouns, names, and technical terms.</p>
+<div class="layer-rows"><div class="layer-row"><small>What it learns</small><span>Frequently misheard proper nouns, names, and technical terms</span></div><div class="layer-row"><small>What you do</small><span>Fix the misheard word, then click “Add to dictionary”</span></div><div class="layer-row"><small>Where it runs</small><span>On this Mac</span></div><div class="layer-row"><small>Time to effect</small><b>Takes effect on the very next sentence</b></div></div>
+</div><div class="layer-card">
+<span class="layer-badge">Layer 2 · Automatic</span>
+<h3>Tone personalization</h3>
+<p class="layer-desc">Your boundaries: what wording feels direct versus truly harsh.</p>
+<div class="layer-rows"><div class="layer-row"><small>What it learns</small><span>Your boundaries: what wording feels direct versus truly harsh</span></div><div class="layer-row"><small>What you do</small><span>Click “Hint was wrong” on a card, then confirm on the review list</span></div><div class="layer-row"><small>Where it runs</small><span>On this Mac, data never uploaded</span></div><div class="layer-row"><small>Time to effect</small><b>Ready after 20 confirmed items, trains in seconds</b></div></div>
+</div><div class="layer-card">
+<span class="layer-badge">Layer 3 · Advanced</span>
+<h3>Custom speech model (Advanced)</h3>
+<p class="layer-desc">Your accent, pronunciation, and everyday topics.</p>
+<div class="layer-rows"><div class="layer-row"><small>What it learns</small><span>Your accent, pronunciation, and everyday topics</span></div><div class="layer-row"><small>What you do</small><span>Export your recordings, train on a GPU PC, then import into Parroting</span></div><div class="layer-row"><small>Where it runs</small><span>On your own computer</span></div><div class="layer-row"><small>Time to effect</small><b>Half a day to a day, depending on data size</b></div></div>
+</div>
+</div></div></section>
+
+<section class="section-soft"><div class="wrap"><div class="section-heading"><p class="eyebrow">Layer 1</p><h2>1. Dictionary: Fix it once, get it right next time</h2><p>The most direct way Parroting learns. No model training required—just saving custom words and corrections.</p></div>
+<div class="learn-grid">
+<div class="learn-box"><h4>Edits go straight to review</h4><p>When you correct a misheard word, Parroting lists the “Before → After” fix on the Personalization page’s review list. You click “Add to dictionary” to confirm, preventing ordinary phrasing changes from being mislearned as speech errors.</p></div><div class="learn-box"><h4>Add your own</h4><p>You can also go to Settings → Words & history → "Add", and enter the correct spelling along with common mishearings.</p></div><div class="learn-box"><h4>What it is best for</h4><p>Names, product names, acronyms, and technical terms (for example, Gemini misheard as Jmini).</p></div><div class="learn-box"><h4>What it cannot fix</h4><p>Homophones that depend on context (such as “their” vs “there”); leave those to a custom speech model.</p></div>
+</div></div></section>
+
+<section><div class="wrap"><div class="section-heading"><p class="eyebrow">Layer 2</p><h2>2. Tone personalization: Reminders that match your boundaries</h2><p>Everyone has different standards for what counts as direct versus blunt. Parroting lets you teach it your personal line.</p></div>
+<div class="learn-grid">
+<div class="learn-box"><h4>Trained on top of the base model</h4><p>The built-in tone model is just the starting point. When you click “Hint was wrong” on a reminder card and confirm it under Personalization in the sidebar, you can start training once you reach 20 confirmed items. Parroting trains a personalized adjustment layer on top of the original model right on this Mac, and your data is never uploaded.</p></div><div class="learn-box"><h4>Double verification safeguards</h4><p>1 in 5 items is held out from training specifically for validation; built-in benchmark sentences run in parallel to ensure overall accuracy does not degrade. If it fails validation, it cannot be adopted.</p></div><div class="learn-box"><h4>Version history and rollback</h4><p>Every adopted version is saved in your history, so you can revert to a previous version or back to the original model at any time.</p></div><div class="learn-box"><h4>Works in English and Chinese</h4><p>Tone personalization works for both Chinese and English.</p></div>
+</div></div></section>
+
+<section class="section-soft"><div class="wrap"><div class="section-heading"><p class="eyebrow">Layer 3 · Advanced</p><h2>3. Custom speech model (Advanced): Train your ears with your recordings</h2><p>Speech recognition in Parroting runs locally on your Mac. The built-in models work well for most people, but everyone has a unique accent, speaking speed, and vocabulary. If you have a computer with an NVIDIA GPU, you can fine-tune a personal version with your own recordings and import it into Parroting.</p></div>
+
+<div class="res-wrap">
+<h3>Real test results</h3>
+<p style="color:var(--muted);font-size:.9rem;line-height:1.6;margin:0 0 14px">Tested twice with the developer’s own voice recordings (SenseVoice Small, training only ~2% of parameters):</p>
+<div class="res-tablewrap">
+<table class="res-table">
+<thead><tr><th>Stage</th><th>Audio length</th><th>Error rate (unseen test recordings)</th></tr></thead>
+<tbody><tr><td class="name">Original model</td><td class="num">—</td><td class="num">≈5.0%</td></tr><tr><td class="name">First training</td><td class="num">30 min</td><td class="num">≈3.6%</td></tr><tr><td class="name">Second training</td><td class="num">≈2 h</td><td class="num">≈3.4%</td></tr></tbody>
+</table>
+</div>
+<ul class="res-notes"><li>~30% fewer errors, with the biggest improvement in frequently used technical terms and accent-specific phrases.</li><li>4× more audio yielded only marginal gains. The reason: both runs used pseudo-labels estimated by another model, which contained errors; further gains require truly accurate text, such as reading from a script or confirming your own corrections.</li><li>Tradeoff: The model becomes tailored to you, but performs about 1 point worse on the general test set.</li></ul>
+</div>
+
+<div style="max-width:820px;margin:40px auto 0">
+<h3 style="margin:0 0 4px;font-size:1.3rem">Steps</h3>
+<div class="step-list">
+<div class="step-card">
+<span class="step-num">1</span>
+<div class="step-body">
+<h4>1. Keep recordings</h4>
+<p>Parroting keeps the latest 300 recordings by default. To collect more training data, go to Settings → Advanced → More settings → History → "Keep recordings" and choose a longer retention period.</p>
+
+</div>
+</div><div class="step-card">
+<span class="step-num">2</span>
+<div class="step-body">
+<h4>2. Prepare accurate transcripts</h4>
+<p>The most reliable transcripts come from reading a prepared script aloud or reviewing your corrections inside Parroting. Training on raw machine recognition works, but reaches an accuracy plateau (see table above).</p>
+
+</div>
+</div><div class="step-card">
+<span class="step-num">3</span>
+<div class="step-body">
+<h4>3. Export</h4>
+<p>Go to Settings → Words & history → My data → "Export". You will get a zip containing history and recordings, iCloud text records, dictionary, my data, and personalization material.</p>
+
+</div>
+</div><div class="step-card">
+<span class="step-num">4</span>
+<div class="step-body">
+<h4>4. Train</h4>
+<p>On a PC with an NVIDIA GPU, fine-tune SenseVoice Small with LoRA (starting from the original checkpoint, training only ~2% of parameters).</p>
+<ul><li>Reference: ~1,000 clips / 2 h of audio takes ~3.5 h for 4 epochs on CPU; a GPU will be significantly faster.</li><li>Hold out a slice of audio as an evaluation set and test before and after training to verify real improvement.</li><li>Use Simplified Chinese for training text: in testing, training with Traditional Chinese transcripts degraded performance. Parroting converts output to Traditional Chinese automatically when set to Traditional Chinese.</li></ul>
+</div>
+</div><div class="step-card">
+<span class="step-num">5</span>
+<div class="step-body">
+<h4>5. Convert to Parroting's format</h4>
+<p>Convert to GGUF using transcribe.cpp's <code>convert-sensevoice.py</code>, then quantize with <code>transcribe-quantize --quant Q8_0</code> down to ~250 MB.</p>
+
+</div>
+</div><div class="step-card">
+<span class="step-num">6</span>
+<div class="step-body">
+<h4>6. Import</h4>
+<p>Go to Settings → Talk → Manage models → "Import model…", and select the .gguf file. Parroting tests recognition on a trial sentence first, only enabling the model if words are recognized; click "Back to the standard model" at any time if you want to switch back.</p>
+
+</div>
+</div>
+</div>
+
+<div class="note-box">
+<h4 style="margin:0;font-size:1.05rem;color:var(--ink)">Notes</h4>
+<p><b>License</b>: SenseVoice Small is released under the FunASR Model License; any model trained from it must also comply with the original license.</p><p><b>Privacy</b>: Exported data contains your voice and spoken words. Please exercise caution before sharing it with others.</p><p><b>Training on a Mac</b>: Training directly on a Mac has not been verified yet; a computer with an NVIDIA GPU is recommended.</p>
+</div>
+</div>
+
+</div></section>
+
+<section class="final-cta"><div class="wrap"><h2>Ready to make Parroting yours?</h2><p>Download the free Mac app and let it get better the more you speak.</p><a class="button" href="https://github.com/sona-orbit/parroting-releases/releases/latest/download/Parroting-macos-arm64.dmg">Download for Mac ↓</a><p class="micro" style="margin-top:15px">Free · Apple silicon · macOS 11+ · v<span data-version>0.4.12</span> · ~<span data-size>50 MB</span></p></div></section>
+</main><footer class="footer"><div class="wrap"><span>© Parroting</span><span><a href="./">Mac</a> · <a href="model">Tone model</a> · <a href="guide">Guide</a></span><span class="credit"><a href="speech-models">Speech models and licenses</a></span></div></footer></body></html>
