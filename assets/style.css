@@ -227,3 +227,5 @@ p,li,figcaption,summary{text-wrap:pretty}
   .guide-item dd { overflow-wrap: anywhere; }
 }
 @media (max-width: 680px) { .inline-link { white-space: normal; } }
+
+.store-badge{display:inline-flex;line-height:0}.store-badge img{height:48px;width:auto}
