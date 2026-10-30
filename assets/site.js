@@ -2,7 +2,12 @@
   // 英文頁暫時隱藏（語氣模型還沒有英文版）：不列在選單，也不自動導過去
   const supported = ['zh-Hant', 'zh-Hans'];
   const current = window.PARROTING_LOCALE;
-  const page = { model: 'model', guide: 'guide', architecture: 'architecture', 'gemini-key': 'gemini-key', 'speech-models': 'speech-models', 'rewrite-workflow': 'rewrite-workflow', learning: 'learning' }[window.PARROTING_PAGE] || '';
+  const named = { model: 'model', guide: 'guide', architecture: 'architecture', 'gemini-key': 'gemini-key', 'speech-models': 'speech-models', 'rewrite-workflow': 'rewrite-workflow', learning: 'learning' };
+  const pageId = window.PARROTING_PAGE || '';
+  // Blog pages pass their own path, e.g. 'blog/mac-chinese-voice-typing/'.
+  const page = named[pageId] || (pageId.startsWith('blog/') ? pageId : '');
+  // Site root (…/parroting/), so pages at any depth build the same URLs.
+  const root = new URL('../', (document.currentScript && document.currentScript.src) || location.href).href;
   const selector = document.getElementById('language');
   let saved;
   try { saved = localStorage.getItem('parroting-language'); } catch (_) {}
@@ -15,7 +20,7 @@
       /^zh-(tw|hk|mo|hant)/.test(browser) ? 'zh-Hant' :
       /^zh(?:-|$)/.test(browser) ? 'zh-Hans' : 'zh-Hant';
     if (preferred !== current) {
-      location.replace(preferred + '/' + page + location.hash);
+      location.replace(root + preferred + '/' + page + location.hash);
       return;
     }
   }
@@ -25,8 +30,7 @@
     if (!supported.includes(next)) return;
     try { localStorage.setItem('parroting-language', next); } catch (_) {}
     if (next === current) return;
-    const prefix = current === 'zh-Hant' ? '' : '../';
-    location.href = prefix + (next === 'zh-Hant' ? '' : next + '/') + page;
+    location.href = root + (next === 'zh-Hant' ? '' : next + '/') + page;
   });
 })();
 
