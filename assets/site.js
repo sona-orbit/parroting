@@ -1,6 +1,9 @@
 (() => {
-  // 英文頁暫時隱藏（語氣模型還沒有英文版）：不列在選單，也不自動導過去
-  const supported = ['zh-Hant', 'zh-Hans'];
+  // 英文只在使用者自己選過時才去；沒選過的人照瀏覽器語言，非中文一律留在繁中
+  // （Google 爬蟲的語言是英文，這樣中文頁不會被導走）。
+  const supported = ['zh-Hant', 'zh-Hans', 'en'];
+  // 該語言沒有這一頁時，改去那個語言的首頁。
+  const missing = { en: ['architecture'] };
   const current = window.PARROTING_LOCALE;
   const named = { model: 'model', guide: 'guide', architecture: 'architecture', 'gemini-key': 'gemini-key', 'speech-models': 'speech-models', 'rewrite-workflow': 'rewrite-workflow', learning: 'learning' };
   const pageId = window.PARROTING_PAGE || '';
@@ -8,6 +11,7 @@
   const page = named[pageId] || (pageId.startsWith('blog/') ? pageId : '');
   // Site root (…/parroting/), so pages at any depth build the same URLs.
   const root = new URL('../', (document.currentScript && document.currentScript.src) || location.href).href;
+  const target = (lang) => root + (lang === 'zh-Hant' ? '' : lang + '/') + ((missing[lang] || []).includes(page) ? '' : page);
   const selector = document.getElementById('language');
   let saved;
   try { saved = localStorage.getItem('parroting-language'); } catch (_) {}
@@ -20,7 +24,7 @@
       /^zh-(tw|hk|mo|hant)/.test(browser) ? 'zh-Hant' :
       /^zh(?:-|$)/.test(browser) ? 'zh-Hans' : 'zh-Hant';
     if (preferred !== current) {
-      location.replace(root + preferred + '/' + page + location.hash);
+      location.replace(target(preferred) + location.hash);
       return;
     }
   }
@@ -30,7 +34,7 @@
     if (!supported.includes(next)) return;
     try { localStorage.setItem('parroting-language', next); } catch (_) {}
     if (next === current) return;
-    location.href = root + (next === 'zh-Hant' ? '' : next + '/') + page;
+    location.href = target(next);
   });
 })();
 
