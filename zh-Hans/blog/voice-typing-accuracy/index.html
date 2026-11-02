@@ -1,0 +1,96 @@
+<!doctype html><html lang="zh-Hans"><head><meta charset="utf-8"><script async src="https://www.googletagmanager.com/gtag/js?id=G-FJGRNJFB15"></script><script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag("js",new Date());gtag("config","G-FJGRNJFB15");document.addEventListener("click",function(e){var a=e.target.closest&&e.target.closest("a[href]");if(!a)return;var h=a.href;if(/\/releases\/.*\/download\/|\.dmg(\?|$)|apps\.apple\.com\/|testflight\.apple\.com\//.test(h)){gtag("event","download_click",{link_url:h,link_text:(a.textContent||"").trim().slice(0,60)});}},true);</script><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="color-scheme" content="light dark"><title>语音输入一直打错人名和术语？从词典到专属语音模型的三层解法 | 学舌鸟</title><meta name="description" content="语音输入老是把同几个词打错？拆解个人词典、语气提醒本机微调、专属语音模型（SenseVoice LoRA）三层做法各修得了什么、修不了什么，附开发者实测错字率与踩过的坑。"><link rel="canonical" href="https://sona-orbit.github.io/parroting/zh-Hans/blog/voice-typing-accuracy/"><link rel="alternate" hreflang="zh-Hant" href="https://sona-orbit.github.io/parroting/blog/voice-typing-accuracy/"><link rel="alternate" hreflang="zh-Hans" href="https://sona-orbit.github.io/parroting/zh-Hans/blog/voice-typing-accuracy/"><link rel="alternate" hreflang="en" href="https://sona-orbit.github.io/parroting/en/blog/voice-typing-accuracy/"><link rel="alternate" hreflang="x-default" href="https://sona-orbit.github.io/parroting/blog/voice-typing-accuracy/"><meta property="og:type" content="article"><meta property="og:title" content="语音输入一直打错人名和术语？从词典到专属语音模型的三层解法 | 学舌鸟"><meta property="og:description" content="语音输入老是把同几个词打错？拆解个人词典、语气提醒本机微调、专属语音模型（SenseVoice LoRA）三层做法各修得了什么、修不了什么，附开发者实测错字率与踩过的坑。"><meta property="og:url" content="https://sona-orbit.github.io/parroting/zh-Hans/blog/voice-typing-accuracy/"><meta property="og:image" content="https://sona-orbit.github.io/parroting/assets/blog/voice-typing-accuracy/hero.jpg"><link rel="stylesheet" href="../../../assets/style.css?v=12"><link rel="stylesheet" href="../../../assets/blog.css?v=7"><link rel="icon" href="../../../assets/favicon.png"><script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "语音输入一直打错人名和术语？从词典到专属语音模型的三层解法", "description": "语音输入老是把同几个词打错？拆解个人词典、语气提醒本机微调、专属语音模型（SenseVoice LoRA）三层做法各修得了什么、修不了什么，附开发者实测错字率与踩过的坑。", "inLanguage": "zh-Hans", "datePublished": "2026-11-02", "dateModified": "2026-11-02", "mainEntityOfPage": "https://sona-orbit.github.io/parroting/zh-Hans/blog/voice-typing-accuracy/", "author": {"@type": "Organization", "name": "Sona Orbit"}, "publisher": {"@type": "Organization", "name": "Sona Orbit"}, "image": "https://sona-orbit.github.io/parroting/assets/blog/voice-typing-accuracy/hero.jpg"}</script><script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "inLanguage": "zh-Hans", "mainEntity": [{"@type": "Question", "name": "个人词典和语气提醒个人化需要显卡或网络吗？", "acceptedAnswer": {"@type": "Answer", "text": "不需要。这两层都在你的 Apple 芯片 Mac 上完成，不需要网络、API key 或显卡。只有第三层的专属语音模型，要在有 NVIDIA 显卡（或很有耐心的 CPU）的电脑上训练。"}}, {"@type": "Question", "name": "我的录音会被上传吗？", "acceptedAnswer": {"@type": "Answer", "text": "不会。学舌鸟的录音、语音识别、词典与语气个人化都在你的 Mac 上进行。只有你自己按“导出训练资料…”，文件才会离开学舌鸟，去哪里由你决定。"}}, {"@type": "Question", "name": "不训练专属模型，学舌鸟也会越用越准吗？", "acceptedAnswer": {"@type": "Answer", "text": "会。词典确认后下一句就生效，人名、产品名这类固定的错最常见，也最容易修。可以先做一轮 2 分钟的朗读录音，看看错字率和错在哪，再决定要不要往第三层走。"}}, {"@type": "Question", "name": "训练专属模型要准备多少录音？", "acceptedAnswer": {"@type": "Answer", "text": "至少 20～30 分钟有正确文字的录音。我们的实测显示，答案正不正确比录音多寡更重要：录音多了 4 倍，错字率只再降 0.2 个百分点。"}}, {"@type": "Question", "name": "练坏了怎么办？", "acceptedAnswer": {"@type": "Answer", "text": "语音模型在“管理模型”按“切回标准版”就回到原本的模型；语气提醒个人化采用后也能随时还原上一版或回到原本的模型。"}}]}</script><script>window.PARROTING_PAGE='blog/voice-typing-accuracy/';window.PARROTING_LOCALE='zh-Hans';</script><script defer src="../../../assets/site.js?v=13"></script></head><body><header class="site-header"><div class="wrap nav"><a class="brand" href="../../"><img src="../../../assets/icon.png" alt="">学舌鸟</a><nav class="nav-links" aria-label="Main"><a href="../../">首页</a><a href="../../model">语气模型</a><a href="../../architecture">运作方式</a><a href="../../guide">教程</a><a href="../../blog/" aria-current="page">文章</a></nav><div class="nav-actions"><label><span class="sr-only">语言</span><select class="lang" id="language" aria-label="语言"><option value="zh-Hant">繁體中文</option><option value="zh-Hans" selected>简体中文</option><option value="en">English</option></select></label><a class="button small" href="https://github.com/sona-orbit/parroting-releases/releases/latest/download/Parroting-macos-arm64.dmg">免费下载</a></div></div></header><main class="blog-shell"><p class="eyebrow">Parroting Journal · 文章</p><h1>语音输入一直打错人名和术语？从词典到专属语音模型的三层解法</h1><p class="blog-intro">用语音输入一阵子后，最烦的通常不是整句听不懂，而是永远在同几个词上出错：同事的名字、产品名、中英夹杂的术语。这篇把“让语音输入更懂你”拆成三层，说清楚每一层能修什么、修不了什么，也公开我们自己拿录音训练模型的实测数字。</p><p class="blog-meta"><time datetime="2026-11-02">2026-11-02</time> · 约 9 分钟阅读</p><div class="blog-languages"><a href="https://sona-orbit.github.io/parroting/blog/voice-typing-accuracy/">繁體中文</a><a href="https://sona-orbit.github.io/parroting/en/blog/voice-typing-accuracy/">English</a><a href="https://sona-orbit.github.io/parroting/zh-Hans/blog/voice-typing-accuracy/">简体中文</a></div><figure class="blog-illus is-hero"><img src="../../../assets/blog/voice-typing-accuracy/hero.webp" alt="鹦鹉站在 Mac 旁边，把听错的字一个个修正" width="600" height="400" loading="eager" decoding="async"></figure><nav class="blog-toc"><strong>文章目录</strong><ol><li><a href="#part-1">先看结论：错在哪，就用哪一层</a></li><li><a href="#part-2">为什么总是错同几个字</a></li><li><a href="#part-3">第一层：个人词典</a></li><li><a href="#part-4">第二层：语气提醒，在你的 Mac 上微调</a></li><li><a href="#part-5">第三层之前：先做个人识别体检</a></li><li><a href="#part-6">第三层：专属语音模型实测</a></li><li><a href="#part-7">想自己训练：流程与注意事项</a></li><li><a href="#part-8">常见问题</a></li></ol></nav><article class="blog-article"><p class="blog-note">学舌鸟是本站自己的产品。文中的训练数字是开发者用自己的声音实测，只有一个人的资料，不代表每个人都会得到一样的结果。功能说明以学舌鸟 0.4.13 为准。</p>
+
+<section id="part-1"><h2>1. 先看结论：错在哪，就用哪一层</h2>
+<table class="blog-table">
+<thead><tr><th>层次</th><th>适合修</th><th>在哪里做</th><th>多快生效</th><th>修不了</th></tr></thead>
+<tbody>
+<tr><td>第一层<br>个人词典</td><td>固定的人名、产品名、英文缩写，例如 Jmini → Gemini</td><td>Mac 本机，改完字后确认一下</td><td>下一句就生效</td><td>要看上下文的同音字（例如“在／再”）；根本没听出来的音</td></tr>
+<tr><td>第二层<br>语气提醒个人化</td><td>提醒太敏感，例如朋友互亏也被提醒</td><td>Mac 本机，累积 20 笔反馈</td><td>训练几秒，通过验证才采用</td><td>只调整要不要提醒，不改变识别出来的字</td></tr>
+<tr><td>第三层<br>专属语音模型</td><td>常讲的术语、口音、中英夹杂、同音字选错</td><td>导出资料，到有 NVIDIA 显卡的电脑训练，再汇回 Mac</td><td>要准备录音与训练</td><td>听别人说话会稍微变差</td></tr>
+</tbody></table>
+<p>大部分人用前两层就够了。真的想再往下压错字，再考虑第三层。</p></section>
+
+<section id="part-2"><h2>2. 为什么总是错同几个字</h2>
+<p>语音识别分两步：先把声音转成“听起来像什么音”，再从所有读音相同的字里挑一个最常见的。所以错误通常不是随机的，而是固定出现在几种地方：</p>
+<ul>
+<li><b>不常见的名字：</b>“王晓明”的“晓”不如“小”常见，模型就会一直选“小”。</li>
+<li><b>产品名和英文术语：</b>模型没见过的词，只能拼成读音最接近的东西，例如 Gemini 被听成 Jmini。</li>
+<li><b>同音字：</b>“我再看一次”和“我在看一次”读音一样，只能靠前后文判断。</li>
+<li><b>个人口音与连音：</b>讲太快、字跟字黏在一起时，第一步就已经听错。</li>
+</ul>
+<p>前两种在第一步其实听对了，只是挑错字，用词典就修得好。后两种要让模型本身更熟悉你的声音，词典帮不上忙。</p></section>
+
+<section id="part-3"><h2>3. 第一层：个人词典</h2>
+<p>最直接的做法，是把常听错的词记下来：每次识别完，把错的写法换成对的。学舌鸟的词典在本机处理，不开 AI 也有效；如果你有开 AI 整理，也会把这些词告诉它。</p>
+<p>自动学词典有个常见问题：你只是把整句话换个说法重写，软件却以为是“听错”，把不相干的词塞进词典，后面越修越乱。学舌鸟的做法是：</p>
+<ul>
+<li><b>先比读音：</b>你贴上后改了字，学舌鸟会比对改前改后的读音。读音相近的（例如“小明”→“晓明”）放进“个人化训练”页的确认清单；读音差很多的归在“换说法”，不会进词典，也不会拿去训练。分错了可以按“其实是听错”或“不是听错，是我换说法”改回来。</li>
+<li><b>你确认才算：</b>清单里按“加入词典”，下一句就开始生效。</li>
+<li><b>也能自己加：</b>设置 → 词典与纪录 → 词典 →“添加”，写下正确写法和常见错法；也可以导入 CSV（第一栏正确写法、第二栏错法）。</li>
+</ul>
+<figure class="blog-illus"><img src="../../../assets/blog/voice-typing-accuracy/dictionary.webp" alt="鹦鹉把写错的名字卡片换成正确的卡片，收进词典" width="600" height="400" loading="lazy" decoding="async"></figure>
+<p><b>词典修不了的：</b>词典是“看到 A 就换成 B”。“在／再”这种两种写法都对、要看前后文的字，不能直接替换；讲太快而第一步就没听出来的音，词典也找不到可以换的东西。这些要交给第三层。</p></section>
+
+<section id="part-4"><h2>4. 第二层：语气提醒，在你的 Mac 上微调</h2>
+<p>用说的比用打的更容易带情绪。学舌鸟内建一个约 11 MB 的中文语气小模型（英文另有一个），在你的 Mac 上读你刚说的句子和当下情境（在哪个 App、前面聊了什么），一次判断七件事：场景、对象、目的、要不要正式、语气、要不要提醒、会不会太随便。不需要 API key，也不联网。</p>
+<p>但每个人的分寸不一样。你跟十年的朋友说“你这白痴，又迟到了啦”，是日常打闹；如果每次都跳提醒，很快就会想把它关掉。所以这一层可以用你的反馈来调整：</p>
+<ol>
+<li><b>觉得提醒不对，就按“判断不对”</b>，或按“这个 App 不提醒”。</li>
+<li><b>累积 20 笔就能训练：</b>到侧边栏“个人化训练”页确认反馈，在“语气提醒个性化”按训练。在这台 Mac 上几秒完成，原本的模型不动。</li>
+<li><b>没通过验证就不能采用：</b>每 5 笔反馈留 1 笔不拿来训练，专门用来检查；另外还有内建检查句，确认原本该提醒的句子没有被放掉。没通过的话，会告诉你这次训练会让原本判断对的句子变错。</li>
+<li><b>随时能还原：</b>采用后留有版本纪录，可以还原上一版或回到原本的模型。</li>
+</ol>
+<figure class="blog-illus"><img src="../../../assets/blog/voice-typing-accuracy/tone.webp" alt="鹦鹉拿著小天平，调整提醒该多敏感" width="600" height="400" loading="lazy" decoding="async"></figure>
+<p>要注意，这一层只影响语气提醒，不会让识别出来的字变得更准。</p></section>
+
+<section id="part-5"><h2>5. 第三层之前：先做个人识别体检</h2>
+<p>在考虑训练模型之前，先知道学舌鸟把你哪里听错。设置 → 个人化训练 →“朗读录音”就是个人识别体检：一轮 10 句、约 2 分钟，照稿念，每句念完就标出听错的字，一轮结束告诉你错字率。</p>
+<p>如果标出来的字跟原稿读音一样，代表是学舌鸟选错字，不是你念错，这类错通常可以用词典或专属模型改善。这些录音的答案是对的（就是你念的稿），会一直留在你的 Mac 上，直到你自己删除，之后也能拿来训练。</p></section>
+
+<section id="part-6"><h2>6. 第三层：专属语音模型实测</h2>
+<p>学舌鸟默认的语音识别模型是 SenseVoice Small。我们用开源的训练工具包 <a href="https://github.com/sona-orbit/parroting-asr-training" rel="noopener">parroting-asr-training</a>，以 LoRA 微调，只训练约 2% 的参数，拿开发者自己的听写录音实测。考卷都是训练时没看过的录音。</p>
+<h3>训练工具包实测（2 小时日常听写，考卷 263 段）</h3>
+<table class="blog-table">
+<thead><tr><th>模型</th><th>错字率</th></tr></thead>
+<tbody>
+<tr><td>原本的模型</td><td>6.7%</td></tr>
+<tr><td>训练第 1 次</td><td>4.7%</td></tr>
+<tr><td>训练第 2 次</td><td>5.5%</td></tr>
+</tbody></table>
+<p>错字少了 2～3 成，最明显的是常讲的人名、产品名和夹杂的英文。但同样的录音练两次，结果差了快一个百分点。原因是这两次的“答案”是模型自己听的，本身就有错，练出来的结果会有起伏。这也是为什么训练完一定要拿没看过的录音考一次，再决定要不要用。</p>
+<h3>更早的实验：录音变多，进步却很小</h3>
+<p>更早的两次实验，答案是用几个模型互相比对、再交给 AI 裁判挑出来的，同样没有经过人工确认：</p>
+<table class="blog-table">
+<thead><tr><th>模型</th><th>训练录音</th><th>错字率</th></tr></thead>
+<tbody>
+<tr><td>原本的模型</td><td>—</td><td>约 5.0%</td></tr>
+<tr><td>第一版</td><td>约 30 分钟</td><td>约 3.6%</td></tr>
+<tr><td>第二版</td><td>约 2 小时</td><td>约 3.4%</td></tr>
+</tbody></table>
+<p>录音多了 4 倍，错字率只再降 0.2 个百分点。我们的结论是：<b>答案正确，比录很多更重要。</b>朗读录音和你确认过的修正，答案是对的，是最好的训练素材。</p>
+<figure class="blog-illus"><img src="../../../assets/blog/voice-typing-accuracy/voice-model.webp" alt="鹦鹉戴著耳机听录音，旁边的图表显示错字变少" width="600" height="400" loading="lazy" decoding="async"></figure>
+<h3>代价与踩过的坑</h3>
+<ul>
+<li><b>听别人会变差：</b>在通用的测试集（FLEURS）上，第一版的错字率只多了约 0.2 个百分点，第二版多了约 1.2 个百分点。模型越熟悉你，听一般人说话就越差。这是你自己的 Mac，通常划算，但要知道有这个代价。</li>
+<li><b>英文字被打成两次：</b>第一版有个副作用，英文词会重复，例如 Google 变成 Googlegle、email 变成 emailmail。第二版就少很多了。训练完除了看错字率，也要实际用几天，看有没有新的怪毛病。</li>
+<li><b>答案要用简体：</b>我们试过直接用繁体答案训练，模型越练越差。SenseVoice 的词表以简体为主，所以工具包会自动把答案转成简体；学舌鸟输出时会再转回你用的字（例如繁体台湾用字）。</li>
+</ul></section>
+
+<section id="part-7"><h2>7. 想自己训练：流程与注意事项</h2>
+<p>学舌鸟本身不训练语音模型，训练在你自己有 NVIDIA 显卡的电脑上做。声音一样不会上传到我们这里。</p>
+<ol>
+<li><b>准备录音：</b>至少 20～30 分钟有正确文字的录音。朗读录音最可靠；确认清单里确认过的修正也算，但要还留著录音才能导出。学舌鸟默认只留最近 300 段，想多留可以到设置 → 高级 → 历史 →“录音保留多久”调长。</li>
+<li><b>导出：</b>设置 → 词典与纪录 → 数据存放位置 → 我的资料 →“导出训练资料…”（朗读录音卡片上也有）。</li>
+<li><b>训练：</b>用 <a href="https://github.com/sona-orbit/parroting-asr-training" rel="noopener">parroting-asr-training</a>（MIT 授权，说明为英文）。需要 Linux 或 Windows 的 WSL2，8 GB 显卡就能跑；RTX 4090 约 8～9 分钟。只用 CPU 也行但很慢：90 分钟的录音，16 核心每轮约 50 分钟。工具包训练完会在考卷上比较前后，报告直接写“Use it”或“Don't use it”。</li>
+<li><b>汇回学舌鸟：</b>设置 → 说话 → 语音模型与语言 →“管理模型”→“导入模型…”。学舌鸟会先用 Mac 内建语音念一句测试句，确认新模型读得出字才会加进清单。</li>
+<li><b>比较前后：</b>“管理模型”窗口最上面的“用你的朗读录音测一下”，只用朗读录音里留作考卷的那 1/5，训练过的句子不会灌水。导入前后各测一次。不满意就按“切回标准版”。</li>
+</ol></section>
+
+<section id="part-8"><h2>8. 常见问题</h2>
+<div class="blog-faq">
+<h3>个人词典和语气提醒个人化需要显卡或网络吗？</h3><p>不需要。这两层都在你的 Apple 芯片 Mac 上完成，不需要网络、API key 或显卡。只有第三层的专属语音模型，要在有 NVIDIA 显卡（或很有耐心的 CPU）的电脑上训练。</p>
+<h3>我的录音会被上传吗？</h3><p>不会。学舌鸟的录音、语音识别、词典与语气个人化都在你的 Mac 上进行。只有你自己按“导出训练资料…”，文件才会离开学舌鸟，去哪里由你决定。</p>
+<h3>不训练专属模型，学舌鸟也会越用越准吗？</h3><p>会。词典确认后下一句就生效，人名、产品名这类固定的错最常见，也最容易修。可以先做一轮 2 分钟的朗读录音，看看错字率和错在哪，再决定要不要往第三层走。</p>
+<h3>训练专属模型要准备多少录音？</h3><p>至少 20～30 分钟有正确文字的录音。我们的实测显示，答案正不正确比录音多寡更重要：录音多了 4 倍，错字率只再降 0.2 个百分点。</p>
+<h3>练坏了怎么办？</h3><p>语音模型在“管理模型”按“切回标准版”就回到原本的模型；语气提醒个人化采用后也能随时还原上一版或回到原本的模型。</p>
+</div></section></article><aside class="blog-cta"><h2>试试学舌鸟</h2><p>Apple 芯片 · macOS 11 以上 · 免费</p><a href="https://github.com/sona-orbit/parroting-releases/releases/latest/download/Parroting-macos-arm64.dmg" class="button">免费下载 Mac 版</a></aside><p class="blog-back"><a href="../">← 返回文章列表</a></p></main><footer class="footer"><div class="wrap"><span>© 学舌鸟 Parroting</span><span><a href="../../">首页</a> · <a href="../../model">语气模型</a> · <a href="../../architecture">运作方式</a> · <a href="../../guide">教程</a> · <a href="../../blog/">文章</a></span><span class="credit"><a href="../../speech-models">语音识别模型与许可</a></span></div></footer></body></html>
