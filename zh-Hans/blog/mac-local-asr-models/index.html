@@ -1,0 +1,102 @@
+<!doctype html><html lang="zh-Hans"><head><meta charset="utf-8"><script async src="https://www.googletagmanager.com/gtag/js?id=G-FJGRNJFB15"></script><script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag("js",new Date());gtag("config","G-FJGRNJFB15");document.addEventListener("click",function(e){var a=e.target.closest&&e.target.closest("a[href]");if(!a)return;var h=a.href;if(/\/releases\/.*\/download\/|\.dmg(\?|$)|apps\.apple\.com\/|testflight\.apple\.com\//.test(h)){gtag("event","download_click",{link_url:h,link_text:(a.textContent||"").trim().slice(0,60)});}},true);</script><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="color-scheme" content="light dark"><title>Mac 本机语音识别模型怎么选？SenseVoice、Qwen3-ASR、Breeze-ASR、Whisper 比较 | 学舌鸟</title><meta name="description" content="Mac 离线语音输入该选 SenseVoice Small、Qwen3-ASR、Breeze-ASR-25 还是 Whisper？比较文件大小、速度、中文错字率与台湾华语、中英夹杂表现，并教你用 2 分钟朗读录音测自己的声音。"><link rel="canonical" href="https://sona-orbit.github.io/parroting/zh-Hans/blog/mac-local-asr-models/"><link rel="alternate" hreflang="zh-Hant" href="https://sona-orbit.github.io/parroting/blog/mac-local-asr-models/"><link rel="alternate" hreflang="zh-Hans" href="https://sona-orbit.github.io/parroting/zh-Hans/blog/mac-local-asr-models/"><link rel="alternate" hreflang="en" href="https://sona-orbit.github.io/parroting/en/blog/mac-local-asr-models/"><link rel="alternate" hreflang="x-default" href="https://sona-orbit.github.io/parroting/blog/mac-local-asr-models/"><meta property="og:type" content="article"><meta property="og:title" content="Mac 本机语音识别模型怎么选？SenseVoice、Qwen3-ASR、Breeze-ASR、Whisper 比较 | 学舌鸟"><meta property="og:description" content="Mac 离线语音输入该选 SenseVoice Small、Qwen3-ASR、Breeze-ASR-25 还是 Whisper？比较文件大小、速度、中文错字率与台湾华语、中英夹杂表现，并教你用 2 分钟朗读录音测自己的声音。"><meta property="og:url" content="https://sona-orbit.github.io/parroting/zh-Hans/blog/mac-local-asr-models/"><meta property="og:image" content="https://sona-orbit.github.io/parroting/assets/blog/mac-local-asr-models/hero.jpg"><link rel="stylesheet" href="../../../assets/style.css?v=12"><link rel="stylesheet" href="../../../assets/blog.css?v=7"><link rel="icon" href="../../../assets/favicon.png"><script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "Mac 本机语音识别模型怎么选？SenseVoice、Qwen3-ASR、Breeze-ASR、Whisper 比较", "description": "Mac 离线语音输入该选 SenseVoice Small、Qwen3-ASR、Breeze-ASR-25 还是 Whisper？比较文件大小、速度、中文错字率与台湾华语、中英夹杂表现，并教你用 2 分钟朗读录音测自己的声音。", "inLanguage": "zh-Hans", "datePublished": "2026-11-05", "dateModified": "2026-11-05", "mainEntityOfPage": "https://sona-orbit.github.io/parroting/zh-Hans/blog/mac-local-asr-models/", "author": {"@type": "Organization", "name": "Sona Orbit"}, "publisher": {"@type": "Organization", "name": "Sona Orbit"}, "image": "https://sona-orbit.github.io/parroting/assets/blog/mac-local-asr-models/hero.jpg"}</script><script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "inLanguage": "zh-Hans", "mainEntity": [{"@type": "Question", "name": "在学舌鸟里下载和切换这些模型要付费吗？", "acceptedAnswer": {"@type": "Answer", "text": "不用。学舌鸟免费，清单里的模型都能在 App 里直接下载、随时切换，没有字数或分钟数限制。各模型由各自的开发者以开源授权发布，使用前可以先看授权。"}}, {"@type": "Question", "name": "下载很多模型，会一直占用内存吗？", "acceptedAnswer": {"@type": "Answer", "text": "不会。下载的模型只占硬盘空间；只有正在使用的那一个会放进内存，闲置一段时间后也会释放（之后第一次说话约多等 0.1～0.4 秒）。不用的模型可以在“管理模型”里删除。"}}, {"@type": "Question", "name": "8 GB 内存的 Mac 建议选哪一个？", "acceptedAnswer": {"@type": "Answer", "text": "先用默认的 SenseVoice Small（253 MB），占用少、反应最快；想要更准可以试 Qwen3-ASR 0.6B（850 MB）。Breeze-ASR-25 和 Qwen3-ASR 1.7B 比较大，同时开很多 App 时比较吃内存。"}}, {"@type": "Question", "name": "中文错字率最低的是哪一个？", "acceptedAnswer": {"@type": "Answer", "text": "在 transcribe.cpp 的 FLEURS 中文评测里是 Qwen3-ASR 1.7B（7.1%）。但这是朗读新闻稿的成绩，台湾口音和中英夹杂不一定一样，建议用朗读录音测你自己的声音。"}}, {"@type": "Question", "name": "为什么不用 macOS 内建听写就好？", "acceptedAnswer": {"@type": "Answer", "text": "偶尔讲一两句简短中文，内建听写最省事。但“华语（台湾）”的声音会交给 Apple 的服务器处理，也不能换模型、不能用个人词典。"}}]}</script><script>window.PARROTING_PAGE='blog/mac-local-asr-models/';window.PARROTING_LOCALE='zh-Hans';</script><script defer src="../../../assets/site.js?v=13"></script></head><body><header class="site-header"><div class="wrap nav"><a class="brand" href="../../"><img src="../../../assets/icon.png" alt="">学舌鸟</a><nav class="nav-links" aria-label="Main"><a href="../../">首页</a><a href="../../model">语气模型</a><a href="../../architecture">运作方式</a><a href="../../guide">教程</a><a href="../../blog/" aria-current="page">文章</a></nav><div class="nav-actions"><label><span class="sr-only">语言</span><select class="lang" id="language" aria-label="语言"><option value="zh-Hant">繁體中文</option><option value="zh-Hans" selected>简体中文</option><option value="en">English</option></select></label><a class="button small" href="https://github.com/sona-orbit/parroting-releases/releases/latest/download/Parroting-macos-arm64.dmg">免费下载</a></div></div></header><main class="blog-shell"><p class="eyebrow">Parroting Journal · 文章</p><h1>Mac 本机语音识别模型怎么选？SenseVoice、Qwen3-ASR、Breeze-ASR、Whisper 比较</h1><p class="blog-intro">在 Mac 上用本机语音输入，打开设置看到一整排模型：SenseVoice、Qwen3-ASR、Breeze-ASR、Whisper、Parakeet……第一个问题通常是：到底该下载哪一个？这篇整理最常见的几个模型各自擅长什么、有什么限制，以及怎么用你自己的声音测出哪一个最准。</p><p class="blog-meta"><time datetime="2026-11-05">2026-11-05</time> · 约 8 分钟阅读</p><div class="blog-languages"><a href="https://sona-orbit.github.io/parroting/blog/mac-local-asr-models/">繁體中文</a><a href="https://sona-orbit.github.io/parroting/en/blog/mac-local-asr-models/">English</a><a href="https://sona-orbit.github.io/parroting/zh-Hans/blog/mac-local-asr-models/">简体中文</a></div><figure class="blog-illus is-hero"><img src="../../../assets/blog/mac-local-asr-models/hero.webp" alt="鹦鹉在 Mac 前面挑选几个不同大小的语音模型" width="600" height="400" loading="eager" decoding="async"></figure><nav class="blog-toc"><strong>文章目录</strong><ol><li><a href="#part-1">先看结论：依你的说话习惯挑</a></li><li><a href="#part-2">比较表：大小、速度、中文错字率</a></li><li><a href="#part-3">语音输入在意的，跟跑分不一样</a></li><li><a href="#part-4">SenseVoice Small：快，日常主力</a></li><li><a href="#part-5">Qwen3-ASR：中文最准的一组</a></li><li><a href="#part-6">Breeze-ASR-25：台湾华语与中英夹杂</a></li><li><a href="#part-7">Whisper 与 macOS 内建听写</a></li><li><a href="#part-8">花 2 分钟，用你自己的声音实测</a></li><li><a href="#part-9">选好模型后，剩下的错字怎么修</a></li><li><a href="#part-10">常见问题</a></li></ol></nav><article class="blog-article"><p class="blog-note">学舌鸟是本站自己的免费 Mac 语音输入工具，可以在 App 里下载文中提到的模型。比较表的数字来自 transcribe.cpp 公开的评测（中文错字率用 FLEURS 中文测试集，速度在 M4 Max 上用 GPU 测量），跟<a href="../../speech-models">学舌鸟的模型说明页</a>同一份；其他数字都附上官方来源。你的 Mac、声音和说话内容都会让结果不同，请当作相对参考。功能说明以学舌鸟 0.4.15 为准。</p>
+
+<section id="part-1"><h2>1. 先看结论：依你的说话习惯挑</h2>
+<ul class="blog-picks">
+<li><b>想要快、文件小，日常主力：</b>SenseVoice Small（253 MB）。学舌鸟标“推荐”的就是它，旧一点的 Mac 也跑得顺。</li>
+<li><b>想要中文更准：</b>Qwen3-ASR 1.7B（1.5 GB），这份清单里中文错字最少；想折衷选 Qwen3-ASR 0.6B（850 MB）。</li>
+<li><b>台湾口音、中英夹杂很多：</b>试试 Breeze-ASR-25（1.2 GB）。联发创新基地针对台湾华语和中英夹杂调整，但是清单里最慢的一个。</li>
+<li><b>几乎只讲英文：</b>可以看 Parakeet 系列（NVIDIA），英文快又准，但不支持中文。</li>
+<li><b>想用自己的录音训练专属模型：</b>目前开源的 <a href="https://github.com/sona-orbit/parroting-asr-training" rel="noopener">parroting-asr-training</a> 工具包是针对 SenseVoice Small，做法见<a href="../voice-typing-accuracy/">上一篇</a>。</li>
+</ul></section>
+
+<section id="part-2"><h2>2. 比较表：大小、速度、中文错字率</h2>
+<table class="blog-table">
+<thead><tr><th>模型</th><th>开发者</th><th>下载大小</th><th>中文错字率<br>（越低越准）</th><th>速度<br>（越高越快）</th><th>语言</th></tr></thead>
+<tbody>
+<tr><td>SenseVoice Small</td><td>阿里巴巴 FunAudioLLM</td><td>253 MB</td><td>10.1%</td><td>267×</td><td>中、粤、英、日、韩</td></tr>
+<tr><td>Qwen3-ASR 0.6B</td><td>阿里巴巴 Qwen</td><td>850 MB</td><td>7.6%</td><td>69×</td><td>30 种</td></tr>
+<tr><td>Qwen3-ASR 1.7B</td><td>阿里巴巴 Qwen</td><td>1.5 GB</td><td>7.1%</td><td>41×</td><td>30 种</td></tr>
+<tr><td>Fun-ASR Nano</td><td>阿里巴巴 FunAudioLLM</td><td>891 MB</td><td>8.6%</td><td>78×</td><td>中、英、日</td></tr>
+<tr><td>Fun-ASR Nano Multilingual</td><td>阿里巴巴 FunAudioLLM</td><td>891 MB</td><td>7.3%</td><td>70×</td><td>31 种</td></tr>
+<tr><td>Breeze-ASR-25</td><td>联发创新基地</td><td>1.2 GB</td><td>8.1%</td><td>22×</td><td>中、英（台湾华语）</td></tr>
+<tr><td>Whisper Large v3 Turbo</td><td>OpenAI</td><td>886 MB</td><td>8.5%</td><td>44×</td><td>约 100 种</td></tr>
+</tbody></table>
+<p>两个看表时要注意的地方：</p>
+<ul>
+<li><b>FLEURS 是朗读新闻稿，而且答案以简体为准。</b>SenseVoice 在这里错字率最高，但日常短句的体感未必差这么多；Breeze-ASR-25 擅长的台湾口音和中英夹杂，这份测试也量不太出来。</li>
+<li><b>速度差距很大。</b>SenseVoice Small 比 Breeze-ASR-25 快了十倍以上。一句话放开按键后等多久，就是从这里来的。</li>
+</ul></section>
+
+<section id="part-3"><h2>3. 语音输入在意的，跟跑分不一样</h2>
+<p>网络上的评测多半拿标准数据集在服务器显卡上跑分。但在 Mac 上按住快捷键讲话，你在意的是三件事：</p>
+<ol>
+<li><b>放开按键后，字多快出来？</b>等 0.2 秒和等 2 秒，体感完全不同。</li>
+<li><b>讲台湾中文夹杂英文术语时，会不会变成同音怪字，或冒出简体？</b></li>
+<li><b>文件多大、占多少内存？</b>8 GB 的 Mac 同时开很多 App 时，这点很重要。</li>
+</ol>
+<p>前几年 Mac 上的本机语音转文字工具大多用 OpenAI 的 Whisper。拿它当日常中文输入法，常见的困扰有：要准就得用大模型、讲完要等；输出偶尔混进简体字；遇到一段安静或杂音时，可能冒出“谢谢观看”这类没说过的字（Whisper 的“幻觉”）。这也是 SenseVoice、Qwen3-ASR、Breeze-ASR-25 这几个针对中文的模型越来越常被拿来用的原因。</p></section>
+
+<section id="part-4"><h2>4. SenseVoice Small：快，日常主力</h2>
+<p><a href="https://github.com/FunAudioLLM/SenseVoice" rel="noopener">SenseVoice Small</a> 是阿里巴巴 FunAudioLLM 开源的模型。它最大的不同是“非自回归”设计：不是一个字接一个字往下猜，而是一次把整段话对应的字算出来。官方说明写它比 Whisper-Small 快 5 倍以上、比 Whisper-Large 快 15 倍。</p>
+<ul>
+<li><b>体感：</b>按住快捷键讲完一句放开，字几乎马上贴到光标位置。</li>
+<li><b>语言：</b>中、粤、英、日、韩五种，会自动判断你说的是哪一种。</li>
+<li><b>短处：</b>中文错字比大模型多一些；输出以简体为主；没见过的人名和英文新词（例如 Gemini、Claude）有时会挑错同音字。</li>
+</ul>
+<p>学舌鸟在它后面加了本机处理来补短处：自动转成繁体（台湾用字）或简体、补标点和中英文之间的空格，再用<a href="../../learning">读音比对的个人词典</a>固定常听错的词。</p>
+<figure class="blog-illus"><img src="../../../assets/blog/mac-local-asr-models/fast.webp" alt="鹦鹉按下按键，话一说完字就飞进笔电" width="600" height="400" loading="lazy" decoding="async"></figure></section>
+
+<section id="part-5"><h2>5. Qwen3-ASR：中文最准的一组</h2>
+<p><a href="https://github.com/QwenLM/Qwen3-ASR" rel="noopener">Qwen3-ASR</a> 是阿里巴巴 Qwen 团队的语音识别模型，官方说明建立在 Qwen3-Omni 的声音理解能力上，支持 30 种语言，加上 22 种中文方言与口音（例如粤语的香港与广东口音、吴语、闽南语）。</p>
+<ul>
+<li><b>准：</b>在比较表里，1.7B 的中文错字率最低（7.1%），0.6B 也有 7.6%。</li>
+<li><b>0.6B 还是 1.7B：</b>当作随时呼叫的输入法，0.6B（850 MB）在速度和准确度之间比较平衡；1.7B（1.5 GB）更准，但比较慢、也比较吃内存。</li>
+<li><b>适合：</b>口音较重、说话快、或会混用多种语言的人。</li>
+</ul>
+<p>同一家的 Fun-ASR Nano（891 MB）是另一个选择：中文错字率跟 Qwen3-ASR 0.6B 接近，Multilingual 版支持 31 种语言。</p></section>
+
+<section id="part-6"><h2>6. Breeze-ASR-25：台湾华语与中英夹杂</h2>
+<p>如果你平常讲话是“这个 PR 的 logic 有点问题，你帮我 check 一下 API 的 response”这种风格，很多通用模型会在中英切换的地方出错。<a href="https://huggingface.co/MediaTek-Research/Breeze-ASR-25" rel="noopener">Breeze-ASR-25</a> 是联发创新基地（MediaTek Research）以 Whisper Large-v2 为基础，针对台湾华语和中英夹杂调整的开源模型。</p>
+<p>官方模型卡跟原版 Whisper Large-v2 比较的词错误率：</p>
+<table class="blog-table">
+<thead><tr><th>测试集</th><th>内容</th><th>Whisper Large-v2</th><th>Breeze-ASR-25</th><th>变化</th></tr></thead>
+<tbody>
+<tr><td>CommonVoice16-zh-TW</td><td>台湾华语</td><td>9.84</td><td>7.97</td><td>−19%</td></tr>
+<tr><td>ASCEND-MIX</td><td>中英夹杂</td><td>21.01</td><td>16.38</td><td>−22%</td></tr>
+<tr><td>CSZS-zh-en</td><td>中英夹杂</td><td>29.49</td><td>13.01</td><td>−56%</td></tr>
+</tbody></table>
+<p>中英夹杂的进步最明显。但在长篇的台湾华语录音（Formosa 系列测试）上，进步只有 0～9%，其中一项还略差。</p>
+<p><b>代价：</b>它本质上还是 Whisper 大模型，是清单里最慢的一个（速度 22×，SenseVoice Small 是 267×）。如果你习惯讲两三秒就放开，等待感会比较明显；如果你常一次讲一大段中英夹杂的内容，例如会议笔记或技术讨论，就值得试试。</p>
+<figure class="blog-illus"><img src="../../../assets/blog/mac-local-asr-models/mixed.webp" alt="鹦鹉听著中英文交错的对话泡泡，把它们整齐排成一行" width="600" height="400" loading="lazy" decoding="async"></figure></section>
+
+<section id="part-7"><h2>7. Whisper 与 macOS 内建听写</h2>
+<p><b>Whisper：</b>OpenAI 的多语模型，语言最多（约 100 种）。Large v3 Turbo（886 MB）中文错字率 8.5%，准确度不错，但比 SenseVoice 慢很多；为了快改用 Small 或更小的版本，中文错字会明显变多。输出偶尔混进简体，安静时也可能出现幻觉字。</p>
+<p><b>macOS 内建听写：</b>免安装、偶尔讲一两句很方便（<a href="https://support.apple.com/zh-cn/guide/mac-help/mh40584/mac" rel="nofollow noopener">Apple 说明</a>）。但在 Apple 的<a href="https://www.apple.com/macos/feature-availability/" rel="nofollow noopener">功能清单</a>里，“华语（台湾）”不在装置端识别的语言中，声音会交给 Apple 的服务器处理；它也不能换模型、没有个人词典。</p></section>
+
+<section id="part-8"><h2>8. 花 2 分钟，用你自己的声音实测</h2>
+<p>跑分用的是别人的声音、别人念的稿。每个人的语速、麦克风距离、常讲的词都不同，<b>错字率最低的模型，不一定最听得懂你。</b>学舌鸟把这个测试做成内建功能：</p>
+<ol>
+<li><b>念几轮朗读录音：</b>设置 → 个人化训练 →“朗读录音”。一轮 10 句、约 2 分钟，每句念完就标出听错的字，一轮结束告诉你错字率。每 5 句会留 1 句当考卷，所以想比较模型，建议多念几轮，让考卷多一点句子。</li>
+<li><b>下载想比较的模型：</b>设置 → 说话 → 语音模型与语言 →“管理模型”，例如 SenseVoice Small、Qwen3-ASR 0.6B、Breeze-ASR-25。</li>
+<li><b>用同一份考卷比：</b>按“管理模型”窗口最上面的“用你的朗读录音测一下”，就能看到每个模型在你的声音上的错字率。</li>
+</ol>
+<p>很快就能知道：在你的麦克风和口音下，253 MB 的 SenseVoice Small 是不是已经够准，还是换大模型真的少错很多。</p>
+<figure class="blog-illus"><img src="../../../assets/blog/mac-local-asr-models/test.webp" alt="鹦鹉对著麦克风念稿，旁边几个模型的成绩卡并排比较" width="600" height="400" loading="lazy" decoding="async"></figure></section>
+
+<section id="part-9"><h2>9. 选好模型后，剩下的错字怎么修</h2>
+<p>不管选哪一个，通用模型都不认识你新同事的名字或公司内部的项目代号。建议的组合是：</p>
+<ol>
+<li><b>快的模型打底：</b>日常用 SenseVoice Small 或 Qwen3-ASR 0.6B，按住讲、放开就贴上。</li>
+<li><b>固定的错交给个人词典：</b>贴上后把人名或术语改对，学舌鸟会比对读音放进确认清单，按“加入词典”下一句就生效，不开 AI 也有效。</li>
+<li><b>口语赘字交给选用的 AI 整理：</b>常讲“呃、那个、不对改成三点半”的话，可以开 AI 整理，用 Apple Intelligence 或<a href="../../gemini-key">免费的 Gemini key</a>。</li>
+</ol>
+<p>想再往下压错字，可以看上一篇：<a href="../voice-typing-accuracy/">从词典到专属语音模型的三层解法</a>。</p></section>
+
+<section id="part-10"><h2>10. 常见问题</h2>
+<div class="blog-faq">
+<h3>在学舌鸟里下载和切换这些模型要付费吗？</h3><p>不用。学舌鸟免费，清单里的模型都能在 App 里直接下载、随时切换，没有字数或分钟数限制。各模型由各自的开发者以开源授权发布，使用前可以先看授权。</p>
+<h3>下载很多模型，会一直占用内存吗？</h3><p>不会。下载的模型只占硬盘空间；只有正在使用的那一个会放进内存，闲置一段时间后也会释放（之后第一次说话约多等 0.1～0.4 秒）。不用的模型可以在“管理模型”里删除。</p>
+<h3>8 GB 内存的 Mac 建议选哪一个？</h3><p>先用默认的 SenseVoice Small（253 MB），占用少、反应最快；想要更准可以试 Qwen3-ASR 0.6B（850 MB）。Breeze-ASR-25 和 Qwen3-ASR 1.7B 比较大，同时开很多 App 时比较吃内存。</p>
+<h3>中文错字率最低的是哪一个？</h3><p>在 transcribe.cpp 的 FLEURS 中文评测里是 Qwen3-ASR 1.7B（7.1%）。但这是朗读新闻稿的成绩，台湾口音和中英夹杂不一定一样，建议用朗读录音测你自己的声音。</p>
+<h3>为什么不用 macOS 内建听写就好？</h3><p>偶尔讲一两句简短中文，内建听写最省事。但“华语（台湾）”的声音会交给 Apple 的服务器处理，也不能换模型、不能用个人词典。</p>
+</div></section></article><aside class="blog-cta"><h2>试试学舌鸟</h2><p>Apple 芯片 · macOS 11 以上 · 免费</p><a href="https://github.com/sona-orbit/parroting-releases/releases/latest/download/Parroting-macos-arm64.dmg" class="button">免费下载 Mac 版</a></aside><p class="blog-back"><a href="../">← 返回文章列表</a></p></main><footer class="footer"><div class="wrap"><span>© 学舌鸟 Parroting</span><span><a href="../../">首页</a> · <a href="../../model">语气模型</a> · <a href="../../architecture">运作方式</a> · <a href="../../guide">教程</a> · <a href="../../blog/">文章</a></span><span class="credit"><a href="../../speech-models">语音识别模型与许可</a></span></div></footer></body></html>
