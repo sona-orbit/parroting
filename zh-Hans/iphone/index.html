@@ -43,17 +43,6 @@ a{text-decoration:none}
     <div style="display:flex;align-items:center;gap:28px;font-size:15px">
       <div class="pr-d"><nav aria-label="Main" style="display:flex;align-items:center;gap:28px"><a href="/parroting/zh-Hans/" style="color:var(--muted);">Mac 版</a><a href="/parroting/zh-Hans/iphone/" aria-current=page style="color:var(--ink);font-weight:700">iPhone 版</a><a href="/parroting/zh-Hans/guide" style="color:var(--muted);">教程</a><a href="/parroting/zh-Hans/blog/" style="color:var(--muted);">文章</a></nav></div>
       <details class="pr-menu"><summary aria-label="语言" style="font-size:14px;display:flex;align-items:center;gap:6px;color:var(--muted);border:1px solid var(--line);border-radius:999px;padding:0 14px;height:36px">简中<span style="font-size:9px">▼</span></summary><div class="pop"><a href="/parroting/iphone/" data-lang="zh-Hant" hreflang="zh-Hant">繁體中文</a><a href="/parroting/zh-Hans/iphone/" data-lang="zh-Hans" hreflang="zh-Hans">简体中文</a><a href="/parroting/en/iphone/" data-lang="en" hreflang="en">English</a></div></details>
-        <details style="background:var(--card);border:1px solid var(--line);border-radius:22px;padding:20px 24px">
-          <summary style="cursor:pointer;font-size:clamp(17px,1.4cqi,19px);font-weight:800;line-height:1.5">选「Apple 内置」却显示不能用？</summary>
-          <p style="margin:12px 0 0;font-size:16px;line-height:1.75;color:var(--muted)">「Apple 内置」用的是 iPhone 上的 Apple Intelligence 模型，Apple 规定要同时符合这几点，缺一个就会显示不能用（学舌鸟的设置页会写出是哪一个）：</p>
-          <ul style="margin:12px 0 0;padding-left:22px;font-size:16px;line-height:1.75;color:var(--muted)">
-            <li><b>机型</b>：iPhone 15 Pro、15 Pro Max，或 iPhone 16 以后的全部机型。iPhone 15、14 和更早的没有。</li>
-            <li><b>系统</b>：iOS 26.1 以上。</li>
-            <li><b>打开功能</b>：设置 › Apple 智能与 Siri › 打开 Apple 智能，第一次会下载模型，几分钟后才能用。</li>
-            <li><b>语言与地区</b>：iPhone 的语言和 Siri 语言要是 Apple Intelligence 支持的（简中、繁中、英文、日文都有）；<b>Apple 账户地区在中国大陆时，Apple 不提供这个功能</b>，这是最常见的原因。</li>
-          </ul>
-          <p style="margin:12px 0 0;font-size:16px;line-height:1.75;color:var(--muted)">不符合也不影响说话打字：识别和基本整理都在手机上做。想要 AI 改写和翻译，切到「我的 API key」就好，Gemini 有免费额度，<a href="/parroting/zh-Hans/gemini-key" style="color:var(--leaf-ink);font-weight:700">两分钟申请教程</a>。</p>
-        </details>
       <div class="pr-m"><details class="pr-menu"><summary aria-label="菜单" style="width:44px;height:44px;margin:0 -10px 0 -18px;display:flex;flex-direction:column;justify-content:center;align-items:center;gap:5px"><i style="display:block;width:20px;height:2px;background:var(--ink);border-radius:2px"></i><i style="display:block;width:20px;height:2px;background:var(--ink);border-radius:2px"></i></summary><div class="pop"><a href="/parroting/zh-Hans/">Mac 版</a><a href="/parroting/zh-Hans/iphone/">iPhone 版</a><a href="/parroting/zh-Hans/guide">教程</a><a href="/parroting/zh-Hans/blog/">文章</a></div></details></div>
     </div>
   </header>
@@ -400,7 +389,7 @@ a{text-decoration:none}
       <div style="width:100%;max-width:760px;display:flex;flex-direction:column;gap:12px">
         <div style="background:var(--bubble);border-radius:22px;padding:clamp(18px,2cqi,26px);display:flex;gap:18px;align-items:flex-start;box-shadow:0 8px 24px var(--shadow)">
           <span style="flex:none;width:44px;height:44px;border-radius:14px;background:var(--mint);color:var(--leaf-ink);display:flex;align-items:center;justify-content:center"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="6" y="2" width="12" height="20" rx="3"></rect><path d="M11 18h2"></path></svg></span>
-          <div style="display:flex;flex-direction:column;gap:4px"><b style="font-size:clamp(18px,1.6cqi,22px)">在 iPhone 上识别</b><span style="font-size:16px;line-height:1.65;color:var(--muted)">语音由 iPhone 内置的识别在手机上转成文字。录音不存档、不上传。</span></div>
+          <div style="display:flex;flex-direction:column;gap:4px"><b style="font-size:clamp(18px,1.6cqi,22px)">在 iPhone 上识别</b><span style="font-size:16px;line-height:1.65;color:var(--muted)">语音由 iPhone 内置的识别在手机上转成文字，识别语言跟着 iPhone 的语言（简中、繁中、英文、日文…），设置里也能自己换。录音不存档、不上传。</span></div>
         </div>
         <div style="background:var(--bubble);border-radius:22px;padding:clamp(18px,2cqi,26px);display:flex;gap:18px;align-items:flex-start;box-shadow:0 8px 24px var(--shadow)">
           <span style="flex:none;width:44px;height:44px;border-radius:14px;background:var(--mint);color:var(--leaf-ink);display:flex;align-items:center;justify-content:center"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="8" r="4"></circle><path d="M4 21c1.5-4 4.5-6 8-6s6.5 2 8 6"></path><path d="M3 3l18 18"></path></svg></span>
@@ -481,6 +470,17 @@ a{text-decoration:none}
         <details open="" style="background:var(--card);border:1px solid var(--line);border-radius:22px;padding:20px 24px">
           <summary style="cursor:pointer;font-size:clamp(17px,1.4cqi,19px);font-weight:800;line-height:1.5">「允许完全访问」安全吗？</summary>
           <p style="margin:12px 0 0;font-size:16px;line-height:1.75;color:var(--muted)">这是 iOS 对所有需要和主 App 通信的键盘使用的权限名称，开启时系统会提醒「可传送你输入的内容」。学舌鸟没有账号、广告和追踪；声音在手机上识别，不会传给我们。只有你选「我的 API key」时，要改写的文字会直接发送到你选的 AI 服务。</p>
+        </details>
+        <details style="background:var(--card);border:1px solid var(--line);border-radius:22px;padding:20px 24px">
+          <summary style="cursor:pointer;font-size:clamp(17px,1.4cqi,19px);font-weight:800;line-height:1.5">选「Apple 内置」却显示不能用？</summary>
+          <p style="margin:12px 0 0;font-size:16px;line-height:1.75;color:var(--muted)">「Apple 内置」用的是 iPhone 上的 Apple Intelligence 模型，Apple 规定要同时符合这几点，缺一个就会显示不能用（学舌鸟的设置页会写出是哪一个）：</p>
+          <ul style="margin:12px 0 0;padding-left:22px;font-size:16px;line-height:1.75;color:var(--muted)">
+            <li><b>机型</b>：iPhone 15 Pro、15 Pro Max，或 iPhone 16 以后的全部机型。iPhone 15、14 和更早的没有。</li>
+            <li><b>系统</b>：iOS 26.1 以上。</li>
+            <li><b>打开功能</b>：设置 › Apple 智能与 Siri › 打开 Apple 智能，第一次会下载模型，几分钟后才能用。</li>
+            <li><b>语言与地区</b>：iPhone 的语言和 Siri 语言要是 Apple Intelligence 支持的（简中、繁中、英文、日文都有）；<b>Apple 账户地区在中国大陆时，Apple 不提供这个功能</b>，这是最常见的原因。</li>
+          </ul>
+          <p style="margin:12px 0 0;font-size:16px;line-height:1.75;color:var(--muted)">不符合也不影响说话打字：识别和基本整理都在手机上做。想要 AI 改写和翻译，切到「我的 API key」就好，Gemini 有免费额度，<a href="/parroting/zh-Hans/gemini-key" style="color:var(--leaf-ink);font-weight:700">两分钟申请教程</a>。</p>
         </details>
         <details style="background:var(--card);border:1px solid var(--line);border-radius:22px;padding:20px 24px">
           <summary style="cursor:pointer;font-size:clamp(17px,1.4cqi,19px);font-weight:800;line-height:1.5">要订阅吗？</summary>
