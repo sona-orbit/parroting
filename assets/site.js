@@ -5,7 +5,7 @@
   // 該語言沒有這一頁時，改去那個語言的首頁。
   const missing = { en: ['architecture'] };
   const current = window.PARROTING_LOCALE;
-  const named = { model: 'model', guide: 'guide', architecture: 'architecture', 'gemini-key': 'gemini-key', 'speech-models': 'speech-models', 'rewrite-workflow': 'rewrite-workflow', learning: 'learning', iphone: 'iphone/' };
+  const named = { model: 'model', guide: 'guide', architecture: 'architecture', 'gemini-key': 'gemini-key', 'speech-models': 'speech-models', 'rewrite-workflow': 'rewrite-workflow', learning: 'learning', iphone: 'iphone/', 'iphone-guide': 'iphone/guide/' };
   const pageId = window.PARROTING_PAGE || '';
   // Blog pages pass their own path, e.g. 'blog/mac-chinese-voice-typing/'.
   const page = named[pageId] || (pageId.startsWith('blog/') ? pageId : '');
