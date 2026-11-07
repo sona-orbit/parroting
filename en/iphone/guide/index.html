@@ -1,0 +1,115 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><script async src="https://www.googletagmanager.com/gtag/js?id=G-FJGRNJFB15"></script><script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag("js",new Date());gtag("config","G-FJGRNJFB15");document.addEventListener("click",function(e){var a=e.target.closest&&e.target.closest("a[href]");if(!a)return;var h=a.href;if(/\/releases\/.*\/download\/|\.dmg(\?|$)|apps\.apple\.com\/|testflight\.apple\.com\//.test(h)){gtag("event","download_click",{link_url:h,link_text:(a.textContent||a.getAttribute("aria-label")||"").trim().slice(0,60)});}},true);</script><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="color-scheme" content="light dark"><meta name="apple-itunes-app" content="app-id=6828834904"><title>Parroting for iPhone: how to use it</title><meta name="description" content="How to use Parroting on iPhone: turn on the keyboard, speak, AI rewrite formats, rewrite and translate, the dictionary and settings, step by step."><meta property="og:type" content="website"><meta property="og:title" content="Parroting for iPhone: how to use it"><meta property="og:description" content="How to use Parroting on iPhone: turn on the keyboard, speak, AI rewrite formats, rewrite and translate, the dictionary and settings, step by step."><meta property="og:image" content="https://sona-orbit.github.io/parroting/assets/iphone/og.jpg"><link rel="icon" href="../../assets/favicon.png"><link rel="alternate" hreflang="zh-Hant" href="https://sona-orbit.github.io/parroting/iphone/guide/"><link rel="alternate" hreflang="zh-Hans" href="https://sona-orbit.github.io/parroting/zh-Hans/iphone/guide/"><link rel="alternate" hreflang="en" href="https://sona-orbit.github.io/parroting/en/iphone/guide/"><link rel="alternate" hreflang="x-default" href="https://sona-orbit.github.io/parroting/iphone/guide/"><link rel="canonical" href="https://sona-orbit.github.io/parroting/en/iphone/guide/"><script>window.PARROTING_PAGE='iphone';window.PARROTING_LOCALE='en';</script><script defer src="../../assets/site.js?v=13"></script><style id="pr-css">body{margin:0;background:#F7F8F5;-webkit-font-smoothing:antialiased}
+@media (prefers-color-scheme:dark){body{background:#0F1512}}
+a{text-decoration:none}
+
+[data-pr]{--bg:#F7F8F5;--card:#FFFFFF;--ink:#17241E;--muted:#5C6B62;--faint:#A3ADA6;--line:#DCE5DC;--leaf:#247A52;--leaf-ink:#185D3D;--mint:#DFF3E6;--amber:#E9A23B;--amber-soft:#FFF2D5;--panel:#17241E;--cta:#247A52;--bubble:#FFFFFF;--soft:#EFF3EE;--shadow:rgba(23,36,30,.10);--bar:rgba(255,255,255,.92);
+--f1-base:#EEF5EF;--f1-a:#BFE6CC;--f1-b:#FFE6B3;--f1-hl:#C6EBD3;--f1-res:#F3FBF6;--f1-bd:#D2ECDB;--f1-pill:#DFF3E6;--f1-ink:#185D3D;
+--f2-base:#F1EFF7;--f2-a:#DCD5F5;--f2-b:#CFEBDB;--f2-hl:#E2DCF7;--f2-res:#F7F5FD;--f2-bd:#E2DCF7;--f2-pill:#ECE8FA;--f2-ink:#4B3F8A;
+--f3-base:#FBF5EA;--f3-a:#FFE2A6;--f3-b:#F6D9C8;--f3-hl:#FCE3B0;--f3-res:#FFF9EC;--f3-bd:#F5E3BC;--f3-pill:#FFF2D5;--f3-ink:#7A4E0C;
+--f4-base:#EEF4F8;--f4-a:#CDE3F2;--f4-b:#D9F0E3;--f4-hl:#D3E7F5;--f4-res:#F5FAFD;--f4-bd:#D6E7F3;--f4-pill:#E3F0FA;--f4-ink:#22547A;
+--f5-base:#F9F0F2;--f5-a:#F5D3DC;--f5-b:#FFE6C2;--f5-hl:#F6D6DE;--f5-res:#FDF6F8;--f5-bd:#F1DCE2;--f5-pill:#FBE6EB;--f5-ink:#8A2E4A}
+[data-pr][data-theme="dark"]{--bg:#0F1512;--card:#17201B;--ink:#E6EDE8;--muted:#9AA9A0;--faint:#56635B;--line:#27342D;--leaf:#3FA472;--leaf-ink:#8FD8B0;--mint:#1A3326;--amber-soft:#3A2E17;--panel:#233A2E;--cta:#1E5A3D;--bubble:#222D27;--soft:#1B2420;--shadow:rgba(0,0,0,.45);--bar:rgba(23,32,27,.92);
+--f1-base:#141D18;--f1-a:#1F3D2C;--f1-b:#3A3018;--f1-hl:#24503A;--f1-res:#18261F;--f1-bd:#29402F;--f1-pill:#1A3326;--f1-ink:#8FD8B0;
+--f2-base:#17151F;--f2-a:#2E2850;--f2-b:#1C3326;--f2-hl:#3A3168;--f2-res:#1C1A28;--f2-bd:#322C4E;--f2-pill:#2A2546;--f2-ink:#C3B8F5;
+--f3-base:#1C1810;--f3-a:#4A3815;--f3-b:#3B2A20;--f3-hl:#5A4316;--f3-res:#221D12;--f3-bd:#43361B;--f3-pill:#3A2E17;--f3-ink:#F2C67A;
+--f4-base:#111A20;--f4-a:#1E3A50;--f4-b:#1C3328;--f4-hl:#24496A;--f4-res:#16222B;--f4-bd:#263B4C;--f4-pill:#1D3346;--f4-ink:#9CCBEF;
+--f5-base:#1E1416;--f5-a:#4A2430;--f5-b:#3B2E1A;--f5-hl:#5A2C3A;--f5-res:#261A1D;--f5-bd:#47303A;--f5-pill:#44232E;--f5-ink:#F2A9BD}
+@media (prefers-color-scheme:dark){[data-pr][data-theme="auto"]{--bg:#0F1512;--card:#17201B;--ink:#E6EDE8;--muted:#9AA9A0;--faint:#56635B;--line:#27342D;--leaf:#3FA472;--leaf-ink:#8FD8B0;--mint:#1A3326;--amber-soft:#3A2E17;--panel:#233A2E;--cta:#1E5A3D;--bubble:#222D27;--soft:#1B2420;--shadow:rgba(0,0,0,.45);--bar:rgba(23,32,27,.92);
+--f1-base:#141D18;--f1-a:#1F3D2C;--f1-b:#3A3018;--f1-hl:#24503A;--f1-res:#18261F;--f1-bd:#29402F;--f1-pill:#1A3326;--f1-ink:#8FD8B0;
+--f2-base:#17151F;--f2-a:#2E2850;--f2-b:#1C3326;--f2-hl:#3A3168;--f2-res:#1C1A28;--f2-bd:#322C4E;--f2-pill:#2A2546;--f2-ink:#C3B8F5;
+--f3-base:#1C1810;--f3-a:#4A3815;--f3-b:#3B2A20;--f3-hl:#5A4316;--f3-res:#221D12;--f3-bd:#43361B;--f3-pill:#3A2E17;--f3-ink:#F2C67A;
+--f4-base:#111A20;--f4-a:#1E3A50;--f4-b:#1C3328;--f4-hl:#24496A;--f4-res:#16222B;--f4-bd:#263B4C;--f4-pill:#1D3346;--f4-ink:#9CCBEF;
+--f5-base:#1E1416;--f5-a:#4A2430;--f5-b:#3B2E1A;--f5-hl:#5A2C3A;--f5-res:#261A1D;--f5-bd:#47303A;--f5-pill:#44232E;--f5-ink:#F2A9BD}}
+@keyframes caret{0%,49%{opacity:1}50%,100%{opacity:0}}
+@keyframes marquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+[data-pr] a{color:var(--leaf-ink)}[data-pr] a:hover{color:var(--leaf)}
+.pr-d,.pr-m{display:contents}
+@media (max-width:699px){.pr-d{display:none!important}}
+@media (min-width:700px){.pr-m{display:none!important}}
+.pr-bar{display:none}@media (max-width:699px){.pr-bar.show{display:contents}}
+.pr-menu{position:relative}.pr-menu summary{list-style:none;cursor:pointer}.pr-menu summary::-webkit-details-marker{display:none}
+.pr-menu .pop{position:absolute;right:0;top:44px;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:6px;display:flex;flex-direction:column;min-width:140px;box-shadow:0 12px 32px var(--shadow);z-index:30}
+.pr-menu .pop a{padding:10px 12px;border-radius:9px;color:var(--ink);font-size:14px;white-space:nowrap}.pr-menu .pop a:hover{background:var(--soft)}
+.pr-type{display:grid}.pr-type>*{grid-area:1/1}.pr-type>i{visibility:hidden;font-style:normal}
+.pr-caret{display:inline-block;width:2px;height:1em;vertical-align:-.12em;background:currentColor;margin-left:2px;animation:caret 1s steps(1) infinite}
+:focus-visible{outline:2px solid var(--leaf,#247A52);outline-offset:3px;border-radius:6px}
+@media (prefers-reduced-motion:reduce){[data-pr] *{animation:none!important}}
+</style></head>
+<body>
+<div data-pr="" data-theme="auto" style="container-type:inline-size;background:var(--bg);color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,'PingFang TC','PingFang SC','Noto Sans TC','Noto Sans SC',sans-serif;min-height:100%">
+
+  <header style="display:flex;align-items:center;justify-content:space-between;gap:16px;padding:18px clamp(20px,4cqi,56px);max-width:1328px;margin:0 auto;position:relative;z-index:10">
+    <a href="/parroting/en/" style="display:flex;align-items:center;gap:10px;color:var(--ink)"><img src="/parroting/assets/icon.png" alt="" width="32" height="32" style="width:32px;height:32px;border-radius:8px"><span style="font-weight:800;font-size:18px;letter-spacing:.02em">Parroting</span></a>
+    <div style="display:flex;align-items:center;gap:28px;font-size:15px">
+      <div class="pr-d"><nav aria-label="Main" style="display:flex;align-items:center;gap:28px"><a href="/parroting/en/" style="color:var(--muted);">Mac</a><a href="/parroting/en/iphone/" aria-current=page style="color:var(--ink);font-weight:700">iPhone</a><a href="/parroting/en/iphone/guide/" style="color:var(--muted);">Guides</a><a href="/parroting/en/blog/" style="color:var(--muted);">Articles</a></nav></div>
+      <details class="pr-menu"><summary aria-label="Language" style="font-size:14px;display:flex;align-items:center;gap:6px;color:var(--muted);border:1px solid var(--line);border-radius:999px;padding:0 14px;height:36px">EN<span style="font-size:9px">▼</span></summary><div class="pop"><a href="/parroting/iphone/" data-lang="zh-Hant" hreflang="zh-Hant">繁體中文</a><a href="/parroting/zh-Hans/iphone/" data-lang="zh-Hans" hreflang="zh-Hans">简体中文</a><a href="/parroting/en/iphone/" data-lang="en" hreflang="en">English</a></div></details>
+      <div class="pr-m"><details class="pr-menu"><summary aria-label="Menu" style="width:44px;height:44px;margin:0 -10px 0 -18px;display:flex;flex-direction:column;justify-content:center;align-items:center;gap:5px"><i style="display:block;width:20px;height:2px;background:var(--ink);border-radius:2px"></i><i style="display:block;width:20px;height:2px;background:var(--ink);border-radius:2px"></i></summary><div class="pop"><a href="/parroting/en/">Mac</a><a href="/parroting/en/iphone/">iPhone</a><a href="/parroting/en/iphone/guide/">Guides</a><a href="/parroting/en/blog/">Articles</a></div></details></div>
+    </div>
+  </header>
+  <main style="max-width:820px;margin:0 auto;padding:clamp(48px,7cqi,96px) clamp(20px,4cqi,56px) clamp(56px,7cqi,96px)">
+    <h1 style="margin:0 0 14px;font-size:clamp(34px,5cqi,56px);line-height:1.15;font-weight:900">How to use Parroting on iPhone</h1>
+    <p style="margin:0 0 36px;font-size:18px;line-height:1.7;color:var(--muted)">From turning on the keyboard to speaking and pasting, in ten minutes. The Mac guide is <a href="/parroting/en/guide">here</a>.</p>
+    <ol style="margin:0;padding:0;display:flex;flex-direction:column;gap:14px">
+    <li style="display:flex;gap:18px;background:var(--card);border:1px solid var(--line);border-radius:20px;padding:22px 24px;list-style:none">
+      <span style="flex:none;width:34px;height:34px;border-radius:50%;background:var(--leaf);color:#fff;font-weight:800;display:flex;align-items:center;justify-content:center;font-size:16px">1</span>
+      <div><h2 style="margin:2px 0 8px;font-size:19px;line-height:1.35">Open Parroting once</h2><p style="margin:0;font-size:16px;line-height:1.75;color:var(--muted)">After installing, open the Parroting app. The first run asks for the microphone, has you try a sentence, then turns on the keyboard. Follow it through and you are ready.</p></div>
+    </li>
+    <li style="display:flex;gap:18px;background:var(--card);border:1px solid var(--line);border-radius:20px;padding:22px 24px;list-style:none">
+      <span style="flex:none;width:34px;height:34px;border-radius:50%;background:var(--leaf);color:#fff;font-weight:800;display:flex;align-items:center;justify-content:center;font-size:16px">2</span>
+      <div><h2 style="margin:2px 0 8px;font-size:19px;line-height:1.35">Turn on the Parroting keyboard</h2><p style="margin:0;font-size:16px;line-height:1.75;color:var(--muted)">In iPhone Settings, go to General → Keyboard → Keyboards → Add New Keyboard and pick Parroting. Then tap Parroting and turn on Allow Full Access. The keyboard needs it to talk to the app and put text in the field; what you type is never collected. You can also follow the steps in Parroting under Settings → Turn on the Parroting keyboard.</p></div>
+    </li>
+    <li style="display:flex;gap:18px;background:var(--card);border:1px solid var(--line);border-radius:20px;padding:22px 24px;list-style:none">
+      <span style="flex:none;width:34px;height:34px;border-radius:50%;background:var(--leaf);color:#fff;font-weight:800;display:flex;align-items:center;justify-content:center;font-size:16px">3</span>
+      <div><h2 style="margin:2px 0 8px;font-size:19px;line-height:1.35">Speak to type</h2><p style="margin:0;font-size:16px;line-height:1.75;color:var(--muted)">In any text field, switch to Parroting with the globe key and tap the green mic. The first time, it jumps to Parroting to open the microphone; when you finish, go back to your app. Within the standby time you can tap again without jumping. Tap Done and the text lands in the field.</p></div>
+    </li>
+    <li style="display:flex;gap:18px;background:var(--card);border:1px solid var(--line);border-radius:20px;padding:22px 24px;list-style:none">
+      <span style="flex:none;width:34px;height:34px;border-radius:50%;background:var(--leaf);color:#fff;font-weight:800;display:flex;align-items:center;justify-content:center;font-size:16px">4</span>
+      <div><h2 style="margin:2px 0 8px;font-size:19px;line-height:1.35">The keys</h2><p style="margin:0;font-size:16px;line-height:1.75;color:var(--muted)">↶ ↷ undo and redo what was just pasted; ⌫ deletes; there are @ and Return. The bottom row holds punctuation: swipe it for more symbols, switch full-/half-width, and use ‹ › to move the cursor. You can also slide across a blank part of the keyboard to move the cursor.</p></div>
+    </li>
+    <li style="display:flex;gap:18px;background:var(--card);border:1px solid var(--line);border-radius:20px;padding:22px 24px;list-style:none">
+      <span style="flex:none;width:34px;height:34px;border-radius:50%;background:var(--leaf);color:#fff;font-weight:800;display:flex;align-items:center;justify-content:center;font-size:16px">5</span>
+      <div><h2 style="margin:2px 0 8px;font-size:19px;line-height:1.35">AI rewrite formats</h2><p style="margin:0;font-size:16px;line-height:1.75;color:var(--muted)">Pick a format at the top right of the keyboard, such as Tone fix, Email or Organized, and every dictation is rewritten before it is pasted. Tap the same format again to turn it off. Edit formats in Settings → Edit rewrite formats.</p></div>
+    </li>
+    <li style="display:flex;gap:18px;background:var(--card);border:1px solid var(--line);border-radius:20px;padding:22px 24px;list-style:none">
+      <span style="flex:none;width:34px;height:34px;border-radius:50%;background:var(--leaf);color:#fff;font-weight:800;display:flex;align-items:center;justify-content:center;font-size:16px">6</span>
+      <div><h2 style="margin:2px 0 8px;font-size:19px;line-height:1.35">Rewrite</h2><p style="margin:0;font-size:16px;line-height:1.75;color:var(--muted)">Select the text to change, or the take you just said, and open the Rewrite tab. Set the Length, Formality, Tone and Structure sliders, then tap Rewrite: the result replaces the text in the field. To adjust, set the sliders and tap Rewrite again; tap ↶ to get the original back.</p></div>
+    </li>
+    <li style="display:flex;gap:18px;background:var(--card);border:1px solid var(--line);border-radius:20px;padding:22px 24px;list-style:none">
+      <span style="flex:none;width:34px;height:34px;border-radius:50%;background:var(--leaf);color:#fff;font-weight:800;display:flex;align-items:center;justify-content:center;font-size:16px">7</span>
+      <div><h2 style="margin:2px 0 8px;font-size:19px;line-height:1.35">Translate</h2><p style="margin:0;font-size:16px;line-height:1.75;color:var(--muted)">Open the Translate tab and tap a language: the translation replaces the text in the field, and ↶ brings the original back. Choose your four languages in Settings → Translation languages.</p></div>
+    </li>
+    <li style="display:flex;gap:18px;background:var(--card);border:1px solid var(--line);border-radius:20px;padding:22px 24px;list-style:none">
+      <span style="flex:none;width:34px;height:34px;border-radius:50%;background:var(--leaf);color:#fff;font-weight:800;display:flex;align-items:center;justify-content:center;font-size:16px">8</span>
+      <div><h2 style="margin:2px 0 8px;font-size:19px;line-height:1.35">Dictionary and suggestions</h2><p style="margin:0;font-size:16px;line-height:1.75;color:var(--muted)">Add names, products and terms Parroting keeps getting wrong to the Dictionary, and recognition and the AI will prefer your spelling. Parroting also notices what you fix in the same field after a paste; when the same mishearing is fixed twice it becomes a suggestion, and at ten Home reminds you so you can add them in one tap.</p></div>
+    </li>
+    <li style="display:flex;gap:18px;background:var(--card);border:1px solid var(--line);border-radius:20px;padding:22px 24px;list-style:none">
+      <span style="flex:none;width:34px;height:34px;border-radius:50%;background:var(--leaf);color:#fff;font-weight:800;display:flex;align-items:center;justify-content:center;font-size:16px">9</span>
+      <div><h2 style="margin:2px 0 8px;font-size:19px;line-height:1.35">Settings</h2><p style="margin:0;font-size:16px;line-height:1.75;color:var(--muted)">AI source: Apple on-device, or your own API key. Recognition language follows the system and can be changed when you speak another language. Keyboard appearance can follow the app, or be light or dark. Report a problem from Settings if something goes wrong.</p></div>
+    </li>
+    </ol>
+    <section style="margin-top:40px;background:var(--mint);border-radius:20px;padding:22px 24px">
+      <h2 style="margin:0 0 8px;font-size:19px">More questions</h2>
+      <p style="margin:0;font-size:16px;line-height:1.75">See the FAQ on the <a href="/parroting/en/iphone/">iPhone page</a>, or write to us from the <a href="/parroting/en/support/">Support</a> page.</p>
+    </section>
+  </main>
+
+  <footer style="max-width:1280px;margin:0 auto;padding:0 clamp(20px,4cqi,56px) clamp(40px,5cqi,64px);display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px;font-size:14px;color:var(--muted)">
+    <span>© Parroting</span>
+    <div style="display:flex;gap:20px;flex-wrap:wrap"><a href="/parroting/en/" style="color:var(--muted)">Mac</a><a href="/parroting/en/iphone/" style="color:var(--muted)">iPhone</a><a href="/parroting/en/iphone/guide/" style="color:var(--muted)">Guides</a><a href="/parroting/en/blog/" style="color:var(--muted)">Articles</a><a href="/parroting/privacy/" style="color:var(--muted)">Privacy</a><a href="/parroting/support/" style="color:var(--muted)">Support</a></div>
+  </footer>
+
+  <div class="pr-bar" id="pr-bar">
+    <div style="position:sticky;bottom:0;z-index:20;display:flex;align-items:center;justify-content:space-between;gap:12px;padding:12px 16px calc(12px + env(safe-area-inset-bottom));background:var(--bar);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-top:1px solid var(--line)">
+      <div style="display:flex;align-items:center;gap:10px;min-width:0">
+        <img src="/parroting/assets/icon.png" alt="" style="width:40px;height:40px;border-radius:10px;flex:none">
+        <div style="display:flex;flex-direction:column;min-width:0"><b style="font-size:15px">Parroting</b><span style="font-size:12px;color:var(--muted)">US$4.99 once · iOS 26 or later</span></div>
+      </div>
+      <a href="https://apps.apple.com/app/id6828834904" style="display:block;line-height:0;flex:none"><img src="/parroting/assets/badges/download-on-the-app-store-en-us.svg" alt="Download on the App Store" style="height:44px;width:auto"></a>
+    </div>
+  </div>
+</div>
+<script>(function(){var bar=document.getElementById("pr-bar");if(bar){var on=function(){bar.classList.toggle("show",window.scrollY>560)};addEventListener("scroll",on,{passive:true});on()}
+var el=document.getElementById("pr-typer");if(el&&!matchMedia("(prefers-reduced-motion: reduce)").matches){var text=el.getAttribute("data-text"),i=text.length;el.textContent=text;var step=function(){if(i>=text.length){setTimeout(function(){i=0;el.textContent="";setTimeout(step,400)},4200);return}i+=1;el.textContent=text.slice(0,i);setTimeout(step,75)};addEventListener("load",function(){el.textContent=text;step()})}
+document.querySelectorAll("[data-lang]").forEach(function(a){a.addEventListener("click",function(){try{localStorage.setItem("parroting-language",a.getAttribute("data-lang"))}catch(e){}})});
+document.addEventListener("click",function(e){document.querySelectorAll("details.pr-menu[open]").forEach(function(d){if(!d.contains(e.target))d.removeAttribute("open")})})})();</script>
+</body></html>
