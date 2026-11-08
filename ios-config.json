@@ -1,0 +1,9 @@
+{
+ "minimumVersion": "1.0.0",
+ "message": {
+  "zh-Hant": "這個版本已經不能使用，更新到最新版就能繼續用。",
+  "zh-Hans": "这个版本已经不能使用，更新到最新版就能继续用。",
+  "en": "This version can no longer be used. Update to the latest version to keep going.",
+  "ja": "このバージョンは使用できなくなりました。最新版に更新すると引き続き使えます。"
+ }
+}
