@@ -38,6 +38,43 @@
   });
 })();
 
+// 非中文瀏覽器打開中文頁：頂端一條「English version →」提示，不自動跳轉
+// （John 2026-11-08；自動轉英文會讓 Google 爬蟲看不到中文頁）。選過語言或按過 ✕ 就不再出現。
+(() => {
+  if (window.PARROTING_LOCALE === 'en') return;
+  const browser = ((navigator.languages && navigator.languages[0]) || navigator.language || '').toLowerCase();
+  if (!browser || browser.startsWith('zh')) return;
+  const alt = document.querySelector('link[rel="alternate"][hreflang="en"]');
+  if (!alt) return;
+  let saved, dismissed;
+  try { saved = localStorage.getItem('parroting-language'); dismissed = localStorage.getItem('parroting-en-hint'); } catch (_) {}
+  if (saved || dismissed) return;
+  let href;
+  try { href = new URL(alt.getAttribute('href'), location.href).pathname + location.hash; } catch (_) { return; }
+  const bar = document.createElement('div');
+  bar.setAttribute('role', 'region');
+  bar.setAttribute('aria-label', 'Language');
+  bar.lang = 'en';
+  bar.style.cssText = 'display:flex;align-items:center;justify-content:center;gap:12px;flex-wrap:wrap;padding:10px 48px 10px 16px;' +
+    'background:#1F3A2B;color:#FFFFFF;font:600 15px/1.4 -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;position:relative;z-index:1000;text-align:center';
+  const text = document.createElement('span');
+  text.textContent = 'This page is also available in English.';
+  const link = document.createElement('a');
+  link.href = href;
+  link.textContent = 'English version →';
+  link.style.cssText = 'color:#1F3A2B;background:#FFFFFF;border-radius:999px;padding:5px 14px;text-decoration:none;font-weight:700';
+  link.addEventListener('click', () => { try { localStorage.setItem('parroting-language', 'en'); } catch (_) {} });
+  const close = document.createElement('button');
+  close.type = 'button';
+  close.setAttribute('aria-label', 'Dismiss');
+  close.textContent = '✕';
+  close.style.cssText = 'position:absolute;right:8px;top:50%;transform:translateY(-50%);width:36px;height:36px;border:0;border-radius:50%;' +
+    'background:transparent;color:#FFFFFF;font-size:16px;cursor:pointer';
+  close.addEventListener('click', () => { try { localStorage.setItem('parroting-en-hint', 'off'); } catch (_) {} bar.remove(); });
+  bar.append(text, link, close);
+  document.body.prepend(bar);
+})();
+
 document.querySelectorAll('[data-version]').forEach(el => { el.textContent = window.PARROTING_VERSION; });
 document.querySelectorAll('[data-size]').forEach(el => { el.textContent = window.PARROTING_SIZE; });
 
