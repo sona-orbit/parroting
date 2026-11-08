@@ -1,9 +1,9 @@
 (() => {
   // 英文只在使用者自己選過時才去；沒選過的人照瀏覽器語言，非中文一律留在繁中
   // （Google 爬蟲的語言是英文，這樣中文頁不會被導走）。
-  const supported = ['zh-Hant', 'zh-Hans', 'en'];
+  const supported = ['zh-Hant', 'zh-Hans', 'en', 'ja'];
   // 該語言沒有這一頁時，改去那個語言的首頁。
-  const missing = { en: ['architecture'] };
+  const missing = { en: ['architecture'], ja: ['model', 'guide', 'architecture', 'gemini-key', 'speech-models', 'rewrite-workflow', 'learning'] };
   const current = window.PARROTING_LOCALE;
   const named = { model: 'model', guide: 'guide', architecture: 'architecture', 'gemini-key': 'gemini-key', 'speech-models': 'speech-models', 'rewrite-workflow': 'rewrite-workflow', learning: 'learning', iphone: 'iphone/', 'iphone-guide': 'iphone/guide/', 'ai-cost': 'ai-cost/' };
   const pageId = window.PARROTING_PAGE || '';
@@ -11,7 +11,7 @@
   const page = named[pageId] || (pageId.startsWith('blog/') ? pageId : '');
   // Site root (…/parroting/), so pages at any depth build the same URLs.
   const root = new URL('../', (document.currentScript && document.currentScript.src) || location.href).href;
-  const target = (lang) => root + (lang === 'zh-Hant' ? '' : lang + '/') + ((missing[lang] || []).includes(page) ? '' : page);
+  const target = (lang) => root + (lang === 'zh-Hant' ? '' : lang + '/') + ((missing[lang] || []).includes(page) || (lang === 'ja' && page.startsWith('blog/')) ? '' : page);
   const selector = document.getElementById('language');
   let saved;
   try { saved = localStorage.getItem('parroting-language'); } catch (_) {}
@@ -38,39 +38,44 @@
   });
 })();
 
-// 非中文瀏覽器打開中文頁：頂端一條「English version →」提示，不自動跳轉
-// （John 2026-11-08；自動轉英文會讓 Google 爬蟲看不到中文頁）。選過語言或按過 ✕ 就不再出現。
+// 瀏覽器語言和這頁不同時，頂端一條提示（不自動跳轉，John 2026-11-08；自動轉會讓
+// Google 爬蟲看不到中文頁）：日文瀏覽器提示日本語版，其他非中文提示 English。
+// 選過語言或按過 ✕ 就不再出現。
 (() => {
-  if (window.PARROTING_LOCALE === 'en') return;
   const browser = ((navigator.languages && navigator.languages[0]) || navigator.language || '').toLowerCase();
   if (!browser || browser.startsWith('zh')) return;
-  const alt = document.querySelector('link[rel="alternate"][hreflang="en"]');
+  const want = browser.startsWith('ja') ? 'ja' : 'en';
+  if (window.PARROTING_LOCALE === want) return;
+  const alt = document.querySelector(`link[rel="alternate"][hreflang="${want}"]`);
   if (!alt) return;
   let saved, dismissed;
-  try { saved = localStorage.getItem('parroting-language'); dismissed = localStorage.getItem('parroting-en-hint'); } catch (_) {}
+  try { saved = localStorage.getItem('parroting-language'); dismissed = localStorage.getItem('parroting-' + want + '-hint') || (want === 'en' && localStorage.getItem('parroting-en-hint')); } catch (_) {}
   if (saved || dismissed) return;
   let href;
   try { href = new URL(alt.getAttribute('href'), location.href).pathname + location.hash; } catch (_) { return; }
+  const words = want === 'ja'
+    ? { text: 'このページは日本語でもご覧いただけます。', link: '日本語版 →', close: '閉じる' }
+    : { text: 'This page is also available in English.', link: 'English version →', close: 'Dismiss' };
   const bar = document.createElement('div');
   bar.setAttribute('role', 'region');
   bar.setAttribute('aria-label', 'Language');
-  bar.lang = 'en';
+  bar.lang = want;
   bar.style.cssText = 'display:flex;align-items:center;justify-content:center;gap:12px;flex-wrap:wrap;padding:10px 48px 10px 16px;' +
     'background:#1F3A2B;color:#FFFFFF;font:600 15px/1.4 -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;position:relative;z-index:1000;text-align:center';
   const text = document.createElement('span');
-  text.textContent = 'This page is also available in English.';
+  text.textContent = words.text;
   const link = document.createElement('a');
   link.href = href;
-  link.textContent = 'English version →';
+  link.textContent = words.link;
   link.style.cssText = 'color:#1F3A2B;background:#FFFFFF;border-radius:999px;padding:5px 14px;text-decoration:none;font-weight:700';
-  link.addEventListener('click', () => { try { localStorage.setItem('parroting-language', 'en'); } catch (_) {} });
+  link.addEventListener('click', () => { try { localStorage.setItem('parroting-language', want); } catch (_) {} });
   const close = document.createElement('button');
   close.type = 'button';
-  close.setAttribute('aria-label', 'Dismiss');
+  close.setAttribute('aria-label', words.close);
   close.textContent = '✕';
   close.style.cssText = 'position:absolute;right:8px;top:50%;transform:translateY(-50%);width:36px;height:36px;border:0;border-radius:50%;' +
     'background:transparent;color:#FFFFFF;font-size:16px;cursor:pointer';
-  close.addEventListener('click', () => { try { localStorage.setItem('parroting-en-hint', 'off'); } catch (_) {} bar.remove(); });
+  close.addEventListener('click', () => { try { localStorage.setItem('parroting-' + want + '-hint', 'off'); } catch (_) {} bar.remove(); });
   bar.append(text, link, close);
   document.body.prepend(bar);
 })();
