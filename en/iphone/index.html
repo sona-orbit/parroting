@@ -141,7 +141,7 @@ a{text-decoration:none}
     <div style="display:flex;flex-direction:column;align-items:center;gap:14px;text-align:center;margin-bottom:clamp(48px,6cqi,96px)">
       <img src="/parroting/assets/iphone/bird.svg" alt="" style="width:56px;height:56px">
       <h2 style="margin:0;font-size:clamp(38px,5cqi,72px);font-weight:900;line-height:1.15">Done talking, done writing</h2>
-      <p style="margin:0;font-size:clamp(16px,1.4cqi,20px);color:var(--muted);max-width:600px;text-wrap:pretty">While you talk, the keyboard shows two buttons: “Done” pastes what you said; the colored one tidies it up in your chosen rewrite style first.</p>
+      <p style="margin:0;font-size:clamp(16px,1.4cqi,20px);color:var(--muted);max-width:600px;text-wrap:pretty">While you talk, the keyboard shows two buttons: “Done” pastes what you said; the colored one tidies it up in your chosen rewrite format first. Edit or delete the formats, or add your own; in Parroting’s “Rewrite formats”, say something once, compare what each format makes of it, then pick the ones for the keyboard.</p>
     </div>
     <div style="display:flex;flex-direction:column;gap:clamp(56px,6cqi,104px)">
 
@@ -256,7 +256,7 @@ a{text-decoration:none}
       <div style="flex:1 1 300px;display:flex;flex-direction:column;gap:14px">
         <span style="align-self:flex-start;font-size:13px;font-weight:700;color:var(--f1-ink);background:var(--f1-pill);border-radius:999px;padding:4px 12px">Rewrite sliders</span>
         <h3 style="margin:0;font-size:clamp(30px,3.3cqi,48px);font-weight:900;line-height:1.2;text-wrap:balance">Four sliders, set just right</h3>
-        <p style="margin:0;font-size:clamp(16px,1.3cqi,18px);line-height:1.7;color:var(--muted);max-width:400px;text-wrap:pretty">Select text, adjust length, formality, tone and lists, then tap Rewrite; the result replaces the text in the field.</p>
+        <p style="margin:0;font-size:clamp(16px,1.3cqi,18px);line-height:1.7;color:var(--muted);max-width:400px;text-wrap:pretty">Select text (or what you just said), adjust length, formality, tone and lists, then tap Rewrite; the result replaces the text in the field and the keyboard flashes to tell you. Japanese or English stays in its own language.</p>
       </div>
       <div style="flex:2 1 360px;min-width:0;border-radius:32px;overflow:hidden;background:radial-gradient(55% 65% at 85% 20%,var(--f1-a),transparent 70%),radial-gradient(50% 60% at 10% 85%,var(--f4-a),transparent 72%),var(--f1-base);display:flex;align-items:center;justify-content:center;padding:clamp(18px,3.4cqi,48px)">
         <div style="width:100%;max-width:640px;display:flex;flex-direction:column">
@@ -487,8 +487,12 @@ a{text-decoration:none}
           <p style="margin:12px 0 0;font-size:16px;line-height:1.75;color:var(--muted)">No. Pay once, and all future updates are included. With your own API key, the AI service bills you directly (Gemini has a free tier).</p>
         </details>
         <details style="background:var(--card);border:1px solid var(--line);border-radius:22px;padding:20px 24px">
+          <summary style="cursor:pointer;font-size:clamp(17px,1.4cqi,19px);font-weight:800;line-height:1.5">What are fun reports?</summary>
+          <p style="margin:12px 0 0;font-size:16px;line-height:1.75;color:var(--muted)">A weekly report every Monday and a monthly one on the 1st: how much you said, your favorite filler words, words often misheard, the rewrite formats you used. With AI set up, it adds what you talked about, a line worth keeping and a free-form note. When one is ready, the bird on the keyboard gets a purple dot. The iPhone and the Mac each report on their own; with your own API key, Parroting asks before your history goes to the AI.</p>
+        </details>
+        <details style="background:var(--card);border:1px solid var(--line);border-radius:22px;padding:20px 24px">
           <summary style="cursor:pointer;font-size:clamp(17px,1.4cqi,19px);font-weight:800;line-height:1.5">How does it relate to the Mac app?</summary>
-          <p style="margin:12px 0 0;font-size:16px;line-height:1.75;color:var(--muted)">The Mac app is free. With iCloud Drive on, your dictionary, rewrite styles and history are shared between Mac and iPhone.</p>
+          <p style="margin:12px 0 0;font-size:16px;line-height:1.75;color:var(--muted)">The Mac app is free. With iCloud Drive on, your dictionary, rewrite formats and history are shared between Mac and iPhone; edit or delete a format on one and the other follows.</p>
         </details>
       </div>
     </div>
