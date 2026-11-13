@@ -1,0 +1,75 @@
+<!doctype html><html lang="zh-Hans"><head><meta charset="utf-8"><script async src="https://www.googletagmanager.com/gtag/js?id=G-FJGRNJFB15"></script><script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag("js",new Date());gtag("config","G-FJGRNJFB15");document.addEventListener("click",function(e){var a=e.target.closest&&e.target.closest("a[href]");if(!a)return;var h=a.href;if(/\/releases\/.*\/download\/|\.dmg(\?|$)|apps\.apple\.com\/|testflight\.apple\.com\//.test(h)){gtag("event","download_click",{link_url:h,link_text:(a.textContent||"").trim().slice(0,60)});}},true);</script><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="color-scheme" content="light dark"><meta name="apple-itunes-app" content="app-id=6828834904"><title>用语音输入写程序：对 Claude Code、Cursor、Codex 口述 Prompt 的设置与排障 | 学舌鸟</title><meta name="description" content="在 Mac 上对 Claude Code、Cursor、Codex 用讲的写 Prompt：中英夹杂的技术名词怎么识别准、边想边讲的改口怎么免费整理，以及贴不进去、快捷键冲突、蓝牙耳机漏字的排障做法。"><link rel="canonical" href="https://sona-orbit.github.io/parroting/zh-Hans/blog/voice-typing-for-coding/"><link rel="alternate" hreflang="zh-Hant" href="https://sona-orbit.github.io/parroting/blog/voice-typing-for-coding/"><link rel="alternate" hreflang="zh-Hans" href="https://sona-orbit.github.io/parroting/zh-Hans/blog/voice-typing-for-coding/"><link rel="alternate" hreflang="en" href="https://sona-orbit.github.io/parroting/en/blog/voice-typing-for-coding/"><link rel="alternate" hreflang="x-default" href="https://sona-orbit.github.io/parroting/blog/voice-typing-for-coding/"><meta property="og:type" content="article"><meta property="og:title" content="用语音输入写程序：对 Claude Code、Cursor、Codex 口述 Prompt 的设置与排障 | 学舌鸟"><meta property="og:description" content="在 Mac 上对 Claude Code、Cursor、Codex 用讲的写 Prompt：中英夹杂的技术名词怎么识别准、边想边讲的改口怎么免费整理，以及贴不进去、快捷键冲突、蓝牙耳机漏字的排障做法。"><meta property="og:url" content="https://sona-orbit.github.io/parroting/zh-Hans/blog/voice-typing-for-coding/"><meta property="og:image" content="https://sona-orbit.github.io/parroting/assets/blog/voice-typing-for-coding/hero.jpg"><link rel="stylesheet" href="../../../assets/style.css?v=14"><link rel="stylesheet" href="../../../assets/blog.css?v=7"><link rel="icon" href="../../../assets/favicon.png"><script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "用语音输入写程序：对 Claude Code、Cursor、Codex 口述 Prompt 的设置与排障", "description": "在 Mac 上对 Claude Code、Cursor、Codex 用讲的写 Prompt：中英夹杂的技术名词怎么识别准、边想边讲的改口怎么免费整理，以及贴不进去、快捷键冲突、蓝牙耳机漏字的排障做法。", "inLanguage": "zh-Hans", "datePublished": "2026-11-14", "dateModified": "2026-11-14", "mainEntityOfPage": "https://sona-orbit.github.io/parroting/zh-Hans/blog/voice-typing-for-coding/", "author": {"@type": "Person", "name": "Sona Orbit", "jobTitle": "Independent developer"}, "publisher": {"@type": "Organization", "name": "Sona Orbit"}, "image": "https://sona-orbit.github.io/parroting/assets/blog/voice-typing-for-coding/hero.jpg"}</script><script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "inLanguage": "zh-Hans", "mainEntity": [{"@type": "Question", "name": "对 Claude Code 或 Cursor 讲话，我的程序码或声音会被传出去吗？", "acceptedAnswer": {"@type": "Answer", "text": "录音和语音识别都在你的 Mac 上，声音不上传。只有你开了 AI 整理或改写时，识别出来的那段文字才会直接送到你选的 AI 服务，不经过我；选 Apple Intelligence 的话，文字也不离开 Mac。"}}, {"@type": "Question", "name": "已经有 OpenAI、Anthropic、OpenRouter 的 key，或自己在本机跑模型，可以接吗？", "acceptedAnswer": {"@type": "Answer", "text": "可以。AI 服务除了 Gemini 和 Apple Intelligence，也支持 OpenAI、Anthropic、Groq、OpenRouter 和自订端点。自己架的本机模型只要提供相容的端点，填上地址和模型 ID 就能用。"}}, {"@type": "Question", "name": "写程序时需要开语气提醒吗？", "acceptedAnswer": {"@type": "Answer", "text": "对 AI 下指令通常不需要。提醒出现时可以点“这个 App 不提醒”，终端和 IDE 就不会再跳；切回 Slack、LINE 或 Mail 回同事和客户时，本机的语气模型照样会提醒。"}}, {"@type": "Question", "name": "没有右边的 ⌥ 或 ⌘ 的外接键盘怎么办？", "acceptedAnswer": {"@type": "Answer", "text": "到“设置 → 说话 → 快捷键”换成你方便按的组合。"}}]}</script><script>window.PARROTING_PAGE='blog/voice-typing-for-coding/';window.PARROTING_LOCALE='zh-Hans';</script><script defer src="../../../assets/site.js?v=17"></script></head><body><header class="site-header"><div class="wrap nav"><a class="brand" href="../../"><img src="../../../assets/icon.png" alt="">学舌鸟</a><nav class="nav-links" aria-label="Main"><a href="../../">首页</a><a href="../../model">语气模型</a><a href="../../architecture">运作方式</a><a href="../../guide">教程</a><a href="../../blog/" aria-current="page">文章</a><a href="/parroting/zh-Hans/iphone/">iPhone 版</a></nav><div class="nav-actions"><button class="app-btn" type="button" popovertarget="get-iphone"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><rect x="7" y="2.5" width="10" height="19" rx="2.5"></rect><path d="M11 18.5h2"></path></svg>iPhone App</button><div class="app-pop" id="get-iphone" popover><img class="qr" src="/parroting/assets/iphone/qr.svg" alt="扫描下载学舌鸟的二维码" width="168" height="168"><b>用 iPhone 相机扫描</b><small>学舌鸟 iPhone 键盘 · ¥38 买断<br>词典和改写格式跟 Mac 共用</small><a class="store-badge" href="https://apps.apple.com/app/id6828834904"><img src="/parroting/assets/badges/download-on-the-app-store-zh-cn.svg" alt="在 App Store 下载" height="40"></a><a class="inline-link" href="/parroting/zh-Hans/iphone/">看 iPhone 版介绍 →</a></div><label><span class="sr-only">语言</span><select class="lang" id="language" aria-label="语言"><option value="zh-Hant">繁體中文</option><option value="zh-Hans" selected>简体中文</option><option value="en">English</option><option value="ja">日本語</option></select></label><a class="button small" href="https://github.com/sona-orbit/parroting-releases/releases/latest/download/Parroting-macos-arm64.dmg">免费下载</a></div></div></header><main class="blog-shell"><p class="eyebrow">Parroting Journal · 文章</p><h1>用语音输入写程序：对 Claude Code、Cursor、Codex 口述 Prompt 的设置与排障</h1><p class="blog-intro">用 Claude Code、Cursor 或 Codex 写程序时，花最多时间的常常不是写语法，而是把需求、边界条件和修改方向完整交代给 AI。用讲的比打字快，但工程师一开始用语音输入，很快会遇到四个问题：英文术语被听成中文同音字、边想边讲的改口全被贴进去、想整理口语却要付月费，还有切换窗口时字贴错地方。这篇整理我自己在 Mac 上用学舌鸟对 AI 写程序工具口述的设置和排障做法。</p><p class="blog-meta"><time datetime="2026-11-14">2026-11-14</time> · 约 7 分钟阅读</p><div class="blog-languages"><a href="https://sona-orbit.github.io/parroting/blog/voice-typing-for-coding/">繁體中文</a><a href="https://sona-orbit.github.io/parroting/en/blog/voice-typing-for-coding/">English</a><a href="https://sona-orbit.github.io/parroting/zh-Hans/blog/voice-typing-for-coding/">简体中文</a></div><figure class="blog-illus is-hero"><img src="../../../assets/blog/voice-typing-for-coding/hero.webp" alt="鹦鹉坐在屏幕前对著麦克风说话，屏幕上的程序码一行行出现" width="600" height="400" loading="eager" decoding="async"></figure><nav class="blog-toc"><strong>文章目录</strong><ol><li><a href="#part-1">先看结论：写程序用的语音输入怎么选</a></li><li><a href="#part-2">中英夹杂的技术名词怎么识别准</a></li><li><a href="#part-3">边想边讲的改口，怎么免费整理</a></li><li><a href="#part-4">两种操作节奏：按住说话、轻按持续听</a></li><li><a href="#part-5">常见排障：贴不进去、快捷键冲突、蓝牙耳机漏字</a></li><li><a href="#part-6">常见问题</a></li></ol></nav><article class="blog-article"><p class="blog-note">我是 Sona Orbit，一个人开发学舌鸟的独立开发者。学舌鸟是我做的免费 Mac 语音输入工具，Mac 版以开源的 <a href="https://github.com/cjpais/Handy" rel="noopener">Handy</a>（MIT 授权）为基础。文中功能与选单名称以学舌鸟 0.4.19 为准；其他工具的价格沿用我 10 月 31 日查证的<a href="../typeless-alternatives/">Typeless 替代方案比较</a>，各家常会调整，请以官网为准。</p>
+
+<section id="part-1"><h2>1. 先看结论：写程序用的语音输入怎么选</h2>
+<p>对 AI 写程序工具讲话，跟回消息不太一样：句子里一定夹著英文术语、项目名称和指令，而且常常边想边讲、讲到一半改口。挑工具时可以先看这四条路：</p>
+<table class="blog-table">
+<thead><tr><th>路线</th><th>代表</th><th>语音识别在哪</th><th>去赘字、改口</th><th>费用</th></tr></thead>
+<tbody>
+<tr><td>本机识别＋自选 AI</td><td>学舌鸟、Handy、VoiceInk</td><td>Mac 本机</td><td>接自己选的 AI 服务（学舌鸟也可以选 Apple Intelligence）</td><td>学舌鸟、Handy 免费；VoiceInk 买断 25 美元起</td></tr>
+<tr><td>云端订阅</td><td>Wispr Flow、Typeless</td><td>云端</td><td>内建</td><td>免费版每周约 2,000 字；Pro 每月约 15～30 美元</td></tr>
+<tr><td>本机模型＋付费功能</td><td>Superwhisper</td><td>本机或云端</td><td>自订模式</td><td>每月 8.49 美元起，终身 249.99 美元</td></tr>
+<tr><td>系统内建</td><td>macOS 听写</td><td>部分语言在本机；华语（台湾）不在苹果的本机清单</td><td>没有，逐字输出</td><td>免费</td></tr>
+</tbody></table>
+<p>每天跟 AI 讲几千字的话，免费版每周约 2,000 字的上限很快就会用完。学舌鸟的识别在本机、没有字数上限；要整理口语才需要接 AI 服务，可以用 Apple Intelligence 或免费的 Gemini key。各工具更完整的比较，请看<a href="../typeless-alternatives/">Typeless 替代方案</a>那篇。</p></section>
+
+<section id="part-2"><h2>2. 中英夹杂的技术名词怎么识别准</h2>
+<p>写程序时讲话一定中英夹杂：“帮我看一下 webhook 那支 handler，为什么收到 payload 之后没有写进 Redis？”要让这种句子一次打对，分两步设置。</p>
+<h3>第一步：选语音模型</h3>
+<p>在“设置 → 说话 → 语音模型与语言”选模型，按“管理模型”可以下载别的。三个起点：</p>
+<ul>
+<li><b>SenseVoice Small（约 250 MB）：</b>最快，学舌鸟标“推荐”的就是它，旧一点的 Mac 也跑得顺。</li>
+<li><b>Qwen3-ASR：</b>中文错字最少的一组，1.7B 约 1.5 GB、比较慢；0.6B 是折衷。</li>
+<li><b>Breeze-ASR-25：</b>联发科创新基地（MediaTek Research）针对台湾华语和中英夹杂调过，最慢，但比较懂台湾说法。</li>
+</ul>
+<p>学舌鸟的“中文排版”会在中文句子里补全形标点、在中英文之间加空格，繁简照你的设置，英文术语前后不用自己补空格。各模型的大小、速度和中文错字率，可以看<a href="../mac-local-asr-models/">Mac 本机语音识别模型比较</a>。不确定哪个适合你的口音，可以用“个人化训练”里的“朗读录音”：一轮 10 句、约 2 分钟，念完会告诉你错字率，换个模型再念一轮就能比。</p>
+<h3>第二步：用词典钉住项目名称和缩写</h3>
+<p>再大的通用模型，也不认识你自己取的项目代号或刚出来的工具名。学舌鸟的词典是在识别完之后再修正，换模型也照样有效。</p>
+<ol>
+<li><b>改一次，下一句就记住：</b>贴上之后你把听错的字改对（例如把“Jmini”改成“Gemini”），学舌鸟会记下“原文 → 改后”，放进“个人化训练”等你确认。按“加入词典”，下一句就生效。</li>
+<li><b>重写一整句不会污染词典：</b>学舌鸟用读音判断哪些是听错、哪些只是你事后换了说法。换说法的不会进词典，也不会拿去训练；判断错可以改。</li>
+<li><b>一次导入整批术语：</b>在“设置 → 词典与纪录 → 词典”可以按“新增”，也可以导入 CSV（第一栏正确写法、第二栏错法），把数据表名、服务名称一次放进去。开了 AI 整理时，词典也会一起交给 AI，避免整理时又把专有名词改错。</li>
+</ol>
+<figure class="blog-illus"><img src="../../../assets/blog/voice-typing-for-coding/terms.webp" alt="鹦鹉在一本小词典上把一个标签改正，旁边的屏幕显示程序码" width="600" height="400" loading="lazy" decoding="async"></figure></section>
+
+<section id="part-3"><h2>3. 边想边讲的改口，怎么免费整理</h2>
+<p>对 AI 讲复杂的修改时，很少人能一次讲得很顺。实际上常常是这样：</p>
+<blockquote>“呃，帮我把那个 login 的 API 改成……不对，先不要改 login，先去检查 middleware 里面的 token 验证，过期的话回传 401，然后顺便记一笔 log。”</blockquote>
+<p>照原话贴进去，你还得自己删掉“呃、不对、先不要改 login”。学舌鸟的“AI 整理口语”会拿掉赘词和讲到一半的改口再贴上，只整理、不加你没说的内容。没设置 AI 时，会改用本机规则做基本整理。</p>
+<p>不想为这个功能付月费，有两种免费做法：</p>
+<ul>
+<li><b>Apple Intelligence：</b>在“AI 服务”选 Apple Intelligence，不用申请 key，文字也不离开 Mac。需要 macOS Tahoe（26）以上的 Apple 芯片 Mac，并在系统设置里开启 Apple Intelligence。</li>
+<li><b>免费的 Gemini API key：</b>照<a href="../../gemini-key">三分钟申请教学</a>到 Google AI Studio 申请，不用绑信用卡。免费版每分钟、每天都有次数上限，一般听写和改写通常够用；超过时学舌鸟会先贴上本机整理的版本，不会卡住你打字。依 Google 的说明，免费版送出的内容可能被用来改善 Google 的产品，常讲工作机密的话可以改用付费方案或 Apple Intelligence。</li>
+</ul>
+<p>想让每次口述都整理成条列，可以在改写面板选“条理分明”并打开“自动取代”，之后面板关著也会直接贴上整理好的版本。费用细节可以看<a href="../../ai-cost/">用自己的 API key 要花多少钱</a>。</p>
+<figure class="blog-illus"><img src="../../../assets/blog/voice-typing-for-coding/cleanup.webp" alt="鹦鹉把一团乱掉的纸条整理成一叠整齐的卡片" width="600" height="400" loading="lazy" decoding="async"></figure></section>
+
+<section id="part-4"><h2>4. 两种操作节奏：按住说话、轻按持续听</h2>
+<p>默认快捷键是右手大拇指就按得到的 <b>右 ⌥ ＋ 右 ⌘</b>，有两种用法：</p>
+<ol>
+<li><b>短指令，按住说话：</b>光标停在 Cursor、Claude Code 的终端或 commit 消息框，按住快捷键说话，放开就贴到光标位置。讲到一半不想送出，按 Esc 取消。</li>
+<li><b>长段口述，轻按持续听：</b>要边看程序码边口述一整段重构计划时，轻按一下快捷键（0.3 秒内放开），浮窗会留在画面上一直听，每次停顿就先整理贴上一段；讲完再按一下结束。过程中可以切换 App，文字会贴到你最后在输入的栏位。</li>
+</ol></section>
+
+<section id="part-5"><h2>5. 常见排障：贴不进去、快捷键冲突、蓝牙耳机漏字</h2>
+<p>工程师的桌面通常比较复杂：外接屏幕、好几个终端、IDE、Raycast、Karabiner-Elements。遇到问题可以照这样查：</p>
+<h3>有识别出文字，但没有贴进 Cursor 或终端</h3>
+<ul>
+<li><b>辅助使用权限：</b>学舌鸟要有“辅助使用”权限才能把文字贴进别的 App。到“系统设置 → 隐私权与安全性 → 辅助使用”确认学舌鸟有开；刚更新完突然贴不进去，先把开关关掉再打开一次。</li>
+<li><b>App 没回报光标位置：</b>Codex 和其他 Chromium 架构的 App 有时不回报光标在哪。0.4.14 起，学舌鸟会再问一下，还是不回报就照样贴上，并把文字留在剪贴板，万一没贴进去可以自己贴。请先更新到最新版。</li>
+<li><b>光标不在输入框：</b>焦点停在按钮或清单上时不会贴。文字不会不见，打开“历史纪录”就能复制刚才那句。</li>
+</ul>
+<h3>按快捷键没反应，或触发了别的软件</h3>
+<p>Raycast、Alfred、Karabiner-Elements 或 Hyper Key 设置，可能占用了右边的修饰键。到“设置 → 说话 → 快捷键”换成没被占用的组合。选单列出现“快捷键被 Secure Input 阻挡”时，是某个 App（常见是密码栏位或终端的安全输入）暂时锁住了键盘，离开那个栏位就会恢复。</p>
+<h3>戴 AirPods 时前两个字没录到、音乐变闷</h3>
+<p>这是 macOS 用蓝牙耳机麦克风时的通病：开始录音要先切换蓝牙通道，常常漏掉开头，耳机里的音乐也会暂时变成低音质。坐在桌前的话，到“设置 → 说话”把麦克风固定选 Mac 内建或桌上的 USB 麦克风，让 AirPods 只负责听，开头就不容易漏字。</p>
+<figure class="blog-illus"><img src="../../../assets/blog/voice-typing-for-coding/fix.webp" alt="鹦鹉拿著小扳手，在桌上把一条键盘线重新接好" width="600" height="400" loading="lazy" decoding="async"></figure></section>
+
+<section id="part-6"><h2>6. 常见问题</h2>
+<div class="blog-faq">
+<h3>对 Claude Code 或 Cursor 讲话，我的程序码或声音会被传出去吗？</h3><p>录音和语音识别都在你的 Mac 上，声音不上传。只有你开了 AI 整理或改写时，识别出来的那段文字才会直接送到你选的 AI 服务，不经过我；选 Apple Intelligence 的话，文字也不离开 Mac。</p>
+<h3>已经有 OpenAI、Anthropic、OpenRouter 的 key，或自己在本机跑模型，可以接吗？</h3><p>可以。AI 服务除了 Gemini 和 Apple Intelligence，也支持 OpenAI、Anthropic、Groq、OpenRouter 和自订端点。自己架的本机模型只要提供相容的端点，填上地址和模型 ID 就能用。</p>
+<h3>写程序时需要开语气提醒吗？</h3><p>对 AI 下指令通常不需要。提醒出现时可以点“这个 App 不提醒”，终端和 IDE 就不会再跳；切回 Slack、LINE 或 Mail 回同事和客户时，本机的语气模型照样会提醒。</p>
+<h3>没有右边的 ⌥ 或 ⌘ 的外接键盘怎么办？</h3><p>到“设置 → 说话 → 快捷键”换成你方便按的组合。</p>
+</div></section>
+
+<p>延伸阅读：<a href="../mac-local-asr-models/">Mac 本机语音识别模型怎么选</a>、<a href="../voice-typing-accuracy/">语音输入错字怎么修</a>、<a href="../typeless-alternatives/">Typeless 替代方案比较</a>。</p></article><aside class="blog-cta"><h2>试试学舌鸟</h2><p>Apple 芯片 · macOS 11 以上 · 免费</p><a href="https://github.com/sona-orbit/parroting-releases/releases/latest/download/Parroting-macos-arm64.dmg" class="button">免费下载 Mac 版</a></aside><p class="blog-back"><a href="../">← 返回文章列表</a></p></main><footer class="footer"><div class="wrap"><span>© 学舌鸟 Parroting</span><span><a href="../../">首页</a> · <a href="../../model">语气模型</a> · <a href="../../architecture">运作方式</a> · <a href="../../guide">教程</a> · <a href="../../blog/">文章</a></span><span class="credit"><a href="../../speech-models">语音识别模型与许可</a> · Mac 版基于 <a href="https://github.com/cjpais/Handy" rel="noopener">Handy</a>（MIT 许可）</span></div></footer></body></html>
