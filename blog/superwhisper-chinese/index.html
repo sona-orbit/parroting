@@ -1,0 +1,89 @@
+<!doctype html><html lang="zh-Hant"><head><meta charset="utf-8"><script async src="https://www.googletagmanager.com/gtag/js?id=G-FJGRNJFB15"></script><script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag("js",new Date());gtag("config","G-FJGRNJFB15");document.addEventListener("click",function(e){var a=e.target.closest&&e.target.closest("a[href]");if(!a)return;var h=a.href;if(/\/releases\/.*\/download\/|\.dmg(\?|$)|apps\.apple\.com\/|testflight\.apple\.com\//.test(h)){gtag("event","download_click",{link_url:h,link_text:(a.textContent||"").trim().slice(0,60)});}},true);</script><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="text-scale" content="scale"><meta name="theme-color" content="#f7f8f5" media="(prefers-color-scheme: light)"><meta name="theme-color" content="#101813" media="(prefers-color-scheme: dark)"><script type="speculationrules">{"prerender":[{"where":{"and":[{"href_matches":"/parroting/*"},{"not":{"selector_matches":"[download],[target=_blank],.no-prerender"}}]},"eagerness":"moderate"}]}</script><meta name="color-scheme" content="light dark"><meta name="apple-itunes-app" content="app-id=6828834904"><title>superwhisper 中文怎麼設定？語言、模型挑選與繁體輸出 | 學舌鳥</title><meta name="description" content="superwhisper 說中文卻出英文、出簡體？照官方文件整理：在模式裡把語言從 Automatic 改成中文、免費方案能用哪些支援中文的模型、繁體選項在哪、中英夾雜怎麼設，以及其他可以比較的選擇。"><link rel="canonical" href="https://sona-orbit.github.io/parroting/blog/superwhisper-chinese/"><link rel="alternate" hreflang="zh-Hant" href="https://sona-orbit.github.io/parroting/blog/superwhisper-chinese/"><link rel="alternate" hreflang="zh-Hans" href="https://sona-orbit.github.io/parroting/zh-Hans/blog/superwhisper-chinese/"><link rel="alternate" hreflang="en" href="https://sona-orbit.github.io/parroting/en/blog/superwhisper-chinese/"><link rel="alternate" hreflang="x-default" href="https://sona-orbit.github.io/parroting/blog/superwhisper-chinese/"><meta property="og:type" content="article"><meta property="og:title" content="superwhisper 中文怎麼設定？語言、模型挑選與繁體輸出 | 學舌鳥"><meta property="og:description" content="superwhisper 說中文卻出英文、出簡體？照官方文件整理：在模式裡把語言從 Automatic 改成中文、免費方案能用哪些支援中文的模型、繁體選項在哪、中英夾雜怎麼設，以及其他可以比較的選擇。"><meta property="og:url" content="https://sona-orbit.github.io/parroting/blog/superwhisper-chinese/"><meta property="og:image" content="https://sona-orbit.github.io/parroting/assets/blog/superwhisper-chinese/hero.jpg"><link rel="stylesheet" href="../../assets/style.css?v=15"><link rel="stylesheet" href="../../assets/blog.css?v=8"><link rel="icon" href="../../assets/favicon.png"><script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "superwhisper 中文怎麼設定？語言、模型挑選與繁體輸出", "description": "superwhisper 說中文卻出英文、出簡體？照官方文件整理：在模式裡把語言從 Automatic 改成中文、免費方案能用哪些支援中文的模型、繁體選項在哪、中英夾雜怎麼設，以及其他可以比較的選擇。", "inLanguage": "zh-Hant", "datePublished": "2026-11-17", "dateModified": "2026-11-17", "mainEntityOfPage": "https://sona-orbit.github.io/parroting/blog/superwhisper-chinese/", "author": {"@type": "Person", "name": "Sona Orbit", "jobTitle": "Independent developer"}, "publisher": {"@type": "Organization", "name": "Sona Orbit"}, "image": "https://sona-orbit.github.io/parroting/assets/blog/superwhisper-chinese/hero.jpg"}</script><script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "inLanguage": "zh-Hant", "mainEntity": [{"@type": "Question", "name": "superwhisper 支援中文嗎？", "acceptedAnswer": {"@type": "Answer", "text": "支援。官方文件寫到，多語言的 Whisper 模型與雲端的 S1-Voice 支援 100 種以上語言，本機的 Cohere Transcribe 支援的 14 種語言裡也有中文，另外還有一個只辨識中文的 Whisper Large v3 Turbo (Chinese)。"}}, {"@type": "Question", "name": "superwhisper 說中文為什麼變成英文？", "acceptedAnswer": {"@type": "Answer", "text": "通常是語言設成 Automatic，模型猜錯語言。官方建議編輯模式，把 Language 改成固定的中文。一定要用 Automatic 的話，可以在 Settings → Vocabulary 用中文加一句提示，告訴它也可能出現中文。"}}, {"@type": "Question", "name": "superwhisper 可以輸出繁體中文嗎？", "acceptedAnswer": {"@type": "Answer", "text": "更新紀錄在 2025 年 4 月與 5 月提到 Whisper 模型加入了繁體中文的語言選項，當時標為實驗性。還是出簡體的話，可以在 Custom 模式的 AI 指令要求輸出台灣繁體。"}}, {"@type": "Question", "name": "免費版能用中文嗎？", "acceptedAnswer": {"@type": "Answer", "text": "可以。官網寫免費方案可以無限使用 Whisper 模型，包含中文專用的 Whisper Large v3 Turbo (Chinese)。Cohere Transcribe、雲端模型要 Pro。"}}, {"@type": "Question", "name": "superwhisper 的中文辨識會上傳聲音嗎？", "acceptedAnswer": {"@type": "Answer", "text": "看你選的模型。官方文件說本機模型的聲音不會離開裝置、可以離線用；雲端模型在伺服器上處理，採零資料保留政策。"}}]}</script><script>window.PARROTING_PAGE='blog/superwhisper-chinese/';window.PARROTING_LOCALE='zh-Hant';</script><script defer src="../../assets/site.js?v=17"></script></head><body><header class="site-header"><div class="wrap nav"><a class="brand" href="../../"><img src="../../assets/icon-192.webp" alt="" width="34" height="34">學舌鳥</a><nav class="nav-links" aria-label="Main"><a href="../../">首頁</a><a href="../../model">語氣模型</a><a href="../../architecture">運作方式</a><a href="../../guide">教學</a><a href="../../blog/" aria-current="page">文章</a><a href="/parroting/iphone/">iPhone 版</a></nav><div class="nav-actions"><button class="app-btn" type="button" popovertarget="get-iphone"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><rect x="7" y="2.5" width="10" height="19" rx="2.5"></rect><path d="M11 18.5h2"></path></svg>iPhone App</button><div class="app-pop" id="get-iphone" popover><img class="qr" src="/parroting/assets/iphone/qr.svg" alt="掃描下載學舌鳥的 QR code" width="168" height="168"><b>用 iPhone 相機掃描</b><small>學舌鳥 iPhone 鍵盤 · NT$150 買斷<br>詞典和改寫格式跟 Mac 共用</small><a class="store-badge" href="https://apps.apple.com/app/id6828834904"><img src="/parroting/assets/badges/download-on-the-app-store-zh-tw.svg" alt="在 App Store 下載" width="109" height="40"></a><a class="inline-link" href="/parroting/iphone/">看 iPhone 版介紹 →</a></div><label><span class="sr-only">語言</span><select class="lang" id="language" aria-label="語言"><option value="zh-Hant" selected>繁體中文</option><option value="zh-Hans">简体中文</option><option value="en">English</option><option value="ja">日本語</option></select></label><a class="button small" href="https://github.com/sona-orbit/parroting-releases/releases/latest/download/Parroting-macos-arm64.dmg">免費下載</a></div></div></header><main class="blog-shell"><p class="eyebrow">Parroting Journal · 文章</p><h1>superwhisper 中文怎麼設定？語言、模型挑選與繁體輸出</h1><p class="blog-intro">superwhisper 支援中文，但預設的語言是 Automatic，說中文偶爾會被轉成英文，模型選得不對也會又慢又不準。這篇照 superwhisper 官方文件和更新紀錄，把中文要調的三個地方整理成步驟，依序是語言、語音模型和繁體輸出。最後附上中英夾雜時的設定，以及想換工具時可以比較的選擇。</p><p class="blog-meta"><time datetime="2026-11-17">2026-11-17</time> · 約 6 分鐘閱讀</p><div class="blog-languages"><a href="https://sona-orbit.github.io/parroting/blog/superwhisper-chinese/">繁體中文</a><a href="https://sona-orbit.github.io/parroting/en/blog/superwhisper-chinese/">English</a><a href="https://sona-orbit.github.io/parroting/zh-Hans/blog/superwhisper-chinese/">简体中文</a></div><figure class="blog-illus is-hero"><img src="../../assets/blog/superwhisper-chinese/hero.webp" alt="鸚鵡坐在筆電前，用翅膀轉動桌上的設定旋鈕，旁邊放著一支小麥克風" width="600" height="400" loading="eager" decoding="async" fetchpriority="high"></figure><nav class="blog-toc"><strong>文章目錄</strong><ol><li><a href="#part-1">先看結論：中文要調的三個地方</a></li><li><a href="#part-2">把模式的語言改成中文</a></li><li><a href="#part-3">挑一個支援中文的語音模型</a></li><li><a href="#part-4">想要繁體字：實驗性選項與 AI 處理</a></li><li><a href="#part-5">中英夾雜怎麼設</a></li><li><a href="#part-6">其他可以比較的選擇</a></li><li><a href="#part-7">常見問題</a></li></ol></nav><article class="blog-article"><p class="blog-note">我是 Sona Orbit，一個人開發學舌鳥的獨立開發者。學舌鳥也是 Mac 語音輸入工具，算是 superwhisper 的同類產品，所以第 6 節會拿它來比較。superwhisper 的功能、模型和價格只寫它官方來源寫到的內容（<a href="https://superwhisper.com/docs/models/voice" rel="nofollow noopener">語音模型</a>、<a href="https://superwhisper.com/docs/common-issues/language-detection" rel="nofollow noopener">語言判斷錯誤的排障</a>、<a href="https://superwhisper.com/docs/modes/modes" rel="nofollow noopener">模式設定</a>、<a href="https://superwhisper.com/changelog" rel="nofollow noopener">更新紀錄</a>），查證日期是 2026 年 11 月 17 日，當時 Mac 版最新是 3.3.1。選單名稱用官方文件的英文寫法，你的畫面可能略有不同。學舌鳥以 0.4.20 為準。</p>
+
+<section id="part-1"><h2>1. 先看結論：中文要調的三個地方</h2>
+<ol>
+<li><b>語言。</b>編輯你正在用的模式，把 Language 從 Automatic 改成中文。官方文件說這是解決「說中文卻出英文」最可靠的做法。</li>
+<li><b>語音模型。</b>免費方案用 Whisper 系列，其中有一個中文專用的 Whisper Large v3 Turbo (Chinese)。Pro 方案另外可以用支援中文的本機模型 Cohere Transcribe，或雲端的 S1-Voice。</li>
+<li><b>繁體字。</b>更新紀錄提過 Whisper 模型有實驗性的繁體中文選項。還是出簡體的話，可以在自訂模式的 AI 處理指令裡要求輸出台灣繁體。</li>
+</ol>
+<p>改完到任何輸入框按 ⌥ Space（Option + Space）說一句話試試。下面是每一步的細節。</p></section>
+
+<section id="part-2"><h2>2. 把模式的語言改成中文</h2>
+<p>superwhisper 的設定以「模式」為單位。每個模式各自有語言、語音模型和 AI 處理，所以中文要在你正在用的那個模式裡改。</p>
+<ol>
+<li>打開 superwhisper 的設定，在側邊欄按 Modes。</li>
+<li>點你正在用的模式。目前使用中的模式，在清單裡會有綠色圓點。</li>
+<li>在 Voice processing 的語言設定，把 Automatic 換成中文。</li>
+</ol>
+<p>官方排障頁寫到，語言設成 Automatic 時，非英文的聽寫有時會變成英文字。原因是模型猜不到你要說哪種語言，就容易落回英文。這發生在轉文字的階段，還沒進到 AI 處理。想確認是不是這個問題，可以打開 History，那裡看得到 AI 處理之前的原始轉錄。</p>
+<p>可以選哪些語言，要看模式用的是哪個語音模型。換了模型之後，語言清單也會跟著變，回來再確認一次比較保險。</p>
+<p>常常在中文和英文之間切換的話，官方建議做兩個模式，一個設中文、一個設英文，需要時切換。切換模式的快速鍵是 ⌥ ⇧ K（Option + Shift + K），也可以用 Activate for apps 讓某些 App 自動套用指定的模式。</p>
+<figure class="blog-illus"><img src="../../assets/blog/superwhisper-chinese/language.webp" alt="鸚鵡用翅膀轉動桌上一個大旋鈕，旋鈕旁有一顆小地球儀" width="600" height="400" loading="lazy" decoding="async"></figure></section>
+
+<section id="part-3"><h2>3. 挑一個支援中文的語音模型</h2>
+<p>每個模式的編輯畫面裡有 Voice Model 選單。本機模型要先到 Settings → Models library 下載。下表只列官方文件寫明支援中文的模型。</p>
+<table class="blog-table">
+<thead><tr><th>模型</th><th>在哪裡辨識</th><th>大小</th><th>方案</th><th>備註</th></tr></thead>
+<tbody>
+<tr><td>Whisper Large v3 Turbo (Chinese)</td><td>本機</td><td>1.6 GB</td><td>免費</td><td>只辨識中文，App 裡標為實驗性</td></tr>
+<tr><td>Whisper Large v3 Turbo</td><td>本機</td><td>1.6 GB</td><td>免費</td><td>多語言</td></tr>
+<tr><td>Whisper Large v3</td><td>本機</td><td>3 GB</td><td>免費</td><td>多語言，比 Turbo 慢，App 裡標為實驗性</td></tr>
+<tr><td>Whisper Medium、Small、Base、Tiny</td><td>本機</td><td>75 MB～1.5 GB</td><td>免費</td><td>越小越快、越不準</td></tr>
+<tr><td>Cohere Transcribe</td><td>本機</td><td>1.3 GB</td><td>Pro</td><td>支援 14 種語言，其中有中文；不支援即時顯示</td></tr>
+<tr><td>S1-Voice</td><td>雲端</td><td>不用下載</td><td>Pro</td><td>100 種以上語言</td></tr>
+</tbody></table>
+<p>怎麼挑，可以照這幾個情況想。</p>
+<ul>
+<li><b>用免費方案、主要說中文的話，</b>先試 Whisper Large v3 Turbo (Chinese)，再跟一般的 Large v3 Turbo 比，用你平常會說的句子各講幾次。</li>
+<li><b>已經是 Pro、想留在本機的話，</b>官方把 Cohere Transcribe 列為最準的本機模型。它在官方測試裡的字錯率是 8.4%，那是官方八組測試資料的整體結果，不是中文單獨的數字。</li>
+<li><b>不在意上雲、想要最省事的話，</b>S1-Voice 在雲端辨識，不用下載。官方說雲端模型採零資料保留政策。</li>
+</ul>
+<p>本機模型的聲音不會離開裝置，下載一次之後沒有網路也能用。官方的說法是本機模型在較新的硬體上跑得快。</p>
+<p>價格方面，官網寫的 Pro 月繳是每月 8.49 美元，年繳和終身方案的價格請以官網為準。免費方案可以無限使用 Whisper 模型。</p>
+<figure class="blog-illus"><img src="../../assets/blog/superwhisper-chinese/models.webp" alt="鸚鵡在書桌上比較三個大小不同的木盒子，旁邊有一台筆電" width="600" height="400" loading="lazy" decoding="async"></figure></section>
+
+<section id="part-4"><aside class="blog-cta-mid"><p>試試學舌鳥</p><a href="https://github.com/sona-orbit/parroting-releases/releases/latest/download/Parroting-macos-arm64.dmg" class="button">免費下載 Mac 版</a></aside><h2>4. 想要繁體字：實驗性選項與 AI 處理</h2>
+<p>這是台灣使用者最常卡住的地方。superwhisper 的更新紀錄有兩筆跟繁體有關。</p>
+<ul>
+<li>1.45.9 版（2025 年 4 月 15 日）為 Whisper 模型加入實驗性的繁體中文語言選項。</li>
+<li>1.46.0 版（2025 年 5 月 27 日）加入英文（英式）與中文（繁體）的語言支援。</li>
+</ul>
+<p>目前的官方文件沒有寫這個選項在清單裡的確切名稱，所以請在模式的語言清單裡找繁體中文的那一項。它掛在 Whisper 模型底下，換成其他模型時可能就看不到。</p>
+<p>選了之後還是偶爾冒出簡體字，可以靠模式的 AI 處理補救。做法是建一個 Custom 模式，在 AI 指令裡寫清楚「輸出一律使用台灣繁體中文，不要翻譯、不要改寫意思」。官方文件提到，自訂模式可以在 AI 指令裡加上保留輸入語言之類的要求。要注意 AI 處理會用到語言模型，各方案能用哪些語言模型，請以官網為準。</p>
+<figure class="blog-illus"><img src="../../assets/blog/superwhisper-chinese/script.webp" alt="鸚鵡把一疊白紙整理整齊，旁邊有鉛筆和小麥克風" width="600" height="400" loading="lazy" decoding="async"></figure></section>
+
+<section id="part-5"><h2>5. 中英夾雜怎麼設</h2>
+<p>台灣人說話常夾英文單字，例如「這個 bug 我明天 fix」。官方文件對這種情況給了兩條路。</p>
+<ul>
+<li><b>大部分時間只說一種語言，</b>就把語言固定成中文，這比 Automatic 穩定。</li>
+<li><b>一次聽寫裡常常混兩種語言，</b>官方才建議用 Automatic。為了讓它不要老是猜成英文，到 Settings → Vocabulary 加一句提示，用中文寫，意思是「也可能包含中文的詞」。</li>
+</ul>
+<p>官方也提醒 Vocabulary 清單要短，加太多詞反而會讓轉錄變差。提示的效果會因模型而異，沒有改善的話就改回固定語言。</p>
+<p>最準的判斷方法還是實測。拿你一天裡最常說的三五句中英夾雜的話，兩種設定各說幾次，看哪一種錯得少。</p></section>
+
+<section id="part-6"><h2>6. 其他可以比較的選擇</h2>
+<p>superwhisper 在 Mac、Windows、iOS、Android 都有，模型選擇也多。如果你只在 Mac 上用、主要說中文，下面兩個也可以放進來比。</p>
+<ul>
+<li><b>macOS 內建聽寫：</b>免費、免安裝，支援國語（台灣）。不過 Apple 的功能清單裡，國語（台灣）不在裝置端聽寫的語言之列，所以要先假設會用到網路。開法我寫在<a href="../mac-voice-typing-setup/">Mac 語音輸入怎麼開</a>。</li>
+<li><b>學舌鳥：</b>我做的免費 Mac 語音輸入工具。按住右 ⌥ ＋ 右 ⌘ 說話，放開就貼到游標位置。語音在 Mac 本機辨識，可以選 SenseVoice、Qwen3-ASR、Breeze-ASR 等模型。「設定 → 說話」有一個「中文字體」選項，可以讓輸出固定成繁體或簡體，AI 改寫的結果也照這個設定。</li>
+</ul>
+<table class="blog-table">
+<thead><tr><th></th><th>superwhisper</th><th>學舌鳥</th></tr></thead>
+<tbody>
+<tr><td>平台</td><td>Mac、Windows、iOS、Android</td><td>Mac（Apple 晶片、macOS 11 以上），另有 iPhone 版</td></tr>
+<tr><td>費用</td><td>免費方案可無限用 Whisper 模型；Pro 月繳每月 8.49 美元</td><td>Mac 版免費</td></tr>
+<tr><td>中文設定</td><td>每個模式各自設語言</td><td>「語音模型與語言」裡選語言</td></tr>
+<tr><td>繁體輸出</td><td>Whisper 模型有實驗性的繁體選項</td><td>「中文字體」選繁體或簡體</td></tr>
+<tr><td>中文排版</td><td>文件沒有特別寫</td><td>可開「中文排版」，補全形標點和中英之間的空格</td></tr>
+<tr><td>專有名詞</td><td>Vocabulary 清單</td><td>詞典，改過的字會建議加入</td></tr>
+</tbody></table>
+<p>兩邊都可以免費試用，選哪個看你需要的平台和習慣。更完整的工具比較在<a href="../typeless-alternatives/">7 款 Mac 語音輸入比較</a>，本機模型怎麼選在<a href="../mac-local-asr-models/">Mac 本機語音辨識模型怎麼選</a>，人名和術語一直被聽錯可以看<a href="../voice-typing-accuracy/">從詞典到專屬語音模型的三層解法</a>。</p></section>
+
+<section id="part-7"><h2>7. 常見問題</h2>
+<div class="blog-faq">
+<h3>superwhisper 支援中文嗎？</h3><p>支援。官方文件寫到，多語言的 Whisper 模型與雲端的 S1-Voice 支援 100 種以上語言，本機的 Cohere Transcribe 支援的 14 種語言裡也有中文，另外還有一個只辨識中文的 Whisper Large v3 Turbo (Chinese)。</p>
+<h3>superwhisper 說中文為什麼變成英文？</h3><p>通常是語言設成 Automatic，模型猜錯語言。官方建議編輯模式，把 Language 改成固定的中文。一定要用 Automatic 的話，可以在 Settings → Vocabulary 用中文加一句提示，告訴它也可能出現中文。</p>
+<h3>superwhisper 可以輸出繁體中文嗎？</h3><p>更新紀錄在 2025 年 4 月與 5 月提到 Whisper 模型加入了繁體中文的語言選項，當時標為實驗性。還是出簡體的話，可以在 Custom 模式的 AI 指令要求輸出台灣繁體。</p>
+<h3>免費版能用中文嗎？</h3><p>可以。官網寫免費方案可以無限使用 Whisper 模型，包含中文專用的 Whisper Large v3 Turbo (Chinese)。Cohere Transcribe、雲端模型要 Pro。</p>
+<h3>superwhisper 的中文辨識會上傳聲音嗎？</h3><p>看你選的模型。官方文件說本機模型的聲音不會離開裝置、可以離線用；雲端模型在伺服器上處理，採零資料保留政策。</p>
+</div></section></article><aside class="blog-cta"><h2>試試學舌鳥</h2><p>Apple 晶片 · macOS 11 以上 · 免費</p><a href="https://github.com/sona-orbit/parroting-releases/releases/latest/download/Parroting-macos-arm64.dmg" class="button">免費下載 Mac 版</a></aside><nav class="blog-related"><h2>延伸閱讀</h2><ul><li><a href="../mac-voice-typing-setup/">Mac 語音輸入怎麼開？內建聽寫的開啟步驟、快速鍵與中文標點<span>Mac 語音輸入怎麼開：到系統設定的鍵盤頁打開「聽寫」，選快速鍵和中文語言就能用說的打字。整理開始與停止的按法、標點與換行的說法、開不起來時的檢查清單，以及想離線使用時的做法。</span></a></li><li><a href="../voice-typing-for-coding/">用語音輸入寫程式：對 Claude Code、Cursor、Codex 口述 Prompt 的設定與排障<span>在 Mac 上對 Claude Code、Cursor、Codex 用講的寫 Prompt：中英夾雜的技術名詞怎麼辨識準、邊想邊講的改口怎麼免費整理，以及貼不進去、快捷鍵衝突、藍牙耳機漏字的排障做法。</span></a></li><li><a href="../iphone-app-launch-top-1-productivity/">學舌鳥 iPhone 版上架，登上 App Store 生產力工具付費榜第 1 名<span>學舌鳥 iPhone 版上架後登上台灣區 App Store 生產力工具付費榜第 1 名。整理 iPhone 語音鍵盤怎麼用、和免費 Mac 版怎麼透過 iCloud 共用詞典與改寫格式，以及購買前要知道的限制。</span></a></li></ul></nav><p class="blog-back"><a href="../">← 返回文章列表</a></p></main><footer class="footer"><div class="wrap"><span>© 學舌鳥 Parroting</span><span><a href="../../">首頁</a> · <a href="../../model">語氣模型</a> · <a href="../../architecture">運作方式</a> · <a href="../../guide">教學</a> · <a href="../../blog/">文章</a></span><span class="credit"><a href="../../speech-models">語音辨識模型與授權</a> · Mac 版以 <a href="https://github.com/cjpais/Handy" rel="noopener">Handy</a>（MIT 授權）為基礎</span></div></footer></body></html>
