@@ -1,0 +1,69 @@
+<!doctype html><html lang="zh-Hans"><head><meta charset="utf-8"><script async src="https://www.googletagmanager.com/gtag/js?id=G-FJGRNJFB15"></script><script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag("js",new Date());gtag("config","G-FJGRNJFB15");document.addEventListener("click",function(e){var a=e.target.closest&&e.target.closest("a[href]");if(!a)return;var h=a.href;if(/\/releases\/.*\/download\/|\.dmg(\?|$)|apps\.apple\.com\/|testflight\.apple\.com\//.test(h)){gtag("event","download_click",{link_url:h,link_text:(a.textContent||"").trim().slice(0,60)});}},true);</script><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="text-scale" content="scale"><meta name="theme-color" content="#f7f8f5" media="(prefers-color-scheme: light)"><meta name="theme-color" content="#101813" media="(prefers-color-scheme: dark)"><script type="speculationrules">{"prerender":[{"where":{"and":[{"href_matches":"/parroting/*"},{"not":{"selector_matches":"[download],[target=_blank],.no-prerender"}}]},"eagerness":"moderate"}]}</script><meta name="color-scheme" content="light dark"><meta name="apple-itunes-app" content="app-id=6828834904"><title>Mac 语音输入可以离线吗？断网前的准备与还能用的功能 | 学舌鸟</title><meta name="description" content="Mac 语音输入想在没网络时用：内建听写看语言是否在设备端处理，台湾国语要先假设需要网络；本机模型工具下载好模型就能离线。整理断网前要做的准备、断网时哪些功能照常，以及内存怎么挑模型。"><link rel="canonical" href="https://sona-orbit.github.io/parroting/zh-Hans/blog/mac-offline-voice-typing/"><link rel="alternate" hreflang="zh-Hant" href="https://sona-orbit.github.io/parroting/blog/mac-offline-voice-typing/"><link rel="alternate" hreflang="zh-Hans" href="https://sona-orbit.github.io/parroting/zh-Hans/blog/mac-offline-voice-typing/"><link rel="alternate" hreflang="en" href="https://sona-orbit.github.io/parroting/en/blog/mac-offline-voice-typing/"><link rel="alternate" hreflang="x-default" href="https://sona-orbit.github.io/parroting/blog/mac-offline-voice-typing/"><meta property="og:type" content="article"><meta property="og:title" content="Mac 语音输入可以离线吗？断网前的准备与还能用的功能 | 学舌鸟"><meta property="og:description" content="Mac 语音输入想在没网络时用：内建听写看语言是否在设备端处理，台湾国语要先假设需要网络；本机模型工具下载好模型就能离线。整理断网前要做的准备、断网时哪些功能照常，以及内存怎么挑模型。"><meta property="og:url" content="https://sona-orbit.github.io/parroting/zh-Hans/blog/mac-offline-voice-typing/"><meta property="og:image" content="https://sona-orbit.github.io/parroting/assets/blog/mac-offline-voice-typing/hero.jpg"><link rel="stylesheet" href="../../../assets/style.css?v=15"><link rel="stylesheet" href="../../../assets/blog.css?v=8"><link rel="icon" href="../../../assets/favicon.png"><script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "Mac 语音输入可以离线吗？断网前的准备与还能用的功能", "description": "Mac 语音输入想在没网络时用：内建听写看语言是否在设备端处理，台湾国语要先假设需要网络；本机模型工具下载好模型就能离线。整理断网前要做的准备、断网时哪些功能照常，以及内存怎么挑模型。", "inLanguage": "zh-Hans", "datePublished": "2026-11-18", "dateModified": "2026-11-18", "mainEntityOfPage": "https://sona-orbit.github.io/parroting/zh-Hans/blog/mac-offline-voice-typing/", "author": {"@type": "Person", "name": "Sona Orbit", "jobTitle": "Independent developer"}, "publisher": {"@type": "Organization", "name": "Sona Orbit"}, "image": "https://sona-orbit.github.io/parroting/assets/blog/mac-offline-voice-typing/hero.jpg"}</script><script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "inLanguage": "zh-Hans", "mainEntity": [{"@type": "Question", "name": "Mac 内建听写可以离线用中文吗？", "acceptedAnswer": {"@type": "Answer", "text": "要看语言。Apple 的功能清单里，设备端听写有国语（中国大陆）和粤语（香港），我在 2026 年 11 月查的时候没有国语（台湾）。实际情况看“系统设置 → 键盘”里“听写”下方的说明文字，或关掉 Wi-Fi 讲一句试试。"}}, {"@type": "Question", "name": "学舌鸟第一次使用需要网络吗？", "acceptedAnswer": {"@type": "Answer", "text": "需要。App 和语音模型都要先下载。模型下载好之后，识别在这台 Mac 上进行，没有网络也能听写。"}}, {"@type": "Question", "name": "断网时 AI 整理会怎样？", "acceptedAnswer": {"@type": "Answer", "text": "用云端服务的 API key 时，连不上会提示，并改贴本机处理过的文字。选 Apple Intelligence 的话，用的是 Apple 的设备端模型，需要 Apple 芯片、macOS Tahoe（26.0）以上并打开 Apple Intelligence。"}}, {"@type": "Question", "name": "离线语音输入的声音会上传吗？", "acceptedAnswer": {"@type": "Answer", "text": "用本机模型识别时，声音只在这台 Mac 上处理。学舌鸟只有用到云端 AI 的时候，才会把那一段文字送到你选的 AI 服务。平常听写、语气提醒都在本机。"}}, {"@type": "Question", "name": "8 GB 内存的 Mac 能离线语音输入吗？", "acceptedAnswer": {"@type": "Answer", "text": "可以。默认的 SenseVoice Small 只有 253 MB，反应快、占用少。想要更准可以试 Qwen3-ASR 0.6B（850 MB）。"}}]}</script><script>window.PARROTING_PAGE='blog/mac-offline-voice-typing/';window.PARROTING_LOCALE='zh-Hans';</script><script defer src="../../../assets/site.js?v=17"></script></head><body><header class="site-header"><div class="wrap nav"><a class="brand" href="../../"><img src="../../../assets/icon-192.webp" alt="" width="34" height="34">学舌鸟</a><nav class="nav-links" aria-label="Main"><a href="../../">首页</a><a href="../../model">语气模型</a><a href="../../architecture">运作方式</a><a href="../../guide">教程</a><a href="../../blog/" aria-current="page">文章</a><a href="/parroting/zh-Hans/iphone/">iPhone 版</a></nav><div class="nav-actions"><button class="app-btn" type="button" popovertarget="get-iphone"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><rect x="7" y="2.5" width="10" height="19" rx="2.5"></rect><path d="M11 18.5h2"></path></svg>iPhone App</button><div class="app-pop" id="get-iphone" popover><img class="qr" src="/parroting/assets/iphone/qr.svg" alt="扫描下载学舌鸟的二维码" width="168" height="168"><b>用 iPhone 相机扫描</b><small>学舌鸟 iPhone 键盘 · ¥38 买断<br>词典和改写格式跟 Mac 共用</small><a class="store-badge" href="https://apps.apple.com/app/id6828834904"><img src="/parroting/assets/badges/download-on-the-app-store-zh-cn.svg" alt="在 App Store 下载" width="109" height="40"></a><a class="inline-link" href="/parroting/zh-Hans/iphone/">看 iPhone 版介绍 →</a></div><label><span class="sr-only">语言</span><select class="lang" id="language" aria-label="语言"><option value="zh-Hant">繁體中文</option><option value="zh-Hans" selected>简体中文</option><option value="en">English</option><option value="ja">日本語</option></select></label><a class="button small" href="https://github.com/sona-orbit/parroting-releases/releases/latest/download/Parroting-macos-arm64.dmg">免费下载</a></div></div></header><main class="blog-shell"><p class="eyebrow">Parroting Journal · 文章</p><h1>Mac 语音输入可以离线吗？断网前的准备与还能用的功能</h1><p class="blog-intro">在飞机上、高铁隧道里，或公司不让声音上传的时候，Mac 的语音输入还能用吗？答案看你用的是哪一种。这篇先讲怎么确认内建听写是不是在本机处理，再整理本机模型工具在断网前要准备的事，以及断网后哪些功能照常、哪些会退回本机做法。</p><p class="blog-meta"><time datetime="2026-11-18">2026-11-18</time> · 约 5 分钟阅读</p><div class="blog-languages"><a href="https://sona-orbit.github.io/parroting/blog/mac-offline-voice-typing/">繁體中文</a><a href="https://sona-orbit.github.io/parroting/en/blog/mac-offline-voice-typing/">English</a><a href="https://sona-orbit.github.io/parroting/zh-Hans/blog/mac-offline-voice-typing/">简体中文</a></div><figure class="blog-illus is-hero"><img src="../../../assets/blog/mac-offline-voice-typing/hero.webp" alt="鹦鹉在飞机窗边的小桌板上用笔电，窗外是云，桌上有一支小麦克风" width="600" height="400" loading="eager" decoding="async" fetchpriority="high"></figure><nav class="blog-toc"><strong>文章目录</strong><ol><li><a href="#part-1">先看结论：离线能不能用，看两件事</a></li><li><a href="#part-2">内建听写：先确认你的语言在不在设备上处理</a></li><li><a href="#part-3">本机模型工具：断网前做好四件事</a></li><li><a href="#part-4">断网时，哪些功能照常</a></li><li><a href="#part-5">内存不大的 Mac 怎么挑离线模型</a></li><li><a href="#part-6">常见问题</a></li></ol></nav><article class="blog-article"><p class="blog-note">我是 Sona Orbit，一个人开发学舌鸟的独立开发者。学舌鸟是我做的免费 Mac 语音输入工具，第 3、4 节拿它当本机模型工具的例子。内建听写的部分照 Apple 官方说明（<a href="https://support.apple.com/zh-cn/guide/mac-help/mh40584/mac" rel="nofollow noopener">在 Mac 上听写消息和文件</a>、<a href="https://www.apple.com.cn/macos/feature-availability/#dictation" rel="nofollow noopener">macOS 功能特色适用范围</a>），Apple Intelligence 的部分照 <a href="https://developer.apple.com/documentation/foundationmodels" rel="nofollow noopener">Foundation Models 开发者文件</a>，查证日期是 2026 年 11 月 18 日。学舌鸟的功能与选单名称以 0.4.20 为准。</p>
+
+<section id="part-1"><h2>1. 先看结论：离线能不能用，看两件事</h2>
+<ol>
+<li><b>识别在哪里做。</b>声音在 Mac 上转成文字，断网照样能打字。声音要送到服务器，断网就停了。</li>
+<li><b>断网前准备好了没。</b>本机模型要先下载，用到的语言、AI 整理的方式也要先选好。到了没网络的地方才发现少一个文件，就来不及了。</li>
+</ol>
+<p>以台湾的国语来说，macOS 内建听写要先假设需要网络。本机模型的语音输入工具，下载好模型就能离线。最保险的做法是出门前把 Wi-Fi 关掉，实际讲几句试试。</p></section>
+
+<section id="part-2"><h2>2. 内建听写：先确认你的语言在不在设备上处理</h2>
+<p>Apple 的功能清单把“设备端听写”支持的语言另外列出来。我查的时候，清单里有国语（中国大陆）和粤语（香港），没有国语（台湾）。也就是说，用国语（台湾）听写时，声音会交给 Apple 的服务器处理，断网就不能用。</p>
+<p>清单会随 macOS 更新而变，看你自己的 Mac 最准。</p>
+<ol>
+<li>到“苹果”选单 →“系统设置”→“键盘”。</li>
+<li>看“听写”下方的说明文字。它会写你目前语言的语音是在设备上处理，还是送到服务器。</li>
+<li>关掉 Wi-Fi，到备忘录按听写快速键讲一句。有字出来，就是离线可用。</li>
+</ol>
+<p>还没打开听写的话，开法和快速键我写在<a href="../mac-voice-typing-setup/">Mac 语音输入怎么开</a>。</p>
+<figure class="blog-illus"><img src="../../../assets/blog/mac-offline-voice-typing/check.webp" alt="鹦鹉低头看著笔电旁一个关掉的小无线电，旁边有一支小麦克风" width="600" height="400" loading="lazy" decoding="async"></figure></section>
+
+<section id="part-3"><h2>3. 本机模型工具：断网前做好四件事</h2>
+<p>本机模型的语音输入工具，识别都在 Mac 上做。只是模型、语言档要先下载，第一次设置也要网络。以学舌鸟为例，出门前照这四步准备。</p>
+<ol>
+<li><b>下载语音模型。</b>第一次打开时的引导会请你下载一个模型。之后想换，到“设置 → 说话 → 语音模型与语言”的“管理模型”下载。下载一次就好，识别在这台 Mac 上进行，没有网络也能听写。下载到一半断线，按“重试”会从中断的地方接著下载。</li>
+<li><b>下载要用的语气模型。</b>语气提醒的中文模型已内建。英文和日文的语气模型要用时才下载，常讲英文或日文的话，先到“设置 → 语气与情境”找到英文或日文语气模型，按“下载”。</li>
+<li><b>决定 AI 整理要走哪一条路。</b>去掉“嗯、呃”和说到一半的改口，学舌鸟有三种做法，断网时的表现不一样，下一节的表格有整理。</li>
+<li><b>关掉 Wi-Fi 试一次。</b>按住右 ⌥ ＋ 右 ⌘ 讲一句“测试一下”，放开后字有贴到光标位置，就准备好了。</li>
+</ol>
+<figure class="blog-illus"><img src="../../../assets/blog/mac-offline-voice-typing/prepare.webp" alt="鹦鹉把几个小木盒装进一个旅行背包，旁边放著阖上的笔电" width="600" height="400" loading="lazy" decoding="async"></figure></section>
+
+<section id="part-4"><aside class="blog-cta-mid"><p>试试学舌鸟</p><a href="https://github.com/sona-orbit/parroting-releases/releases/latest/download/Parroting-macos-arm64.dmg" class="button">免费下载 Mac 版</a></aside><h2>4. 断网时，哪些功能照常</h2>
+<p>学舌鸟第一次打开的欢迎画面，就把“在这台 Mac 上就能做（不需要网络）”和“需要 AI”分成两栏。整理成表如下。</p>
+<table class="blog-table">
+<thead><tr><th>功能</th><th>断网时</th><th>说明</th></tr></thead>
+<tbody>
+<tr><td>语音识别</td><td>照常</td><td>模型下载好之后在本机识别</td></tr>
+<tr><td>中文排版</td><td>照常</td><td>标点、中英之间的空格、繁体或简体</td></tr>
+<tr><td>词典与历史纪录</td><td>照常</td><td>都存在这台 Mac，词典不开 AI 也有效</td></tr>
+<tr><td>语气提醒</td><td>照常</td><td>中文模型内建；英文、日文要先下载</td></tr>
+<tr><td>AI 整理（云端服务的 API key）</td><td>退回本机结果</td><td>连不上时会提示，改贴本机处理过的文字</td></tr>
+<tr><td>AI 整理（Apple Intelligence）</td><td>看系统条件</td><td>用 Apple 的设备端模型，不需要 API key</td></tr>
+<tr><td>改写面板（换语气、正式信、翻译）</td><td>要能连到你选的 AI</td><td>云端服务断网时不能用</td></tr>
+</tbody></table>
+<p>AI 整理有几个细节值得先知道。</p>
+<ul>
+<li><b>没填 API key，</b>学舌鸟会进入本机模式，只在本机去掉独立的“嗯、呃”和重复的字。说到一半改口的那种整理，要靠 AI。</li>
+<li><b>填了云端服务的 key 但断网，</b>浮窗会提示连不上，并贴上本机处理过的结果。字不会不见，只是少了 AI 那一层。</li>
+<li><b>选 Apple Intelligence，</b>学舌鸟呼叫的是 Apple 文件里的设备端模型（SystemLanguageModel），不用填 key。条件是 Apple 芯片、macOS Tahoe（26.0）以上，并在系统设置打开 Apple Intelligence。</li>
+<li><b>自己在 Mac 上跑语言模型的话，</b>“AI 改写”的供应商可以选 Custom，网址默认是本机的 <code>http://localhost:11434/v1</code>，指向你在这台 Mac 上跑的模型服务。</li>
+</ul>
+<figure class="blog-illus"><img src="../../../assets/blog/mac-offline-voice-typing/offline.webp" alt="鹦鹉在火车座位上用笔电打字，窗外是暗的隧道，桌上有一杯热茶" width="600" height="400" loading="lazy" decoding="async"></figure></section>
+
+<section id="part-5"><h2>5. 内存不大的 Mac 怎么挑离线模型</h2>
+<p>离线语音输入的速度，主要看模型多大、你的 Mac 多快。下载的模型只占硬盘空间；只有正在用的那一个会放进内存，闲置一段时间后也会释放。</p>
+<ul>
+<li><b>8 GB 内存、想要快：</b>先用默认的 SenseVoice Small（253 MB），旧一点的 Mac 也跑得顺。</li>
+<li><b>想要中文更准：</b>试 Qwen3-ASR 0.6B（850 MB）。1.7B（1.5 GB）更准，但比较慢、也比较吃内存。</li>
+<li><b>台湾口音、中英夹杂很多：</b>Breeze-ASR-25（1.2 GB）是针对这种说法调整的，但速度是清单里最慢的。</li>
+</ul>
+<p>每个模型的错字率和速度比较，我整理在<a href="../mac-local-asr-models/">Mac 本机语音识别模型怎么选</a>。人名、术语老是听错，看<a href="../voice-typing-accuracy/">从词典到专属语音模型的三层解法</a>。想比较其他本机处理的工具，可以看<a href="../typeless-alternatives/">7 款 Mac 语音输入比较</a>。</p></section>
+
+<section id="part-6"><h2>6. 常见问题</h2>
+<div class="blog-faq">
+<h3>Mac 内建听写可以离线用中文吗？</h3><p>要看语言。Apple 的功能清单里，设备端听写有国语（中国大陆）和粤语（香港），我在 2026 年 11 月查的时候没有国语（台湾）。实际情况看“系统设置 → 键盘”里“听写”下方的说明文字，或关掉 Wi-Fi 讲一句试试。</p>
+<h3>学舌鸟第一次使用需要网络吗？</h3><p>需要。App 和语音模型都要先下载。模型下载好之后，识别在这台 Mac 上进行，没有网络也能听写。</p>
+<h3>断网时 AI 整理会怎样？</h3><p>用云端服务的 API key 时，连不上会提示，并改贴本机处理过的文字。选 Apple Intelligence 的话，用的是 Apple 的设备端模型，需要 Apple 芯片、macOS Tahoe（26.0）以上并打开 Apple Intelligence。</p>
+<h3>离线语音输入的声音会上传吗？</h3><p>用本机模型识别时，声音只在这台 Mac 上处理。学舌鸟只有用到云端 AI 的时候，才会把那一段文字送到你选的 AI 服务。平常听写、语气提醒都在本机。</p>
+<h3>8 GB 内存的 Mac 能离线语音输入吗？</h3><p>可以。默认的 SenseVoice Small 只有 253 MB，反应快、占用少。想要更准可以试 Qwen3-ASR 0.6B（850 MB）。</p>
+</div></section></article><aside class="blog-cta"><h2>试试学舌鸟</h2><p>Apple 芯片 · macOS 11 以上 · 免费</p><a href="https://github.com/sona-orbit/parroting-releases/releases/latest/download/Parroting-macos-arm64.dmg" class="button">免费下载 Mac 版</a></aside><nav class="blog-related"><h2>延伸阅读</h2><ul><li><a href="../superwhisper-chinese/">superwhisper 中文怎么设置？语言、模型挑选与繁体输出<span>superwhisper 说中文却出英文、出简体？照官方文件整理：在模式里把语言从 Automatic 改成中文、免费方案能用哪些支持中文的模型、繁体选项在哪、中英夹杂怎么设，以及其他可以比较的选择。</span></a></li><li><a href="../mac-voice-typing-setup/">Mac 语音输入怎么开？内置听写的开启步骤、快捷键与中文标点<span>Mac 语音输入怎么开：到系统设置的键盘页打开“听写”，选快捷键和中文语言就能用说的打字。整理开始与停止的按法、标点与换行的说法、开不起来时的检查清单，以及想离线使用时的做法。</span></a></li><li><a href="../voice-typing-for-coding/">用语音输入写程序：对 Claude Code、Cursor、Codex 口述 Prompt 的设置与排障<span>在 Mac 上对 Claude Code、Cursor、Codex 用讲的写 Prompt：中英夹杂的技术名词怎么识别准、边想边讲的改口怎么免费整理，以及贴不进去、快捷键冲突、蓝牙耳机漏字的排障做法。</span></a></li></ul></nav><p class="blog-back"><a href="../">← 返回文章列表</a></p></main><footer class="footer"><div class="wrap"><span>© 学舌鸟 Parroting</span><span><a href="../../">首页</a> · <a href="../../model">语气模型</a> · <a href="../../architecture">运作方式</a> · <a href="../../guide">教程</a> · <a href="../../blog/">文章</a></span><span class="credit"><a href="../../speech-models">语音识别模型与许可</a> · Mac 版基于 <a href="https://github.com/cjpais/Handy" rel="noopener">Handy</a>（MIT 许可）</span></div></footer></body></html>
