@@ -1,0 +1,89 @@
+<!doctype html><html lang="ja"><head><meta charset="utf-8"><script async src="https://www.googletagmanager.com/gtag/js?id=G-FJGRNJFB15"></script><script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag("js",new Date());gtag("config","G-FJGRNJFB15");document.addEventListener("click",function(e){var a=e.target.closest&&e.target.closest("a[href]");if(!a)return;var h=a.href;if(/\/releases\/.*\/download\/|\.dmg(\?|$)|apps\.apple\.com\/|testflight\.apple\.com\//.test(h)){gtag("event","download_click",{link_url:h,link_text:(a.textContent||"").trim().slice(0,60)});}},true);</script><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="text-scale" content="scale"><meta name="theme-color" content="#f7f8f5" media="(prefers-color-scheme: light)"><meta name="theme-color" content="#101813" media="(prefers-color-scheme: dark)"><script type="speculationrules">{"prerender":[{"where":{"and":[{"href_matches":"/parroting/*"},{"not":{"selector_matches":"[download],[target=_blank],.no-prerender"}}]},"eagerness":"moderate"}]}</script><meta name="color-scheme" content="light dark"><meta name="apple-itunes-app" content="app-id=6828834904"><title>superwhisperの中国語設定：言語・モデル・繁体字出力｜Parroting</title><meta name="description" content="superwhisperで中国語が英語や簡体字になるときの設定方法。言語、無料プランで使えるモデル、繁体字出力、中国語と英語を混ぜる場合の設定を公式資料に沿って紹介します。"><link rel="canonical" href="https://sona-orbit.github.io/parroting/ja/blog/superwhisper-chinese/"><link rel="alternate" hreflang="zh-Hant" href="https://sona-orbit.github.io/parroting/blog/superwhisper-chinese/"><link rel="alternate" hreflang="zh-Hans" href="https://sona-orbit.github.io/parroting/zh-Hans/blog/superwhisper-chinese/"><link rel="alternate" hreflang="en" href="https://sona-orbit.github.io/parroting/en/blog/superwhisper-chinese/"><link rel="alternate" hreflang="ja" href="https://sona-orbit.github.io/parroting/ja/blog/superwhisper-chinese/"><link rel="alternate" hreflang="x-default" href="https://sona-orbit.github.io/parroting/blog/superwhisper-chinese/"><meta property="og:type" content="article"><meta property="og:title" content="superwhisperの中国語設定：言語・モデル・繁体字出力｜Parroting"><meta property="og:description" content="superwhisperで中国語が英語や簡体字になるときの設定方法。言語、無料プランで使えるモデル、繁体字出力、中国語と英語を混ぜる場合の設定を公式資料に沿って紹介します。"><meta property="og:url" content="https://sona-orbit.github.io/parroting/ja/blog/superwhisper-chinese/"><meta property="og:image" content="https://sona-orbit.github.io/parroting/assets/blog/superwhisper-chinese/hero.jpg"><link rel="stylesheet" href="../../../assets/style.css?v=15"><link rel="stylesheet" href="../../../assets/blog.css?v=8"><link rel="icon" href="../../../assets/favicon.png"><script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "superwhisperの中国語設定：言語・モデル・繁体字出力", "description": "superwhisperで中国語が英語や簡体字になるときの設定方法。言語、無料プランで使えるモデル、繁体字出力、中国語と英語を混ぜる場合の設定を公式資料に沿って紹介します。", "inLanguage": "ja", "datePublished": "2026-11-17", "dateModified": "2026-11-17", "mainEntityOfPage": "https://sona-orbit.github.io/parroting/ja/blog/superwhisper-chinese/", "author": {"@type": "Person", "name": "Sona Orbit", "jobTitle": "Independent developer"}, "publisher": {"@type": "Organization", "name": "Sona Orbit"}, "image": "https://sona-orbit.github.io/parroting/assets/blog/superwhisper-chinese/hero.jpg"}</script><script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "inLanguage": "ja", "mainEntity": [{"@type": "Question", "name": "superwhisperは中国語に対応していますか？", "acceptedAnswer": {"@type": "Answer", "text": "対応しています。公式資料によると、多言語対応のWhisperモデルとクラウドのS1-Voiceは100以上の言語に対応しています。ローカルのCohere Transcribeが対応する14言語にも中国語が含まれます。中国語だけを認識するWhisper Large v3 Turbo (Chinese)もあります。"}}, {"@type": "Question", "name": "superwhisperで中国語を話すと英語になるのはなぜですか？", "acceptedAnswer": {"@type": "Answer", "text": "言語が「Automatic」に設定され、モデルが言語を誤判定していることが多いです。公式資料では、使用中のモードを編集し、「Language」を中国語に固定する方法を勧めています。「Automatic」を使う必要がある場合は、「Settings → Vocabulary」に、中国語も含まれる可能性があるというヒントを中国語で追加できます。"}}, {"@type": "Question", "name": "superwhisperは繁体字で出力できますか？", "acceptedAnswer": {"@type": "Answer", "text": "更新履歴によると、2025年4月と5月にWhisperモデルへ繁体字中国語の言語オプションが追加され、当時は実験的と表示されていました。それでも簡体字になる場合は、「Custom」モードのAIへの指示で台湾の繁体字による出力を指定できます。"}}, {"@type": "Question", "name": "無料版でも中国語を使えますか？", "acceptedAnswer": {"@type": "Answer", "text": "使えます。公式サイトによると、無料プランではWhisperモデルを無制限に使えます。中国語専用のWhisper Large v3 Turbo (Chinese)も含まれます。Cohere TranscribeとクラウドモデルにはProが必要です。"}}, {"@type": "Question", "name": "superwhisperの中国語認識では音声がアップロードされますか？", "acceptedAnswer": {"@type": "Answer", "text": "選ぶモデルによります。公式資料によると、ローカルモデルでは音声が端末の外に出ず、オフラインでも使えます。クラウドモデルではサーバー上で処理され、データを保持しないポリシーが適用されます。"}}]}</script><script>window.PARROTING_PAGE='blog/superwhisper-chinese/';window.PARROTING_LOCALE='ja';</script><script defer src="../../../assets/site.js?v=18"></script></head><body><header class="site-header"><div class="wrap nav"><a class="brand" href="/parroting/ja/"><img src="/parroting/assets/icon-192.webp" alt="" width="34" height="34">Parroting</a><nav class="nav-links" aria-label="メイン"><a href="/parroting/ja/">ホーム</a><a href="/parroting/en/model">口調モデル</a><a href="/parroting/en/guide">ガイド</a><a href="/parroting/ja/blog/">記事</a><a href="/parroting/ja/iphone/">iPhone</a></nav><div class="nav-actions"><button class="app-btn" type="button" popovertarget="get-iphone"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><rect x="7" y="2.5" width="10" height="19" rx="2.5"></rect><path d="M11 18.5h2"></path></svg>iPhoneアプリ</button><div class="app-pop" id="get-iphone" popover><img class="qr" src="/parroting/assets/iphone/qr.svg" alt="ParrotingをダウンロードするためのQRコード" width="168" height="168"><b>iPhoneのカメラでスキャン</b><small>Parroting iPhone版 · 買い切り800円<br>Macと辞書を共有</small><a class="store-badge" href="https://apps.apple.com/app/id6828834904"><img src="/parroting/assets/badges/download-on-the-app-store-en-us.svg" alt="App Storeでダウンロード" width="120" height="40"></a><a class="inline-link" href="/parroting/ja/iphone/">iPhoneアプリについて →</a></div><label><span class="sr-only">言語</span><select class="lang" id="language" aria-label="言語"><option value="zh-Hant">繁體中文</option><option value="zh-Hans">简体中文</option><option value="en">英語</option><option value="ja" selected>日本語</option></select></label><a class="button small" href="https://github.com/sona-orbit/parroting-releases/releases/latest/download/Parroting-macos-arm64.dmg">無料でダウンロード</a></div></div></header><main class="blog-shell"><p class="eyebrow">Parroting Journal · 記事</p><h1>superwhisperの中国語設定：言語・モデル・繁体字出力</h1><p class="blog-intro">superwhisperは中国語に対応しています。ただし、言語の初期設定は「Automatic」です。中国語を話しても英語になることがあり、モデルの選び方によっては認識が遅く、不正確になることもあります。この記事ではsuperwhisperの公式資料と更新履歴に沿って、言語、音声モデル、繁体字出力の設定を順に説明します。最後に、中国語と英語を混ぜて話す場合の設定と、比較できるほかの選択肢も紹介します。</p><p class="blog-meta"><time datetime="2026-11-17">2026-11-17</time> · 約6分で読めます</p><div class="blog-languages"><a href="https://sona-orbit.github.io/parroting/blog/superwhisper-chinese/">繁體中文</a><a href="https://sona-orbit.github.io/parroting/en/blog/superwhisper-chinese/">English</a><a href="https://sona-orbit.github.io/parroting/zh-Hans/blog/superwhisper-chinese/">简体中文</a><a href="https://sona-orbit.github.io/parroting/ja/blog/superwhisper-chinese/">日本語</a></div><figure class="blog-illus is-hero"><img src="../../../assets/blog/superwhisper-chinese/hero.webp" alt="ノートパソコンの前に座ったオウムが、翼で机上の設定ダイヤルを回している。そばには小さなマイクがある" width="600" height="400" loading="eager" decoding="async" fetchpriority="high"></figure><nav class="blog-toc"><strong>目次</strong><ol><li><a href="#part-1">まず結論：中国語で調整する3か所</a></li><li><a href="#part-2">モードの言語を中国語に変える</a></li><li><a href="#part-3">中国語に対応する音声モデルを選ぶ</a></li><li><a href="#part-4">繁体字で出力する：実験的なオプションとAI処理</a></li><li><a href="#part-5">中国語と英語を混ぜて話す場合の設定</a></li><li><a href="#part-6">比較できるほかの選択肢</a></li><li><a href="#part-7">よくある質問</a></li></ol></nav><article class="blog-article"><p class="blog-note">私はSona Orbitで、Parrotingを一人で開発している個人開発者です。Parrotingは本サイトの自社製品です。Mac向けの音声入力アプリとしてsuperwhisperと同じ分野にあるため、第6節で比較します。superwhisperの機能、モデル、価格については、公式資料に記載された内容だけを扱います（<a href="https://superwhisper.com/docs/models/voice" rel="nofollow noopener">音声モデルの資料</a>、<a href="https://superwhisper.com/docs/common-issues/language-detection" rel="nofollow noopener">言語の誤判定に関する対処法</a>、<a href="https://superwhisper.com/docs/modes/modes" rel="nofollow noopener">モード設定の資料</a>、<a href="https://superwhisper.com/changelog" rel="nofollow noopener">更新履歴</a>）。確認日は2026年11月17日で、当時のMac版の最新版は3.3.1でした。メニュー名は公式資料の英語表記を使っています。お使いの画面とは多少異なる場合があります。Parrotingについては0.4.20を基準にしています。</p>
+
+<section id="part-1"><h2>1. まず結論：中国語で調整する3か所</h2>
+<ol>
+<li><b>言語。</b>使用中のモードを編集し、「Language」を「Automatic」から中国語に変えます。公式資料では、これを「中国語を話したのに英語になる」問題への最も確実な対処法としています。</li>
+<li><b>音声モデル。</b>無料プランではWhisperシリーズを使えます。中国語専用のWhisper Large v3 Turbo (Chinese)もあります。Proプランでは、中国語に対応するローカルモデルのCohere Transcribeと、クラウドモデルのS1-Voiceも使えます。</li>
+<li><b>繁体字。</b>更新履歴には、Whisperモデル向けの実験的な繁体字中国語オプションが記載されています。それでも簡体字になる場合は、「Custom」モードのAIへの指示で、台湾の繁体字による出力を指定できます。</li>
+</ol>
+<p>設定を変えたら、入力欄で⌥ Space（Option + Space）を押して、一文話してみてください。以下で各手順を説明します。</p></section>
+
+<section id="part-2"><h2>2. モードの言語を中国語に変える</h2>
+<p>superwhisperの設定はモードごとに分かれています。言語、音声モデル、AI処理はモードごとに設定するため、実際に使っているモードの言語を変えます。</p>
+<ol>
+<li>superwhisperの設定を開き、サイドバーの「Modes」をクリックします。</li>
+<li>使用中のモードをクリックします。現在有効なモードには、一覧で緑の点が付きます。</li>
+<li>「Voice processing」にある言語設定で、「Automatic」を中国語に変えます。</li>
+</ol>
+<p>公式のトラブルシューティングには、言語を「Automatic」にすると、英語以外の音声入力が英語の文字になることがあると書かれています。モデルが話している言語を判定できず、英語として認識してしまうためです。これはAI処理より前の文字起こし段階で起こります。原因を確認するには「History」を開いてください。AI処理前の文字起こし結果を見られます。</p>
+<p>選べる言語は、モードで使用する音声モデルによって変わります。モデルを変えた後は言語一覧も変わるため、もう一度確認してください。</p>
+<p>中国語と英語を頻繁に切り替える場合、公式資料では中国語用と英語用の2つのモードを作り、必要に応じて切り替える方法を勧めています。モード切り替えのショートカットは⌥ ⇧ K（Option + Shift + K）です。「Activate for apps」を使い、特定のアプリで指定したモードを自動適用することもできます。</p>
+<figure class="blog-illus"><img src="../../../assets/blog/superwhisper-chinese/language.webp" alt="オウムが翼で机上の大きなダイヤルを回している。ダイヤルのそばには小さな地球儀がある" width="600" height="400" loading="lazy" decoding="async"></figure></section>
+
+<section id="part-3"><h2>3. 中国語に対応する音声モデルを選ぶ</h2>
+<p>各モードの編集画面には「Voice Model」メニューがあります。ローカルモデルは、先に「Settings → Models library」でダウンロードします。次の表には、公式資料で中国語への対応が明記されているモデルだけを載せています。</p>
+<table class="blog-table">
+<thead><tr><th>モデル</th><th>認識する場所</th><th>サイズ</th><th>プラン</th><th>備考</th></tr></thead>
+<tbody>
+<tr><td>Whisper Large v3 Turbo (Chinese)</td><td>ローカル</td><td>1.6 GB</td><td>無料</td><td>中国語専用。アプリ内では実験的と表示</td></tr>
+<tr><td>Whisper Large v3 Turbo</td><td>ローカル</td><td>1.6 GB</td><td>無料</td><td>多言語対応</td></tr>
+<tr><td>Whisper Large v3</td><td>ローカル</td><td>3 GB</td><td>無料</td><td>多言語対応。Turboより遅く、アプリ内では実験的と表示</td></tr>
+<tr><td>Whisper Medium、Small、Base、Tiny</td><td>ローカル</td><td>75 MB～1.5 GB</td><td>無料</td><td>小さいほど速いが、精度は下がる</td></tr>
+<tr><td>Cohere Transcribe</td><td>ローカル</td><td>1.3 GB</td><td>Pro</td><td>中国語を含む14言語に対応。リアルタイム表示には非対応</td></tr>
+<tr><td>S1-Voice</td><td>クラウド</td><td>ダウンロード不要</td><td>Pro</td><td>100以上の言語に対応</td></tr>
+</tbody></table>
+<p>選ぶときは、次のように考えるとよいでしょう。</p>
+<ul>
+<li><b>無料プランで、主に中国語を話す場合は、</b>まずWhisper Large v3 Turbo (Chinese)を試します。普段話す文をそれぞれ数回入力し、通常のLarge v3 Turboと比べてください。</li>
+<li><b>Proを使っていて、ローカルで処理したい場合は、</b>公式資料で最も精度の高いローカルモデルとされるCohere Transcribeを検討できます。公式テストでの文字誤り率は8.4%です。これは公式の8組のテストデータ全体の結果で、中国語だけの数値ではありません。</li>
+<li><b>クラウドを使ってもよく、ダウンロードを省きたい場合は、</b>S1-Voiceを選べます。音声はクラウドで認識されます。公式資料によると、クラウドモデルにはデータを保持しないポリシーが適用されます。</li>
+</ul>
+<p>ローカルモデルでは、音声は端末の外に出ません。一度ダウンロードすれば、ネットワーク接続なしでも使えます。公式資料では、新しいハードウェア上での動作が速いと説明されています。</p>
+<p>価格について、公式サイトに記載されたProの月払いは月額8.49米ドルです。年払いと買い切りプランの価格は公式サイトで確認してください。無料プランではWhisperモデルを無制限に使えます。</p>
+<figure class="blog-illus"><img src="../../../assets/blog/superwhisper-chinese/models.webp" alt="オウムが机の上で大きさの違う3つの木箱を見比べている。そばにはノートパソコンがある" width="600" height="400" loading="lazy" decoding="async"></figure></section>
+
+<section id="part-4"><aside class="blog-cta-mid"><p>Parroting を試す</p><a href="https://github.com/sona-orbit/parroting-releases/releases/latest/download/Parroting-macos-arm64.dmg" class="button">Mac版を無料でダウンロード</a></aside><h2>4. 繁体字で出力する：実験的なオプションとAI処理</h2>
+<p>台湾の利用者がつまずきやすい点です。superwhisperの更新履歴には、繁体字に関する記載が2件あります。</p>
+<ul>
+<li>バージョン1.45.9（2025年4月15日）で、Whisperモデルに実験的な繁体字中国語の言語オプションが追加されました。</li>
+<li>バージョン1.46.0（2025年5月27日）で、英語（イギリス）と中国語（繁体字）の言語サポートが追加されました。</li>
+</ul>
+<p>現在の公式資料には、このオプションが一覧でどの名前で表示されるか明記されていません。モードの言語一覧で繁体字中国語に当たる項目を探してください。Whisperモデルで使える項目なので、ほかのモデルに切り替えると表示されない場合があります。</p>
+<p>選択後も簡体字が混ざる場合は、モードのAI処理で補えます。「Custom」モードを作り、AIへの指示に「常に台湾の繁体字中国語で出力し、翻訳や意味の書き換えはしない」と書きます。公式資料にも、入力言語を維持するなどの要件をカスタムモードのAIへの指示に加えられるとあります。AI処理には言語モデルを使います。各プランで使える言語モデルは公式サイトで確認してください。</p>
+<figure class="blog-illus"><img src="../../../assets/blog/superwhisper-chinese/script.webp" alt="オウムが白い紙をきれいに重ねている。そばには鉛筆と小さなマイクがある" width="600" height="400" loading="lazy" decoding="async"></figure></section>
+
+<section id="part-5"><h2>5. 中国語と英語を混ぜて話す場合の設定</h2>
+<p>台湾では「這個 bug 我明天 fix」（このバグは明日直す）のように、中国語の文に英単語を混ぜて話すことがあります。公式資料では、この場合に2つの方法を示しています。</p>
+<ul>
+<li><b>ほとんどの時間、1つの言語だけを話す場合は、</b>言語を中国語に固定します。「Automatic」より安定します。</li>
+<li><b>1回の音声入力で2つの言語をよく混ぜる場合は、</b>公式資料では「Automatic」を勧めています。英語ばかりに判定されないよう、「Settings → Vocabulary」に中国語で「中国語の単語も含まれる可能性がある」という意味のヒントを追加します。</li>
+</ul>
+<p>公式資料は、「Vocabulary」の一覧を短く保つよう注意しています。単語を追加しすぎると、かえって文字起こしの精度が下がることがあります。ヒントの効果はモデルによって異なります。改善しなければ、言語を固定する設定に戻してください。</p>
+<p>判断するには実際に試すのが確実です。普段よく話す中国語と英語が混ざった文を3～5つ選び、両方の設定でそれぞれ数回話して、間違いの少ない方を使ってください。</p></section>
+
+<section id="part-6"><h2>6. 比較できるほかの選択肢</h2>
+<p>superwhisperはMac、Windows、iOS、Androidで使え、選べるモデルも多くあります。Macだけを使い、主に中国語を話すなら、次の2つも比較できます。</p>
+<ul>
+<li><b>macOS標準の音声入力：</b>無料で、インストールは不要です。中国語（台湾）に対応しています。ただしAppleの機能一覧では、中国語（台湾）はデバイス上の音声入力に対応する言語に含まれていません。ネットワークを使う前提で考えてください。有効にする方法は<a href="../mac-voice-typing-setup/">Macで音声入力を有効にする方法</a>に書いています。</li>
+<li><b>Parroting：</b>私が開発している無料のMac音声入力アプリです。右⌥＋右⌘を押しながら話し、離すとカーソル位置にテキストが貼り付けられます。音声はMac上で認識し、SenseVoice、Qwen3-ASR、Breeze-ASRなどのモデルを選べます。「設定 → 話す」にある「中国語の字体」で、出力を繁体字または簡体字に固定できます。AI書き換えの結果にも同じ設定が適用されます。</li>
+</ul>
+<table class="blog-table">
+<thead><tr><th></th><th>superwhisper</th><th>Parroting</th></tr></thead>
+<tbody>
+<tr><td>対応環境</td><td>Mac、Windows、iOS、Android</td><td>Mac（Appleシリコン、macOS 11以降）。iPhone版もあり</td></tr>
+<tr><td>料金</td><td>無料プランではWhisperモデルを無制限に利用可能。Proの月払いは月額8.49米ドル</td><td>Mac版は無料</td></tr>
+<tr><td>中国語の設定</td><td>モードごとに言語を設定</td><td>「音声モデルと言語」で言語を選択</td></tr>
+<tr><td>繁体字出力</td><td>Whisperモデルに実験的な繁体字オプションあり</td><td>「中国語の字体」で繁体字か簡体字を選択</td></tr>
+<tr><td>中国語の組版</td><td>公式資料には特に記載なし</td><td>「中国語の組版(全角句読点、中英間のスペース)」を有効にできる</td></tr>
+<tr><td>固有名詞</td><td>「Vocabulary」の一覧</td><td>「辞書」。修正した単語は追加候補として提案</td></tr>
+</tbody></table>
+<p>どちらも無料で試せます。必要な対応環境と使い方に合わせて選んでください。より詳しい比較は<a href="../typeless-alternatives/">Mac向け音声入力アプリ7つを比較</a>、ローカルモデルの選び方は<a href="../mac-local-asr-models/">Macのローカル音声認識モデルの選び方</a>を参照してください。人名や専門用語を何度も聞き間違える場合は、<a href="../voice-typing-accuracy/">辞書から専用音声モデルまで、音声入力の精度を上げる3段階の方法</a>も参考になります。</p></section>
+
+<section id="part-7"><h2>7. よくある質問</h2>
+<div class="blog-faq">
+<h3>superwhisperは中国語に対応していますか？</h3><p>対応しています。公式資料によると、多言語対応のWhisperモデルとクラウドのS1-Voiceは100以上の言語に対応しています。ローカルのCohere Transcribeが対応する14言語にも中国語が含まれます。中国語だけを認識するWhisper Large v3 Turbo (Chinese)もあります。</p>
+<h3>superwhisperで中国語を話すと英語になるのはなぜですか？</h3><p>言語が「Automatic」に設定され、モデルが言語を誤判定していることが多いです。公式資料では、使用中のモードを編集し、「Language」を中国語に固定する方法を勧めています。「Automatic」を使う必要がある場合は、「Settings → Vocabulary」に、中国語も含まれる可能性があるというヒントを中国語で追加できます。</p>
+<h3>superwhisperは繁体字で出力できますか？</h3><p>更新履歴によると、2025年4月と5月にWhisperモデルへ繁体字中国語の言語オプションが追加され、当時は実験的と表示されていました。それでも簡体字になる場合は、「Custom」モードのAIへの指示で台湾の繁体字による出力を指定できます。</p>
+<h3>無料版でも中国語を使えますか？</h3><p>使えます。公式サイトによると、無料プランではWhisperモデルを無制限に使えます。中国語専用のWhisper Large v3 Turbo (Chinese)も含まれます。Cohere TranscribeとクラウドモデルにはProが必要です。</p>
+<h3>superwhisperの中国語認識では音声がアップロードされますか？</h3><p>選ぶモデルによります。公式資料によると、ローカルモデルでは音声が端末の外に出ず、オフラインでも使えます。クラウドモデルではサーバー上で処理され、データを保持しないポリシーが適用されます。</p>
+</div></section></article><aside class="blog-cta"><h2>Parroting を試す</h2><p>Appleシリコン · macOS 11以降 · 無料</p><a href="https://github.com/sona-orbit/parroting-releases/releases/latest/download/Parroting-macos-arm64.dmg" class="button">Mac版を無料でダウンロード</a></aside><nav class="blog-related"><h2>あわせて読みたい</h2><ul><li><a href="../mac-offline-voice-typing/">Macの音声入力はオフラインで使える？事前準備と使える機能<span>Macの音声入力をオフラインで使う方法。内蔵の音声入力は言語によって処理場所が異なります。切断前の準備、使える機能、メモリに合うローカルモデルの選び方を解説します。</span></a></li><li><a href="../mac-voice-typing-setup/">Macの音声入力の始め方：設定手順・ショートカット・中国語の句読点<span>Macの音声入力は、システム設定のキーボードで「音声入力」をオンにすると使えます。ショートカット、中国語の句読点と改行、使えないときの確認方法、オフラインで使う方法を紹介します。</span></a></li><li><a href="../voice-typing-for-coding/">音声入力でコードを書く：Claude Code・Cursor・Codexへの指示とトラブル対策<span>MacでClaude Code、Cursor、Codexに音声で指示する方法。中国語と英語が混ざる技術用語の認識、言い直しの無料整理、貼り付けやホットキー、Bluetoothの問題を解説します。</span></a></li></ul></nav><p class="blog-back"><a href="../">← 記事一覧に戻る</a></p></main><footer class="footer"><div class="wrap"><span>© Parroting</span><span><a href="/parroting/ja/">ホーム</a> · <a href="/parroting/en/model">口調モデル</a> · <a href="/parroting/en/guide">ガイド</a> · <a href="/parroting/ja/blog/">記事</a></span><span class="credit"><a href="/parroting/en/speech-models">音声モデルとライセンス</a> · Mac 版は <a href="https://github.com/cjpais/Handy" rel="noopener">Handy</a>（MIT ライセンス）をベースにしています</span></div></footer></body></html>

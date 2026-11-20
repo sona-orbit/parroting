@@ -1,0 +1,96 @@
+<!doctype html><html lang="ja"><head><meta charset="utf-8"><script async src="https://www.googletagmanager.com/gtag/js?id=G-FJGRNJFB15"></script><script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag("js",new Date());gtag("config","G-FJGRNJFB15");document.addEventListener("click",function(e){var a=e.target.closest&&e.target.closest("a[href]");if(!a)return;var h=a.href;if(/\/releases\/.*\/download\/|\.dmg(\?|$)|apps\.apple\.com\/|testflight\.apple\.com\//.test(h)){gtag("event","download_click",{link_url:h,link_text:(a.textContent||"").trim().slice(0,60)});}},true);</script><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="text-scale" content="scale"><meta name="theme-color" content="#f7f8f5" media="(prefers-color-scheme: light)"><meta name="theme-color" content="#101813" media="(prefers-color-scheme: dark)"><script type="speculationrules">{"prerender":[{"where":{"and":[{"href_matches":"/parroting/*"},{"not":{"selector_matches":"[download],[target=_blank],.no-prerender"}}]},"eagerness":"moderate"}]}</script><meta name="color-scheme" content="light dark"><meta name="apple-itunes-app" content="app-id=6828834904"><title>音声入力で人名や専門用語を間違える？辞書から専用モデルまで3段階で改善｜Parroting</title><meta name="description" content="音声入力で同じ単語を間違える原因と、辞書・口調ヒントのパーソナライズ・専用音声モデルで直せることを解説。私のテスト結果と注意点も紹介します。"><link rel="canonical" href="https://sona-orbit.github.io/parroting/ja/blog/voice-typing-accuracy/"><link rel="alternate" hreflang="zh-Hant" href="https://sona-orbit.github.io/parroting/blog/voice-typing-accuracy/"><link rel="alternate" hreflang="zh-Hans" href="https://sona-orbit.github.io/parroting/zh-Hans/blog/voice-typing-accuracy/"><link rel="alternate" hreflang="en" href="https://sona-orbit.github.io/parroting/en/blog/voice-typing-accuracy/"><link rel="alternate" hreflang="ja" href="https://sona-orbit.github.io/parroting/ja/blog/voice-typing-accuracy/"><link rel="alternate" hreflang="x-default" href="https://sona-orbit.github.io/parroting/blog/voice-typing-accuracy/"><meta property="og:type" content="article"><meta property="og:title" content="音声入力で人名や専門用語を間違える？辞書から専用モデルまで3段階で改善｜Parroting"><meta property="og:description" content="音声入力で同じ単語を間違える原因と、辞書・口調ヒントのパーソナライズ・専用音声モデルで直せることを解説。私のテスト結果と注意点も紹介します。"><meta property="og:url" content="https://sona-orbit.github.io/parroting/ja/blog/voice-typing-accuracy/"><meta property="og:image" content="https://sona-orbit.github.io/parroting/assets/blog/voice-typing-accuracy/hero.jpg"><link rel="stylesheet" href="../../../assets/style.css?v=15"><link rel="stylesheet" href="../../../assets/blog.css?v=8"><link rel="icon" href="../../../assets/favicon.png"><script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "音声入力で人名や専門用語を間違える？辞書から専用モデルまで3段階で改善", "description": "音声入力で同じ単語を間違える原因と、辞書・口調ヒントのパーソナライズ・専用音声モデルで直せることを解説。私のテスト結果と注意点も紹介します。", "inLanguage": "ja", "datePublished": "2026-11-02", "dateModified": "2026-11-02", "mainEntityOfPage": "https://sona-orbit.github.io/parroting/ja/blog/voice-typing-accuracy/", "author": {"@type": "Organization", "name": "Sona Orbit"}, "publisher": {"@type": "Organization", "name": "Sona Orbit"}, "image": "https://sona-orbit.github.io/parroting/assets/blog/voice-typing-accuracy/hero.jpg"}</script><script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "inLanguage": "ja", "mainEntity": [{"@type": "Question", "name": "個人辞書と口調ヒントのパーソナライズにGPUやネット接続は必要ですか？", "acceptedAnswer": {"@type": "Answer", "text": "必要ありません。この2段階はAppleシリコン搭載のMac上で完結します。ネット接続もAPIキーもGPUも不要です。第3段階の専用音声モデルだけは、NVIDIAのGPUを搭載したパソコン（または時間をかけて動かすCPU）で学習します。"}}, {"@type": "Question", "name": "録音はアップロードされますか？", "acceptedAnswer": {"@type": "Answer", "text": "されません。Parrotingの録音、音声認識、辞書、口調のパーソナライズはすべてMac上で行います。自分で「トレーニングデータを書き出す…」を押したときだけ、ファイルがParrotingの外に出ます。保存先は自分で決められます。"}}, {"@type": "Question", "name": "専用モデルを学習させなくても、Parrotingは使うほど正確になりますか？", "acceptedAnswer": {"@type": "Answer", "text": "はい。辞書の項目は確認すると次の文から反映されます。人名や製品名のような決まった間違いはよく起きますが、直しやすいものです。まず2分間の「音読の録音」を1回試し、誤字率と間違う箇所を見てから、第3段階に進むか決められます。"}}, {"@type": "Question", "name": "専用モデルの学習には、どれくらいの録音が必要ですか？", "acceptedAnswer": {"@type": "Answer", "text": "正しい文字起こしが付いた録音を、少なくとも20～30分用意します。私のテストでは、録音の量より文字起こしの正確さが重要でした。録音を4倍に増やしても、誤字率はさらに0.2ポイントしか下がりませんでした。"}}, {"@type": "Question", "name": "学習後に精度が落ちたら、元に戻せますか？", "acceptedAnswer": {"@type": "Answer", "text": "音声モデルは「モデルを管理」で「標準モデルに戻す」を押すと元に戻せます。口調ヒントのパーソナライズも、採用後いつでも前の版や元のモデルに戻せます。"}}]}</script><script>window.PARROTING_PAGE='blog/voice-typing-accuracy/';window.PARROTING_LOCALE='ja';</script><script defer src="../../../assets/site.js?v=18"></script></head><body><header class="site-header"><div class="wrap nav"><a class="brand" href="/parroting/ja/"><img src="/parroting/assets/icon-192.webp" alt="" width="34" height="34">Parroting</a><nav class="nav-links" aria-label="メイン"><a href="/parroting/ja/">ホーム</a><a href="/parroting/en/model">口調モデル</a><a href="/parroting/en/guide">ガイド</a><a href="/parroting/ja/blog/">記事</a><a href="/parroting/ja/iphone/">iPhone</a></nav><div class="nav-actions"><button class="app-btn" type="button" popovertarget="get-iphone"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><rect x="7" y="2.5" width="10" height="19" rx="2.5"></rect><path d="M11 18.5h2"></path></svg>iPhoneアプリ</button><div class="app-pop" id="get-iphone" popover><img class="qr" src="/parroting/assets/iphone/qr.svg" alt="ParrotingをダウンロードするためのQRコード" width="168" height="168"><b>iPhoneのカメラでスキャン</b><small>Parroting iPhone版 · 買い切り800円<br>Macと辞書を共有</small><a class="store-badge" href="https://apps.apple.com/app/id6828834904"><img src="/parroting/assets/badges/download-on-the-app-store-en-us.svg" alt="App Storeでダウンロード" width="120" height="40"></a><a class="inline-link" href="/parroting/ja/iphone/">iPhoneアプリについて →</a></div><label><span class="sr-only">言語</span><select class="lang" id="language" aria-label="言語"><option value="zh-Hant">繁體中文</option><option value="zh-Hans">简体中文</option><option value="en">英語</option><option value="ja" selected>日本語</option></select></label><a class="button small" href="https://github.com/sona-orbit/parroting-releases/releases/latest/download/Parroting-macos-arm64.dmg">無料でダウンロード</a></div></div></header><main class="blog-shell"><p class="eyebrow">Parroting Journal · 記事</p><h1>音声入力で人名や専門用語を間違える？辞書から専用モデルまで3段階で改善</h1><p class="blog-intro">音声入力をしばらく使うと、困るのは文全体を認識できないことより、いつも同じ単語を間違えることです。同僚の名前、製品名、中国語と英語が混ざった専門用語などです。この記事では、音声入力を自分に合わせる方法を3段階に分けます。それぞれ直せることと直せないことを説明し、私の録音でモデルを学習させたテスト結果も公開します。</p><p class="blog-meta"><time datetime="2026-11-02">2026-11-02</time> · 約9分で読めます</p><div class="blog-languages"><a href="https://sona-orbit.github.io/parroting/blog/voice-typing-accuracy/">繁體中文</a><a href="https://sona-orbit.github.io/parroting/en/blog/voice-typing-accuracy/">English</a><a href="https://sona-orbit.github.io/parroting/zh-Hans/blog/voice-typing-accuracy/">简体中文</a><a href="https://sona-orbit.github.io/parroting/ja/blog/voice-typing-accuracy/">日本語</a></div><figure class="blog-illus is-hero"><img src="../../../assets/blog/voice-typing-accuracy/hero.webp" alt="Macのそばにいるオウムが、聞き間違えた文字を一つずつ直している" width="600" height="400" loading="eager" decoding="async" fetchpriority="high"></figure><nav class="blog-toc"><strong>目次</strong><ol><li><a href="#part-1">まず結論：間違いに合う方法を選ぶ</a></li><li><a href="#part-2">なぜ同じ単語を間違え続けるのか</a></li><li><a href="#part-3">第1段階：個人辞書</a></li><li><a href="#part-4">第2段階：Mac上で口調ヒントを調整</a></li><li><a href="#part-5">第3段階の前に：自分の認識精度を確認</a></li><li><a href="#part-6">第3段階：専用音声モデルのテスト結果</a></li><li><a href="#part-7">自分で学習する手順と注意点</a></li><li><a href="#part-8">よくある質問</a></li></ol></nav><article class="blog-article"><p class="blog-note">私はSona Orbitで、Parrotingを一人で開発している個人開発者です。Parrotingは本サイトの自社製品です。この記事の学習結果は私自身の声で測ったもので、1人分のデータです。誰もが同じ結果になるわけではありません。機能の説明はParroting 0.4.13に基づきます。</p>
+
+<section id="part-1"><h2>1. まず結論：間違いに合う方法を選ぶ</h2>
+<table class="blog-table">
+<thead><tr><th>段階</th><th>直すのに向くもの</th><th>作業する場所</th><th>反映まで</th><th>直せないもの</th></tr></thead>
+<tbody>
+<tr><td>第1段階<br>個人辞書</td><td>決まった人名、製品名、英語の略語。例：Jmini → Gemini</td><td>Mac上。文字を修正した後に確認</td><td>次の文から反映</td><td>文脈で決まる同音異字（例：「在／再」＝中国語で同じ発音の別の字）。そもそも聞き取れなかった音</td></tr>
+<tr><td>第2段階<br>口調ヒントのパーソナライズ</td><td>友人との冗談にも反応するなど、敏感すぎるヒント</td><td>Mac上。20件のフィードバックを蓄積</td><td>学習は数秒。検証に通った場合だけ採用</td><td>ヒントを出すかどうかだけを調整し、認識した文字は変えない</td></tr>
+<tr><td>第3段階<br>専用音声モデル</td><td>よく使う専門用語、アクセント、中国語と英語が混ざった発話、同音異字の選び間違い</td><td>データを書き出し、NVIDIAのGPUを搭載したパソコンで学習してMacに読み込む</td><td>録音の準備と学習が必要</td><td>ほかの人の声の認識精度が少し下がる</td></tr>
+</tbody></table>
+<p>多くの人には最初の2段階で十分です。誤字をさらに減らしたい場合に、第3段階を検討してください。</p></section>
+
+<section id="part-2"><h2>2. なぜ同じ単語を間違え続けるのか</h2>
+<p>音声認識には2つの段階があります。まず音から「どう聞こえるか」を捉え、次に同じ発音の字から一般的なものを選びます。そのため、間違いは無作為ではなく、主に次の箇所で起きます。</p>
+<ul>
+<li><b>珍しい名前：</b>「王曉明」（人名）の「曉」は「小」より一般的ではないため、モデルが「小」を選び続けます。</li>
+<li><b>製品名と英語の専門用語：</b>モデルが知らない語は、発音の近い形にされます。例えばGeminiがJminiになります。</li>
+<li><b>同音異字：</b>「我再看一次」（もう一度見る）と「我在看一次」（「再」を「在」とした誤り）は同じ発音なので、前後の文脈で判断する必要があります。</li>
+<li><b>個人のアクセントと音のつながり：</b>早口で音がつながると、最初の段階ですでに聞き間違えます。</li>
+</ul>
+<p>最初の2つは音を捉えた後に字を選び間違えているので、辞書で直せます。後の2つはモデル自体があなたの声に慣れる必要があり、辞書では対応できません。</p></section>
+
+<section id="part-3"><h2>3. 第1段階：個人辞書</h2>
+<p>まずは、よく間違える語を記録します。認識後に誤った表記を正しい表記へ置き換えます。Parrotingの辞書はMac上で処理され、AIを使わなくても動作します。AIで話し言葉を整える機能を使う場合は、これらの語もAIに伝えます。</p>
+<p>辞書の自動学習には問題があります。文全体を別の表現に書き換えただけなのに、ソフトが「聞き間違い」と判断し、無関係な語を辞書に入れてしまうことです。Parrotingでは次のように扱います。</p>
+<ul>
+<li><b>まず発音を比較：</b>ペースト後に文字を直すと、Parrotingは修正前後の発音を比べます。発音が近い組み合わせ（例：「小明」→「曉明」。人名の表記修正）は、「パーソナライズ学習」ページの確認リストに入ります。発音が大きく異なるものは「言い換え」に分類され、辞書にも学習にも使われません。分類が違う場合は「実は聞き間違い」または「聞き間違いではなく、言い換えた」で修正できます。</li>
+<li><b>確認したものだけを反映：</b>リストで「辞書に追加」を押すと、次の文から反映されます。</li>
+<li><b>手動でも追加できる：</b>「設定」 → 「辞書と履歴」 → 「辞書」 → 「追加」で、正しい表記とよくある誤表記を入力します。CSVの読み込みも可能です（1列目が正しい表記、2列目が誤表記）。</li>
+</ul>
+<figure class="blog-illus"><img src="../../../assets/blog/voice-typing-accuracy/dictionary.webp" alt="オウムが名前の誤表記のカードを正しいカードに替え、辞書にしまっている" width="600" height="400" loading="lazy" decoding="async"></figure>
+<p><b>辞書で直せないもの：</b>辞書は「Aを見つけたらBに置き換える」仕組みです。「在／再」（中国語で文脈によって使い分ける同音異字）のように両方が使われる字は、単純に置き換えられません。早口で最初から音を捉えられなかった場合も、置き換える対象がありません。これらは第3段階で対応します。</p></section>
+
+<section id="part-4"><h2>4. 第2段階：Mac上で口調ヒントを調整</h2>
+<p>話すときは、書くときより感情が表れやすくなります。Parrotingには約11 MBの中国語用の小さな口調モデルが内蔵されています（英語用は別です）。Mac上で直前に話した文と状況（使っているAppや、それまでの会話）を読み、場面、相手、目的、丁寧さ、口調、ヒントの要否、くだけすぎていないかの7項目を一度に判断します。APIキーもネット接続も不要です。</p>
+<p>ただし、許容する言い方は人によって違います。10年来の友人に「你這白癡，又遲到了啦」（「ばか、また遅刻したのかよ」という冗談）と言うのは、普段のやり取りかもしれません。毎回ヒントが出ると、機能を切りたくなります。そこで、この段階ではフィードバックに合わせて調整できます。</p>
+<ol>
+<li><b>ヒントが違うと思ったら「判定が違う」を押します</b>。または「このAppでは通知しない」を押します。</li>
+<li><b>20件のフィードバックで学習できます：</b>サイドバーの「パーソナライズ学習」でフィードバックを確認し、「口調ヒントのパーソナライズ」から学習します。このMac上で数秒で終わり、元のモデルは変更されません。</li>
+<li><b>検証に通らなければ採用できません：</b>フィードバック5件のうち1件は学習に使わず、検証用に残します。内蔵のテスト文でも、本来ヒントを出すべき文が見逃されないか確認します。検証に失敗した場合は、以前は正しく判断できていた文が誤判定になると知らせます。</li>
+<li><b>いつでも元に戻せます：</b>「採用」後も版の履歴が残り、前の版や元のモデルに戻せます。</li>
+</ol>
+<figure class="blog-illus"><img src="../../../assets/blog/voice-typing-accuracy/tone.webp" alt="オウムが小さな天秤を持ち、ヒントの感度を調整している" width="600" height="400" loading="lazy" decoding="async"></figure>
+<p>この段階で変わるのは口調ヒントだけです。認識される文字の精度は上がりません。</p></section>
+
+<section id="part-5"><h2>5. 第3段階の前に：自分の認識精度を確認</h2>
+<p>モデルの学習を考える前に、Parrotingがどこを聞き間違えるか確認します。「設定」 → 「パーソナライズ学習」 → 「音読の録音」で確認できます。1回は10文、約2分です。原稿を読み、各文の後に聞き間違えた文字を確認します。最後に誤字率が表示されます。</p>
+<p>間違いとして示された字と原稿の字が同じ発音なら、あなたの読み間違いではなく、Parrotingが字を選び間違えています。こうした間違いは辞書や専用モデルで改善できることが多いです。録音の正解は読んだ原稿なので、学習にも使えます。録音は自分で削除するまでMac上に残ります。</p></section>
+
+<section id="part-6"><aside class="blog-cta-mid"><p>Parroting を試す</p><a href="https://github.com/sona-orbit/parroting-releases/releases/latest/download/Parroting-macos-arm64.dmg" class="button">Mac版を無料でダウンロード</a></aside><h2>6. 第3段階：専用音声モデルのテスト結果</h2>
+<p>Parrotingの標準の音声認識モデルはSenseVoice Smallです。私はオープンソースの学習ツール<a href="https://github.com/sona-orbit/parroting-asr-training" rel="noopener">parroting-asr-training</a>を使い、LoRAで約2%のパラメータだけを微調整しました。私自身の音声入力の録音でテストし、評価には学習時に使っていない録音だけを使いました。</p>
+<h3>学習ツールでのテスト（普段の音声入力2時間、評価用263件）</h3>
+<table class="blog-table">
+<thead><tr><th>モデル</th><th>誤字率</th></tr></thead>
+<tbody>
+<tr><td>元のモデル</td><td>6.7%</td></tr>
+<tr><td>学習1回目</td><td>4.7%</td></tr>
+<tr><td>学習2回目</td><td>5.5%</td></tr>
+</tbody></table>
+<p>誤字は2～3割減り、特によく使う人名、製品名、途中に入る英語で改善しました。ただし、同じ録音で2回学習した結果には、約1ポイントの差がありました。どちらの学習でも「正解」はモデル自身による文字起こしで、そこにも誤りが含まれています。そのため結果にばらつきが出ます。学習後は必ず未使用の録音で評価し、使うかどうか決める必要があります。</p>
+<h3>以前の実験：録音を増やしても改善はわずか</h3>
+<p>それ以前の2回の実験では、複数のモデルの文字起こしを比較し、AIに正解を選ばせました。こちらも人による確認はしていません。</p>
+<table class="blog-table">
+<thead><tr><th>モデル</th><th>学習用の録音</th><th>誤字率</th></tr></thead>
+<tbody>
+<tr><td>元のモデル</td><td>—</td><td>約5.0%</td></tr>
+<tr><td>第1版</td><td>約30分</td><td>約3.6%</td></tr>
+<tr><td>第2版</td><td>約2時間</td><td>約3.4%</td></tr>
+</tbody></table>
+<p>録音を4倍に増やしても、誤字率はさらに0.2ポイントしか下がりませんでした。私の結論は、<b>録音の量より正解の正確さが重要</b>ということです。音読の録音と、自分で確認した修正には正しい文字起こしがあるため、学習用の素材に向いています。</p>
+<figure class="blog-illus"><img src="../../../assets/blog/voice-typing-accuracy/voice-model.webp" alt="ヘッドホンを着けたオウムが録音を聞き、隣のグラフには誤字の減少が示されている" width="600" height="400" loading="lazy" decoding="async"></figure>
+<h3>代償と実際に遭遇した問題</h3>
+<ul>
+<li><b>ほかの人の声では精度が下がる：</b>一般的なテストセット（FLEURS）では、第1版の誤字率は約0.2ポイント、第2版は約1.2ポイント上がりました。自分の声に合わせるほど、ほかの人の声には弱くなります。自分専用のMacなら見合う場合もありますが、この代償は知っておいてください。</li>
+<li><b>英単語が重複して入力される：</b>第1版ではGoogleがGooglegleに、emailがemailmailになる副作用がありました。第2版では大幅に減りました。学習後は誤字率を見るだけでなく、数日使って新たな不具合がないか確認してください。</li>
+<li><b>正解は簡体字にする：</b>繁体字の文字起こしで直接学習したところ、学習するほど精度が落ちました。SenseVoiceの語彙は簡体字が中心なので、ツールが正解を自動で簡体字に変換します。Parrotingの出力時には、使っている字体（例えば台湾で使う繁体字）に戻します。</li>
+</ul></section>
+
+<section id="part-7"><h2>7. 自分で学習する手順と注意点</h2>
+<p>Parroting自体は音声モデルを学習しません。NVIDIAのGPUを搭載した自分のパソコンで学習します。音声が私のところにアップロードされることもありません。</p>
+<ol>
+<li><b>録音を準備：</b>正しい文字起こしが付いた録音を少なくとも20～30分用意します。音読の録音が最も確実です。確認リストで承認した修正も使えますが、書き出すには録音が残っている必要があります。Parrotingは標準で直近300件の録音だけを保存します。増やす場合は「設定」 → 「詳細」 → 「履歴」 → 「録音の保存期間」で期間を延ばしてください。</li>
+<li><b>書き出す：</b>「設定」 → 「辞書と履歴」 → 「データの保存場所」 → 「自分の情報」 → 「トレーニングデータを書き出す…」から操作します（「音読の録音」のカードからも書き出せます）。</li>
+<li><b>学習する：</b><a href="https://github.com/sona-orbit/parroting-asr-training" rel="noopener">parroting-asr-training</a>を使います（MITライセンス、説明は英語）。LinuxまたはWindowsのWSL2が必要です。8 GBのGPUで動き、RTX 4090では約8～9分です。CPUだけでも動きますが遅くなります。90分の録音なら、16コアで1回の学習に約50分かかります。学習後、ツールは評価用の録音で前後を比較し、レポートに「Use it」または「Don't use it」と明記します。</li>
+<li><b>Parrotingに読み込む：</b>「設定」 → 「話す」 → 「音声モデルと言語」 → 「モデルを管理」 → 「モデルを読み込む…」を開きます。ParrotingはまずMac内蔵の音声でテスト文を読み上げ、新しいモデルが文字起こしできた場合だけリストに追加します。</li>
+<li><b>前後を比較する：</b>「モデルを管理」ウィンドウ上部の「音読の録音でテスト」を使います。音読の録音のうち評価用に残した1/5だけを使うため、学習済みの文で結果が良く見えることはありません。読み込みの前後でそれぞれ1回テストします。満足できなければ「標準モデルに戻す」を押してください。</li>
+</ol></section>
+
+<section id="part-8"><h2>8. よくある質問</h2>
+<div class="blog-faq">
+<h3>個人辞書と口調ヒントのパーソナライズにGPUやネット接続は必要ですか？</h3><p>必要ありません。この2段階はAppleシリコン搭載のMac上で完結します。ネット接続もAPIキーもGPUも不要です。第3段階の専用音声モデルだけは、NVIDIAのGPUを搭載したパソコン（または時間をかけて動かすCPU）で学習します。</p>
+<h3>録音はアップロードされますか？</h3><p>されません。Parrotingの録音、音声認識、辞書、口調のパーソナライズはすべてMac上で行います。自分で「トレーニングデータを書き出す…」を押したときだけ、ファイルがParrotingの外に出ます。保存先は自分で決められます。</p>
+<h3>専用モデルを学習させなくても、Parrotingは使うほど正確になりますか？</h3><p>はい。辞書の項目は確認すると次の文から反映されます。人名や製品名のような決まった間違いはよく起きますが、直しやすいものです。まず2分間の「音読の録音」を1回試し、誤字率と間違う箇所を見てから、第3段階に進むか決められます。</p>
+<h3>専用モデルの学習には、どれくらいの録音が必要ですか？</h3><p>正しい文字起こしが付いた録音を、少なくとも20～30分用意します。私のテストでは、録音の量より文字起こしの正確さが重要でした。録音を4倍に増やしても、誤字率はさらに0.2ポイントしか下がりませんでした。</p>
+<h3>学習後に精度が落ちたら、元に戻せますか？</h3><p>音声モデルは「モデルを管理」で「標準モデルに戻す」を押すと元に戻せます。口調ヒントのパーソナライズも、採用後いつでも前の版や元のモデルに戻せます。</p>
+</div></section></article><aside class="blog-cta"><h2>Parroting を試す</h2><p>Appleシリコン · macOS 11以降 · 無料</p><a href="https://github.com/sona-orbit/parroting-releases/releases/latest/download/Parroting-macos-arm64.dmg" class="button">Mac版を無料でダウンロード</a></aside><nav class="blog-related"><h2>あわせて読みたい</h2><ul><li><a href="../mac-offline-voice-typing/">Macの音声入力はオフラインで使える？事前準備と使える機能<span>Macの音声入力をオフラインで使う方法。内蔵の音声入力は言語によって処理場所が異なります。切断前の準備、使える機能、メモリに合うローカルモデルの選び方を解説します。</span></a></li><li><a href="../superwhisper-chinese/">superwhisperの中国語設定：言語・モデル・繁体字出力<span>superwhisperで中国語が英語や簡体字になるときの設定方法。言語、無料プランで使えるモデル、繁体字出力、中国語と英語を混ぜる場合の設定を公式資料に沿って紹介します。</span></a></li><li><a href="../mac-voice-typing-setup/">Macの音声入力の始め方：設定手順・ショートカット・中国語の句読点<span>Macの音声入力は、システム設定のキーボードで「音声入力」をオンにすると使えます。ショートカット、中国語の句読点と改行、使えないときの確認方法、オフラインで使う方法を紹介します。</span></a></li></ul></nav><p class="blog-back"><a href="../">← 記事一覧に戻る</a></p></main><footer class="footer"><div class="wrap"><span>© Parroting</span><span><a href="/parroting/ja/">ホーム</a> · <a href="/parroting/en/model">口調モデル</a> · <a href="/parroting/en/guide">ガイド</a> · <a href="/parroting/ja/blog/">記事</a></span><span class="credit"><a href="/parroting/en/speech-models">音声モデルとライセンス</a> · Mac 版は <a href="https://github.com/cjpais/Handy" rel="noopener">Handy</a>（MIT ライセンス）をベースにしています</span></div></footer></body></html>

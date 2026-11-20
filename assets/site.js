@@ -11,7 +11,7 @@
   const page = named[pageId] || (pageId.startsWith('blog/') ? pageId : '');
   // Site root (…/parroting/), so pages at any depth build the same URLs.
   const root = new URL('../', (document.currentScript && document.currentScript.src) || location.href).href;
-  const target = (lang) => root + (lang === 'zh-Hant' ? '' : lang + '/') + ((missing[lang] || []).includes(page) || (lang === 'ja' && page.startsWith('blog/')) ? '' : page);
+  const target = (lang) => root + (lang === 'zh-Hant' ? '' : lang + '/') + ((missing[lang] || []).includes(page) ? '' : page);
   const selector = document.getElementById('language');
   let saved;
   try { saved = localStorage.getItem('parroting-language'); } catch (_) {}

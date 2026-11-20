@@ -1,0 +1,102 @@
+<!doctype html><html lang="ja"><head><meta charset="utf-8"><script async src="https://www.googletagmanager.com/gtag/js?id=G-FJGRNJFB15"></script><script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag("js",new Date());gtag("config","G-FJGRNJFB15");document.addEventListener("click",function(e){var a=e.target.closest&&e.target.closest("a[href]");if(!a)return;var h=a.href;if(/\/releases\/.*\/download\/|\.dmg(\?|$)|apps\.apple\.com\/|testflight\.apple\.com\//.test(h)){gtag("event","download_click",{link_url:h,link_text:(a.textContent||"").trim().slice(0,60)});}},true);</script><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="text-scale" content="scale"><meta name="theme-color" content="#f7f8f5" media="(prefers-color-scheme: light)"><meta name="theme-color" content="#101813" media="(prefers-color-scheme: dark)"><script type="speculationrules">{"prerender":[{"where":{"and":[{"href_matches":"/parroting/*"},{"not":{"selector_matches":"[download],[target=_blank],.no-prerender"}}]},"eagerness":"moderate"}]}</script><meta name="color-scheme" content="light dark"><meta name="apple-itunes-app" content="app-id=6828834904"><title>Macのローカル音声認識モデル比較：SenseVoice・Qwen3-ASR・Breeze-ASR・Whisper｜Parroting</title><meta name="description" content="Macのオフライン音声入力にはどのモデルを選ぶ？サイズ、速度、中国語の誤字率、台湾の中国語や中英混在への対応を比べ、自分の声で試す方法を紹介します。"><link rel="canonical" href="https://sona-orbit.github.io/parroting/ja/blog/mac-local-asr-models/"><link rel="alternate" hreflang="zh-Hant" href="https://sona-orbit.github.io/parroting/blog/mac-local-asr-models/"><link rel="alternate" hreflang="zh-Hans" href="https://sona-orbit.github.io/parroting/zh-Hans/blog/mac-local-asr-models/"><link rel="alternate" hreflang="en" href="https://sona-orbit.github.io/parroting/en/blog/mac-local-asr-models/"><link rel="alternate" hreflang="ja" href="https://sona-orbit.github.io/parroting/ja/blog/mac-local-asr-models/"><link rel="alternate" hreflang="x-default" href="https://sona-orbit.github.io/parroting/blog/mac-local-asr-models/"><meta property="og:type" content="article"><meta property="og:title" content="Macのローカル音声認識モデル比較：SenseVoice・Qwen3-ASR・Breeze-ASR・Whisper｜Parroting"><meta property="og:description" content="Macのオフライン音声入力にはどのモデルを選ぶ？サイズ、速度、中国語の誤字率、台湾の中国語や中英混在への対応を比べ、自分の声で試す方法を紹介します。"><meta property="og:url" content="https://sona-orbit.github.io/parroting/ja/blog/mac-local-asr-models/"><meta property="og:image" content="https://sona-orbit.github.io/parroting/assets/blog/mac-local-asr-models/hero.jpg"><link rel="stylesheet" href="../../../assets/style.css?v=15"><link rel="stylesheet" href="../../../assets/blog.css?v=8"><link rel="icon" href="../../../assets/favicon.png"><script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "Macのローカル音声認識モデル比較：SenseVoice・Qwen3-ASR・Breeze-ASR・Whisper", "description": "Macのオフライン音声入力にはどのモデルを選ぶ？サイズ、速度、中国語の誤字率、台湾の中国語や中英混在への対応を比べ、自分の声で試す方法を紹介します。", "inLanguage": "ja", "datePublished": "2026-11-05", "dateModified": "2026-11-05", "mainEntityOfPage": "https://sona-orbit.github.io/parroting/ja/blog/mac-local-asr-models/", "author": {"@type": "Organization", "name": "Sona Orbit"}, "publisher": {"@type": "Organization", "name": "Sona Orbit"}, "image": "https://sona-orbit.github.io/parroting/assets/blog/mac-local-asr-models/hero.jpg"}</script><script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "inLanguage": "ja", "mainEntity": [{"@type": "Question", "name": "Parrotingでモデルをダウンロードしたり切り替えたりするには料金がかかりますか？", "acceptedAnswer": {"@type": "Answer", "text": "かかりません。Parrotingは無料です。掲載したモデルはすべてアプリ内でダウンロードし、いつでも切り替えられます。文字数や利用時間の制限もありません。各モデルは開発者がオープンソースライセンスで公開しています。使用前にライセンスを確認できます。"}}, {"@type": "Question", "name": "モデルをたくさんダウンロードすると、メモリを使い続けますか？", "acceptedAnswer": {"@type": "Answer", "text": "いいえ。ダウンロードしたモデルが使うのはディスク容量だけです。メモリに読み込まれるのは使用中のモデルだけで、しばらく使わなければ解放されます。その後の最初の音声入力では、約0.1～0.4秒余分にかかります。不要なモデルは「モデルを管理」で削除できます。"}}, {"@type": "Question", "name": "メモリが8 GBのMacには、どのモデルがおすすめですか？", "acceptedAnswer": {"@type": "Answer", "text": "まずは標準のSenseVoice Small（253 MB）を使ってください。メモリ使用量が少なく、応答も最も速いモデルです。精度を上げたいならQwen3-ASR 0.6B（850 MB）を試せます。Breeze-ASR-25とQwen3-ASR 1.7Bはサイズが大きく、複数のアプリを同時に開くとメモリを多く使います。"}}, {"@type": "Question", "name": "中国語の誤字率が最も低いモデルはどれですか？", "acceptedAnswer": {"@type": "Answer", "text": "transcribe.cppのFLEURS中国語評価では、Qwen3-ASR 1.7B（7.1%）です。ただし、これはニュース原稿を読み上げた結果です。台湾のアクセントや中国語と英語が混ざる話し方では結果が変わるため、音読の録音で自分の声を試すことをおすすめします。"}}, {"@type": "Question", "name": "macOS標準の音声入力ではだめですか？", "acceptedAnswer": {"@type": "Answer", "text": "たまに短い中国語を一言、二言入力するなら、標準の音声入力が手軽です。ただし、中国語（台湾）の音声はAppleのサーバーで処理されます。モデルの切り替えも、個人用の辞書の利用もできません。"}}]}</script><script>window.PARROTING_PAGE='blog/mac-local-asr-models/';window.PARROTING_LOCALE='ja';</script><script defer src="../../../assets/site.js?v=18"></script></head><body><header class="site-header"><div class="wrap nav"><a class="brand" href="/parroting/ja/"><img src="/parroting/assets/icon-192.webp" alt="" width="34" height="34">Parroting</a><nav class="nav-links" aria-label="メイン"><a href="/parroting/ja/">ホーム</a><a href="/parroting/en/model">口調モデル</a><a href="/parroting/en/guide">ガイド</a><a href="/parroting/ja/blog/">記事</a><a href="/parroting/ja/iphone/">iPhone</a></nav><div class="nav-actions"><button class="app-btn" type="button" popovertarget="get-iphone"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><rect x="7" y="2.5" width="10" height="19" rx="2.5"></rect><path d="M11 18.5h2"></path></svg>iPhoneアプリ</button><div class="app-pop" id="get-iphone" popover><img class="qr" src="/parroting/assets/iphone/qr.svg" alt="ParrotingをダウンロードするためのQRコード" width="168" height="168"><b>iPhoneのカメラでスキャン</b><small>Parroting iPhone版 · 買い切り800円<br>Macと辞書を共有</small><a class="store-badge" href="https://apps.apple.com/app/id6828834904"><img src="/parroting/assets/badges/download-on-the-app-store-en-us.svg" alt="App Storeでダウンロード" width="120" height="40"></a><a class="inline-link" href="/parroting/ja/iphone/">iPhoneアプリについて →</a></div><label><span class="sr-only">言語</span><select class="lang" id="language" aria-label="言語"><option value="zh-Hant">繁體中文</option><option value="zh-Hans">简体中文</option><option value="en">英語</option><option value="ja" selected>日本語</option></select></label><a class="button small" href="https://github.com/sona-orbit/parroting-releases/releases/latest/download/Parroting-macos-arm64.dmg">無料でダウンロード</a></div></div></header><main class="blog-shell"><p class="eyebrow">Parroting Journal · 記事</p><h1>Macのローカル音声認識モデル比較：SenseVoice・Qwen3-ASR・Breeze-ASR・Whisper</h1><p class="blog-intro">Macでローカル音声入力を使おうと設定を開くと、SenseVoice、Qwen3-ASR、Breeze-ASR、Whisper、Parakeetなどのモデルが並びます。まず迷うのは、どれをダウンロードするかです。この記事では、主なモデルの得意なことと制約を比べ、自分の声に合うモデルを試す方法を紹介します。</p><p class="blog-meta"><time datetime="2026-11-05">2026-11-05</time> · 約8分で読めます</p><div class="blog-languages"><a href="https://sona-orbit.github.io/parroting/blog/mac-local-asr-models/">繁體中文</a><a href="https://sona-orbit.github.io/parroting/en/blog/mac-local-asr-models/">English</a><a href="https://sona-orbit.github.io/parroting/zh-Hans/blog/mac-local-asr-models/">简体中文</a><a href="https://sona-orbit.github.io/parroting/ja/blog/mac-local-asr-models/">日本語</a></div><figure class="blog-illus is-hero"><img src="../../../assets/blog/mac-local-asr-models/hero.webp" alt="Macの前で大きさの異なる音声認識モデルを選ぶオウム" width="600" height="400" loading="eager" decoding="async" fetchpriority="high"></figure><nav class="blog-toc"><strong>目次</strong><ol><li><a href="#part-1">まず結論：話し方に合わせて選ぶ</a></li><li><a href="#part-2">比較表：サイズ、速度、中国語の誤字率</a></li><li><a href="#part-3">音声入力で大切なのはベンチマークの点数だけではない</a></li><li><a href="#part-4">SenseVoice Small：速く、普段使い向き</a></li><li><a href="#part-5">Qwen3-ASR：中国語の誤字率が低いモデル</a></li><li><a href="#part-6">Breeze-ASR-25：台湾の中国語と中英混在</a></li><li><a href="#part-7">WhisperとmacOS標準の音声入力</a></li><li><a href="#part-8">自分の声で2分間試す</a></li><li><a href="#part-9">モデルを選んだ後に残る誤字の直し方</a></li><li><a href="#part-10">よくある質問</a></li></ol></nav><article class="blog-article"><p class="blog-note">私はSona Orbitで、Parrotingを一人で開発している個人開発者です。Parrotingは本サイトの自社製品です。無料のMac用音声入力アプリで、この記事に登場するモデルをアプリ内でダウンロードできます。比較表の数値は、transcribe.cppが公開している評価結果に基づきます。中国語の誤字率にはFLEURS中国語テストセット、速度の測定にはM4 MaxのGPUが使われています。数値は<a href="/parroting/en/speech-models">Parrotingの音声モデル解説</a>と同じものです。その他の数値には公式の出典を示しています。Mac、声、話す内容によって結果は変わるため、相対的な目安として見てください。機能の説明はParroting 0.4.15に基づきます。</p>
+
+<section id="part-1"><h2>1. まず結論：話し方に合わせて選ぶ</h2>
+<ul class="blog-picks">
+<li><b>速くてファイルが小さい、普段使いのモデルが欲しい：</b>SenseVoice Small（253 MB）。Parrotingで「おすすめ」と表示されるモデルです。少し古いMacでも軽快に動きます。</li>
+<li><b>中国語の精度を上げたい：</b>Qwen3-ASR 1.7B（1.5 GB）は、この一覧で中国語の誤字率が最も低いモデルです。速度とのバランスを取るならQwen3-ASR 0.6B（850 MB）を選べます。</li>
+<li><b>台湾のアクセントや中英混在の発話が多い：</b>Breeze-ASR-25（1.2 GB）を試してください。MediaTek Researchが台湾の中国語と中英混在に合わせて調整しています。ただし、この一覧では最も遅いモデルです。</li>
+<li><b>ほぼ英語だけを話す：</b>NVIDIAのParakeetシリーズも選択肢です。英語では速く正確ですが、中国語には対応していません。</li>
+<li><b>自分の録音で専用モデルを学習させたい：</b>現在公開されているオープンソースの<a href="https://github.com/sona-orbit/parroting-asr-training" rel="noopener">parroting-asr-training</a>ツールキットは、SenseVoice Small向けです。手順は<a href="../voice-typing-accuracy/">前の記事</a>で説明しています。</li>
+</ul></section>
+
+<section id="part-2"><h2>2. 比較表：サイズ、速度、中国語の誤字率</h2>
+<table class="blog-table">
+<thead><tr><th>モデル</th><th>開発者</th><th>ダウンロードサイズ</th><th>中国語の誤字率<br>（低いほど正確）</th><th>速度<br>（高いほど速い）</th><th>言語</th></tr></thead>
+<tbody>
+<tr><td>SenseVoice Small</td><td>Alibaba FunAudioLLM</td><td>253 MB</td><td>10.1%</td><td>267×</td><td>中国語、広東語、英語、日本語、韓国語</td></tr>
+<tr><td>Qwen3-ASR 0.6B</td><td>Alibaba Qwen</td><td>850 MB</td><td>7.6%</td><td>69×</td><td>30言語</td></tr>
+<tr><td>Qwen3-ASR 1.7B</td><td>Alibaba Qwen</td><td>1.5 GB</td><td>7.1%</td><td>41×</td><td>30言語</td></tr>
+<tr><td>Fun-ASR Nano</td><td>Alibaba FunAudioLLM</td><td>891 MB</td><td>8.6%</td><td>78×</td><td>中国語、英語、日本語</td></tr>
+<tr><td>Fun-ASR Nano Multilingual</td><td>Alibaba FunAudioLLM</td><td>891 MB</td><td>7.3%</td><td>70×</td><td>31言語</td></tr>
+<tr><td>Breeze-ASR-25</td><td>MediaTek Research</td><td>1.2 GB</td><td>8.1%</td><td>22×</td><td>中国語、英語（台湾の中国語）</td></tr>
+<tr><td>Whisper Large v3 Turbo</td><td>OpenAI</td><td>886 MB</td><td>8.5%</td><td>44×</td><td>約100言語</td></tr>
+</tbody></table>
+<p>表を見るときは、次の2点に注意してください。</p>
+<ul>
+<li><b>FLEURSはニュース原稿の読み上げを、簡体字の正解文と比較しています。</b>ここではSenseVoiceの誤字率が最も高いものの、日常の短い文で差を同じように感じるとは限りません。Breeze-ASR-25が得意な台湾のアクセントや中英混在も、このテストでは十分に測れません。</li>
+<li><b>速度には大きな差があります。</b>SenseVoice SmallはBreeze-ASR-25より10倍以上速いモデルです。キーを離してから文字が出るまでの待ち時間に関わります。</li>
+</ul></section>
+
+<section id="part-3"><h2>3. 音声入力で大切なのはベンチマークの点数だけではない</h2>
+<p>ネット上の評価は、標準的なデータセットをサーバーのGPUで測るものが中心です。一方、Macでホットキーを押して話すときに気になるのは、次の3点です。</p>
+<ol>
+<li><b>キーを離してから、どれくらい速く文字が出るか。</b>0.2秒待つのと2秒待つのでは、使い心地が大きく違います。</li>
+<li><b>台湾の中国語に英語の専門用語を混ぜたとき、同音の誤字や意図しない簡体字が出ないか。</b></li>
+<li><b>ファイルの大きさとメモリ使用量はどれくらいか。</b>8 GBのMacで複数のアプリを開く場合には重要です。</li>
+</ol>
+<p>数年前まで、Macのローカル音声文字起こしツールの多くはOpenAIのWhisperを使っていました。日常の中国語入力に使うと、精度を上げるには大きなモデルが必要で、話し終えてから待つことになります。出力に簡体字が混ざることもあります。無音や雑音を「謝謝觀看」（「ご視聴ありがとうございました」の意）のような、話していない言葉として認識する「ハルシネーション」も起こり得ます。中国語向けのSenseVoice、Qwen3-ASR、Breeze-ASR-25が使われるようになった理由の一つです。</p></section>
+
+<section id="part-4"><h2>4. SenseVoice Small：速く、普段使い向き</h2>
+<p><a href="https://github.com/FunAudioLLM/SenseVoice" rel="noopener">SenseVoice Small</a>は、Alibaba FunAudioLLMがオープンソースで公開したモデルです。特徴は「非自己回帰」方式です。文字を一つずつ予測するのではなく、発話全体に対応する文字を一度に計算します。公式の説明では、Whisper-Smallの5倍以上、Whisper-Largeの15倍速いとされています。</p>
+<ul>
+<li><b>使い心地：</b>ホットキーを押して一文を話し、キーを離すと、ほぼすぐにカーソル位置へ文字が貼り付けられます。</li>
+<li><b>言語：</b>中国語、広東語、英語、日本語、韓国語の5言語に対応し、話した言語を自動判定します。</li>
+<li><b>弱点：</b>大きなモデルより中国語の誤字がやや多く、出力は簡体字が中心です。知らない人名やGemini、Claudeのような新しい英語の名前では、同音の別の字を選ぶことがあります。</li>
+</ul>
+<p>Parrotingは、この弱点を補うためにローカル処理を加えています。繁体字（台湾の用字）または簡体字への自動変換、句読点や中国語と英語の間のスペースの調整を行います。さらに、<a href="/parroting/en/learning">発音を照合する個人用の辞書</a>で、繰り返し聞き間違える語を固定できます。</p>
+<figure class="blog-illus"><img src="../../../assets/blog/mac-local-asr-models/fast.webp" alt="オウムがキーを離すと、話した文字がすぐにノートパソコンへ入る" width="600" height="400" loading="lazy" decoding="async"></figure></section>
+
+<section id="part-5"><h2>5. Qwen3-ASR：中国語の誤字率が低いモデル</h2>
+<p><a href="https://github.com/QwenLM/Qwen3-ASR" rel="noopener">Qwen3-ASR</a>はAlibabaのQwenチームによる音声認識モデルです。公式の説明によると、Qwen3-Omniの音声理解能力を基にしています。30言語に加え、広東語の香港・広東のアクセント、呉語、閩南語など、中国語の22の方言やアクセントに対応します。</p>
+<ul>
+<li><b>精度：</b>比較表では、1.7Bの中国語の誤字率が最も低い7.1%です。0.6Bは7.6%です。</li>
+<li><b>0.6Bと1.7Bのどちらを選ぶか：</b>いつでも呼び出せる入力ツールとしては、0.6B（850 MB）が速度と精度のバランスを取りやすいモデルです。1.7B（1.5 GB）はより正確ですが、遅く、メモリも多く使います。</li>
+<li><b>向いている人：</b>アクセントが強い人、話すのが速い人、複数の言語を混ぜて話す人です。</li>
+</ul>
+<p>同じ開発元のFun-ASR Nano（891 MB）も選択肢です。中国語の誤字率はQwen3-ASR 0.6Bに近く、Multilingual版は31言語に対応します。</p></section>
+
+<section id="part-6"><aside class="blog-cta-mid"><p>Parroting を試す</p><a href="https://github.com/sona-orbit/parroting-releases/releases/latest/download/Parroting-macos-arm64.dmg" class="button">Mac版を無料でダウンロード</a></aside><h2>6. Breeze-ASR-25：台湾の中国語と中英混在</h2>
+<p>普段から「這個 PR 的 logic 有點問題，你幫我 check 一下 API 的 response」（このPRのロジックに問題がありそうなので、APIのレスポンスを確認してほしい、という意味）のように話す場合、汎用モデルは中国語と英語の切り替わりで間違えることがあります。<a href="https://huggingface.co/MediaTek-Research/Breeze-ASR-25" rel="noopener">Breeze-ASR-25</a>は、MediaTek ResearchがWhisper Large-v2を基に、台湾の中国語と中英混在に合わせて調整したオープンソースモデルです。</p>
+<p>公式モデルカードに掲載された、元のWhisper Large-v2との単語誤り率の比較です。</p>
+<table class="blog-table">
+<thead><tr><th>テストセット</th><th>内容</th><th>Whisper Large-v2</th><th>Breeze-ASR-25</th><th>変化</th></tr></thead>
+<tbody>
+<tr><td>CommonVoice16-zh-TW</td><td>台湾の中国語</td><td>9.84</td><td>7.97</td><td>−19%</td></tr>
+<tr><td>ASCEND-MIX</td><td>中英混在</td><td>21.01</td><td>16.38</td><td>−22%</td></tr>
+<tr><td>CSZS-zh-en</td><td>中英混在</td><td>29.49</td><td>13.01</td><td>−56%</td></tr>
+</tbody></table>
+<p>中英混在での改善が最も目立ちます。一方、台湾の中国語による長い録音を使ったFormosaシリーズのテストでは、改善幅は0～9%で、わずかに悪化した項目もあります。</p>
+<p><b>代償：</b>基になっているのはWhisperの大きなモデルです。この一覧では最も遅く、速度は22×です。SenseVoice Smallは267×です。2、3秒話してすぐキーを離す使い方では、待ち時間を感じやすくなります。会議メモや技術的な議論など、中英混在の内容を一度に長く話すなら試す価値があります。</p>
+<figure class="blog-illus"><img src="../../../assets/blog/mac-local-asr-models/mixed.webp" alt="中国語と英語が混ざる吹き出しを聞き、一行に整えるオウム" width="600" height="400" loading="lazy" decoding="async"></figure></section>
+
+<section id="part-7"><h2>7. WhisperとmacOS標準の音声入力</h2>
+<p><b>Whisper：</b>OpenAIの多言語モデルで、この一覧では対応言語が最も多く、約100言語です。Large v3 Turbo（886 MB）の中国語の誤字率は8.5%ですが、SenseVoiceよりかなり遅いモデルです。速さを優先してSmallやそれ以下のモデルにすると、中国語の誤字が明らかに増えます。出力に簡体字が混ざったり、無音時にハルシネーションが起きたりすることもあります。</p>
+<p><b>macOS標準の音声入力：</b>インストール不要で、たまに一言、二言話すには便利です（<a href="https://support.apple.com/ja-jp/guide/mac-help/mh40584/mac" rel="nofollow noopener">「Macでメッセージや書類を音声入力する」（Apple サポート）</a>）。ただし、Appleの<a href="https://www.apple.com/macos/feature-availability/" rel="nofollow noopener">macOSの機能が利用できる言語の一覧</a>では、中国語（台湾）はデバイス上で音声を認識する言語に含まれません。音声はAppleのサーバーで処理されます。モデルを切り替えることも、個人用の辞書を使うこともできません。</p></section>
+
+<section id="part-8"><h2>8. 自分の声で2分間試す</h2>
+<p>ベンチマークに使われるのは、ほかの人の声と原稿です。話す速さ、マイクとの距離、よく使う言葉は人によって違います。<b>誤字率が最も低いモデルが、あなたの声を最も正確に認識するとは限りません。</b>Parrotingには、これを試す機能があります。</p>
+<ol>
+<li><b>音読を数回録音する：</b>設定 → パーソナライズ学習 →「音読の録音」を開きます。1回につき10文で、約2分です。各文を読み終えると聞き間違えた文字が示され、終了時に誤字率が表示されます。5文ごとに1文が評価用に残されます。モデルを比較するなら、評価用の文が増えるように数回録音してください。</li>
+<li><b>比較したいモデルをダウンロードする：</b>設定 → 話す → 音声モデルと言語 →「モデルを管理」を開きます。SenseVoice Small、Qwen3-ASR 0.6B、Breeze-ASR-25などを選べます。</li>
+<li><b>同じ評価用の文で比べる：</b>「モデルを管理」ウインドウの上部にある「音読の録音でテスト」を押すと、自分の声に対する各モデルの誤字率を確認できます。</li>
+</ol>
+<p>自分のマイクとアクセントなら、253 MBのSenseVoice Smallで十分正確か、大きなモデルに替えると誤字がどれだけ減るかを確認できます。</p>
+<figure class="blog-illus"><img src="../../../assets/blog/mac-local-asr-models/test.webp" alt="オウムがマイクに向かって原稿を読み、横に並ぶモデルの結果を比べる" width="600" height="400" loading="lazy" decoding="async"></figure></section>
+
+<section id="part-9"><h2>9. モデルを選んだ後に残る誤字の直し方</h2>
+<p>どのモデルを選んでも、汎用モデルは新しい同僚の名前や社内プロジェクトのコードネームを知りません。次の組み合わせがおすすめです。</p>
+<ol>
+<li><b>速いモデルを基本にする：</b>普段はSenseVoice SmallかQwen3-ASR 0.6Bを使います。キーを押して話し、離すと貼り付けられます。</li>
+<li><b>繰り返す誤字は個人用の辞書で直す：</b>貼り付け後に人名や専門用語を修正すると、Parrotingが発音を照合し、確認リストに追加します。「辞書に追加」を押せば、次の文から反映されます。AIを使わなくても機能します。</li>
+<li><b>話し言葉の余分な語は、必要に応じてAIで整える：</b>「呃、那個、不對改成三點半」（「ええと、あの、違う、3時半にして」の意）のような言い直しが多いなら、Apple Intelligenceまたは<a href="/parroting/en/gemini-key">無料のGeminiのAPIキー</a>を使って、AIによる整理を有効にできます。</li>
+</ol>
+<p>さらに誤字を減らしたい場合は、前の記事<a href="../voice-typing-accuracy/">辞書から自分専用の音声モデルまで、誤字を減らす3段階の方法</a>をご覧ください。</p></section>
+
+<section id="part-10"><h2>10. よくある質問</h2>
+<div class="blog-faq">
+<h3>Parrotingでモデルをダウンロードしたり切り替えたりするには料金がかかりますか？</h3><p>かかりません。Parrotingは無料です。掲載したモデルはすべてアプリ内でダウンロードし、いつでも切り替えられます。文字数や利用時間の制限もありません。各モデルは開発者がオープンソースライセンスで公開しています。使用前にライセンスを確認できます。</p>
+<h3>モデルをたくさんダウンロードすると、メモリを使い続けますか？</h3><p>いいえ。ダウンロードしたモデルが使うのはディスク容量だけです。メモリに読み込まれるのは使用中のモデルだけで、しばらく使わなければ解放されます。その後の最初の音声入力では、約0.1～0.4秒余分にかかります。不要なモデルは「モデルを管理」で削除できます。</p>
+<h3>メモリが8 GBのMacには、どのモデルがおすすめですか？</h3><p>まずは標準のSenseVoice Small（253 MB）を使ってください。メモリ使用量が少なく、応答も最も速いモデルです。精度を上げたいならQwen3-ASR 0.6B（850 MB）を試せます。Breeze-ASR-25とQwen3-ASR 1.7Bはサイズが大きく、複数のアプリを同時に開くとメモリを多く使います。</p>
+<h3>中国語の誤字率が最も低いモデルはどれですか？</h3><p>transcribe.cppのFLEURS中国語評価では、Qwen3-ASR 1.7B（7.1%）です。ただし、これはニュース原稿を読み上げた結果です。台湾のアクセントや中国語と英語が混ざる話し方では結果が変わるため、音読の録音で自分の声を試すことをおすすめします。</p>
+<h3>macOS標準の音声入力ではだめですか？</h3><p>たまに短い中国語を一言、二言入力するなら、標準の音声入力が手軽です。ただし、中国語（台湾）の音声はAppleのサーバーで処理されます。モデルの切り替えも、個人用の辞書の利用もできません。</p>
+</div></section></article><aside class="blog-cta"><h2>Parroting を試す</h2><p>Appleシリコン · macOS 11以降 · 無料</p><a href="https://github.com/sona-orbit/parroting-releases/releases/latest/download/Parroting-macos-arm64.dmg" class="button">Mac版を無料でダウンロード</a></aside><nav class="blog-related"><h2>あわせて読みたい</h2><ul><li><a href="../mac-offline-voice-typing/">Macの音声入力はオフラインで使える？事前準備と使える機能<span>Macの音声入力をオフラインで使う方法。内蔵の音声入力は言語によって処理場所が異なります。切断前の準備、使える機能、メモリに合うローカルモデルの選び方を解説します。</span></a></li><li><a href="../superwhisper-chinese/">superwhisperの中国語設定：言語・モデル・繁体字出力<span>superwhisperで中国語が英語や簡体字になるときの設定方法。言語、無料プランで使えるモデル、繁体字出力、中国語と英語を混ぜる場合の設定を公式資料に沿って紹介します。</span></a></li><li><a href="../mac-voice-typing-setup/">Macの音声入力の始め方：設定手順・ショートカット・中国語の句読点<span>Macの音声入力は、システム設定のキーボードで「音声入力」をオンにすると使えます。ショートカット、中国語の句読点と改行、使えないときの確認方法、オフラインで使う方法を紹介します。</span></a></li></ul></nav><p class="blog-back"><a href="../">← 記事一覧に戻る</a></p></main><footer class="footer"><div class="wrap"><span>© Parroting</span><span><a href="/parroting/ja/">ホーム</a> · <a href="/parroting/en/model">口調モデル</a> · <a href="/parroting/en/guide">ガイド</a> · <a href="/parroting/ja/blog/">記事</a></span><span class="credit"><a href="/parroting/en/speech-models">音声モデルとライセンス</a> · Mac 版は <a href="https://github.com/cjpais/Handy" rel="noopener">Handy</a>（MIT ライセンス）をベースにしています</span></div></footer></body></html>
