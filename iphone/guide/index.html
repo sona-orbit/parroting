@@ -107,7 +107,7 @@ a{text-decoration:none}
         <span style="width:40px;height:40px;border-radius:50%;background:var(--leaf);color:#FFFFFF;font-weight:800;font-size:1.125rem;display:flex;align-items:center;justify-content:center">3</span>
         <div style="display:flex;flex-direction:column;gap:8px">
           <h3 style="margin:0;font-size:clamp(1.3125rem,0.144rem + 1.62cqi,1.5625rem);font-weight:800;line-height:1.35">打開「允許完整取用」</h3>
-          <p style="margin:0;font-size:1rem;line-height:1.7;color:var(--muted);text-wrap:pretty">在「鍵盤」這頁，把「學舌鳥」和「允許完整取用」都打開。鍵盤要靠它和 App 傳話、把字送進輸入框；你打的字不會被收集。</p>
+          <p style="margin:0;font-size:1rem;line-height:1.7;color:var(--muted);text-wrap:pretty">在「鍵盤」這頁，把「學舌鳥」和「允許完整取用」都打開，跳出確認時按「允許」。鍵盤要靠它和 App 傳話、把字送進輸入框；你打的字不會被收集。回到學舌鳥會自動確認有沒有打開。</p>
         </div>
         <div style="margin-top:auto;position:relative;width:100%;aspect-ratio:972/408;overflow:hidden;border-radius:18px;border:1px solid var(--line)">
           <img src="/parroting/assets/iphone/guide/zh-Hant/onboard.jpg" alt="學舌鳥與允許完整取用兩個開關都打開" loading="lazy" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block" width="972" height="408" decoding="async">
@@ -162,7 +162,7 @@ a{text-decoration:none}
       <div style="flex:1 1 300px;display:flex;flex-direction:column;gap:10px">
         <span style="align-self:flex-start;font-size:0.8125rem;font-weight:700;color:#17241E;background:#E9A23B;border-radius:999px;padding:4px 12px">這不是壞掉</span>
         <h3 style="margin:0;font-size:clamp(1.375rem,0.176rem + 1.98cqi,1.875rem);font-weight:900;line-height:1.3;text-wrap:balance">第一次點麥克風，會先跳回學舌鳥</h3>
-        <p style="margin:0;font-size:1rem;line-height:1.7;color:var(--muted);text-wrap:pretty">學舌鳥打開麥克風後，點左上角「◀」回到原本的 App 接著說，說完在鍵盤上按「完成」。在「待命時間」內再點麥克風，就不用再跳。</p>
+        <p style="margin:0;font-size:1rem;line-height:1.7;color:var(--muted);text-wrap:pretty">學舌鳥打開麥克風後，點左上角「◀」回到原本的 App 接著說，說完在鍵盤上按「完成」。在「待命時間」內再點麥克風，就不用再跳。待命中鍵盤上會出現「關閉麥克風」，用完可以馬上關；其他 App 開始播放聲音（影片、音樂）時也會自動關掉。</p>
       </div>
       <div style="flex:1.4 1 360px;display:flex;flex-wrap:wrap;align-items:center;gap:10px;font-size:0.9375rem;line-height:1.45">
         <div style="flex:1 1 120px;background:var(--bubble);border-radius:18px;padding:14px 16px;display:flex;flex-direction:column;gap:4px"><b style="font-size:0.75rem;color:var(--muted)">LINE</b><span style="font-weight:700">點麥克風</span></div>
@@ -341,7 +341,7 @@ a{text-decoration:none}
     </div>
     <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,400px),1fr));gap:20px;align-items:start">
       <div style="background:var(--card);border:1px solid var(--line);border-radius:28px;padding:clamp(20px,2.4cqi,32px);display:flex;flex-direction:column;gap:16px">
-        <div style="display:flex;flex-direction:column;gap:6px"><h3 style="margin:0;font-size:clamp(1.25rem,0.144rem + 1.62cqi,1.5rem);font-weight:800">AI 來源</h3><p style="margin:0;font-size:1rem;line-height:1.7;color:var(--muted);text-wrap:pretty"><b style="color:var(--ink)">Apple 內建</b>：用 iPhone 上的 Apple Intelligence，免費、不用網路，文字不離開手機。<br><b style="color:var(--ink)">我的 API key</b>：選一家 AI 服務（Gemini、OpenAI、Claude、OpenRouter、Groq、DeepSeek、通義千問、Kimi、智譜 GLM，或自訂網址），貼上那家的 key；每家怎麼申請，點設定裡的「怎麼申請 … 的 API key？」就有步驟。文字從手機直接送到你選的服務，不經過學舌鳥。</p></div>
+        <div style="display:flex;flex-direction:column;gap:6px"><h3 style="margin:0;font-size:clamp(1.25rem,0.144rem + 1.62cqi,1.5rem);font-weight:800">AI 來源</h3><p style="margin:0;font-size:1rem;line-height:1.7;color:var(--muted);text-wrap:pretty"><b style="color:var(--ink)">Apple 內建</b>：用 iPhone 上的 Apple Intelligence，免費、不用網路，文字不離開手機。能用的 iPhone 裝好就開著，不用設定。<br><b style="color:var(--ink)">我的 API key</b>：在「設定 › AI」（用 Apple 內建時在最下面的「進階」）選一家 AI 服務（Gemini、OpenAI、Claude、OpenRouter、Groq、DeepSeek、通義千問、Kimi、智譜 GLM，或自訂網址），貼上那家的 key；每家怎麼申請，點設定裡的「怎麼申請 … 的 API key？」就有步驟。文字從手機直接送到你選的服務，不經過學舌鳥。</p></div>
         <div style="position:relative;width:100%;aspect-ratio:972/759;overflow:hidden;border-radius:18px;border:1px solid var(--line);background:#F4F2EE"><img src="/parroting/assets/iphone/guide/zh-Hant/ai-source.jpg" alt="設定裡的 AI 來源" loading="lazy" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block" width="972" height="759" decoding="async"></div>
       </div>
       <div style="background:var(--card);border:1px solid var(--line);border-radius:28px;padding:clamp(20px,2.4cqi,32px);display:flex;flex-direction:column;gap:16px">
@@ -378,7 +378,7 @@ a{text-decoration:none}
         </details>
         <details style="background:var(--card);border:1px solid var(--line);border-radius:22px;padding:20px 24px">
           <summary style="cursor:pointer;font-size:clamp(1.0625rem,0.112rem + 1.26cqi,1.1875rem);font-weight:800;line-height:1.5">點麥克風沒反應，或一直跳回 App</summary>
-          <p style="margin:12px 0 0;font-size:1rem;line-height:1.75;color:var(--muted)">確認「允許完整取用」有打開。第一次點麥克風會跳回學舌鳥是正常的，點左上角「◀」回去接著說；在待命時間內再點，就不會再跳。待命時間在學舌鳥「設定 › 待命時間」調整，選「不待命」就每次都會跳。</p>
+          <p style="margin:12px 0 0;font-size:1rem;line-height:1.75;color:var(--muted)">確認「允許完整取用」有打開。第一次點麥克風會跳回學舌鳥是正常的，點左上角「◀」回去接著說；在待命時間內再點，就不會再跳。待命時間在學舌鳥「設定 › 待命時間」調整，選「不待命」就每次都會跳。想用完就關麥克風：在鍵盤上按「關閉麥克風」，或在學舌鳥首頁按「關閉」。</p>
         </details>
         <details style="background:var(--card);border:1px solid var(--line);border-radius:22px;padding:20px 24px">
           <summary style="cursor:pointer;font-size:clamp(1.0625rem,0.112rem + 1.26cqi,1.1875rem);font-weight:800;line-height:1.5">密碼欄會自動換成 Apple 鍵盤</summary>
